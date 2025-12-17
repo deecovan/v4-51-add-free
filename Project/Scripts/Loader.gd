@@ -9,3 +9,10 @@ func _process(_delta):
 		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN \
 			if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_play_game_btn_pressed() -> void:
+	pass
+	
+func load_scene() -> void:
+	pass

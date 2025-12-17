@@ -62,12 +62,12 @@ Button/styles/hover = SubResource("StyleBoxFlat_2")
 Button/styles/normal = SubResource("StyleBoxFlat_1")
 Button/styles/pressed = SubResource("StyleBoxFlat_3")
 
-[node name="MainMenu" type="Node2D"]
+[node name="Loader" type="Node2D"]
 script = ExtResource("1_tt5f1")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="Main Menu" type="CanvasLayer" parent="."]
 
-[node name="MainContainer" type="Control" parent="UI"]
+[node name="MainContainer" type="Control" parent="Main Menu"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +78,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_ttvog")
 
-[node name="Title" type="Label" parent="UI/MainContainer"]
+[node name="Title" type="Label" parent="Main Menu/MainContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
 anchors_preset = 10
@@ -97,7 +97,7 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerInfoPanel" type="Panel" parent="UI/MainContainer"]
+[node name="PlayerInfoPanel" type="Panel" parent="Main Menu/MainContainer"]
 z_index = 100
 custom_minimum_size = Vector2(270, 130)
 layout_mode = 1
@@ -111,7 +111,7 @@ offset_bottom = -20.0
 grow_vertical = 0
 theme = ExtResource("2_ttvog")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainContainer/PlayerInfoPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/MainContainer/PlayerInfoPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,26 +123,26 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/PlayerInfoPanel/VBoxContainer"]
+[node name="PlayerNameLabel" type="Label" parent="Main Menu/MainContainer/PlayerInfoPanel/VBoxContainer"]
 layout_mode = 2
 text = "Player Name:"
 
-[node name="PlayerNameInput" type="LineEdit" parent="UI/MainContainer/PlayerInfoPanel/VBoxContainer"]
+[node name="PlayerNameInput" type="LineEdit" parent="Main Menu/MainContainer/PlayerInfoPanel/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Enter your name..."
 
-[node name="VSeparator" type="VSeparator" parent="UI/MainContainer/PlayerInfoPanel/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Main Menu/MainContainer/PlayerInfoPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
 
-[node name="StatusLabel" type="Label" parent="UI/MainContainer/PlayerInfoPanel/VBoxContainer"]
+[node name="StatusLabel" type="Label" parent="Main Menu/MainContainer/PlayerInfoPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_i5bnm")
 theme_override_font_sizes/font_size = 24
 text = "Status: Offline"
 
-[node name="ConnectionStatusIcon" type="ColorRect" parent="UI/MainContainer/PlayerInfoPanel/VBoxContainer/StatusLabel"]
+[node name="ConnectionStatusIcon" type="ColorRect" parent="Main Menu/MainContainer/PlayerInfoPanel/VBoxContainer/StatusLabel"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
@@ -157,7 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.701774, 0.184178, 0, 1)
 
-[node name="GameMenu" type="Panel" parent="UI/MainContainer"]
+[node name="GameMenu" type="Panel" parent="Main Menu/MainContainer"]
 z_index = 200
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 1
@@ -175,7 +175,7 @@ grow_vertical = 2
 scale = Vector2(1.00555, 1)
 pivot_offset = Vector2(133, 5)
 
-[node name="MenuButtons" type="VBoxContainer" parent="UI/MainContainer/GameMenu"]
+[node name="MenuButtons" type="VBoxContainer" parent="Main Menu/MainContainer/GameMenu"]
 layout_mode = 1
 offset_left = 12.0
 offset_top = 10.0
@@ -185,50 +185,50 @@ scale = Vector2(1.01934, 1.00797)
 theme = SubResource("Theme_1")
 alignment = 1
 
-[node name="HostGameBtn" type="Button" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="PlayGameBtn" type="Button" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 theme_override_colors/font_color = Color(0, 0.396078, 0, 1)
 text = "DRIVE"
 
-[node name="VSeparator3" type="VSeparator" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="VSeparator3" type="VSeparator" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
 
-[node name="JoinGameBtn" type="Button" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="JoinGameBtn" type="Button" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 text = "JOIN"
 
-[node name="ServerBrowserBtn" type="Button" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="HostGameBtn" type="Button" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 text = "HOST
 "
 
-[node name="VSeparator" type="VSeparator" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="VSeparator" type="VSeparator" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
 
-[node name="SettingsBtn" type="Button" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="SettingsBtn" type="Button" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 text = "SETTINGS"
 
-[node name="VSeparator2" type="VSeparator" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="VSeparator2" type="VSeparator" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
 
-[node name="QuitBtn" type="Button" parent="UI/MainContainer/GameMenu/MenuButtons"]
+[node name="QuitBtn" type="Button" parent="Main Menu/MainContainer/GameMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 theme_override_colors/font_color = Color(0.501961, 0, 0, 1)
 text = "QUIT"
 
-[node name="NetworkInfoPanel" type="Panel" parent="UI/MainContainer"]
+[node name="NetworkInfoPanel" type="Panel" parent="Main Menu/MainContainer"]
 custom_minimum_size = Vector2(270, 130)
 layout_mode = 1
 anchors_preset = 3
@@ -244,7 +244,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_ttvog")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainContainer/NetworkInfoPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/MainContainer/NetworkInfoPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -256,28 +256,30 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NetworkLabel" type="Label" parent="UI/MainContainer/NetworkInfoPanel/VBoxContainer"]
+[node name="NetworkLabel" type="Label" parent="Main Menu/MainContainer/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
 text = "Network Info:"
 horizontal_alignment = 2
 
-[node name="IPLabel" type="Label" parent="UI/MainContainer/NetworkInfoPanel/VBoxContainer"]
+[node name="IPLabel" type="Label" parent="Main Menu/MainContainer/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_i5bnm")
 theme_override_font_sizes/font_size = 25
 text = "IP: 127.0.0.1"
 horizontal_alignment = 2
 
-[node name="PortLabel" type="Label" parent="UI/MainContainer/NetworkInfoPanel/VBoxContainer"]
+[node name="PortLabel" type="Label" parent="Main Menu/MainContainer/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_i5bnm")
 theme_override_font_sizes/font_size = 24
 text = "Port: 7000"
 horizontal_alignment = 2
 
-[node name="PlayersLabel" type="Label" parent="UI/MainContainer/NetworkInfoPanel/VBoxContainer"]
+[node name="PlayersLabel" type="Label" parent="Main Menu/MainContainer/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_i5bnm")
 theme_override_font_sizes/font_size = 24
 text = "Players: 0/8"
 horizontal_alignment = 2
+
+[connection signal="pressed" from="Main Menu/MainContainer/GameMenu/MenuButtons/PlayGameBtn" to="." method="_on_play_game_btn_pressed"]
