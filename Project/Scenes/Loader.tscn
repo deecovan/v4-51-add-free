@@ -3,10 +3,7 @@
 [ext_resource type="Script" uid="uid://c38lgq0jf848d" path="res://Scripts/Loader.gd" id="1_tt5f1"]
 [ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="2_ttvog"]
 [ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="2_xm1ns"]
-[ext_resource type="FontFile" uid="uid://be4k3w1lw3gbn" path="res://Themes/Fonts/CelticTime.ttf" id="4_i5bnm"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_tt5f1"]
-color = Color(0, 0, 0, 0)
+[ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
 resource_name = "white_button_hover"
@@ -62,10 +59,18 @@ Button/styles/hover = SubResource("StyleBoxFlat_2")
 Button/styles/normal = SubResource("StyleBoxFlat_1")
 Button/styles/pressed = SubResource("StyleBoxFlat_3")
 
-[node name="Loader" type="Node2D" node_paths=PackedStringArray("game_menu", "drive_menu")]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tt5f1"]
+color = Color(0, 0, 0, 0)
+
+[node name="Loader" type="Node2D" node_paths=PackedStringArray("button", "title", "game_menu", "drive_menu", "circle_menu")]
 script = ExtResource("1_tt5f1")
+button = NodePath("Canvas/Control/Button")
+title = NodePath("Canvas/Control/Title")
 game_menu = NodePath("Canvas/Control/GameMenu")
 drive_menu = NodePath("Canvas/Control/DriveMenu")
+circle_menu = NodePath("Canvas/Control/CircleMenu")
+metadata/_edit_vertical_guides_ = [30.0, 973.0]
+metadata/_edit_horizontal_guides_ = [22.0, 580.0, 123.0]
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
@@ -83,10 +88,13 @@ theme = ExtResource("2_ttvog")
 [node name="Title" type="Label" parent="Canvas/Control"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-offset_bottom = 77.0
-grow_horizontal = 2
+offset_left = -428.0
+offset_right = 3.0
+offset_bottom = 150.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
 theme_override_colors/font_shadow_color = Color(0.8, 0.85, 0.95, 0.6)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 0.8)
@@ -95,103 +103,57 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_xm1ns")
 theme_override_font_sizes/font_size = 92
-text = "Main Menu"
+text = "AdD Free"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerInfoPanel" type="Panel" parent="Canvas/Control" groups=["panels"]]
-z_index = 100
-custom_minimum_size = Vector2(270, 130)
+[node name="Button" type="Button" parent="Canvas/Control"]
+visible = false
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = -150.0
-offset_right = 300.0
-offset_bottom = -20.0
-grow_vertical = 0
-theme = ExtResource("2_ttvog")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Control/PlayerInfoPanel"]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = -15.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PlayerNameLabel" type="Label" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
-layout_mode = 2
-text = "Player Name:"
-
-[node name="PlayerNameInput" type="LineEdit" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
-layout_mode = 2
-placeholder_text = "Enter your name..."
-
-[node name="VSeparator" type="VSeparator" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
-
-[node name="StatusLabel" type="Label" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_i5bnm")
-theme_override_font_sizes/font_size = 24
-text = "Status: Offline"
-
-[node name="ConnectionStatusIcon" type="ColorRect" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer/StatusLabel"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -8.5
-offset_right = 16.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.4, 0, 0, 1)
+offset_left = -434.0
+offset_top = 22.0
+offset_right = -26.0
+offset_bottom = 130.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_xm1ns")
+theme_override_font_sizes/font_size = 92
+text = " >> PLAY >> "
 
 [node name="GameMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
 visible = false
 z_index = 300
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -160.0
-offset_right = 135.0
-offset_bottom = 129.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 300.0
+offset_bottom = 347.0
 pivot_offset = Vector2(133, 5)
 
 [node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/GameMenu"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -124.5
 offset_right = 100.0
-offset_bottom = 123.5
+offset_bottom = 284.0
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.01934, 1.00797)
 theme = SubResource("Theme_1")
 alignment = 1
+
+[node name="VSeparator4" type="VSeparator" parent="Canvas/Control/GameMenu/MenuButtons"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
+
+[node name="Select Action" type="Label" parent="Canvas/Control/GameMenu/MenuButtons"]
+layout_mode = 2
+text = "Select action"
+horizontal_alignment = 1
 
 [node name="PlayGameBtn" type="Button" parent="Canvas/Control/GameMenu/MenuButtons"]
 layout_mode = 2
@@ -240,70 +202,234 @@ theme_override_colors/font_color = Color(0.4, 0, 0, 1)
 text = "QUIT"
 
 [node name="DriveMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
+visible = false
 z_index = 299
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -160.0
-offset_right = 135.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 300.0
+offset_bottom = 234.0
 pivot_offset = Vector2(133, 5)
 
 [node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/DriveMenu"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -96.0
 offset_right = 100.0
-offset_bottom = 104.0
+offset_bottom = 172.0
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.01934, 1.00797)
 theme = SubResource("Theme_1")
 
-[node name="Table Test" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
-layout_mode = 2
-theme = ExtResource("2_ttvog")
-text = "Table Test"
-
-[node name="Track Test" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
-layout_mode = 2
-theme = ExtResource("2_ttvog")
-text = "Track Test"
-
-[node name="VSeparator" type="VSeparator" parent="Canvas/Control/DriveMenu/MenuButtons"]
+[node name="VSeparator3" type="VSeparator" parent="Canvas/Control/DriveMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
 
-[node name="SettingsBtn" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
+[node name="Select Style" type="Label" parent="Canvas/Control/DriveMenu/MenuButtons"]
+layout_mode = 2
+text = "Select style"
+horizontal_alignment = 1
+
+[node name="Square Land" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-theme_override_colors/font_color = Color(0, 0, 0.333333, 1)
-text = "SETTINGS"
+text = "Square Land"
+
+[node name="Circle Tracks" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Circle Tracks"
 
 [node name="VSeparator2" type="VSeparator" parent="Canvas/Control/DriveMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
 
-[node name="BackBtn" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
+[node name="HomeBtn" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 theme_override_colors/font_color = Color(0.501961, 0, 0, 1)
-text = "BACK"
+text = "HOME
+"
+
+[node name="CircleMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
+visible = false
+z_index = 298
+layout_mode = 1
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 300.0
+offset_bottom = 234.0
+pivot_offset = Vector2(133, 5)
+
+[node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/CircleMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 172.0
+grow_horizontal = 2
+scale = Vector2(1.01934, 1.00797)
+theme = SubResource("Theme_1")
+
+[node name="VSeparator3" type="VSeparator" parent="Canvas/Control/CircleMenu/MenuButtons"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
+
+[node name="Select Circle" type="Label" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+text = "Select circle"
+horizontal_alignment = 1
+
+[node name="Spa Flat" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Spa Flat"
+
+[node name="Cup Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Cup Circus"
+
+[node name="VSeparator2" type="VSeparator" parent="Canvas/Control/CircleMenu/MenuButtons"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
+
+[node name="HomeBtn" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+theme_override_colors/font_color = Color(0.501961, 0, 0, 1)
+text = "HOME
+"
+
+[node name="CarMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
+z_index = 297
+layout_mode = 1
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 300.0
+offset_bottom = 280.0
+pivot_offset = Vector2(133, 5)
+
+[node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/CarMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 214.0
+grow_horizontal = 2
+scale = Vector2(1.01934, 1.00797)
+theme = SubResource("Theme_1")
+
+[node name="VSeparator3" type="VSeparator" parent="Canvas/Control/CarMenu/MenuButtons"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
+
+[node name="Select Vehicle" type="Label" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+text = "Select vehicle"
+horizontal_alignment = 1
+
+[node name="Fanta 6600" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Fanta 6600"
+
+[node name="Fantina 3300" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Fantina 3300"
+
+[node name="Fantisima 800" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Fantisima 800"
+
+[node name="VSeparator2" type="VSeparator" parent="Canvas/Control/CarMenu/MenuButtons"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
+
+[node name="HomeBtn" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+theme_override_colors/font_color = Color(0.501961, 0, 0, 1)
+text = "HOME
+"
+
+[node name="PlayerInfoPanel" type="Panel" parent="Canvas/Control" groups=["panels"]]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(270, 130)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme = ExtResource("2_ttvog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Control/PlayerInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = -15.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerNameLabel" type="Label" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
+layout_mode = 2
+text = "Player Name:"
+
+[node name="PlayerNameInput" type="LineEdit" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter your name..."
+
+[node name="VSeparator" type="VSeparator" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tt5f1")
+
+[node name="StatusLabel" type="Label" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_xm1ns")
+theme_override_font_sizes/font_size = 24
+text = "Status: Offline"
+
+[node name="ConnectionStatusIcon" type="ColorRect" parent="Canvas/Control/PlayerInfoPanel/VBoxContainer/StatusLabel"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 16.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4, 0, 0, 1)
 
 [node name="NetworkInfoPanel" type="Panel" parent="Canvas/Control" groups=["panels"]]
+visible = false
 custom_minimum_size = Vector2(270, 130)
 layout_mode = 1
 anchors_preset = 3
@@ -338,25 +464,32 @@ horizontal_alignment = 2
 
 [node name="IPLabel" type="Label" parent="Canvas/Control/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_i5bnm")
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("4_xm1ns")
+theme_override_font_sizes/font_size = 24
 text = "IP: 127.0.0.1"
 horizontal_alignment = 2
 
 [node name="PortLabel" type="Label" parent="Canvas/Control/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_i5bnm")
+theme_override_fonts/font = ExtResource("4_xm1ns")
 theme_override_font_sizes/font_size = 24
 text = "Port: 7000"
 horizontal_alignment = 2
 
 [node name="PlayersLabel" type="Label" parent="Canvas/Control/NetworkInfoPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_i5bnm")
+theme_override_fonts/font = ExtResource("4_xm1ns")
 theme_override_font_sizes/font_size = 24
 text = "Players: 0/8"
 horizontal_alignment = 2
 
+[connection signal="pressed" from="Canvas/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Canvas/Control/GameMenu/MenuButtons/PlayGameBtn" to="." method="_on_play_game_btn_pressed"]
 [connection signal="pressed" from="Canvas/Control/GameMenu/MenuButtons/QuitBtn" to="." method="_on_quit_btn_pressed"]
-[connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Square Land" to="." method="_on_square_land_pressed"]
+[connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Circle Tracks" to="." method="_on_circle_tracks_pressed"]
+[connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Flat" to="." method="_on_spa_flat_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Cup Circus" to="." method="_on_cup_circus_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]

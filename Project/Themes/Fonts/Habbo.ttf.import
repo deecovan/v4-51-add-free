@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://be4k3w1lw3gbn"
-path="res://.godot/imported/CelticTime.ttf-1d33a434159f841e71e41a6fa8cabfc4.fontdata"
+uid="uid://dtui5cu3vg7f1"
+path="res://.godot/imported/Habbo.ttf-8b1b17e48f4279bc67f5e50b04a2d8ca.fontdata"
 
 [deps]
 
-source_file="res://Themes/Fonts/CelticTime.ttf"
-dest_files=["res://.godot/imported/CelticTime.ttf-1d33a434159f841e71e41a6fa8cabfc4.fontdata"]
+source_file="res://Themes/Fonts/Habbo.ttf"
+dest_files=["res://.godot/imported/Habbo.ttf-8b1b17e48f4279bc67f5e50b04a2d8ca.fontdata"]
 
 [params]
 

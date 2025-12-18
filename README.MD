@@ -1,5 +1,9 @@
 # v4-51-add-free GitHub repo 
 
+## Add Menus and Buttons
+- Check signals, names, labels
+- Test sequences
+
 ## Try Chunk Terrain with HeightMapShape3D
 
 ## Next add one Scene with one Car
