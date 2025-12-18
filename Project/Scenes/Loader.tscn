@@ -62,13 +62,15 @@ Button/styles/pressed = SubResource("StyleBoxFlat_3")
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_tt5f1"]
 color = Color(0, 0, 0, 0)
 
-[node name="Loader" type="Node2D" node_paths=PackedStringArray("button", "title", "game_menu", "drive_menu", "circle_menu")]
+[node name="Loader" type="Node2D" node_paths=PackedStringArray("canvas", "button", "title", "game_menu", "drive_menu", "circle_menu", "car_menu")]
 script = ExtResource("1_tt5f1")
+canvas = NodePath("Canvas")
 button = NodePath("Canvas/Control/Button")
 title = NodePath("Canvas/Control/Title")
 game_menu = NodePath("Canvas/Control/GameMenu")
 drive_menu = NodePath("Canvas/Control/DriveMenu")
 circle_menu = NodePath("Canvas/Control/CircleMenu")
+car_menu = NodePath("Canvas/Control/CarMenu")
 metadata/_edit_vertical_guides_ = [30.0, 973.0]
 metadata/_edit_horizontal_guides_ = [22.0, 580.0, 123.0]
 
@@ -492,4 +494,7 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Flat" to="." method="_on_spa_flat_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Cup Circus" to="." method="_on_cup_circus_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fanta 6600" to="." method="_on_fanta_6600_pressed"]
+[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fantina 3300" to="." method="_on_fantina_3300_pressed"]
+[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fantisima 800" to="." method="_on_fantisima_800_pressed"]
 [connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]

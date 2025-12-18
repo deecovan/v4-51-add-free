@@ -1,10 +1,12 @@
 extends Node2D
 
+@export var canvas: CanvasLayer
 @export var button: Button
 @export var title: Label
 @export var game_menu: Panel
 @export var drive_menu: Panel
 @export var circle_menu: Panel
+@export var car_menu: Panel
 var menus: Array
 var panels: Array
 
@@ -64,15 +66,29 @@ func _on_circle_tracks_pressed() -> void:
 func _on_square_land_pressed() -> void:
 	hide_menus()
 	hide_panels()
-	button.show()
+	car_menu.show()
 
 func _on_spa_flat_pressed() -> void:
 	hide_menus()
 	hide_panels()
-	button.show()
-
+	car_menu.show()
 
 func _on_cup_circus_pressed() -> void:
+	hide_menus()
+	hide_panels()
+	car_menu.show()
+
+func _on_fanta_6600_pressed() -> void:
+	hide_menus()
+	hide_panels()
+	button.show()
+
+func _on_fantina_3300_pressed() -> void:
+	hide_menus()
+	hide_panels()
+	button.show()
+
+func _on_fantisima_800_pressed() -> void:
 	hide_menus()
 	hide_panels()
 	button.show()
