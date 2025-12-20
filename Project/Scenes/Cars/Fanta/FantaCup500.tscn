@@ -1,17 +1,19 @@
-[gd_scene load_steps=18 format=4 uid="uid://c653ypnptku1j"]
+[gd_scene load_steps=20 format=4 uid="uid://c653ypnptku1j"]
 
-[ext_resource type="Script" uid="uid://g1b5fmyreevn" path="res://Scripts/VehicleFanta500.gd" id="1_us3bc"]
-[ext_resource type="Curve" uid="uid://blpquu56b6jsn" path="res://Scenes/FantCar/Fanta_curve_500.tres" id="2_ycx84"]
-[ext_resource type="AudioStream" uid="uid://d32nahn6656wp" path="res://Sounds/eng run start.wav" id="3_l83xc"]
-[ext_resource type="AudioStream" uid="uid://d0a2tqcfnno11" path="res://Sounds/eng run idle.wav" id="4_npu7t"]
-[ext_resource type="AudioStream" uid="uid://g2vvom06rwsx" path="res://Sounds/eng run overpower.wav" id="5_x2ipa"]
-[ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/scrap.wav" id="6_gvtra"]
-[ext_resource type="Script" uid="uid://bn2vvwlgnjuak" path="res://Scripts/engine_controller.gd" id="7_a8a6t"]
-[ext_resource type="Script" uid="uid://dp54wm0r2sonc" path="res://Scripts/fanta_wheel.gd" id="8_2nxkg"]
-[ext_resource type="PackedScene" uid="uid://bnj10rk4ojq0v" path="res://Scenes/FantCar/Fanta_Wheel_L.tscn" id="9_fdk0u"]
-[ext_resource type="PackedScene" uid="uid://c4nshb085yca4" path="res://Scenes/FantCar/Fanta_Wheel_R.tscn" id="10_1ufo7"]
-[ext_resource type="Texture2D" uid="uid://bbyxnybki6h8f" path="res://Import/blender/car_UV-sharp.png" id="11_arl01"]
-[ext_resource type="Material" uid="uid://c1rb1j1x6st35" path="res://Materials/Curved_Road_material.tres" id="12_rrlp3"]
+[ext_resource type="Script" uid="uid://g1b5fmyreevn" path="res://Scenes/Cars/Fanta/Scripts/VehicleFanta500.gd" id="1_us3bc"]
+[ext_resource type="Curve" uid="uid://blpquu56b6jsn" path="res://Scenes/Cars/Fanta/Fanta_curve_500.tres" id="2_ycx84"]
+[ext_resource type="AudioStream" uid="uid://d32nahn6656wp" path="res://Sounds/Cars/eng run start.wav" id="3_l83xc"]
+[ext_resource type="AudioStream" uid="uid://d0a2tqcfnno11" path="res://Sounds/Cars/eng run idle.wav" id="4_npu7t"]
+[ext_resource type="AudioStream" uid="uid://g2vvom06rwsx" path="res://Sounds/Cars/eng run overpower.wav" id="5_x2ipa"]
+[ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/Cars/scrap.wav" id="6_gvtra"]
+[ext_resource type="Script" path="res://Scenes/Cars/Fanta/Scripts/engine_controller.gd" id="7_a8a6t"]
+[ext_resource type="Script" uid="uid://dp54wm0r2sonc" path="res://Scenes/Cars/Fanta/Scripts/wheels_controller.gd" id="8_2nxkg"]
+[ext_resource type="PackedScene" uid="uid://bnj10rk4ojq0v" path="res://Scenes/Cars/Fanta/Fanta_Wheel_L.tscn" id="9_fdk0u"]
+[ext_resource type="PackedScene" uid="uid://c4nshb085yca4" path="res://Scenes/Cars/Fanta/Fanta_Wheel_R.tscn" id="10_1ufo7"]
+[ext_resource type="Texture2D" uid="uid://bbyxnybki6h8f" path="res://Scenes/Cars/Fanta/car_UV-sharp.png" id="11_arl01"]
+[ext_resource type="Material" uid="uid://gfnv0rvux3tb" path="res://Materials/standard_material_3d.tres" id="12_rrlp3"]
+[ext_resource type="PackedScene" uid="uid://c2u3c52wwav41" path="res://Scenes/Cars/Fanta/ui.tscn" id="13_dhdfu"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cars/Gimbal/CameraGimbal.tscn" id="14_56l77"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74iso"]
 resource_name = "Material"
@@ -173,3 +175,7 @@ shape = SubResource("ConvexPolygonShape3D_juvg4")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 8.74228e-09, 0.0220916, -0.739)
 mesh = SubResource("PlaneMesh_juvg4")
 skeleton = NodePath("../Car")
+
+[node name="UI" parent="." instance=ExtResource("13_dhdfu")]
+
+[node name="CameraGimbal" parent="." instance=ExtResource("14_56l77")]

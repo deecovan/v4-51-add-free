@@ -95,16 +95,13 @@ var acceleration_power = 0.0
 var matching_power = 0.0
 var accelerating = 0.0
 
-var root: Node3D
 var UI: CanvasLayer
 var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
 
 func _ready() -> void:
-	var loader = get_tree().get_root().get_child(0)
-	UI = loader.get_node("UI")
+	UI = $UI
 	Analometer = UI.get_analometer()
-	
 	## Setup Vehicle3D values
 	mass = vehicle_mass
 	gravity_scale = grav_scale

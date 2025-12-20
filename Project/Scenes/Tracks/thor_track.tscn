@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cspkf5vp2exlv"]
+
+[ext_resource type="Environment" uid="uid://o7w4my022w7t" path="res://Scenes/Sky/BlueSky.tres" id="1_av1mt"]
+[ext_resource type="PackedScene" uid="uid://cm2b0thjtbsyl" path="res://Scenes/Tracks/GLBs/thor.2.glb" id="2_k7xu7"]
+[ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/FantaCup500.tscn" id="3_2j4tj"]
+
+[node name="Thor Track" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_av1mt")
+
+[node name="thor_2" parent="." instance=ExtResource("2_k7xu7")]
+
+[node name="Vehicle" parent="." instance=ExtResource("3_2j4tj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -46, 0)
