@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://o7w4my022w7t"]
+
+[ext_resource type="Texture2D" uid="uid://e742w1oaukes" path="res://Images/Sky/sky-b.png" id="1_b553f"]
+
+[sub_resource type="PanoramaSkyMaterial" id="acg_rjz182vm"]
+panorama = ExtResource("1_b553f")
+
+[sub_resource type="Sky" id="Sky_rhwjb"]
+sky_material = SubResource("acg_rjz182vm")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_rhwjb")
+fog_light_color = Color(0.85098, 0.67451, 0.337255, 1)
+fog_light_energy = 0.2
+fog_sky_affect = 0.42
