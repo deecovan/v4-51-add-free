@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca1k4pghyewhm"
-path.s3tc="res://.godot/imported/sun.png-408d4079c817b48d48a2f54452a10e20.s3tc.ctex"
+path.s3tc="res://.godot/imported/sun.png-8964e878352784c0fca7698638f139c4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Images/Sky/sun.png"
-dest_files=["res://.godot/imported/sun.png-408d4079c817b48d48a2f54452a10e20.s3tc.ctex"]
+source_file="res://Scenes/Sky/Images/sun.png"
+dest_files=["res://.godot/imported/sun.png-8964e878352784c0fca7698638f139c4.s3tc.ctex"]
 
 [params]
 
