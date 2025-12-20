@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://kxpkpf1fnb1i"
-path="res://.godot/imported/OpenSans-Regular.ttf-191fffb3449413c83708e591ae9bf8f6.fontdata"
+path="res://.godot/imported/OpenSans-Regular.ttf-25fe4b7486818e092502a534f3543fe2.fontdata"
 
 [deps]
 
-source_file="res://Scenes/Cars/UI/Themes/MinimalUI44/OpenSans-Regular.ttf"
-dest_files=["res://.godot/imported/OpenSans-Regular.ttf-191fffb3449413c83708e591ae9bf8f6.fontdata"]
+source_file="res://Scenes/UI/Themes/MinimalUI44/OpenSans-Regular.ttf"
+dest_files=["res://.godot/imported/OpenSans-Regular.ttf-25fe4b7486818e092502a534f3543fe2.fontdata"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c264l56f7huv0"
-path.bptc="res://.godot/imported/TachometerBG.png-0c873f866f81cd50d3db9703b6de87a6.bptc.ctex"
+uid="uid://gvy0ceh2vadg"
+path.bptc="res://.godot/imported/SpeedometerBG.png-b784e4435d97bd13d0b03ca46632c35b.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/Cars/UI/Images/TachometerBG.png"
-dest_files=["res://.godot/imported/TachometerBG.png-0c873f866f81cd50d3db9703b6de87a6.bptc.ctex"]
+source_file="res://Scenes/UI/Images/SpeedometerBG.png"
+dest_files=["res://.godot/imported/SpeedometerBG.png-b784e4435d97bd13d0b03ca46632c35b.bptc.ctex"]
 
 [params]
 

@@ -34,8 +34,8 @@ var stop = false
 var UI = CanvasItem
 
 func _ready() -> void:
-	vehicle = get_parent()
-	UI = $"../UI"
+	vehicle = $"../Vehicle"
+	UI = vehicle.get_node("UI")
 	arm = $GimbalInner
 	## Initial position
 	global_position = vehicle.global_position

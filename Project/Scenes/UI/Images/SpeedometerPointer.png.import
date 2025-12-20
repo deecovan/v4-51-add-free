@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh5a4ur3aa7ln"
-path.bptc="res://.godot/imported/icons.svg-3bef6229323543d5759dad0c53a22fbe.bptc.ctex"
+uid="uid://b2cb0mc3qto1e"
+path.bptc="res://.godot/imported/SpeedometerPointer.png-16b6425ad54c851060baa1c45f4f8c8d.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/Cars/UI/Themes/MinimalUI44/icons.svg"
-dest_files=["res://.godot/imported/icons.svg-3bef6229323543d5759dad0c53a22fbe.bptc.ctex"]
+source_file="res://Scenes/UI/Images/SpeedometerPointer.png"
+dest_files=["res://.godot/imported/SpeedometerPointer.png-16b6425ad54c851060baa1c45f4f8c8d.bptc.ctex"]
 
 [params]
 
@@ -33,6 +33,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

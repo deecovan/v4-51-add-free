@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2cb0mc3qto1e"
-path.bptc="res://.godot/imported/SpeedometerPointer.png-ce4cc3925c7cf80a4af78bdf54a447b8.bptc.ctex"
+uid="uid://c264l56f7huv0"
+path.bptc="res://.godot/imported/TachometerBG.png-9eeabbd59b76bc1172593ac93fba0ffe.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/Cars/UI/Images/SpeedometerPointer.png"
-dest_files=["res://.godot/imported/SpeedometerPointer.png-ce4cc3925c7cf80a4af78bdf54a447b8.bptc.ctex"]
+source_file="res://Scenes/UI/Images/TachometerBG.png"
+dest_files=["res://.godot/imported/TachometerBG.png-9eeabbd59b76bc1172593ac93fba0ffe.bptc.ctex"]
 
 [params]
 

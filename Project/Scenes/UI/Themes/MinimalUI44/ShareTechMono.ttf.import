@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://djfsvawybk7ho"
-path="res://.godot/imported/ShareTechMono.ttf-f3c43c7aca1c49bc04bb22fca38e2494.fontdata"
+path="res://.godot/imported/ShareTechMono.ttf-4e5cb5ba363116135d75b2e017ad9aa0.fontdata"
 
 [deps]
 
-source_file="res://Scenes/Cars/UI/Themes/MinimalUI44/ShareTechMono.ttf"
-dest_files=["res://.godot/imported/ShareTechMono.ttf-f3c43c7aca1c49bc04bb22fca38e2494.fontdata"]
+source_file="res://Scenes/UI/Themes/MinimalUI44/ShareTechMono.ttf"
+dest_files=["res://.godot/imported/ShareTechMono.ttf-4e5cb5ba363116135d75b2e017ad9aa0.fontdata"]
 
 [params]
 

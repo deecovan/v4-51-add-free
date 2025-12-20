@@ -1,5 +1,10 @@
 # v4-51-add-free GitHub repo 
 
+## Add One track without loader
+- Add Thor track
+- Change structure
+- Test with Razval/Skhozhd
+
 ## New skies with Sun
 - Add Sun into Sunlight 
 

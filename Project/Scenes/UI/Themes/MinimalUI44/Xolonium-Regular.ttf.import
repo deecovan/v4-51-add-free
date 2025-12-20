@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dlgkspckhvbp4"
-path="res://.godot/imported/Xolonium-Regular.ttf-b234a3497f652af16ab0d8dc4e1459f6.fontdata"
+path="res://.godot/imported/Xolonium-Regular.ttf-e3576b27f2f0f78185578a7bbebd34b9.fontdata"
 
 [deps]
 
-source_file="res://Scenes/Cars/UI/Themes/MinimalUI44/Xolonium-Regular.ttf"
-dest_files=["res://.godot/imported/Xolonium-Regular.ttf-b234a3497f652af16ab0d8dc4e1459f6.fontdata"]
+source_file="res://Scenes/UI/Themes/MinimalUI44/Xolonium-Regular.ttf"
+dest_files=["res://.godot/imported/Xolonium-Regular.ttf-e3576b27f2f0f78185578a7bbebd34b9.fontdata"]
 
 [params]
 
