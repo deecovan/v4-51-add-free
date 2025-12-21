@@ -15,7 +15,7 @@ general/updates_per_second=30
 [application]
 
 config/name="Add Free"
-config/version="0.1.4"
+config/version="0.1.41"
 run/main_scene="uid://c04ue4ip50qe2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=30
