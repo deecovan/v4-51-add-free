@@ -138,7 +138,7 @@ damping_compression = 0.5
 damping_relaxation = 0.6
 
 [node name="Wheel3Drl" parent="." instance=ExtResource("9_fdk0u")]
-transform = Transform3D(0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0, 1, 0.92, 0.0439357, -2.37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92, 0.0439357, -2.37)
 use_as_traction = true
 wheel_radius = 0.42
 wheel_rest_length = 0.08
@@ -150,7 +150,7 @@ damping_compression = 0.3
 damping_relaxation = 0.4
 
 [node name="Wheel3Drr" parent="." instance=ExtResource("10_1ufo7")]
-transform = Transform3D(0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0, 0, 0, 1, -0.92, 0.0439357, -2.37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92, 0.0439357, -2.37)
 use_as_traction = true
 wheel_radius = 0.42
 wheel_rest_length = 0.08
