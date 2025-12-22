@@ -40,8 +40,7 @@ func use_main_controls(_event) -> void:
 	if Input.is_action_just_pressed('Hide Info'):
 		UI.hide_info()
 	if Input.is_action_just_pressed('reload'):
-		UI.show_message("Reloading...")
-		pass
+		reload_scene("Reloading...")
 	## Change fullscreen (ONLY if Project Propery Run Windowed)
 	if Input.is_action_just_pressed('screen'):
 		var mode := DisplayServer.window_get_mode()
@@ -58,4 +57,4 @@ func use_main_controls(_event) -> void:
 			
 func reload_scene(message):
 	UI.show_message(message)
-	pass
+	get_tree().reload_current_scene()
