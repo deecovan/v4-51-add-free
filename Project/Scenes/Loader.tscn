@@ -258,13 +258,12 @@ text = "HOME
 "
 
 [node name="CircleMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
-visible = false
 z_index = 298
 layout_mode = 1
 offset_left = 30.0
 offset_top = 22.0
 offset_right = 300.0
-offset_bottom = 234.0
+offset_bottom = 322.0
 pivot_offset = Vector2(133, 5)
 
 [node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/CircleMenu"]
@@ -294,10 +293,21 @@ layout_mode = 2
 theme = ExtResource("2_ttvog")
 text = "Spa Flat"
 
+[node name="Curve Roads" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Curve Roads
+"
+
 [node name="Cup Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 text = "Cup Circus"
+
+[node name="Thor Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Thor Circus"
 
 [node name="VSeparator2" type="VSeparator" parent="Canvas/Control/CircleMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
@@ -312,6 +322,7 @@ text = "HOME
 "
 
 [node name="CarMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
+visible = false
 z_index = 297
 layout_mode = 1
 offset_left = 30.0
@@ -492,7 +503,9 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Circle Tracks" to="." method="_on_circle_tracks_pressed"]
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Flat" to="." method="_on_spa_flat_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Curve Roads" to="." method="_on_curve_roads_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Cup Circus" to="." method="_on_cup_circus_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Thor Circus" to="." method="_on_thor_circus_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
 [connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fanta 6600" to="." method="_on_fanta_6600_pressed"]
 [connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fantina 3300" to="." method="_on_fantina_3300_pressed"]

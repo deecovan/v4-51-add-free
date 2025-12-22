@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cspkf5vp2exlv"]
 
-[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Scripts/MainSceneScript.gd" id="1_2j4tj"]
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/MainSceneScript.gd" id="1_2j4tj"]
 [ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="2_2j4tj"]
 [ext_resource type="PackedScene" uid="uid://cm2b0thjtbsyl" path="res://Scenes/Tracks/GLBs/thor.2.glb" id="2_k7xu7"]
 [ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/FantaCup500.tscn" id="3_2j4tj"]
