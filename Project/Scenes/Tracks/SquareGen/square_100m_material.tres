@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dr8aamfqp0m7"]
+
+[ext_resource type="Shader" uid="uid://drch0s3q6w3li" path="res://Scenes/Tracks/SquareGen/Materials/square_100m.gdshader" id="1_tgt0o"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_umdhb"]
+noise_type = 4
+frequency = 0.0055
+fractal_lacunarity = 2.955
+fractal_gain = 1.205
+fractal_weighted_strength = 0.6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jp1xv"]
+as_normal_map = true
+bump_strength = 10.0
+noise = SubResource("FastNoiseLite_umdhb")
+
+[sub_resource type="Gradient" id="Gradient_pto4q"]
+offsets = PackedFloat32Array(0, 0.189394, 0.44697)
+colors = PackedColorArray(0, 0, 0, 1, 0.612903, 0.612903, 0.612903, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jscot"]
+noise_type = 3
+frequency = 0.0925
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rs3mk"]
+bump_strength = 5.0
+color_ramp = SubResource("Gradient_pto4q")
+noise = SubResource("FastNoiseLite_jscot")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tgt0o")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_jp1xv")
+shader_parameter/texturemap = SubResource("NoiseTexture2D_rs3mk")

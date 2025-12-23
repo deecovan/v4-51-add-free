@@ -1,26 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqy35w0t0uaa0"]
+[gd_scene load_steps=9 format=3 uid="uid://dqy35w0t0uaa0"]
 
-[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scripts/MainSceneScript.gd" id="1_t2t33"]
-[ext_resource type="PackedScene" uid="uid://cqj403us21hwa" path="res://Sky/world_environment.tscn" id="2_o2f4t"]
-[ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Materials/sand_1_km_landlow A.tscn" id="4_fydd0"]
-[ext_resource type="PackedScene" uid="uid://k0763yewpvlv" path="res://Import/Kenney/Road/sign-highway-wide.glb" id="4_o2f4t"]
-[ext_resource type="PackedScene" uid="uid://b30n8gwfqoirt" path="res://Scenes/Spa.Flat.LOD.test1.tscn" id="4_rousx"]
-[ext_resource type="PackedScene" uid="uid://dpmlsd6ukmkua" path="res://Import/Kenney/Road/construction-light.glb" id="5_fydd0"]
-[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/CameraGimbal.tscn" id="7_vfmpu"]
-[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/FantCar/FantaCup1000.tscn" id="8_tp1xe"]
-[ext_resource type="Script" uid="uid://dx8xl0toym1sl" path="res://Scripts/TabAreaScript.gd" id="9_8xxra"]
-[ext_resource type="PackedScene" uid="uid://126yicuwavhn" path="res://Scenes/CupTab.tscn" id="10_t7fem"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_clapc"]
-size = Vector3(0.1, 10, 11.6)
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_t2t33"]
+[ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="2_o2f4t"]
+[ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="4_fydd0"]
+[ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="4_o2f4t"]
+[ext_resource type="PackedScene" uid="uid://b30n8gwfqoirt" path="res://Scenes/Tracks/GLBs/Spa.Minimal.tscn" id="4_rousx"]
+[ext_resource type="PackedScene" uid="uid://wv15rdrjotk8" path="res://Scenes/Tracks/GLBs/Objects/construction-light.glb" id="5_fydd0"]
+[ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/FantaCup500.tscn" id="7_5r2i4"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="7_vfmpu"]
 
 [node name="MainSpaFlat" type="Node3D"]
 script = ExtResource("1_t2t33")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_o2f4t")]
 
-[node name="Spa_Flat_LOD_test1" parent="." instance=ExtResource("4_rousx")]
+[node name="Spa_Minimal" parent="." instance=ExtResource("4_rousx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -474.527, 0, 59.696)
+script = null
 
 [node name="Sand 1km Landlow A" parent="." instance=ExtResource("4_fydd0")]
 
@@ -204,25 +200,8 @@ transform = Transform3D(9.16188, 0, 4.00749, 0, 10, 0, -4.00749, 0, 9.16188, -44
 [node name="construction-light83" parent="Spa_Flat_Objects" instance=ExtResource("5_fydd0")]
 transform = Transform3D(9.16188, 0, 4.00749, 0, 10, 0, -4.00749, 0, 9.16188, -442.018, 0.409131, 134.982)
 
-[node name="Vehicle" parent="." instance=ExtResource("8_tp1xe")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 490, 2, 66)
-mass = 60.0
+[node name="Vehicle" parent="." instance=ExtResource("7_5r2i4")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 486.817, 1.19835, 66.9753)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("7_vfmpu")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 490, 2, 66)
-
-[node name="Objects" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.629, 9.41782, 127.997)
-
-[node name="Area3D" type="Area3D" parent="Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983406, -89.5251)
-script = ExtResource("9_8xxra")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Area3D"]
-transform = Transform3D(-1.5, 0, 1.31134e-07, 0, 1.5, 0, -1.31134e-07, 0, -1.5, -1.35001, -7.44262, -0.993851)
-shape = SubResource("BoxShape3D_clapc")
-
-[node name="Tab" parent="Objects/Area3D" instance=ExtResource("10_t7fem")]
-transform = Transform3D(-1.5, 0, 1.31134e-07, 0, 1.5, 0, -1.31134e-07, 0, -1.5, -0.75, 2, -0.899841)
-
-[connection signal="body_entered" from="Objects/Area3D" to="Objects/Area3D" method="_on_body_entered"]

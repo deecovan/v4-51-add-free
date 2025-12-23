@@ -22,7 +22,8 @@ var DEBUG = false
 @export var wheel_brake_force = 75.0
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
 @export var COM_MOD_VECTOR = Vector3(0.0,0.1,-0.3)
-
+## Maximum Steering angle in Radians
+@export var MAX_STEER  = 0.3
 ## Maximum Steering speed
 @export var steer_control_speed = 0.6
 ## Maximum Braking speed
@@ -45,8 +46,6 @@ var DEBUG = false
 @export var coast_init = 0.8
 ## Coasting lerp speed
 @export var engine_coast = 0.1
-## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.3
 ## Next values used for reconfiguring the Vehicle3Ds values
 @export var car_friction = 0.0
 @export var car_rough = true

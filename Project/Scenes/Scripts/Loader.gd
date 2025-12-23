@@ -126,12 +126,13 @@ func _on_cup_circus_pressed() -> void:
 	hide_panels()
 	#car_menu.show()
 
-
-func open_track(instance):
+func open_track(instance: Node):
+	for inst in get_tree().get_nodes_in_group("Tracks"):
+		inst.queue_free()
 	get_parent().add_child(instance)
+	instance.add_to_group("Tracks")
 	instance.set_process(true)
 	print("Node \"", name, "\" attached ", instance.name)
-	instance.name = "Track"
 	return instance
 
 	

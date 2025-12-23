@@ -2,6 +2,7 @@
 
 ## Continue Loader
 - Preload and instatiate scenes
+* Select car
 
 ## Add One track without loader
 - Add Thor track

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cspkf5vp2exlv" path="res://Scenes/Tracks/thor.tscn" id="3_i5bnm"]
 [ext_resource type="PackedScene" uid="uid://ba6oivsxst478" path="res://Scenes/Tracks/cup.tscn" id="4_6o4ty"]
 [ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
-[ext_resource type="PackedScene" uid="uid://b30n8gwfqoirt" path="res://Scenes/Tracks/spa.tscn" id="5_qcf16"]
+[ext_resource type="PackedScene" uid="uid://dqy35w0t0uaa0" path="res://Scenes/Tracks/spa.tscn" id="5_6o4ty"]
 [ext_resource type="PackedScene" uid="uid://soo6h56asawe" path="res://Scenes/Tracks/curve.tscn" id="6_65gdl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
@@ -79,7 +79,7 @@ car_menu = NodePath("Canvas/Control/CarMenu")
 square = ExtResource("2_i5bnm")
 thor = ExtResource("3_i5bnm")
 cup = ExtResource("4_6o4ty")
-spa = ExtResource("5_qcf16")
+spa = ExtResource("5_6o4ty")
 curve = ExtResource("6_65gdl")
 metadata/_edit_vertical_guides_ = [30.0, 973.0]
 metadata/_edit_horizontal_guides_ = [22.0, 580.0, 123.0]
@@ -306,20 +306,17 @@ text = "Thor Circus"
 [node name="Spa Flat" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-disabled = true
 text = "Spa Flat"
 
 [node name="Curve Roads" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-disabled = true
 text = "Curve Roads
 "
 
 [node name="Cup Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-disabled = true
 text = "Cup Circus"
 
 [node name="VSeparator2" type="VSeparator" parent="Canvas/Control/CircleMenu/MenuButtons"]

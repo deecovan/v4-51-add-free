@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://ba6oivsxst478"]
 
-[ext_resource type="Script" uid="uid://g1b5fmyreevn" path="res://Scenes/Cars/Fanta/Scripts/VehicleFanta500.gd" id="1_d5je1"]
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_63ytp"]
 [ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="2_jykfb"]
 [ext_resource type="PackedScene" uid="uid://v5ggol28gyfa" path="res://Scenes/Tracks/GLBs/Cup.3.TorusTop.glb" id="3_ppgg2"]
 [ext_resource type="PackedScene" uid="uid://fxalgehxt3ky" path="res://Scenes/Tracks/GLBs/Cup.3.ThorusColored.glb" id="4_ppgg2"]
 [ext_resource type="PackedScene" uid="uid://dwvh36svgbyi0" path="res://Scenes/Tracks/GLBs/Cup.3.ThorusObjects.glb" id="5_ppgg2"]
 [ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/FantaCup500.tscn" id="6_63ytp"]
-[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Gimbal/CameraGimbal.tscn" id="9_jykfb"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="9_jykfb"]
 
-[node name="MainCupScene_v0_1" type="Node3D"]
-script = ExtResource("1_d5je1")
+[node name="MainCupScene" type="Node3D"]
+script = ExtResource("1_63ytp")
 
 [node name="EveningSky" parent="." instance=ExtResource("2_jykfb")]
 
@@ -19,8 +19,8 @@ script = ExtResource("1_d5je1")
 
 [node name="Cup_3_ThorusObjects" parent="." instance=ExtResource("5_ppgg2")]
 
-[node name="Vehicle FantaCup500" parent="." instance=ExtResource("6_63ytp")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -92.3322, 1.44617, 86.6718)
+[node name="Vehicle" parent="." instance=ExtResource("6_63ytp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -92.3322, 1.44617, 92.2111)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("9_jykfb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.2313, 2.09959, 87)

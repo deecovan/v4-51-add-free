@@ -1,0 +1,7 @@
+[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://d340eucos3t4w"]
+
+[ext_resource type="Material" uid="uid://btgep8x4r86qi" path="res://Scenes/Tracks/SquareGen/Materials/landlow_shader_material.tres" id="1_ilbp5"]
+
+[resource]
+material = ExtResource("1_ilbp5")
+size = Vector2(1400, 700)
