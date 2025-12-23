@@ -19,7 +19,7 @@ var DEBUG = false
 @export var steer_control_speed = 0.8
 ## Maximum Braking speed
 @export var brake_control_speed = 0.6
-## Control's lerp speed
+## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
 @export var control_speed = 4.0

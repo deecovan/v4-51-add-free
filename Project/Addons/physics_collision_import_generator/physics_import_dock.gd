@@ -259,7 +259,7 @@ func _restore_selection(file_paths: Array) -> void:
 func _on_refresh_pressed():
 	_refresh_file_list()
 
-func _on_search_text_changed(new_text: String):
+func _on_search_text_changed(_new_text: String):
 	# Update the filtered list whenever search text changes
 	_update_filtered_list()
 
@@ -282,7 +282,7 @@ func _on_file_selected(_index: int) -> void:
 		return
 
 	# Exactly one file selected
-	var file_path := file_list.get_item_metadata(selected_items[0])
+	var file_path : Variant = file_list.get_item_metadata(selected_items[0])
 	var shape_type := _get_file_physics_shape_type(file_path)
 
 	if shape_type == PhysicsBase.ShapeType.NONE:
