@@ -1,6 +1,7 @@
 # v4-51-add-free GitHub repo 
 
 ## Continue Loader
+- Preload and instatiate scenes
 
 ## Add One track without loader
 - Add Thor track

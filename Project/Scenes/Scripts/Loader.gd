@@ -7,15 +7,20 @@ extends Node2D
 @export var drive_menu: Panel
 @export var circle_menu: Panel
 @export var car_menu: Panel
-
-var square = preload("res://Scenes/Tracks/square.tscn")
-	#spa = preload("res://Scenes/Tracks/spa.tscn").instatiate()
-	#cup = preload("res://Scenes/Tracks/cup.tscn").instatiate()
-	#curve = preload("res://Scenes/Tracks/curve.tscn").instatiate()
-	#thor = preload("res://Scenes/Tracks/thor.tscn").instatiate()
+@export var square: PackedScene
+@export var thor: PackedScene
+@export var cup: PackedScene
+@export var spa: PackedScene
+@export var curve: PackedScene
 	
 var menus: Array
 var panels: Array
+var track_scene
+var square_inst
+var thor_inst
+var cup_inst
+var spa_inst
+var curve_inst
 
 func _ready() -> void:
 	panels = get_tree().get_nodes_in_group("panels")
@@ -24,6 +29,11 @@ func _ready() -> void:
 	show_panels()
 	button.hide()
 	game_menu.show()
+	square_inst = square.instantiate()
+	thor_inst = thor.instantiate()
+	cup_inst = cup.instantiate()
+	spa_inst = spa.instantiate()
+	curve_inst = curve.instantiate()
 
 func _process(_delta):
 	if Input.is_action_just_pressed('reload'):
@@ -86,40 +96,38 @@ func _on_fantisima_800_pressed() -> void:
 	hide_panels()
 	button.show()
 
-func _on_thor_circus_pressed() -> void:
-	#track = open_track(thor)
-	hide_menus()
-	hide_panels()
-	car_menu.show()
-
 func _on_curve_roads_pressed() -> void:
-	#var track = load_track(tracks.curve)
+	track_scene = open_track(curve_inst)
 	hide_menus()
 	hide_panels()
-	car_menu.show()
+	#car_menu.show()
 
+func _on_thor_circus_pressed() -> void:
+	track_scene = open_track(thor_inst)
+	hide_menus()
+	hide_panels()
+	#car_menu.show()
 
 func _on_square_land_pressed() -> void:
-	var track = open_track(square)
+	track_scene = open_track(square_inst)
 	hide_menus()
 	hide_panels()
-	car_menu.show()
+	#car_menu.show()
 
 func _on_spa_flat_pressed() -> void:
-	#var track = open_track(spa)
+	track_scene = open_track(spa_inst)
 	hide_menus()
 	hide_panels()
-	car_menu.show()
+	#car_menu.show()
 
 func _on_cup_circus_pressed() -> void:
-	#var track = open_track(cup)
+	track_scene = open_track(cup_inst)
 	hide_menus()
 	hide_panels()
-	car_menu.show()
+	#car_menu.show()
 
 
-func open_track(track):
-	var instance = track.instatiate()
+func open_track(instance):
 	get_parent().add_child(instance)
 	instance.set_process(true)
 	print("Node \"", name, "\" attached ", instance.name)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cspkf5vp2exlv"]
 
-[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/MainSceneScript.gd" id="1_2j4tj"]
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_2j4tj"]
 [ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="2_2j4tj"]
-[ext_resource type="PackedScene" uid="uid://cm2b0thjtbsyl" path="res://Scenes/Tracks/GLBs/thor.2.glb" id="2_k7xu7"]
+[ext_resource type="PackedScene" uid="uid://b0b1e3b0n1ctf" path="res://Scenes/Tracks/GLBs/thor.a1.curve.merge.glb" id="2_k7xu7"]
 [ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/FantaCup500.tscn" id="3_2j4tj"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Gimbal/CameraGimbal.tscn" id="4_k7xu7"]
 
@@ -14,7 +14,7 @@ script = ExtResource("1_2j4tj")
 [node name="thor_2" parent="." instance=ExtResource("2_k7xu7")]
 
 [node name="Vehicle" parent="." instance=ExtResource("3_2j4tj")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -46, 0)
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -92.3566, 6.99548, 0)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("4_k7xu7")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -45.6355, 0)
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -92.3566, 7.35998, 0)

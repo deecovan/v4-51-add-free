@@ -6,15 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="2_3j7go"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Gimbal/CameraGimbal.tscn" id="2_es48g"]
 
-[node name="Square Track" type="Node3D"]
+[node name="Square Generated Track" type="Node3D"]
 script = ExtResource("1_c6awv")
 
 [node name="BlueSky" parent="." instance=ExtResource("2_3j7go")]
 
 [node name="Vehicle" parent="." instance=ExtResource("1_mod70")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.65, 0)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 145, 1.65, 145)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("2_es48g")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 145, 2.56342, 145)
 
 [node name="Squares" type="Node" parent="."]
 

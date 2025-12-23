@@ -53,5 +53,4 @@ mesh = SubResource("PlaneMesh_mod70")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-visible = false
 shape = SubResource("HeightMapShape3D_es48g")
