@@ -1,7 +1,4 @@
-[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://k4oburg70mh8"]
-
-[ext_resource type="Material" uid="uid://caknvtxifqcp4" path="res://Shaders/landlow_shader_material_A.tres" id="1_lbcrf"]
+[gd_resource type="PlaneMesh" format=3 uid="uid://k4oburg70mh8"]
 
 [resource]
-material = ExtResource("1_lbcrf")
 size = Vector2(1400, 700)
