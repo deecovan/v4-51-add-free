@@ -1,9 +1,16 @@
 # v4-51-add-free GitHub repo 
 
-## Fanta 6600 update export 
+## Fanta 6600 AeroDrag
+- To deploy: ZC's AeroDrag
+- Also try to use cY like cX
+
+## Fanta 6600 update 
 - New Body
 - New Wheels
   - Also for F3300
+- New parameters
+  - \_ready and \_process from F3300
+  - New parameters for 1t\*1g
 
 ## Continue Loader
 - Preload and instatiate scenes

@@ -8,11 +8,11 @@ var DEBUG = false
 ## Real maximum 240
 ## Tested fixed waaw
 @export var car_linear_damp = 0.2
-@export var car_angular_damp = 0.2
+@export var car_angular_damp = 0.0
 ## @TODO merge ZC's aerodynamic from f9cfddd zc/aeroDrag
 @export var vehicle_mass = 1000.0
 @export var grav_scale = 1.0
-@export var MAX_SPEED = 100.0
+@export var MAX_SPEED = 111.0
 @export var MAX_POWER = 6600.0
 
 ## Maximum Steering speed
@@ -26,7 +26,7 @@ var DEBUG = false
 ## Vehicle3D body braking force
 @export var use_wheel_brake = true
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 100.0
+@export var vehicle_brake_force = 80.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 80.0
 ## wheel_brake_force multiplier
@@ -36,7 +36,7 @@ var DEBUG = false
 ## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
-@export var hand_brake_force = 1.5
+@export var hand_brake_force = 2.0
 ## Coasting starting value
 @export var coast_init = 0.8
 ## Coasting lerp speed
@@ -45,38 +45,36 @@ var DEBUG = false
 @export var MAX_STEER  = 0.4
 ## Next values used for reconfiguring the Vehicle3Ds values
 @export var car_friction = 0.0
-@export var car_rough = false
-@export var car_bounce = 0.25
+@export var car_rough = true
+@export var car_bounce = 0.5
 @export var car_absorb = false
 
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.5
+@export var fric_slip_front = 1.4
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.3
+@export var fric_slip_rear = 1.2
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_demult = 0.8
-## Handbrake rear slip modificator. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.6
+@export var fric_slip_rear_hb_mult = 1.8
 ## Typical racing car damper ratios are 0.65-0.7 
 ## in ride where 1 is 100% critical damping
 ## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 15.0
+@export var damp_relax_front = 10.0
 ## Rear wheels damper relaxation ## 0.88
-@export var damp_relax_rear = 12.0
+@export var damp_relax_rear = 8.0
 ## Front wheels damper compression ## 0.8
-@export var damp_compr_front = 6.0
+@export var damp_compr_front = 9.0
 ## Rear ## 0.7 0.77
-@export var damp_compr_rear = 5.0
+@export var damp_compr_rear = 6.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.12
 @export var rest_rear = 0.11
 @export var travel_front = 0.2
 @export var travel_rear = 0.2
-@export var stiff_front = 320
-@export var stiff_rear = 240
+@export var stiff_front = 240
+@export var stiff_rear = 200
 @export var max_force_front = 24000
-@export var max_force_rear = 16000
+@export var max_force_rear = 20000
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
 @export var COM_MOD_VECTOR = Vector3(0.0,0.2,-0.3)
 @export var scale_curve: Curve
@@ -85,7 +83,7 @@ var scale_array : Array
 ## Array values of power function.
 ## @TODO we need to implement the engine power function.
 
-enum States { ACCELERATING, BRAKING, COASTING, REVERSING}
+enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILL}
 var engine_state = States.COASTING
 enum engine_index_list {Rear, Neutral, First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth}
 var engine_index: int = 0
@@ -99,10 +97,9 @@ var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
 
 func _ready() -> void:
-	var loader = get_tree().get_root().get_child(0)
-	UI = loader.get_node("UI")
-	Analometer = UI.get_analometer()
 	
+	UI = $UI
+	Analometer = UI.get_analometer()
 	## Setup Vehicle3D values
 	mass = vehicle_mass
 	gravity_scale = grav_scale
@@ -181,8 +178,8 @@ func _physics_process(delta: float) -> void:
 	## Simulate axes if keys are used
 	if Input.is_action_pressed("steer_right")\
 		or Input.is_action_pressed("steer_left"):
-			steering = lerp(steering, _steering, 
-			steer_control_speed * control_speed * delta)
+			steering = move_toward(steering, _steering, 
+			steer_control_speed * delta)
 	else: 
 		## Do Not LERP, move linearly
 		steering = move_toward(steering, 0.0 , 
@@ -248,23 +245,27 @@ func _physics_process(delta: float) -> void:
 		change_wheel_brake(0.0, 0.0, 0.0, delta)
 
 	## @HACK Simulate Accelerating Friction Slip
-	if engine_state == States.ACCELERATING:
-		set_fric_slip_rear(fric_slip_rear)
-	else:
-		set_fric_slip_rear(fric_slip_rear * fric_slip_rear_demult)
-
 	## @NEW Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
+		if engine_state == States.COASTING:
+			engine_state = States.CHILL
 		## Function?
-		set_fric_slip_rear(fric_slip_rear)
 		var set_brake_force = \
 			hand_brake_force * vehicle_brake_force
-		if not use_wheel_brake:
-			change_vehicle_brake(set_brake_force, delta)
-		else:
+		if use_wheel_brake:
+			## Now using handbrake rear friction demultiplier
+			set_fric_slip_rear(fric_slip_rear / fric_slip_rear_hb_mult)
 			change_wheel_brake(set_brake_force, 
 				front_brake_force, rear_brake_force, delta)
-			set_fric_slip_rear(fric_slip_rear / fric_slip_rear_hb_mult)
+		else:
+			change_vehicle_brake(set_brake_force, delta)
+	else: 
+		## Now restore handbrake rear friction
+		set_fric_slip_rear(fric_slip_rear)
+		
+	## @HACK Simulate Braking Drift
+	if engine_state == States.BRAKING:
+		pass
 		
 	## Update UI
 	UI.set_speedometer_label(
