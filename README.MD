@@ -1,5 +1,10 @@
 # v4-51-add-free GitHub repo 
 
+## Fanta 6600 update export 
+- New Body
+- New Wheels
+  - Also for F3300
+
 ## Continue Loader
 - Preload and instatiate scenes
 * Select car
