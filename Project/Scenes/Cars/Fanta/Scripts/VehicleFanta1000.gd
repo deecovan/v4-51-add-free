@@ -2,33 +2,51 @@ extends VehicleBody3D
 
 var speedtometer_label
 var REVERSE =  false
-var DEBUG = false
 
-## Values for curve Fanta_Curve_damp02
+## Next values used for reconfiguring the Vehicle3Ds values
+var car_friction = 0.0
+var car_rough = true
+var car_bounce = 0.5
+var car_absorb = false
+
+@export_category("Vehicle Constants")
+## Values for curve Fanta_Curve_1000
 ## Real maximum 240
-## Tested fixed waaw
-@export var car_linear_damp = 0.2
-@export var car_angular_damp = 0.0
-## @TODO merge ZC's aerodynamic from f9cfddd zc/aeroDrag
 @export var vehicle_mass = 1000.0
 @export var grav_scale = 1.0
-@export var MAX_SPEED = 111.0
+@export var MAX_SPEED = 100.0
 @export var MAX_POWER = 6600.0
-
+## Maximum Steering angle in Radians
+@export var MAX_STEER  = 0.4
 ## Maximum Steering speed
-@export var steer_control_speed = 0.8
-## Maximum Braking speed
-@export var brake_control_speed = 0.6
+@export var steer_control_speed = 0.6
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
 @export var control_speed = 4.0
-## Vehicle3D body braking force
+## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
+@export var COM_MOD_VECTOR = Vector3(0.0,0.2,-0.3)
+
+## Merge ZC's AeroDrag force
+@export_category("Body Aero")
+## Reset standart values
+var car_linear_damp = 0.0
+var car_angular_damp = 0.0
+## Setup AirDrag
+@export var airDensity = 1.1
+@export var bodySquare = 2.25
+@export var bodySquareFill=0.77
+@export var bodyDrag = 1.0
+
+@export_category("Braking")
 @export var use_wheel_brake = true
+## Maximum Braking speed
+@export var brake_control_speed = 0.4
+## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 80.0
+@export var vehicle_brake_force = 75.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 80.0
+@export var wheel_brake_force = 75.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
@@ -37,18 +55,14 @@ var DEBUG = false
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
 @export var hand_brake_force = 2.0
-## Coasting starting value
-@export var coast_init = 0.8
-## Coasting lerp speed
-@export var engine_coast = 0.1
-## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.4
-## Next values used for reconfiguring the Vehicle3Ds values
-@export var car_friction = 0.0
-@export var car_rough = true
-@export var car_bounce = 0.5
-@export var car_absorb = false
 
+@export_category("Coasting")
+## Coasting starting value
+@export var coast_init = 0.3
+## Coasting lerp speed
+@export var engine_coast = 0.15
+
+@export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
 @export var fric_slip_front = 1.4
@@ -59,7 +73,7 @@ var DEBUG = false
 ## Typical racing car damper ratios are 0.65-0.7 
 ## in ride where 1 is 100% critical damping
 ## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 10.0
+@export var damp_relax_front = 12.0
 ## Rear wheels damper relaxation ## 0.88
 @export var damp_relax_rear = 8.0
 ## Front wheels damper compression ## 0.8
@@ -69,19 +83,15 @@ var DEBUG = false
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.12
 @export var rest_rear = 0.11
-@export var travel_front = 0.2
-@export var travel_rear = 0.2
-@export var stiff_front = 240
-@export var stiff_rear = 200
-@export var max_force_front = 24000
+@export var travel_front = 0.16
+@export var travel_rear = 0.14
+@export var stiff_front = 120
+@export var stiff_rear = 100
+@export var max_force_front = 30000
 @export var max_force_rear = 20000
-## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var COM_MOD_VECTOR = Vector3(0.0,0.2,-0.3)
+
 @export var scale_curve: Curve
 var scale_array : Array
-
-## Array values of power function.
-## @TODO we need to implement the engine power function.
 
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILL}
 var engine_state = States.COASTING
@@ -244,6 +254,14 @@ func _physics_process(delta: float) -> void:
 		change_vehicle_brake(0.0, delta)
 		change_wheel_brake(0.0, 0.0, 0.0, delta)
 
+	## Merge ZC's AeroDrag force
+	var aeroDrag_force:Vector3 = -(linear_velocity.normalized())
+	var aeroDrag = ( bodyDrag * airDensity * 
+		(bodySquare * bodySquareFill)
+		* linear_velocity.length_squared())
+	var aeroDrag_force_applied = aeroDrag_force * aeroDrag
+	apply_central_force(aeroDrag_force_applied)
+
 	## @HACK Simulate Accelerating Friction Slip
 	## @NEW Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
@@ -276,18 +294,18 @@ func _physics_process(delta: float) -> void:
 	rotate_tacho_ps(engine_force, delta)
 	
 	UI.logs_clr_text()
-	UI.logs_add_text("\n steering.....: %6.2f" % steering)
-	UI.logs_add_text("\n accelerating.: %6.2f" % accelerating)
-	UI.logs_add_text("\n engine brake.: %6.2f" % brake)
-	UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
-	UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
+	#UI.logs_add_text("\n steering.....: %6.2f" % steering)
+	#UI.logs_add_text("\n accelerating.: %6.2f" % accelerating)
+	#UI.logs_add_text("\n engine brake.: %6.2f" % brake)
+	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
+	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
 	UI.logs_add_text("\n engine_force.: %6.2f" % engine_force)
 	UI.logs_add_text("\n matching_pow.: %6.2f" % matching_power)
 	UI.logs_add_text("\n engine_index.: %6.2f" % engine_index)
 	UI.logs_add_text("\n eng.ind.text.:   %s"  % engine_index_list.keys()[engine_index])
 	UI.logs_add_text("\n STATE........:   %s"  % States.keys()[engine_state])
-	UI.logs_add_text("\n REVERSE......:   %s"   % var_to_str(REVERSE))
-		
+	UI.logs_ins_text("\n aeroDrag----.: %6.2f" % aeroDrag)
+	
 	## Car fell off course!
 	if position.y < -50:
 		UI.show_message("Car is out! Reload with [F5]")
