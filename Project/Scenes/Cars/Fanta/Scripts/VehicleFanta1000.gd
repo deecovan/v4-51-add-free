@@ -25,7 +25,8 @@ var car_absorb = false
 # Use 100 for racing wheels
 @export var control_speed = 4.0
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var COM_MOD_VECTOR = Vector3(0.0,0.2,-0.3)
+@export var COM_MOD_VECTOR = Vector3(0.0,0.1,-0.3)
+@export var CENTER_OF_AERO = Vector3(0.0,0.1,-2.0)
 
 ## Merge ZC's AeroDrag force
 @export_category("Body Aero")
@@ -36,7 +37,8 @@ var car_angular_damp = 0.0
 @export var airDensity = 1.1
 @export var bodySquare = 2.25
 @export var bodySquareFill=0.77
-@export var bodyDrag = 1.0
+@export var bodyDrag = 1.2
+@export var bodyAeroDyn = 0.4
 
 @export_category("Braking")
 @export var use_wheel_brake = true
@@ -65,11 +67,11 @@ var car_angular_damp = 0.0
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.4
+@export var fric_slip_front = 1.8
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.2
+@export var fric_slip_rear = 1.6
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.8
+@export var fric_slip_rear_hb_mult = 1.6
 ## Typical racing car damper ratios are 0.65-0.7 
 ## in ride where 1 is 100% critical damping
 ## Front wheels damper relaxation ## 0.88
@@ -255,12 +257,18 @@ func _physics_process(delta: float) -> void:
 		change_wheel_brake(0.0, 0.0, 0.0, delta)
 
 	## Merge ZC's AeroDrag force
-	var aeroDrag_force:Vector3 = -(linear_velocity.normalized())
+	var aeroDrag_force:Vector3 = - linear_velocity.normalized()
 	var aeroDrag = ( bodyDrag * airDensity * 
 		(bodySquare * bodySquareFill)
 		* linear_velocity.length_squared())
 	var aeroDrag_force_applied = aeroDrag_force * aeroDrag
-	apply_central_force(aeroDrag_force_applied)
+	## Use AeroDynamic Force
+	var aeroDyn_force_applied:Vector3 = (
+			Vector3.DOWN * bodyAeroDyn
+			* linear_velocity.length_squared())
+	## Apply Aero Forces
+	apply_force(aeroDrag_force_applied, center_of_mass)
+	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
 
 	## @HACK Simulate Accelerating Friction Slip
 	## @NEW Using HandBrake at any time
@@ -300,11 +308,12 @@ func _physics_process(delta: float) -> void:
 	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
 	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
 	UI.logs_add_text("\n engine_force.: %6.2f" % engine_force)
-	UI.logs_add_text("\n matching_pow.: %6.2f" % matching_power)
-	UI.logs_add_text("\n engine_index.: %6.2f" % engine_index)
-	UI.logs_add_text("\n eng.ind.text.:   %s"  % engine_index_list.keys()[engine_index])
-	UI.logs_add_text("\n STATE........:   %s"  % States.keys()[engine_state])
-	UI.logs_ins_text("\n aeroDrag----.: %6.2f" % aeroDrag)
+	UI.logs_add_text("\n aeroDrag.....: %6.2f" % aeroDrag)
+	UI.logs_add_text("\n Linear Veloc.: %6.2f" % linear_velocity.length())
+	UI.logs_add_text("\n Linear Vel.sq: %6.2f" % linear_velocity.length_squared())
+	UI.logs_add_text("\n aeroDrag_appl: %6.2f" % aeroDrag_force_applied.length())
+	UI.logs_add_text("\n aeroDyn_appl.: %6.2f" % aeroDyn_force_applied.length())
+	UI.logs_add_text("\n STATE........: %9s"   % States.keys()[engine_state])
 	
 	## Car fell off course!
 	if position.y < -50:

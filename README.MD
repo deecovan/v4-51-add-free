@@ -3,6 +3,7 @@
 ## Fanta 6600 AeroDrag
 - To deploy: ZC's AeroDrag
 - Also try to use cY like cX
+  - Testing Using AerDyn Force
 
 ## Fanta 6600 update 
 - New Body
