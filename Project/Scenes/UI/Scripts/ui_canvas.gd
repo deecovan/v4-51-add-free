@@ -1,21 +1,23 @@
 extends CanvasLayer
 
 var logs: RichTextLabel
-var help: Label
 var PFG: Control 
 var message: Label
+var help: Label
+var topline: Label
 var speedometer_label: Label
 var Analometer: Control
 
 func _ready() -> void:
 	logs = $MarginContainer/VBoxContainer/Info/Logs
-	help = $MarginContainer/Help
 	PFG = $MarginContainer/VBoxContainer/PFG
 	message = $Message
+	help = $Help
+	topline = $MarginContainer/Topline
 	speedometer_label = $MarginContainer/VBoxContainer/Speedometer/Label
 
 func _process(_delta: float) -> void:
-	help.text = (str(Engine.get_frames_per_second())
+	topline.text = (str(Engine.get_frames_per_second())
 		+ ' fps [F1] help [F5] restart scene [F6] debug view [F7] next scene')
 
 func call_draw_curve(curve: Array):
@@ -30,14 +32,18 @@ func show_message(text):
 		message = $Message
 	message.text = text
 	message.show()
+	help.show()
 	await get_tree().create_timer(2.5).timeout
 	message.hide()
+	help.hide()
 	
 func show_message_again():
 	message.text = ''
 	message.show()
+	help.show()
 	await get_tree().create_timer(5).timeout
 	message.hide()
+	help.hide()
 	
 func hide_info() -> void:
 	logs.hide()

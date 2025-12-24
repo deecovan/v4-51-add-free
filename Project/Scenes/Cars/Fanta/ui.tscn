@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=4 uid="uid://c2u3c52wwav41"]
+[gd_scene load_steps=23 format=4 uid="uid://c2u3c52wwav41"]
 
 [ext_resource type="Script" uid="uid://bxgxdgj8xpxwf" path="res://Scenes/UI/Scripts/ui_canvas.gd" id="1_nf4gj"]
 [ext_resource type="Script" uid="uid://cwhmf0iu4u1ho" path="res://Scenes/UI/Scripts/draw_graph.gd" id="2_qdvrb"]
+[ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="3_038pu"]
 [ext_resource type="FontFile" uid="uid://djfsvawybk7ho" path="res://Scenes/UI/Themes/MinimalUI44/ShareTechMono.ttf" id="3_2246s"]
+[ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="3_hqwk7"]
 [ext_resource type="Theme" uid="uid://c8m6i742fxd8v" path="res://Scenes/UI/Themes/MinimalUI44/MinimalUI.tres" id="3_nf4gj"]
 [ext_resource type="Script" uid="uid://dmbpm6olsbfk2" path="res://Scenes/UI/Scripts/analometer.gd" id="5_mmixe"]
 [ext_resource type="Texture2D" uid="uid://gvy0ceh2vadg" path="res://Scenes/UI/Images/SpeedometerBG.png" id="5_smcll"]
@@ -424,6 +426,13 @@ font_size = 75
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.6)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_038pu"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.490196)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmixe"]
 content_margin_left = 10.0
 content_margin_top = 5.0
@@ -432,6 +441,7 @@ content_margin_top = 5.0
 script = ExtResource("1_nf4gj")
 
 [node name="Message" type="Label" parent="."]
+z_index = 999
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -443,30 +453,30 @@ offset_right = 556.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme = ExtResource("3_nf4gj")
+theme_override_fonts/font = ExtResource("3_hqwk7")
 text = "Get Ready!"
 label_settings = SubResource("LabelSettings_iyui8")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Message"]
-layout_mode = 1
-anchors_preset = 13
+[node name="Help" type="Label" parent="."]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -276.0
-offset_right = 276.0
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -196.0
+offset_right = 246.0
+offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "
-
-
-
-
-
-
-[F1] help [F5] restart scene [F6] debug view [F7] next scene [F12] Shoe Info
+theme = ExtResource("3_nf4gj")
+theme_override_fonts/font = ExtResource("3_038pu")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_038pu")
+text = "[F1] help [F5] restart scene [F6] debug view 
+[F7] next scene [F12] Shoe Info
 
 
 
@@ -491,11 +501,12 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Help" type="Label" parent="MarginContainer"]
+[node name="Topline" type="Label" parent="MarginContainer"]
 top_level = true
 z_index = 80
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+size_flags_horizontal = 4
+theme = ExtResource("3_nf4gj")
 theme_override_constants/shadow_outline_size = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mmixe")
 text = "[F1] help"
@@ -525,9 +536,9 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
-text = "99"
+theme = ExtResource("3_nf4gj")
+theme_override_fonts/font = ExtResource("3_2246s")
+text = "ACCCELERATING FIRST"
 horizontal_alignment = 1
 
 [node name="Info" type="Control" parent="MarginContainer/VBoxContainer"]
@@ -544,9 +555,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme = ExtResource("3_nf4gj")
 theme_override_fonts/normal_font = ExtResource("3_2246s")
-theme_override_font_sizes/normal_font_size = 24
 text = "Oops... 
 Logs are somewhere 
 But not here o.0"
