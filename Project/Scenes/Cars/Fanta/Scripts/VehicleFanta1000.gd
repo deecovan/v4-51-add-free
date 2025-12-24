@@ -38,7 +38,7 @@ var car_angular_damp = 0.0
 @export var bodySquare = 2.25
 @export var bodySquareFill=0.77
 @export var bodyDrag = 1.2
-@export var bodyAeroDyn = 0.4
+@export var bodyAeroDyn = 0.33
 
 @export_category("Braking")
 @export var use_wheel_brake = true
