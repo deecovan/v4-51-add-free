@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://djfsvawybk7ho"
-path="res://.godot/imported/ShareTechMono.ttf-4e5cb5ba363116135d75b2e017ad9aa0.fontdata"
+uid="uid://kxpkpf1fnb1i"
+path="res://.godot/imported/OpenSans-Regular.ttf-fb3b889d2ee84059e99aaff5a75d96cc.fontdata"
 
 [deps]
 
-source_file="res://Scenes/UI/Themes/MinimalUI44/ShareTechMono.ttf"
-dest_files=["res://.godot/imported/ShareTechMono.ttf-4e5cb5ba363116135d75b2e017ad9aa0.fontdata"]
+source_file="res://Themes/Fonts/OpenSans-Regular.ttf"
+dest_files=["res://.godot/imported/OpenSans-Regular.ttf-fb3b889d2ee84059e99aaff5a75d96cc.fontdata"]
 
 [params]
 

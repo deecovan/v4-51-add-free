@@ -313,7 +313,7 @@ func _physics_process(delta: float) -> void:
 	UI.logs_add_text("\n Linear Vel.sq: %6.2f" % linear_velocity.length_squared())
 	UI.logs_add_text("\n aeroDrag_appl: %6.2f" % aeroDrag_force_applied.length())
 	UI.logs_add_text("\n aeroDyn_appl.: %6.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n STATE........: %9s"   % States.keys()[engine_state])
+	UI.logs_add_text("\n STATE........: %s"   % States.keys()[engine_state])
 	
 	## Car fell off course!
 	if position.y < -50:

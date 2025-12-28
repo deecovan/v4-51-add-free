@@ -36,9 +36,6 @@ func _ready() -> void:
 	curve_inst = curve.instantiate()
 
 func _process(_delta):
-	if Input.is_action_just_pressed('reload'):
-		print_debug('Reloading scene...')
-		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed('screen'):
 		var mode := DisplayServer.window_get_mode()
 		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
@@ -84,16 +81,19 @@ func _on_circle_tracks_pressed() -> void:
 func _on_fanta_6600_pressed() -> void:
 	hide_menus()
 	hide_panels()
+	title.hide()
 	button.show()
 
 func _on_fantina_3300_pressed() -> void:
 	hide_menus()
 	hide_panels()
+	title.hide()
 	button.show()
 
 func _on_fantisima_800_pressed() -> void:
 	hide_menus()
 	hide_panels()
+	title.hide()
 	button.show()
 
 func _on_curve_roads_pressed() -> void:
@@ -127,6 +127,7 @@ func _on_cup_circus_pressed() -> void:
 	#car_menu.show()
 
 func open_track(instance: Node):
+	canvas.hide()
 	for inst in get_tree().get_nodes_in_group("Tracks"):
 		inst.queue_free()
 	get_parent().add_child(instance)

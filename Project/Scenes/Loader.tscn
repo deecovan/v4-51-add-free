@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c04ue4ip50qe2"]
+[gd_scene load_steps=16 format=3 uid="uid://c04ue4ip50qe2"]
 
 [ext_resource type="Script" uid="uid://c38lgq0jf848d" path="res://Scenes/Scripts/Loader.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://bq5bgwklic70m" path="res://Scenes/Tracks/square.tscn" id="2_i5bnm"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
 [ext_resource type="PackedScene" uid="uid://dqy35w0t0uaa0" path="res://Scenes/Tracks/spa.tscn" id="5_6o4ty"]
 [ext_resource type="PackedScene" uid="uid://soo6h56asawe" path="res://Scenes/Tracks/curve.tscn" id="6_65gdl"]
+[ext_resource type="LabelSettings" uid="uid://b7clkj0x8tukw" path="res://Themes/ui-title.tres" id="8_qcf16"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
 resource_name = "white_button_hover"
@@ -103,19 +104,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -428.0
-offset_right = 3.0
-offset_bottom = 150.0
+offset_left = -472.0
+offset_top = 2.0
+offset_right = -41.0
+offset_bottom = 152.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
-theme_override_colors/font_shadow_color = Color(0.8, 0.85, 0.95, 0.6)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 0.8)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_xm1ns")
-theme_override_font_sizes/font_size = 92
 text = "AdD Free"
+label_settings = ExtResource("8_qcf16")
 horizontal_alignment = 1
 vertical_alignment = 1
 

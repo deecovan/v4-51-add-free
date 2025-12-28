@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=58 format=3 uid="uid://c8m6i742fxd8v"]
 
-[ext_resource type="FontFile" uid="uid://kxpkpf1fnb1i" path="res://Scenes/UI/Themes/MinimalUI44/OpenSans-Regular.ttf" id="1"]
-[ext_resource type="FontFile" uid="uid://dlgkspckhvbp4" path="res://Scenes/UI/Themes/MinimalUI44/Xolonium-Regular.ttf" id="1_2ijo6"]
-[ext_resource type="Texture2D" uid="uid://bh5a4ur3aa7ln" path="res://Scenes/UI/Themes/MinimalUI44/icons.svg" id="2"]
-[ext_resource type="FontFile" uid="uid://djfsvawybk7ho" path="res://Scenes/UI/Themes/MinimalUI44/ShareTechMono.ttf" id="4_afe27"]
-[ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="5_sr5c0"]
+[ext_resource type="FontFile" uid="uid://dlgkspckhvbp4" path="res://Themes/Fonts/Xolonium-Regular.ttf" id="1_36dla"]
+[ext_resource type="Texture2D" uid="uid://bh5a4ur3aa7ln" path="res://Themes/MinimalUI44/icons.svg" id="2_2bmas"]
+[ext_resource type="FontFile" uid="uid://kxpkpf1fnb1i" path="res://Themes/Fonts/OpenSans-Regular.ttf" id="3_vcgyt"]
+[ext_resource type="FontFile" uid="uid://djfsvawybk7ho" path="res://Themes/Fonts/ShareTechMono.ttf" id="4_h8dgv"]
+[ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="5_0k8dw"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 content_margin_left = 2.0
@@ -74,37 +74,37 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="AtlasTexture" id="22"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(37, 111, 18, 18)
 
 [sub_resource type="AtlasTexture" id="23"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(85, 111, 18, 18)
 
 [sub_resource type="AtlasTexture" id="24"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(61, 111, 18, 18)
 
 [sub_resource type="AtlasTexture" id="25"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(13, 111, 18, 18)
 
 [sub_resource type="StyleBoxEmpty" id="26"]
 
 [sub_resource type="AtlasTexture" id="7"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(53, 79, 34, 19)
 
 [sub_resource type="AtlasTexture" id="8"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(133, 79, 34, 19)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(13, 79, 34, 19)
 
 [sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(93, 79, 34, 19)
 
 [sub_resource type="StyleBoxEmpty" id="49"]
@@ -196,15 +196,15 @@ expand_margin_bottom = 2.0
 color = Color(1, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(80, 10, 12, 28)
 
 [sub_resource type="AtlasTexture" id="10"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(112, 10, 12, 28)
 
 [sub_resource type="AtlasTexture" id="11"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(144, 10, 12, 28)
 
 [sub_resource type="StyleBoxFlat" id="12"]
@@ -283,7 +283,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="FontFile" id="21"]
-fallbacks = Array[Font]([ExtResource("1")])
+fallbacks = Array[Font]([ExtResource("3_vcgyt")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -520,15 +520,15 @@ color = Color(1, 1, 1, 0)
 vertical = true
 
 [sub_resource type="AtlasTexture" id="15"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(74, 52, 24, 10)
 
 [sub_resource type="AtlasTexture" id="16"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(106, 52, 24, 8)
 
 [sub_resource type="AtlasTexture" id="17"]
-atlas = ExtResource("2")
+atlas = ExtResource("2_2bmas")
 region = Rect2(138, 52, 24, 8)
 
 [sub_resource type="StyleBoxFlat" id="18"]
@@ -568,7 +568,7 @@ Button/colors/font_disabled_color = Color(0.9, 0.9, 0.9, 0.2)
 Button/colors/font_hover_color = Color(0.94, 0.94, 0.94, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 2
-Button/fonts/font = ExtResource("1_2ijo6")
+Button/fonts/font = ExtResource("1_36dla")
 Button/styles/disabled = SubResource("1")
 Button/styles/focus = SubResource("2")
 Button/styles/hover = SubResource("3")
@@ -581,7 +581,7 @@ CheckBox/colors/font_hover_color_pressed = Color(1, 1, 1, 1)
 CheckBox/colors/font_pressed_color = Color(1, 1, 1, 1)
 CheckBox/constants/check_v_offset = 0
 CheckBox/constants/h_separation = 4
-CheckBox/fonts/font = ExtResource("1_2ijo6")
+CheckBox/fonts/font = ExtResource("1_36dla")
 CheckBox/icons/checked = SubResource("22")
 CheckBox/icons/radio_checked = SubResource("23")
 CheckBox/icons/radio_unchecked = SubResource("24")
@@ -599,7 +599,7 @@ CheckButton/colors/font_hover_color_pressed = Color(1, 1, 1, 1)
 CheckButton/colors/font_pressed_color = Color(1, 1, 1, 1)
 CheckButton/constants/check_v_offset = 0
 CheckButton/constants/h_separation = 4
-CheckButton/fonts/font = ExtResource("1_2ijo6")
+CheckButton/fonts/font = ExtResource("1_36dla")
 CheckButton/icons/checked = SubResource("7")
 CheckButton/icons/checked_disabled = SubResource("8")
 CheckButton/icons/unchecked = SubResource("5")
@@ -630,7 +630,7 @@ HSlider/styles/grabber_area_highlight = SubResource("13")
 HSlider/styles/slider = SubResource("14")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0.18, 0.18, 0.18, 1)
-Label/fonts/font = ExtResource("1_2ijo6")
+Label/fonts/font = ExtResource("1_36dla")
 LineEdit/colors/clear_button_color = Color(0.88, 0.88, 0.88, 1)
 LineEdit/colors/clear_button_color_pressed = Color(1, 1, 1, 1)
 LineEdit/colors/cursor_color = Color(0.94, 0.94, 0.94, 1)
@@ -639,13 +639,13 @@ LineEdit/colors/font_color_uneditable = Color(0.88, 0.88, 0.88, 0.5)
 LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
 LineEdit/colors/selection_color = Color(0.282353, 0.282353, 0.282353, 1)
 LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = ExtResource("1_2ijo6")
+LineEdit/fonts/font = ExtResource("1_36dla")
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource("27")
 LineEdit/styles/normal = SubResource("28")
 LineEdit/styles/read_only = SubResource("29")
-MenuButton/fonts/font = ExtResource("1_2ijo6")
-OptionButton/fonts/font = ExtResource("1_2ijo6")
+MenuButton/fonts/font = ExtResource("1_36dla")
+OptionButton/fonts/font = ExtResource("1_36dla")
 Panel/styles/panel = SubResource("1")
 PopupMenu/colors/font_color = Color(0.88, 0.88, 0.88, 1)
 PopupMenu/colors/font_color_accel = Color(0.7, 0.7, 0.7, 0.8)
@@ -671,13 +671,13 @@ ProgressBar/colors/font_color_shadow = Color(0, 0, 0, 1)
 ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
 ProgressBar/constants/outline_size = 0
 ProgressBar/font_sizes/font_size = 10
-ProgressBar/fonts/font = ExtResource("4_afe27")
+ProgressBar/fonts/font = ExtResource("4_h8dgv")
 ProgressBar/styles/background = SubResource("41")
 ProgressBar/styles/fill = SubResource("42")
 RichTextLabel/colors/font_shadow_color = Color(0.19, 0.19, 0.19, 1)
-RichTextLabel/fonts/normal_font = ExtResource("1_2ijo6")
+RichTextLabel/fonts/normal_font = ExtResource("4_h8dgv")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_ymwlc")
-TabBar/fonts/font = ExtResource("1_2ijo6")
+TabBar/fonts/font = ExtResource("1_36dla")
 TabContainer/colors/font_disabled_color = Color(0.9, 0.9, 0.9, 0.2)
 TabContainer/colors/font_selected_color = Color(0.94, 0.94, 0.94, 1)
 TabContainer/colors/font_unselected_color = Color(0.69, 0.69, 0.69, 1)
@@ -686,7 +686,7 @@ TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/label_valign_fg = 0
 TabContainer/constants/side_margin = 8
 TabContainer/constants/top_margin = 24
-TabContainer/fonts/font = ExtResource("1_2ijo6")
+TabContainer/fonts/font = ExtResource("1_36dla")
 TabContainer/icons/decrement = null
 TabContainer/icons/decrement_highlight = null
 TabContainer/icons/increment = null
@@ -729,7 +729,7 @@ TextEdit/constants/completion_lines = 7
 TextEdit/constants/completion_max_width = 50
 TextEdit/constants/completion_scroll_width = 3
 TextEdit/constants/line_spacing = 4
-TextEdit/fonts/font = ExtResource("1_2ijo6")
+TextEdit/fonts/font = ExtResource("1_36dla")
 TextEdit/icons/fold = null
 TextEdit/icons/folded = null
 TextEdit/icons/space = null
@@ -753,8 +753,8 @@ Tree/constants/item_margin = 12
 Tree/constants/scroll_border = 4
 Tree/constants/scroll_speed = 12
 Tree/constants/vseparation = 4
-Tree/fonts/font = ExtResource("1_2ijo6")
-Tree/fonts/title_button_font = ExtResource("5_sr5c0")
+Tree/fonts/font = ExtResource("1_36dla")
+Tree/fonts/title_button_font = ExtResource("5_0k8dw")
 Tree/icons/arrow = null
 Tree/icons/arrow_collapsed = null
 Tree/icons/checked = SubResource("22")

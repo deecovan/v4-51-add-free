@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	topline.text = (str(Engine.get_frames_per_second())
-		+ ' fps [F1] help [F5] restart scene [F6] debug view [F7] next scene')
+		+ ' fps [F1] help [F5] reload [F6] view modes')
 
 func call_draw_curve(curve: Array):
 	if not PFG:

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://kxpkpf1fnb1i"
-path="res://.godot/imported/OpenSans-Regular.ttf-25fe4b7486818e092502a534f3543fe2.fontdata"
+uid="uid://dlgkspckhvbp4"
+path="res://.godot/imported/Xolonium-Regular.ttf-13371c811094ec6c9d18ae06a7e4c049.fontdata"
 
 [deps]
 
-source_file="res://Scenes/UI/Themes/MinimalUI44/OpenSans-Regular.ttf"
-dest_files=["res://.godot/imported/OpenSans-Regular.ttf-25fe4b7486818e092502a534f3543fe2.fontdata"]
+source_file="res://Themes/Fonts/Xolonium-Regular.ttf"
+dest_files=["res://.godot/imported/Xolonium-Regular.ttf-13371c811094ec6c9d18ae06a7e4c049.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=4
+subpixel_positioning=1
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
