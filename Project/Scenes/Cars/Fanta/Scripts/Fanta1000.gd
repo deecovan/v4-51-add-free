@@ -25,8 +25,8 @@ var car_absorb = false
 # Use 100 for racing wheels
 @export var control_speed = 4.0
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var COM_MOD_VECTOR = Vector3(0.0,0.1,-0.3)
-@export var CENTER_OF_AERO = Vector3(0.0,0.1,-2.0)
+@export var COM_MOD_VECTOR = Vector3(0.0,0.12,-0.5)
+@export var CENTER_OF_AERO = Vector3(0.0,0.2,-2.0)
 
 ## Merge ZC's AeroDrag force
 @export_category("Body Aero")
@@ -46,9 +46,9 @@ var car_angular_damp = 0.0
 @export var brake_control_speed = 0.4
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 75.0
+@export var vehicle_brake_force = 100.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 75.0
+@export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
@@ -56,7 +56,7 @@ var car_angular_damp = 0.0
 ## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
-@export var hand_brake_force = 2.0
+@export var hand_brake_force = 1.8
 
 @export_category("Coasting")
 ## Coasting starting value
@@ -67,30 +67,28 @@ var car_angular_damp = 0.0
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.2
+@export var fric_slip_front = 1.5
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.4
+@export var fric_slip_rear = 1.8
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.2
-## Typical racing car damper ratios are 0.65-0.7 
-## in ride where 1 is 100% critical damping
+@export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 12.0
+@export var damp_relax_front = 6.0
 ## Rear wheels damper relaxation ## 0.88
-@export var damp_relax_rear = 8.0
+@export var damp_relax_rear = 5.0
 ## Front wheels damper compression ## 0.8
-@export var damp_compr_front = 9.0
+@export var damp_compr_front = 5.0
 ## Rear ## 0.7 0.77
-@export var damp_compr_rear = 6.0
+@export var damp_compr_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
-@export var rest_front = 0.12
-@export var rest_rear = 0.11
+@export var rest_front = 0.14
+@export var rest_rear = 0.12
 @export var travel_front = 0.16
 @export var travel_rear = 0.14
-@export var stiff_front = 120
-@export var stiff_rear = 100
-@export var max_force_front = 30000
-@export var max_force_rear = 20000
+@export var stiff_front = 100
+@export var stiff_rear = 80
+@export var max_force_front = 18000
+@export var max_force_rear = 12000
 
 @export var scale_curve: Curve
 var scale_array : Array
@@ -270,7 +268,6 @@ func _physics_process(delta: float) -> void:
 	apply_force(aeroDrag_force_applied, center_of_mass)
 	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
 
-	## @HACK Simulate Accelerating Friction Slip
 	## @NEW Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
 		if engine_state == States.COASTING:
@@ -279,7 +276,7 @@ func _physics_process(delta: float) -> void:
 		var set_brake_force = \
 			hand_brake_force * vehicle_brake_force
 		if use_wheel_brake:
-			## Now using handbrake rear friction demultiplier
+			## Now using handbrake rear friction multiplier
 			set_fric_slip_rear(fric_slip_rear / fric_slip_rear_hb_mult)
 			change_wheel_brake(set_brake_force, 
 				front_brake_force, rear_brake_force, delta)

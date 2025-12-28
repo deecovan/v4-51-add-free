@@ -22,12 +22,14 @@ collision_layer = 2
 center_of_mass_mode = 1
 continuous_cd = true
 script = ExtResource("1_xdbfd")
-COM_MOD_VECTOR = Vector3(0, 0.12, -1)
-CENTER_OF_AERO = Vector3(0, 0.2, -2)
+fric_slip_front = 1.4
+fric_slip_rear_hb_mult = 1.4
+travel_front = 18.0
+travel_rear = 16.0
 scale_curve = ExtResource("2_5begk")
 
 [node name="CenterOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, -0.5)
 
 [node name="Start" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66037e-08, 0, -0.647471)
@@ -64,7 +66,7 @@ max_polyphony = 2
 panning_strength = 2.0
 
 [node name="Wheel3Dfl" parent="." instance=ExtResource("9_enh5c")]
-transform = Transform3D(0.999385, -0.0348993, -0.00349065, 0.0348995, 0.999391, 0, 0.00348853, -0.000121822, 0.999994, 0.898988, 0.109124, 0.007529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.898988, 0.109124, 0.007529)
 use_as_steering = true
 wheel_rest_length = 0.075
 wheel_friction_slip = 1.0
@@ -75,7 +77,7 @@ damping_compression = 0.5
 damping_relaxation = 0.6
 
 [node name="Wheel3Dfr" parent="." instance=ExtResource("10_ilbif")]
-transform = Transform3D(0.999385, 0.0348993, 0.00349065, -0.0348995, 0.999391, 0, -0.00348853, -0.000121822, 0.999994, -0.898988, 0.109124, 0.00752904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898988, 0.109124, 0.00752904)
 use_as_steering = true
 wheel_rest_length = 0.075
 wheel_friction_slip = 1.0

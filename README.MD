@@ -5,6 +5,9 @@
 - Front and Rear Wheels
 - Update UI and Loader overlays
 - Update Gimbal
+- Fix Fanta 6600 in Spa
+  - Copy to Horsa
+  - @BUG Why it steel rotating???
 
 ## Fanta 6600 AeroDrag
 - To deploy: ZC's AeroDrag
