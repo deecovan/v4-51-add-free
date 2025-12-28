@@ -1,24 +1,27 @@
 extends Node3D
 
+@export var gimbal_offset := Vector3(0.0,1.0,0.0)
 ## Keyboard controlled Rotation and Zoom
-@export var camera_speed = PI/3
-@export var camera_FOV = PI*10
-@export var zoom_min = PI/3
-@export var zoom_max = PI
-@export var zoom_speed = 1/PI
-@export var zoom = PI/1.5
-var arm_spring_length: float
-var arm_spring_length_min: float
-var arm_spring_length_max: float
-@export var arm_spring_length_step = 2
+@export var camera_speed = 1.0
+@export var zoom_speed = 0.125
+@export var zoom = 1.0
+@export var zoom_min = 0.125
+@export var zoom_max = 2.5
+@export var arm_spring_length = 8.0
+@export var arm_spring_length_min = 1.0
+@export var arm_spring_length_max = 32.0
+@export var arm_spring_length_step = 2.0
 ## Tween larger values to slow down
 @export var tween_speed = 8.0
-@export var tween_follow_speed = 8.0
+@export var camera_FOV = 48.0
+## @NEW Gimbal follow the car position VIA gimbal length and FOV
+@export var tween_follow_speed = 32.0
+@export var tween_follow_FOV = 32.0
+@export var camera_FOV_MAX = 48.0
 ## Mouse controlled Rotation sensivity and direction
 @export var mouse_sensivity = 5000
 ## -1 normal or +1 inversed
 @export var mouse_direction = -1
-var gimbal_offset: Vector3
 var gimbal_rotation_x: float
 var gimbal_rotation_y: float
 var gimbal_rotation_z: float
@@ -37,18 +40,11 @@ func _ready() -> void:
 	vehicle = $"../Vehicle"
 	UI = vehicle.get_node("UI")
 	arm = $GimbalInner
+	camera = $GimbalInner/Camera3D
 	## Initial position
 	global_position = vehicle.global_position
 	rotation = Vector3.ZERO
-	## Initial Camera
-	arm = $GimbalInner
-	camera = $GimbalInner/Camera3D
-	## Fix rotation
 	arm_spring_length = arm.spring_length
-	arm_spring_length_min = arm.spring_length
-	arm_spring_length_max = arm.spring_length + arm_spring_length_step * (
-		(zoom_max - zoom_min) / zoom_speed
-	)
 	camera.fov = camera_FOV
 	## Initial Mouse Gimbal rotation
 	gimbal_rotation_x = arm.rotation.x
@@ -70,19 +66,28 @@ func _input(event):
 	
 		
 func _process(delta):
-	## Zoom is modified by player's keyboard/mouse
-	var tween_zoom = get_tree().create_tween()
-	tween_zoom.tween_property(arm, "spring_length", 
-		arm_spring_length,
-		delta * tween_speed)
-		
 	var tween_fov = get_tree().create_tween()
 	tween_fov.tween_property(camera, "fov", 
 		camera_FOV * zoom, delta * tween_speed)
-	## Gimbal follow the car position
-	var tween_position = get_tree().create_tween()
-	tween_position.tween_property(self, "position", 
-		vehicle.position + gimbal_offset, delta * tween_follow_speed)
+	## @OLD Gimbal follow the car position
+	#var tween_position = get_tree().create_tween()
+	#tween_position.tween_property(self, "position", 
+		#vehicle.position + gimbal_offset, delta * tween_follow_speed)
+	position = vehicle.position + gimbal_offset
+	## @NEW Gimbal follow the car position VIA gimbal length and FOV
+	var tween_follow_k = vehicle.linear_velocity.length() / vehicle.MAX_SPEED
+	var arm_length_add = tween_follow_speed * tween_follow_k
+	var arm_length_tween = get_tree().create_tween()
+	arm_length_tween.tween_property(arm, "spring_length", 
+		arm_spring_length + arm_length_add,
+		delta * tween_speed)
+	var camera_FOV_to = camera_FOV_MAX - tween_follow_FOV * tween_follow_k
+	var camera_FOV_tween = get_tree().create_tween()
+	camera_FOV_tween.tween_property(camera, "fov", 
+		camera_FOV_to,
+		delta * tween_speed)
+		
+	## Remember Vehicle rotation XY
 	vehicle_rotation_x = vehicle.rotation.x
 	vehicle_rotation_y = vehicle.rotation.y
 	

@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=4 uid="uid://c653ypnptku1j"]
 
-[ext_resource type="Script" uid="uid://g1b5fmyreevn" path="res://Scenes/Cars/Fanta/Scripts/VehicleFanta500.gd" id="1_us3bc"]
+[ext_resource type="Script" uid="uid://g1b5fmyreevn" path="res://Scenes/Cars/Fanta/Scripts/Fanta500.gd" id="1_us3bc"]
 [ext_resource type="Curve" uid="uid://blpquu56b6jsn" path="res://Scenes/Cars/Fanta/Fanta_curve_500.tres" id="2_ycx84"]
 [ext_resource type="AudioStream" uid="uid://d32nahn6656wp" path="res://Sounds/Cars/eng run start.wav" id="3_l83xc"]
 [ext_resource type="AudioStream" uid="uid://d0a2tqcfnno11" path="res://Sounds/Cars/eng run idle.wav" id="4_npu7t"]
 [ext_resource type="AudioStream" uid="uid://g2vvom06rwsx" path="res://Sounds/Cars/eng run overpower.wav" id="5_x2ipa"]
 [ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/Cars/scrap.wav" id="6_gvtra"]
-[ext_resource type="Script" uid="uid://bn2vvwlgnjuak" path="res://Scenes/Cars/Fanta/Scripts/engine_controller.gd" id="7_a8a6t"]
-[ext_resource type="Script" uid="uid://dp54wm0r2sonc" path="res://Scenes/Cars/Fanta/Scripts/wheels_controller.gd" id="8_2nxkg"]
+[ext_resource type="Script" uid="uid://bn2vvwlgnjuak" path="res://Scenes/Cars/Fanta/Scripts/FantaEngine.gd" id="7_a8a6t"]
+[ext_resource type="Script" uid="uid://dp54wm0r2sonc" path="res://Scenes/Cars/Fanta/Scripts/FantaWheels.gd" id="8_2nxkg"]
 [ext_resource type="PackedScene" uid="uid://bnj10rk4ojq0v" path="res://Scenes/Cars/Fanta/Fanta_Wheel_L.tscn" id="9_fdk0u"]
 [ext_resource type="PackedScene" uid="uid://c4nshb085yca4" path="res://Scenes/Cars/Fanta/Fanta_Wheel_R.tscn" id="10_1ufo7"]
 [ext_resource type="Texture2D" uid="uid://bbyxnybki6h8f" path="res://Scenes/Cars/Fanta/car_UV-sharp.png" id="11_arl01"]
@@ -64,6 +64,7 @@ size = Vector2(3.6, 10)
 
 [node name="Vehicle FantaCup500" type="VehicleBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 2
 mass = 500.0
 gravity_scale = 2.0
 center_of_mass_mode = 1

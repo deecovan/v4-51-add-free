@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="4_o2f4t"]
 [ext_resource type="PackedScene" uid="uid://b30n8gwfqoirt" path="res://Scenes/Tracks/GLBs/Spa.Minimal.tscn" id="4_rousx"]
 [ext_resource type="PackedScene" uid="uid://wv15rdrjotk8" path="res://Scenes/Tracks/GLBs/Objects/construction-light.glb" id="5_fydd0"]
-[ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/FantaCup500.tscn" id="7_5r2i4"]
+[ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/Fanta500.tscn" id="7_5r2i4"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="7_vfmpu"]
 
 [node name="MainSpaFlat" type="Node3D"]
