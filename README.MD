@@ -3,7 +3,7 @@
 ## 25.12.28 New car Horsa 6600
 - Body in Red color
 - Front and Rear Wheels
-- Merge all into Initial
+- Update UI and Loader overlays
 
 ## Fanta 6600 AeroDrag
 - To deploy: ZC's AeroDrag

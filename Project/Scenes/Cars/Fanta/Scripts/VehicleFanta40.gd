@@ -157,7 +157,7 @@ func _ready() -> void:
 	## Init PFG screen
 	# _scale_curve.sample_baked(i)*MAX_POWER
 	for i in 100:
-		scale_array.append(scale_curve.sample_baked(i/100.0)*MAX_POWER)
+		scale_array.append(scale_curve.sample_baked(i/100.0))
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:

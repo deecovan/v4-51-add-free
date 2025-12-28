@@ -38,7 +38,6 @@ func show_message(text):
 	help.hide()
 	
 func show_message_again():
-	message.text = ''
 	message.show()
 	help.show()
 	await get_tree().create_timer(5).timeout
