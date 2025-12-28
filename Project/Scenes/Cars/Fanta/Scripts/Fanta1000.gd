@@ -17,9 +17,9 @@ var car_absorb = false
 @export var MAX_SPEED = 100.0
 @export var MAX_POWER = 6600.0
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.4
+@export var MAX_STEER  = 0.35
 ## Maximum Steering speed
-@export var steer_control_speed = 0.6
+@export var steer_control_speed = 1.0
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
@@ -50,9 +50,9 @@ var car_angular_damp = 0.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 75.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.0
+@export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.2
+@export var rear_brake_force = 0.9
 ## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
@@ -67,11 +67,11 @@ var car_angular_damp = 0.0
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.8
+@export var fric_slip_front = 1.2
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.6
+@export var fric_slip_rear = 1.4
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.6
+@export var fric_slip_rear_hb_mult = 1.2
 ## Typical racing car damper ratios are 0.65-0.7 
 ## in ride where 1 is 100% critical damping
 ## Front wheels damper relaxation ## 0.88

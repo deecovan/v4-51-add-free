@@ -4,8 +4,7 @@
 - Body in Red color
 - Front and Rear Wheels
 - Update UI and Loader overlays
-- Update Gimbal 
-  - Add FOV speed sensivity
+- Update Gimbal
 
 ## Fanta 6600 AeroDrag
 - To deploy: ZC's AeroDrag

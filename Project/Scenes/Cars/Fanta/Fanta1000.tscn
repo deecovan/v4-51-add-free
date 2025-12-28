@@ -22,12 +22,15 @@ collision_layer = 2
 center_of_mass_mode = 1
 continuous_cd = true
 script = ExtResource("1_xdbfd")
+COM_MOD_VECTOR = Vector3(0, 0.12, -1)
+CENTER_OF_AERO = Vector3(0, 0.2, -2)
 scale_curve = ExtResource("2_5begk")
 
 [node name="CenterOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, -1)
 
 [node name="Start" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66037e-08, 0, -0.647471)
 stream = ExtResource("3_0er2s")
 volume_db = -9.0
 max_db = 0.0
@@ -35,6 +38,7 @@ max_polyphony = 2
 panning_strength = 2.0
 
 [node name="Idle" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66037e-08, 0, -0.647471)
 stream = ExtResource("4_dcxhx")
 volume_db = -6.0
 max_db = 0.0
@@ -42,7 +46,7 @@ max_polyphony = 2
 panning_strength = 2.0
 
 [node name="Pow" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18872e-07, 0, -0.647471)
 stream = ExtResource("5_1qs7m")
 volume_db = -6.0
 max_db = 0.0
@@ -51,7 +55,7 @@ max_polyphony = 2
 panning_strength = 2.0
 
 [node name="Scrap" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18872e-07, 0, -0.647471)
 stream = ExtResource("6_214wm")
 volume_db = -6.0
 max_db = -6.0
@@ -59,18 +63,8 @@ pitch_scale = 2.0
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.2
-one_shot = true
-
-[node name="EngineController" type="Node" parent="."]
-script = ExtResource("7_ixycp")
-
-[node name="WheelsController" type="Node" parent="."]
-script = ExtResource("8_kt3r8")
-
 [node name="Wheel3Dfl" parent="." instance=ExtResource("9_enh5c")]
-transform = Transform3D(0.999385, -0.0348993, -0.00349065, 0.0348995, 0.999391, 0, 0.00348853, -0.000121822, 0.999994, 0.898988, 0.109124, 0.655)
+transform = Transform3D(0.999385, -0.0348993, -0.00349065, 0.0348995, 0.999391, 0, 0.00348853, -0.000121822, 0.999994, 0.898988, 0.109124, 0.007529)
 use_as_steering = true
 wheel_rest_length = 0.075
 wheel_friction_slip = 1.0
@@ -81,7 +75,7 @@ damping_compression = 0.5
 damping_relaxation = 0.6
 
 [node name="Wheel3Dfr" parent="." instance=ExtResource("10_ilbif")]
-transform = Transform3D(0.999385, 0.0348993, 0.00349065, -0.0348995, 0.999391, 0, -0.00348853, -0.000121822, 0.999994, -0.898988, 0.109124, 0.655)
+transform = Transform3D(0.999385, 0.0348993, 0.00349065, -0.0348995, 0.999391, 0, -0.00348853, -0.000121822, 0.999994, -0.898988, 0.109124, 0.00752904)
 use_as_steering = true
 wheel_rest_length = 0.075
 wheel_friction_slip = 1.0
@@ -91,7 +85,7 @@ damping_compression = 0.5
 damping_relaxation = 0.6
 
 [node name="Wheel3Drr" parent="." instance=ExtResource("10_ilbif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898988, 0.0791245, -2.34584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.898988, 0.0791245, -2.99331)
 use_as_traction = true
 wheel_rest_length = 0.075
 wheel_friction_slip = 1.0
@@ -101,7 +95,7 @@ damping_compression = 0.3
 damping_relaxation = 0.4
 
 [node name="Wheel3Drl" parent="." instance=ExtResource("9_enh5c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.898988, 0.0791245, -2.34584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.898988, 0.0791245, -2.99331)
 use_as_traction = true
 wheel_rest_length = 0.075
 wheel_friction_slip = 1.0
@@ -112,10 +106,20 @@ damping_compression = 0.3
 damping_relaxation = 0.4
 
 [node name="FantaCar6600_export__CARblend" parent="." instance=ExtResource("11_hl24b")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.38451e-08, -0.3, -0.844689)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.30449e-07, -0.3, -1.49216)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.3, -0.845)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.66037e-08, -0.3, -1.49247)
 shape = SubResource("ConvexPolygonShape3D_jw1n1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="EngineController" type="Node" parent="."]
+script = ExtResource("7_ixycp")
+
+[node name="WheelsController" type="Node" parent="."]
+script = ExtResource("8_kt3r8")
 
 [node name="UI" parent="." instance=ExtResource("12_dn6ag")]
