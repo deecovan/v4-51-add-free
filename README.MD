@@ -1,8 +1,9 @@
 # v4-51-add-free GitHub repo 
 
-## New car Horsa 6600
+## 25.12.28 New car Horsa 6600
 - Body in Red color
 - Front and Rear Wheels
+- Merge all into Initial
 
 ## Fanta 6600 AeroDrag
 - To deploy: ZC's AeroDrag
