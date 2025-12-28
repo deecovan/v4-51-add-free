@@ -4,12 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://l0njrpj6bcwf" path="res://Sounds/Cars/slip.wav" id="2_xpl1y"]
 
 [node name="Wheel3D" type="VehicleWheel3D"]
-wheel_roll_influence = 0.01
 wheel_radius = 0.4
-suspension_travel = 0.1
-suspension_stiffness = 100.0
-suspension_max_force = 10000.0
-damping_compression = 0.8
 
 [node name="FantaCar6600_export__WHEELblendR" parent="." instance=ExtResource("1_hs8sn")]
 transform = Transform3D(-0.45, 0, 6.79481e-08, 0, 0.45, 0, -6.79481e-08, 0, -0.45, 0, -0.00058461, 0.00801694)

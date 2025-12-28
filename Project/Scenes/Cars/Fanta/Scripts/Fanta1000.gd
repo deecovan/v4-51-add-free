@@ -25,7 +25,7 @@ var car_absorb = false
 # Use 100 for racing wheels
 @export var control_speed = 4.0
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var COM_MOD_VECTOR = Vector3(0.0,0.12,-0.5)
+@export var CENTER_OF_MASS = Vector3(0.0,0.12,-0.5)
 @export var CENTER_OF_AERO = Vector3(0.0,0.2,-2.0)
 
 ## Merge ZC's AeroDrag force
@@ -165,7 +165,7 @@ func _ready() -> void:
 	## Move it Forward to oversteer
 	## Backward for understeer but less rear slip
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
-	center_of_mass = $CenterOfMass.position + COM_MOD_VECTOR
+	center_of_mass = CENTER_OF_MASS
 	
 	## Randomize initial rotation
 	# rotation = randomis(rotation, PI)
@@ -254,18 +254,16 @@ func _physics_process(delta: float) -> void:
 		change_vehicle_brake(0.0, delta)
 		change_wheel_brake(0.0, 0.0, 0.0, delta)
 
-	## Merge ZC's AeroDrag force
-	var aeroDrag_force:Vector3 = - linear_velocity.normalized()
-	var aeroDrag = ( bodyDrag * airDensity * 
-		(bodySquare * bodySquareFill)
+	## Use ZC's AeroDrag force
+	var aeroDrag_force_applied: Vector3 = (- linear_velocity.normalized()) * (
+		( bodyDrag * airDensity * bodySquare * bodySquareFill )
 		* linear_velocity.length_squared())
-	var aeroDrag_force_applied = aeroDrag_force * aeroDrag
 	## Use AeroDynamic Force
-	var aeroDyn_force_applied:Vector3 = (
-			Vector3.DOWN * bodyAeroDyn
-			* linear_velocity.length_squared())
+	var aeroDyn_force_applied: Vector3 = Vector3(0,-1,0) * (
+		bodyAeroDyn 
+		* linear_velocity.length_squared())
 	## Apply Aero Forces
-	apply_force(aeroDrag_force_applied, center_of_mass)
+	apply_central_force(aeroDrag_force_applied)
 	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
 
 	## @NEW Using HandBrake at any time
@@ -305,13 +303,12 @@ func _physics_process(delta: float) -> void:
 	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
 	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
 	UI.logs_add_text("\n engine_force.: %6.2f" % engine_force)
-	UI.logs_add_text("\n aeroDrag.....: %6.2f" % aeroDrag)
 	UI.logs_add_text("\n Linear Veloc.: %6.2f" % linear_velocity.length())
 	UI.logs_add_text("\n Linear Vel.sq: %6.2f" % linear_velocity.length_squared())
 	UI.logs_add_text("\n aeroDrag_appl: %6.2f" % aeroDrag_force_applied.length())
 	UI.logs_add_text("\n aeroDyn_appl.: %6.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n STATE........:   %s"  % States.keys()[engine_state])
-	UI.logs_add_text("\n REVERSE......:   %s"   % var_to_str(REVERSE))
+	UI.logs_add_text("\n DragFA.......:   %s"  % var_to_str(aeroDrag_force_applied))
+	UI.logs_add_text("\n DynFA........:   %s"  % var_to_str(aeroDyn_force_applied))
 	
 	## Car fell off course!
 	if position.y < -50:
