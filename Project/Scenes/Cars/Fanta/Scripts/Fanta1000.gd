@@ -241,10 +241,10 @@ func _physics_process(delta: float) -> void:
 		engine_force = lerp(engine_force, 0.0, control_speed * delta)
 		## Braking with Vehicle3D
 		if not use_wheel_brake:
-			var set_vehicle_brake_force = \
-				-accelerating * vehicle_brake_force
+			var set_vehicle_brake_force = - (
+				accelerating * vehicle_brake_force )
 			change_vehicle_brake(set_vehicle_brake_force, delta)
-		## Braking with Wheelsa
+		## Braking with Wheels
 		else:
 			var set_wheel_brake_force = \
 				-accelerating * vehicle_brake_force

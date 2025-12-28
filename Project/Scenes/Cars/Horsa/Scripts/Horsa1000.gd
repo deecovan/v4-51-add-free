@@ -1,5 +1,6 @@
 extends VehicleBody3D
 
+## Copied from Fanta1000.gd
 var speedtometer_label
 var REVERSE =  false
 
@@ -17,16 +18,16 @@ var car_absorb = false
 @export var MAX_SPEED = 100.0
 @export var MAX_POWER = 6600.0
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.4
+@export var MAX_STEER  = 0.35
 ## Maximum Steering speed
-@export var steer_control_speed = 0.6
+@export var steer_control_speed = 1.0
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
 @export var control_speed = 4.0
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var COM_MOD_VECTOR = Vector3(0.0,0.1,-0.3)
-@export var CENTER_OF_AERO = Vector3(0.0,0.1,-2.0)
+@export var CENTER_OF_MASS = Vector3(0.0,0.12,-0.5)
+@export var CENTER_OF_AERO = Vector3(0.0,0.2,-2.0)
 
 ## Merge ZC's AeroDrag force
 @export_category("Body Aero")
@@ -46,17 +47,17 @@ var car_angular_damp = 0.0
 @export var brake_control_speed = 0.4
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 75.0
+@export var vehicle_brake_force = 100.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 75.0
+@export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.0
+@export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.2
+@export var rear_brake_force = 0.9
 ## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
-@export var hand_brake_force = 2.0
+@export var hand_brake_force = 1.8
 
 @export_category("Coasting")
 ## Coasting starting value
@@ -67,30 +68,28 @@ var car_angular_damp = 0.0
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.8
+@export var fric_slip_front = 1.5
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.6
+@export var fric_slip_rear = 1.8
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.6
-## Typical racing car damper ratios are 0.65-0.7 
-## in ride where 1 is 100% critical damping
+@export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 12.0
+@export var damp_relax_front = 6.0
 ## Rear wheels damper relaxation ## 0.88
-@export var damp_relax_rear = 8.0
+@export var damp_relax_rear = 5.0
 ## Front wheels damper compression ## 0.8
-@export var damp_compr_front = 9.0
+@export var damp_compr_front = 5.0
 ## Rear ## 0.7 0.77
-@export var damp_compr_rear = 6.0
+@export var damp_compr_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
-@export var rest_front = 0.12
-@export var rest_rear = 0.11
+@export var rest_front = 0.14
+@export var rest_rear = 0.12
 @export var travel_front = 0.16
 @export var travel_rear = 0.14
-@export var stiff_front = 120
-@export var stiff_rear = 100
-@export var max_force_front = 30000
-@export var max_force_rear = 20000
+@export var stiff_front = 100
+@export var stiff_rear = 80
+@export var max_force_front = 18000
+@export var max_force_rear = 12000
 
 @export var scale_curve: Curve
 var scale_array : Array
@@ -167,7 +166,7 @@ func _ready() -> void:
 	## Move it Forward to oversteer
 	## Backward for understeer but less rear slip
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
-	center_of_mass = $CenterOfMass.position + COM_MOD_VECTOR
+	center_of_mass = CENTER_OF_MASS
 	
 	## Randomize initial rotation
 	# rotation = randomis(rotation, PI)
@@ -243,10 +242,10 @@ func _physics_process(delta: float) -> void:
 		engine_force = lerp(engine_force, 0.0, control_speed * delta)
 		## Braking with Vehicle3D
 		if not use_wheel_brake:
-			var set_vehicle_brake_force = \
-				-accelerating * vehicle_brake_force
+			var set_vehicle_brake_force = - (
+				accelerating * vehicle_brake_force )
 			change_vehicle_brake(set_vehicle_brake_force, delta)
-		## Braking with Wheelsa
+		## Braking with Wheels
 		else:
 			var set_wheel_brake_force = \
 				-accelerating * vehicle_brake_force
@@ -256,21 +255,18 @@ func _physics_process(delta: float) -> void:
 		change_vehicle_brake(0.0, delta)
 		change_wheel_brake(0.0, 0.0, 0.0, delta)
 
-	## Merge ZC's AeroDrag force
-	var aeroDrag_force:Vector3 = - linear_velocity.normalized()
-	var aeroDrag = ( bodyDrag * airDensity * 
-		(bodySquare * bodySquareFill)
+	## Use ZC's AeroDrag force
+	var aeroDrag_force_applied: Vector3 = (- linear_velocity.normalized()) * (
+		( bodyDrag * airDensity * bodySquare * bodySquareFill )
 		* linear_velocity.length_squared())
-	var aeroDrag_force_applied = aeroDrag_force * aeroDrag
 	## Use AeroDynamic Force
-	var aeroDyn_force_applied:Vector3 = (
-			Vector3.DOWN * bodyAeroDyn
-			* linear_velocity.length_squared())
+	var aeroDyn_force_applied: Vector3 = Vector3(0,-1,0) * (
+		bodyAeroDyn 
+		* linear_velocity.length_squared())
 	## Apply Aero Forces
-	apply_force(aeroDrag_force_applied, center_of_mass)
+	apply_central_force(aeroDrag_force_applied)
 	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
 
-	## @HACK Simulate Accelerating Friction Slip
 	## @NEW Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
 		if engine_state == States.COASTING:
@@ -279,7 +275,7 @@ func _physics_process(delta: float) -> void:
 		var set_brake_force = \
 			hand_brake_force * vehicle_brake_force
 		if use_wheel_brake:
-			## Now using handbrake rear friction demultiplier
+			## Now using handbrake rear friction multiplier
 			set_fric_slip_rear(fric_slip_rear / fric_slip_rear_hb_mult)
 			change_wheel_brake(set_brake_force, 
 				front_brake_force, rear_brake_force, delta)
@@ -308,12 +304,12 @@ func _physics_process(delta: float) -> void:
 	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
 	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
 	UI.logs_add_text("\n engine_force.: %6.2f" % engine_force)
-	UI.logs_add_text("\n aeroDrag.....: %6.2f" % aeroDrag)
 	UI.logs_add_text("\n Linear Veloc.: %6.2f" % linear_velocity.length())
 	UI.logs_add_text("\n Linear Vel.sq: %6.2f" % linear_velocity.length_squared())
 	UI.logs_add_text("\n aeroDrag_appl: %6.2f" % aeroDrag_force_applied.length())
 	UI.logs_add_text("\n aeroDyn_appl.: %6.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n STATE........: %s"   % States.keys()[engine_state])
+	UI.logs_add_text("\n DragFA.......:   %s"  % var_to_str(aeroDrag_force_applied))
+	UI.logs_add_text("\n DynFA........:   %s"  % var_to_str(aeroDyn_force_applied))
 	
 	## Car fell off course!
 	if position.y < -50:
