@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b67guwtayltr5" path="res://Scenes/Tracks/SquareGen/square_100m.tscn" id="1_rwjdt"]
 [ext_resource type="PackedScene" uid="uid://dckpn4bgk660l" path="res://Scenes/Sky/DarkSky.tscn" id="2_3j7go"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="2_es48g"]
-[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta1000.tscn" id="3_3j7go"]
+[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="3_3j7go"]
 
 [node name="Square Generated Track" type="Node3D"]
 script = ExtResource("1_c6awv")
@@ -12,7 +12,7 @@ script = ExtResource("1_c6awv")
 [node name="DarkSky" parent="." instance=ExtResource("2_3j7go")]
 
 [node name="Vehicle" parent="." instance=ExtResource("3_3j7go")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.06816, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.19343, 0)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("2_es48g")]
 

@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="4_o2f4t"]
 [ext_resource type="PackedScene" uid="uid://b30n8gwfqoirt" path="res://Scenes/Tracks/GLBs/Spa.Minimal.tscn" id="4_rousx"]
 [ext_resource type="PackedScene" uid="uid://wv15rdrjotk8" path="res://Scenes/Tracks/GLBs/Objects/construction-light.glb" id="5_fydd0"]
+[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="7_5r2i4"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="7_vfmpu"]
-[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta1000.tscn" id="8_5r2i4"]
 
 [node name="MainSpaFlat" type="Node3D"]
 script = ExtResource("1_t2t33")
@@ -200,9 +200,8 @@ transform = Transform3D(9.16188, 0, 4.00749, 0, 10, 0, -4.00749, 0, 9.16188, -44
 [node name="construction-light83" parent="Spa_Flat_Objects" instance=ExtResource("5_fydd0")]
 transform = Transform3D(9.16188, 0, 4.00749, 0, 10, 0, -4.00749, 0, 9.16188, -442.018, 0.409131, 134.982)
 
+[node name="Vehicle" parent="." instance=ExtResource("7_5r2i4")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 490.156, 3.094, 98.8227)
+
 [node name="CameraGimbal" parent="." instance=ExtResource("7_vfmpu")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 490, 2, 66)
-
-[node name="Vehicle" parent="." instance=ExtResource("8_5r2i4")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 490.185, 0.941935, 69.7143)
-CENTER_OF_AERO = Vector3(0, 0.5, -2)

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://v5ggol28gyfa" path="res://Scenes/Tracks/GLBs/Cup.3.TorusTop.glb" id="3_ppgg2"]
 [ext_resource type="PackedScene" uid="uid://fxalgehxt3ky" path="res://Scenes/Tracks/GLBs/Cup.3.ThorusColored.glb" id="4_ppgg2"]
 [ext_resource type="PackedScene" uid="uid://dwvh36svgbyi0" path="res://Scenes/Tracks/GLBs/Cup.3.ThorusObjects.glb" id="5_ppgg2"]
-[ext_resource type="PackedScene" uid="uid://c653ypnptku1j" path="res://Scenes/Cars/Fanta/Fanta500.tscn" id="6_63ytp"]
+[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="7_63ytp"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="9_jykfb"]
 
 [node name="MainCupScene" type="Node3D"]
@@ -19,8 +19,8 @@ script = ExtResource("1_63ytp")
 
 [node name="Cup_3_ThorusObjects" parent="." instance=ExtResource("5_ppgg2")]
 
-[node name="Vehicle" parent="." instance=ExtResource("6_63ytp")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -92.3322, 1.44617, 92.2111)
-
 [node name="CameraGimbal" parent="." instance=ExtResource("9_jykfb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.2313, 2.09959, 87)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.231, 3.09959, 85)
+
+[node name="Vehicle" parent="." instance=ExtResource("7_63ytp")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -103, 2.19343, 85)

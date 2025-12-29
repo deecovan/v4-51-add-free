@@ -1,6 +1,6 @@
 extends VehicleBody3D
 
-## Copied from Fanta1000.gd
+## Copied from Fanta1000
 var speedtometer_label
 var REVERSE =  false
 
@@ -17,17 +17,11 @@ var car_absorb = false
 @export var grav_scale = 1.0
 @export var MAX_SPEED = 100.0
 @export var MAX_POWER = 6600.0
-## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.35
-## Maximum Steering speed
-@export var steer_control_speed = 1.0
-## Control's move_toward speed
-# Use 0..10 for keyboard or controller
-# Use 100 for racing wheels
-@export var control_speed = 4.0
+
+@export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,0.12,-0.5)
-@export var CENTER_OF_AERO = Vector3(0.0,0.2,-2.0)
+@export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.66)
+@export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.44)
 
 ## Merge ZC's AeroDrag force
 @export_category("Body Aero")
@@ -36,12 +30,29 @@ var car_linear_damp = 0.0
 var car_angular_damp = 0.0
 ## Setup AirDrag
 @export var airDensity = 1.1
-@export var bodySquare = 2.25
+@export var bodySquare = 2.2
 @export var bodySquareFill=0.77
 @export var bodyDrag = 1.2
 @export var bodyAeroDyn = 0.33
 
-@export_category("Braking")
+@export_category("Total Coltrol Speed")
+## Control's move_toward speed
+# Use 0..10 for keyboard or controller
+# Use 100 for racing wheels
+@export var control_speed = 3.0
+
+@export_category("Steering Values")
+## Maximum Steering angle in Radians
+@export var MAX_STEER  = 0.35
+## @NEW To Use speed steering value
+@export var SPEED_STEER = true
+@export var SPEED_STEER_MAX = PI/3
+## Speed Steer Koefficient
+@export var SPEED_STEER_CO = PI/20
+## Maximum Steering speed
+@export var steer_control_speed = 0.6
+
+@export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
 @export var brake_control_speed = 0.4
@@ -51,9 +62,9 @@ var car_angular_damp = 0.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.1
+@export var front_brake_force = 1.2
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 0.9
+@export var rear_brake_force = 1.2
 ## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
@@ -68,28 +79,28 @@ var car_angular_damp = 0.0
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.5
+@export var fric_slip_front = 1.6
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.8
+@export var fric_slip_rear = 1.6
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.8
+@export var fric_slip_rear_hb_mult = 1.6
 ## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 6.0
+@export var damp_relax_front = 3.5
 ## Rear wheels damper relaxation ## 0.88
-@export var damp_relax_rear = 5.0
+@export var damp_relax_rear = 4.0
 ## Front wheels damper compression ## 0.8
-@export var damp_compr_front = 5.0
+@export var damp_compr_front = 6.0
 ## Rear ## 0.7 0.77
-@export var damp_compr_rear = 4.0
+@export var damp_compr_rear = 5.0
 ## Rest, Travel, Stiff, MaxV
-@export var rest_front = 0.14
+@export var rest_front = 0.11
 @export var rest_rear = 0.12
-@export var travel_front = 0.16
-@export var travel_rear = 0.14
-@export var stiff_front = 100
-@export var stiff_rear = 80
+@export var travel_front = 0.14
+@export var travel_rear = 0.15
+@export var stiff_front = 90
+@export var stiff_rear = 60
 @export var max_force_front = 18000
-@export var max_force_rear = 12000
+@export var max_force_rear = 9000
 
 @export var scale_curve: Curve
 var scale_array : Array
@@ -116,48 +127,42 @@ func _ready() -> void:
 	gravity_scale = grav_scale
 	linear_damp = car_linear_damp
 	angular_damp = car_angular_damp
-	## Setup Vehicle3D Physics Material
-	## Use this block only if the physics_material_override is used
-	#physics_material_override.friction = car_friction
-	#physics_material_override.rough = car_rough
-	#physics_material_override.bounce = car_bounce
-	#physics_material_override.absorbent = car_absorb
 	
 	## Setup Wheel2Ds Front and Rear values
 	## Grip
-	$Wheel3Dfl.wheel_friction_slip = fric_slip_front
-	$Wheel3Dfr.wheel_friction_slip = fric_slip_front
-	$Wheel3Drl.wheel_friction_slip = fric_slip_rear
-	$Wheel3Drr.wheel_friction_slip = fric_slip_rear
+	$Wheel3DFL.wheel_friction_slip = fric_slip_front
+	$Wheel3DFR.wheel_friction_slip = fric_slip_front
+	$Wheel3DRL.wheel_friction_slip = fric_slip_rear
+	$Wheel3DRR.wheel_friction_slip = fric_slip_rear
 	### Damper
-	$Wheel3Dfl.damping_compression = damp_compr_front
-	$Wheel3Dfr.damping_compression = damp_compr_front
-	$Wheel3Drl.damping_compression = damp_compr_rear
-	$Wheel3Drr.damping_compression = damp_compr_rear
-	$Wheel3Dfl.damping_relaxation = damp_relax_front
-	$Wheel3Dfr.damping_relaxation = damp_relax_front
-	$Wheel3Drl.damping_relaxation = damp_relax_rear
-	$Wheel3Drr.damping_relaxation = damp_relax_rear
+	$Wheel3DFL.damping_compression = damp_compr_front
+	$Wheel3DFR.damping_compression = damp_compr_front
+	$Wheel3DRL.damping_compression = damp_compr_rear
+	$Wheel3DRR.damping_compression = damp_compr_rear
+	$Wheel3DFL.damping_relaxation = damp_relax_front
+	$Wheel3DFR.damping_relaxation = damp_relax_front
+	$Wheel3DRL.damping_relaxation = damp_relax_rear
+	$Wheel3DRR.damping_relaxation = damp_relax_rear
 	### Rest
-	$Wheel3Dfl.wheel_rest_length = rest_front
-	$Wheel3Dfr.wheel_rest_length = rest_front
-	$Wheel3Drl.wheel_rest_length = rest_rear
-	$Wheel3Drr.wheel_rest_length = rest_rear
+	$Wheel3DFL.wheel_rest_length = rest_front
+	$Wheel3DFR.wheel_rest_length = rest_front
+	$Wheel3DRL.wheel_rest_length = rest_rear
+	$Wheel3DRR.wheel_rest_length = rest_rear
 	### Travel
-	$Wheel3Dfl.suspension_travel = travel_front
-	$Wheel3Dfr.suspension_travel = travel_front
-	$Wheel3Drl.suspension_travel = travel_rear
-	$Wheel3Drr.suspension_travel = travel_rear
+	$Wheel3DFL.suspension_travel = travel_front
+	$Wheel3DFR.suspension_travel = travel_front
+	$Wheel3DRL.suspension_travel = travel_rear
+	$Wheel3DRR.suspension_travel = travel_rear
 	### Stiffness
-	$Wheel3Dfl.suspension_stiffness = stiff_front
-	$Wheel3Dfr.suspension_stiffness = stiff_front
-	$Wheel3Drl.suspension_stiffness = stiff_rear
-	$Wheel3Drr.suspension_stiffness = stiff_rear
+	$Wheel3DFL.suspension_stiffness = stiff_front
+	$Wheel3DFR.suspension_stiffness = stiff_front
+	$Wheel3DRL.suspension_stiffness = stiff_rear
+	$Wheel3DRR.suspension_stiffness = stiff_rear
 	### Maximum Suspension force
-	$Wheel3Dfl.suspension_max_force = max_force_front
-	$Wheel3Dfr.suspension_max_force = max_force_front
-	$Wheel3Drl.suspension_max_force = max_force_rear
-	$Wheel3Drr.suspension_max_force = max_force_rear
+	$Wheel3DFL.suspension_max_force = max_force_front
+	$Wheel3DFR.suspension_max_force = max_force_front
+	$Wheel3DRL.suspension_max_force = max_force_rear
+	$Wheel3DRR.suspension_max_force = max_force_rear
 
 	## Apply Max Power to tachometer
 	Analometer.set_max_tac(MAX_POWER) 
@@ -168,23 +173,26 @@ func _ready() -> void:
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 	center_of_mass = CENTER_OF_MASS
 	
-	## Randomize initial rotation
-	# rotation = randomis(rotation, PI)
 	
 	## Init PFG screen
-	# _scale_curve.sample_baked(i)*MAX_POWER
 	for i in 100:
 		scale_array.append(scale_curve.sample_baked(i/100.0))
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
-			
+	
 	## Reverse in the simpliest way
 	if Input.is_action_just_pressed("reverse"):
 		REVERSE = !REVERSE
-		
+	
+	## @NEW To Use speed steering value
+	var m_MAX_STEER = MAX_STEER
+	if SPEED_STEER:
+		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
+						* SPEED_STEER_CO * MAX_STEER
+		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, SPEED_STEER_MAX)
 	## Use controller's axes, joy or key input
-	var _steering = Input.get_axis("steer_right", "steer_left") * MAX_STEER
+	var _steering = Input.get_axis("steer_right", "steer_left") * m_MAX_STEER
 	var _accelerating = Input.get_axis("brake", "accelerate")
 	## Simulate axes if keys are used
 	if Input.is_action_pressed("steer_right")\
@@ -294,7 +302,7 @@ func _physics_process(delta: float) -> void:
 		States.keys()[engine_state] + ' ' + engine_index_list.keys()[engine_index])
 	rotate_speed_pt(linear_velocity.length() * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
-	rotate_tacho_pt(($Wheel3Drl.get_rpm() + $Wheel3Drl.get_rpm()) / 2)
+	rotate_tacho_pt(($Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()) / 2)
 	rotate_tacho_ps(engine_force, delta)
 	
 	UI.logs_clr_text()
@@ -305,19 +313,17 @@ func _physics_process(delta: float) -> void:
 	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
 	UI.logs_add_text("\n engine_force.: %6.2f" % engine_force)
 	UI.logs_add_text("\n Linear Veloc.: %6.2f" % linear_velocity.length())
-	UI.logs_add_text("\n Linear Vel.sq: %6.2f" % linear_velocity.length_squared())
+	UI.logs_add_text("\n Spd.Max Steer: %6.2f" % m_MAX_STEER)
 	UI.logs_add_text("\n aeroDrag_appl: %6.2f" % aeroDrag_force_applied.length())
 	UI.logs_add_text("\n aeroDyn_appl.: %6.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n DragFA.......:   %s"  % var_to_str(aeroDrag_force_applied))
-	UI.logs_add_text("\n DynFA........:   %s"  % var_to_str(aeroDyn_force_applied))
 	
 	## Car fell off course!
 	if position.y < -50:
 		UI.show_message("Car is out! Reload with [F5]")
 		
 func set_fric_slip_rear(_fric_slip_rear) -> void:
-	$Wheel3Drl.wheel_friction_slip = _fric_slip_rear
-	$Wheel3Drr.wheel_friction_slip = _fric_slip_rear
+	$Wheel3DRL.wheel_friction_slip = _fric_slip_rear
+	$Wheel3DRR.wheel_friction_slip = _fric_slip_rear
 
 ## Apply Vehicle Brake lerp
 func change_vehicle_brake(_vehicle_brake_force, _delta) -> void:
@@ -327,12 +333,12 @@ func change_vehicle_brake(_vehicle_brake_force, _delta) -> void:
 ## Using HandBrake
 func change_wheel_brake(_brake_force, _front_brake_power, \
 	_rear_brake_power, _delta) -> void:
-	$Wheel3Dfl.brake = _brake_force * _front_brake_power
-	$Wheel3Dfr.brake = _brake_force * _front_brake_power
+	$Wheel3DFL.brake = _brake_force * _front_brake_power
+	$Wheel3DFR.brake = _brake_force * _front_brake_power
 ## Using HandBrake at any time don't remove acceleration
 	if engine_state != States.ACCELERATING:
-		$Wheel3Drl.brake = _brake_force * _rear_brake_power
-		$Wheel3Drr.brake = _brake_force * _rear_brake_power
+		$Wheel3DRL.brake = _brake_force * _rear_brake_power
+		$Wheel3DRR.brake = _brake_force * _rear_brake_power
 
 
 func engine_match_power(_acceleration_power, _scale_curve:Curve, _delta) -> float:

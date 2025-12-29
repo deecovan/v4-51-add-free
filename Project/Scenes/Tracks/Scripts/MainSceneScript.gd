@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var DEBUG = true
+@export var DEBUG = false
+
 var UI: CanvasLayer
 var vehicle: VehicleBody3D
 
@@ -47,10 +48,16 @@ func use_main_controls(_event) -> void:
 ## Await and reload
 	if Input.is_action_just_pressed('reload'):
 		await UI.show_message("Reloading...")
-		var track = get_tree().get_nodes_in_group("Tracks")[0]
-		track.queue_free()
+		var tracks = get_tree().get_nodes_in_group("Tracks")
+		## Fix F6 started single scene
+		if tracks.size() > 0:
+			tracks[0].queue_free()
 		get_tree().call_deferred("reload_current_scene")
 ## Await and exit
 	if Input.is_action_pressed("exit"):
 		await UI.show_message("Exiting...")
 		get_tree().call_deferred("quit")
+
+## Hide UI
+	if Input.is_action_pressed("hide_ui"):
+		UI.visible = !UI.visible

@@ -1,5 +1,6 @@
 extends Node
 
+## Copied from Fanta1000
 @onready var _timer = $"../Timer"
 @onready var _start = $"../Start"
 @onready var _idle = $"../Idle"

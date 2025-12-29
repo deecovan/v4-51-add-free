@@ -44,8 +44,8 @@ X -- Reverse
 R -- Restore Car
 
 Alt+Enter -- Full Screen
-[F12] Show Logs [F11] Hide
-
+H -- Hide UI
+Logs: [F12] Show [F11] Hide
 Hold RMB, Arrow keys -- Pan camera
 MouseScroll, PageUp/PageDown  -- Zoom"
 

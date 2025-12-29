@@ -3,10 +3,10 @@ extends Node3D
 @export var gimbal_offset := Vector3(0.0,1.0,0.0)
 ## Keyboard controlled Rotation and Zoom
 @export var camera_speed = 1.0
-@export var zoom = 0.75
+@export var zoom = 1.0
 @export var zoom_min = 0.75
 @export var zoom_max = 3.0
-@export var zoom_speed = 0.25
+@export var zoom_speed = 0.125
 @export var arm_spring_length = 7.5
 @export var arm_spring_length_min = 7.5
 @export var arm_spring_length_max = 30.0
@@ -61,7 +61,7 @@ func _input(event):
 	zoom = clamp(zoom, zoom_min, zoom_max)
 	arm_spring_length = clamp(
 		arm_spring_length, arm_spring_length_min, arm_spring_length_max)
-	
+	camera.rotation.x = ( - zoom_max + zoom_min + zoom) / 10
 		
 func _process(delta):
 	var tween_fov = get_tree().create_tween()

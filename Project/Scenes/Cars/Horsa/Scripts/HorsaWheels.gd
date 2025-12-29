@@ -1,5 +1,6 @@
 extends Node
 
+## Copied from Fanta1000
 @export var sleep_start = 0.2
 @export var sleep_start_rear = 0.4
 
@@ -21,10 +22,10 @@ var handbrake_pressed = false
 func _ready() -> void:
 	vehicle = get_parent()
 	UI = $"../UI"
-	wheel_fl = $"../Wheel3Dfl"
-	wheel_fr = $"../Wheel3Dfr"
-	wheel_rl = $"../Wheel3Drl"
-	wheel_rr = $"../Wheel3Drr"
+	wheel_fl = $"../Wheel3DFL"
+	wheel_fr = $"../Wheel3DFR"
+	wheel_rl = $"../Wheel3DRL"
+	wheel_rr = $"../Wheel3DRR"
 	var find_sleep_fl = UI.find_children("SleepFL")
 	var find_sleep_fr= UI.find_children("SleepFR")
 	var find_sleep_rl = UI.find_children("SleepRL")

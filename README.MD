@@ -1,5 +1,9 @@
 # v4-51-add-free GitHub repo 
 
+## 25.12.29 Horsa 6600 tuned for Spa 
+- Placed to all tracks
+- Physics, Drag and Air tuned for Spa
+
 ## 25.12.28 New car Horsa 6600
 - Body in Red color
 - Front and Rear Wheels
