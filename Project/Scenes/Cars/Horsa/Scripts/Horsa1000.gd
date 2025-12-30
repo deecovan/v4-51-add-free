@@ -1,6 +1,6 @@
 extends VehicleBody3D
 
-## Copied from Fanta1000
+## Copied from Horsa1000
 var speedtometer_label
 var REVERSE =  false
 
@@ -62,13 +62,13 @@ var car_angular_damp = 0.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.2
+@export var front_brake_force = 1.6
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.2
+@export var rear_brake_force = 1.6
 ## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
-@export var hand_brake_force = 1.8
+@export var hand_brake_force = 1.6
 
 @export_category("Coasting")
 ## Coasting starting value
@@ -81,7 +81,7 @@ var car_angular_damp = 0.0
 ## Front wheels friction slip ratio ## 0.65
 @export var fric_slip_front = 1.6
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.6
+@export var fric_slip_rear = 1.7
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.6
 ## Front wheels damper relaxation ## 0.88
@@ -100,7 +100,7 @@ var car_angular_damp = 0.0
 @export var stiff_front = 90
 @export var stiff_rear = 60
 @export var max_force_front = 18000
-@export var max_force_rear = 9000
+@export var max_force_rear = 12000
 
 @export var scale_curve: Curve
 var scale_array : Array

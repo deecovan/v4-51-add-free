@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://da6koypjbdvgn"]
+
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_d4bf4"]
+[ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="2_k4uqg"]
+[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta1000.tscn" id="3_d4bf4"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="4_v6w64"]
+[ext_resource type="PackedScene" uid="uid://b67guwtayltr5" path="res://Scenes/Tracks/SquareGen/square_100m.tscn" id="5_mqy1m"]
+
+[node name="Square Generated Track" type="Node3D"]
+script = ExtResource("1_d4bf4")
+
+[node name="BlueSky" parent="." instance=ExtResource("2_k4uqg")]
+
+[node name="Vehicle" parent="." instance=ExtResource("3_d4bf4")]
+
+[node name="CameraGimbal" parent="." instance=ExtResource("4_v6w64")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.06816, 0)
+
+[node name="Squares" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="SquareGen" parent="Squares" instance=ExtResource("5_mqy1m")]
+skeleton = NodePath("../..")
+
+[node name="SquareGen2" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen3" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen4" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="SquareGen5" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen6" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen7" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen8" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="SquareGen9" parent="Squares" instance=ExtResource("5_mqy1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
+skeleton = NodePath("../..")

@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="2_ttvog"]
 [ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="2_xm1ns"]
 [ext_resource type="PackedScene" uid="uid://cspkf5vp2exlv" path="res://Scenes/Tracks/thor.tscn" id="3_i5bnm"]
-[ext_resource type="PackedScene" uid="uid://ba6oivsxst478" path="res://Scenes/Tracks/cup.tscn" id="4_6o4ty"]
+[ext_resource type="PackedScene" uid="uid://ba6oivsxst478" path="res://Scenes/Tracks/GLBs/cup.tscn" id="4_6o4ty"]
 [ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
 [ext_resource type="PackedScene" uid="uid://dqy35w0t0uaa0" path="res://Scenes/Tracks/spa.tscn" id="5_6o4ty"]
 [ext_resource type="PackedScene" uid="uid://soo6h56asawe" path="res://Scenes/Tracks/curve.tscn" id="6_65gdl"]

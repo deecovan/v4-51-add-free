@@ -1,5 +1,17 @@
 # v4-51-add-free GitHub repo 
 
+## 25.12.30 New track Spa Full (Short and Long)
+- Short 2400m
+- Long 7700m
+- Less banana's height
+- Colored banana
+
+## 25.12.30 New car Chero 6600 (need to work more)
+- Bad faces, maybe need to rotate verticles normals
+- Bad angles, somewhere looks loke damaged body
+- Without glasses and radiator
+- Godot cant use generated collision, why?
+
 ## 25.12.29 Horsa 6600 tuned for Spa 
 - Placed to all tracks
 - Physics, Drag and Air tuned for Spa
