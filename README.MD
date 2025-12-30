@@ -1,5 +1,8 @@
 # v4-51-add-free GitHub repo 
 
+## 25.12.30 Steering by Mouse was bad idea
+- Or i cant implement it to be well usable
+
 ## 25.12.30 New track Spa Full (Short and Long)
 - Short 2400m
 - Long 7700m
