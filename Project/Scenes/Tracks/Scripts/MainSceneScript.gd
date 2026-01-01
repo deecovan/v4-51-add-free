@@ -37,9 +37,9 @@ func _unhandled_input(event):
 func use_main_controls(_event) -> void:
 	if Input.is_action_just_pressed('help'):
 		UI.show_message_again()
-	if Input.is_action_just_pressed('Show Info'):
+	if Input.is_action_just_pressed('show_info'):
 		UI.show_info()
-	if Input.is_action_just_pressed('Hide Info'):
+	if Input.is_action_just_pressed('hide_info'):
 		UI.hide_info()
 ## Toggle between debug draw modes using a key press
 	if Input.is_action_just_pressed('viewport'):

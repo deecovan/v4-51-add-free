@@ -1,5 +1,10 @@
 # v4-51-add-free GitHub repo 
 
+## 26.1.1 HNY
+- Add Alt-Control; 
+- Modify controls; 
+- Drop engine on braking starts
+
 ## 25.12.30 Steering by Mouse was bad idea
 - Or i cant implement it to be well usable
 

@@ -55,7 +55,7 @@ var car_angular_damp = 0.0
 @export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.4
+@export var brake_control_speed = 0.6
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 100.0
@@ -187,9 +187,9 @@ func _physics_process(delta: float) -> void:
 	
 	## @NEW To Use speed steering value
 	var m_MAX_STEER = MAX_STEER
-	if SPEED_STEER:
+	if SPEED_STEER and not Input.is_action_pressed("alt_coltrol"):
 		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
-						* SPEED_STEER_CO * MAX_STEER
+			* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, SPEED_STEER_MAX)
 	## Use controller's axes, joy or key input
 	var _steering = Input.get_axis("steer_right", "steer_left") * m_MAX_STEER
@@ -214,14 +214,17 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.ACCELERATING
 	## Else: Braking key
 	elif _accelerating < 0:
-		engine_state = States.BRAKING
+		if engine_state != States.BRAKING:
+			## Decrease engine power on state changed
+			engine_force = engine_force * coast_init
+			engine_state = States.BRAKING
 
 	## Else: Coasting with Engine LERP down
 	else: 
 		if engine_state != States.COASTING:
 			## Decrease engine power on state changed
-			engine_state = States.COASTING
 			engine_force = engine_force * coast_init
+			engine_state = States.COASTING
 		## Engine coasting lerp down
 		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
 
@@ -243,7 +246,8 @@ func _physics_process(delta: float) -> void:
 		## Apply REVERSE
 	if REVERSE:
 		engine_state = States.REVERSING
-		engine_force = - engine_force
+		## R-Gear 1/6 of maximum
+		engine_force = - clamp(engine_force, 0.0, MAX_POWER/6)
 	
 	if engine_state == States.BRAKING:
 		## Drop engine
