@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.015, -0.283933, -1.47328)
 use_as_traction = true
 
 [node name="CenterOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.066, 0.66)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0.5)
 
 [node name="UI" parent="." instance=ExtResource("14_vejgm")]
 

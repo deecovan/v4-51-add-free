@@ -8,6 +8,8 @@
 - Add Additional Forces: bodyLinearFric
 - Test Alt-Control
 - Checkout Horsa script
+- Chero tested on Spa Long 
+  - looks good
 
 ## 25.12.30 Steering by Mouse was bad idea
 - Or i cant implement it to be well usable

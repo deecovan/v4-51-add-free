@@ -1,8 +1,8 @@
 extends Node
 
 ## Copied from Fanta1000
-@export var sleep_start = 0.2
-@export var sleep_start_rear = 0.4
+@export var sleep_start = 0.15
+@export var sleep_start_rear = 0.45
 
 var track: Node3D
 var vehicle: VehicleBody3D

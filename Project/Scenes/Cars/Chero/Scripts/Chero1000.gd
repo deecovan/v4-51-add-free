@@ -20,8 +20,8 @@ var car_absorb = false
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.66)
-@export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.44)
+@export var CENTER_OF_MASS = Vector3(0.0,-0.05,0.5)
+@export var CENTER_OF_AERO = Vector3(0.0,0.3,0.4)
 
 ## Additional Forces
 @export_category("Body Aero")
@@ -232,16 +232,8 @@ func _physics_process(delta: float) -> void:
 			engine_state = States.COASTING
 			engine_force = engine_force * coast_init
 
-	## Process Engine States
-	if REVERSE:
-		engine_state = States.REVERSING
-		engine_force = - engine_force
-		
-	if engine_state == States.COASTING:
-		## Engine coasting toward down USING LERP!
-		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
-	
-	## Process the curent state
+	## Process Engine States				
+	## Accelerating first
 	if engine_state == States.ACCELERATING:
 		acceleration_power = MAX_POWER * accelerating
 		## Remove REVERSE
@@ -256,6 +248,7 @@ func _physics_process(delta: float) -> void:
 			control_speed * delta) 
 		## Apply REVERSE
 		
+	## Than Braking
 	if engine_state == States.BRAKING:
 		## Slow engine USING LERP!
 		engine_force = lerp(engine_force, 0.0, control_speed * delta)
@@ -273,18 +266,27 @@ func _physics_process(delta: float) -> void:
 	else: 
 		change_vehicle_brake(0.0, delta)
 		change_wheel_brake(0.0, 0.0, 0.0)
+		
+	## Coasting next
+	if engine_state == States.COASTING:
+		## Engine coasting toward down USING LERP!
+		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
+		
+	## Reverse last
+	if REVERSE and engine_state != States.REVERSING:
+		engine_state = States.REVERSING
+		## Rear Gear has 30% of maximum power
+		engine_force = - clamp(engine_force, 0, MAX_POWER * 0.3)
 
-	## Use ZC's AeroDrag force
+	## Calculate custom forces
+	## AeroDrag
 	var aeroDrag_force_applied: Vector3 = (- linear_velocity.normalized()) * (
 		( bodyDrag * airDensity * bodySquare * bodySquareFill )
 		* linear_velocity.length_squared())
-	## Use AeroDynamic Force
+	## AeroDynamic 
 	var aeroDyn_force_applied: Vector3 = Vector3.DOWN * (
 		bodyAeroDyn * linear_velocity.length_squared())
-	## Apply Aero Forces
-	apply_central_force(aeroDrag_force_applied)
-	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
-	## @NEW Apply LinearFriction Force
+	## @NEW LinearFriction Force
 	var constFricForse = 0.0
 	if linear_velocity.length() > 0.01: 
 		constFricForse = bodyLinearFricConst
@@ -293,6 +295,10 @@ func _physics_process(delta: float) -> void:
 		( constFricForse
 		+ bodyLinearFricLin * linear_velocity.length()
 		+ bodyLinearFricSq * linear_velocity.length_squared()))
+	
+	## Apply Custom Forces
+	apply_central_force(aeroDrag_force_applied)
+	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
 	apply_central_force(linearFric_force_applied)
 
 	## Using HandBrake at any time
