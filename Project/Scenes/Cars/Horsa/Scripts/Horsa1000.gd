@@ -23,7 +23,7 @@ var car_absorb = false
 @export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.66)
 @export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.44)
 
-## Merge ZC's AeroDrag force
+## Additional Forces
 @export_category("Body Aero")
 ## Reset standart values
 var car_linear_damp = 0.0
@@ -34,6 +34,10 @@ var car_angular_damp = 0.0
 @export var bodySquareFill=0.77
 @export var bodyDrag = 1.2
 @export var bodyAeroDyn = 0.33
+## Add Linear Friction
+@export var bodyLinearFricConst = 1250.0
+@export var bodyLinearFricLin = 15.0
+@export var bodyLinearFricSq = 0.05
 
 @export_category("Total Coltrol Speed")
 ## Control's move_toward speed
@@ -74,7 +78,7 @@ var car_angular_damp = 0.0
 ## Coasting starting value
 @export var coast_init = 0.25
 ## Coasting loward speed
-@export var engine_coast = 0.15
+@export var engine_coast = 0.25
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
@@ -204,17 +208,23 @@ func _physics_process(delta: float) -> void:
 		steering = move_toward(steering, 0.0 , 
 			steer_control_speed * delta)
 	## Using Brake
-	if Input.is_action_pressed("brake")\
-		or Input.is_action_pressed("accelerate"):
-			accelerating = move_toward(accelerating, _accelerating, 
+	if Input.is_action_pressed("brake"):
+		if accelerating > 0: accelerating = 0
+		accelerating = move_toward(accelerating, _accelerating, 
 			brake_control_speed * control_speed * delta)
+	if Input.is_action_pressed("accelerate"):
+		accelerating = move_toward(accelerating, _accelerating, 
+			control_speed * delta)
 								   
 	## Set acceleration state @CHANGED
 	if _accelerating > 0:
 		engine_state = States.ACCELERATING
 	## Else: Braking key
 	elif _accelerating < 0:
-		engine_state = States.BRAKING
+		if engine_state != States.BRAKING:
+			## Decrease engine power on state changed
+			engine_state = States.BRAKING
+			engine_force = engine_force * coast_init
 	## Else: Coasting 
 	else: 
 		if engine_state != States.COASTING:
@@ -228,21 +238,19 @@ func _physics_process(delta: float) -> void:
 		engine_force = - engine_force
 		
 	if engine_state == States.COASTING:
-		## Engine coasting toward down
-		engine_force = move_toward(engine_force, 0.0, engine_coast * delta)
-
+		## Engine coasting toward down USING LERP!
+		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
+	
 	## Process the curent state
 	if engine_state == States.ACCELERATING:
 		acceleration_power = MAX_POWER * accelerating
 		## Remove REVERSE
 		engine_force = abs(engine_force)
-		## Apply accelerating
-		matching_power = engine_match_power(
-			acceleration_power, 
-			scale_curve, 
-			delta)
 		## Match force to scale_curve
-		engine_force = move_toward(
+		matching_power = engine_match_power(
+			linear_velocity.length(), scale_curve)
+		## Apply accelerating USING LERP!
+		engine_force = lerp(
 			engine_force, 
 			clamp(matching_power, 0, matching_power), 
 			control_speed * delta) 
@@ -259,24 +267,33 @@ func _physics_process(delta: float) -> void:
 		## Braking with Wheels
 		else:
 			var set_wheel_brake_force = \
-				-accelerating * vehicle_brake_force
+				- accelerating * vehicle_brake_force
 			change_wheel_brake(set_wheel_brake_force, 
-				front_brake_force, rear_brake_force, delta)
+				front_brake_force, rear_brake_force)
 	else: 
 		change_vehicle_brake(0.0, delta)
-		change_wheel_brake(0.0, 0.0, 0.0, delta)
+		change_wheel_brake(0.0, 0.0, 0.0)
 
 	## Use ZC's AeroDrag force
 	var aeroDrag_force_applied: Vector3 = (- linear_velocity.normalized()) * (
 		( bodyDrag * airDensity * bodySquare * bodySquareFill )
 		* linear_velocity.length_squared())
 	## Use AeroDynamic Force
-	var aeroDyn_force_applied: Vector3 = Vector3(0,-1,0) * (
-		bodyAeroDyn 
-		* linear_velocity.length_squared())
+	var aeroDyn_force_applied: Vector3 = Vector3.DOWN * (
+		bodyAeroDyn * linear_velocity.length_squared())
 	## Apply Aero Forces
 	apply_central_force(aeroDrag_force_applied)
 	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
+	## @NEW Apply LinearFriction Force
+	var constFricForse = 0.0
+	if linear_velocity.length() > 0.01: 
+		constFricForse = bodyLinearFricConst
+	var linearFric_force_applied:Vector3 = (
+		- linear_velocity.normalized() * 
+		( constFricForse
+		+ bodyLinearFricLin * linear_velocity.length()
+		+ bodyLinearFricSq * linear_velocity.length_squared()))
+	apply_central_force(linearFric_force_applied)
 
 	## Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
@@ -289,7 +306,7 @@ func _physics_process(delta: float) -> void:
 			## Now using handbrake rear friction multiplier
 			set_fric_slip_rear(fric_slip_rear / fric_slip_rear_hb_mult)
 			change_wheel_brake(set_brake_force, 
-				front_brake_force, rear_brake_force, delta)
+				front_brake_force, rear_brake_force)
 		else:
 			change_vehicle_brake(set_brake_force, delta)
 	else: 
@@ -326,13 +343,13 @@ func set_fric_slip_rear(_fric_slip_rear) -> void:
 	$Wheel3DRR.wheel_friction_slip = _fric_slip_rear
 
 ## Apply Vehicle Brake toward
-func change_vehicle_brake(vehicle_brake_force, delta) -> void:
-	brake = move_toward(brake, vehicle_brake_force, brake_control_speed * delta)
+func change_vehicle_brake(brake_force, delta) -> void:
+	brake = move_toward(brake, brake_force, brake_control_speed * delta)
 
 ## Apply Wheels Brake toward
 ## Using HandBrake
 func change_wheel_brake(brake_force, front_brake_power, \
-	rear_brake_power, delta) -> void:
+	rear_brake_power) -> void:
 	$Wheel3DFL.brake = brake_force * front_brake_power
 	$Wheel3DFR.brake = brake_force * front_brake_power
 ## Using HandBrake at any time don't remove acceleration
@@ -340,9 +357,9 @@ func change_wheel_brake(brake_force, front_brake_power, \
 		$Wheel3DRL.brake = brake_force * rear_brake_power
 		$Wheel3DRR.brake = brake_force * rear_brake_power
 
-func engine_match_power(acceleration_power, scale_curve:Curve, delta) -> float:
-		var normalized_speed=linear_velocity.length()/MAX_SPEED
-		var match_power = scale_curve.sample_baked(normalized_speed) \
+func engine_match_power(input_speed:float, match_curve:Curve) -> float:
+		var normalized_speed = input_speed / MAX_SPEED
+		var match_power = match_curve.sample_baked(normalized_speed) \
 			* MAX_POWER
 		return match_power
 		
