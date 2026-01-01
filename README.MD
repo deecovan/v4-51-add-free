@@ -7,6 +7,7 @@
 - Change redundant lerp to move_tovard
 - Add Additional Forces: bodyLinearFric
 - Test Alt-Control
+- Checkout Horsa script
 
 ## 25.12.30 Steering by Mouse was bad idea
 - Or i cant implement it to be well usable

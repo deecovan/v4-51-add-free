@@ -1,6 +1,6 @@
 extends VehicleBody3D
 
-## Copied from Horsa1000
+## Copied from Fanta1000
 var speedtometer_label
 var REVERSE =  false
 
@@ -23,7 +23,7 @@ var car_absorb = false
 @export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.66)
 @export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.44)
 
-## Additional Forces
+## Merge ZC's AeroDrag force
 @export_category("Body Aero")
 ## Reset standart values
 var car_linear_damp = 0.0
@@ -34,10 +34,6 @@ var car_angular_damp = 0.0
 @export var bodySquareFill=0.77
 @export var bodyDrag = 1.2
 @export var bodyAeroDyn = 0.33
-## Add Linear Friction
-@export var bodyLinearFricConst = 1250.0
-@export var bodyLinearFricLin = 15.0
-@export var bodyLinearFricSq = 0.05
 
 @export_category("Total Coltrol Speed")
 ## Control's move_toward speed
@@ -59,33 +55,33 @@ var car_angular_damp = 0.0
 @export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.6
+@export var brake_control_speed = 0.4
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 100.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.6
+@export var front_brake_force = 1.2
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.6
-## Brake toward speed
+@export var rear_brake_force = 1.2
+## Brake lerp speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
-@export var hand_brake_force = 1.6
+@export var hand_brake_force = 1.8
 
 @export_category("Coasting")
 ## Coasting starting value
-@export var coast_init = 0.25
-## Coasting loward speed
-@export var engine_coast = 0.25
+@export var coast_init = 0.3
+## Coasting lerp speed
+@export var engine_coast = 0.15
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
 @export var fric_slip_front = 1.6
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.7
+@export var fric_slip_rear = 1.6
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.6
 ## Front wheels damper relaxation ## 0.88
@@ -104,7 +100,7 @@ var car_angular_damp = 0.0
 @export var stiff_front = 90
 @export var stiff_rear = 60
 @export var max_force_front = 18000
-@export var max_force_rear = 12000
+@export var max_force_rear = 9000
 
 @export var scale_curve: Curve
 var scale_array : Array
@@ -189,9 +185,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reverse"):
 		REVERSE = !REVERSE
 	
-	## To Use speed steering value
+	## @NEW To Use speed steering value
 	var m_MAX_STEER = MAX_STEER
-	if SPEED_STEER and not Input.is_action_pressed("alt_coltrol"):
+	if SPEED_STEER:
 		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
 						* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, SPEED_STEER_MAX)
@@ -203,62 +199,54 @@ func _physics_process(delta: float) -> void:
 		or Input.is_action_pressed("steer_left"):
 			steering = move_toward(steering, _steering, 
 			steer_control_speed * delta)
-	## @NEW Using Alt Control
-	elif not Input.is_action_pressed("alt_coltrol"): 
-		## Move linearly
+	else: 
+		## Do Not LERP, move linearly
 		steering = move_toward(steering, 0.0 , 
 			steer_control_speed * delta)
 	## Using Brake
-	if Input.is_action_pressed("brake"):
-		if accelerating > 0: accelerating = 0
-		accelerating = move_toward(accelerating, _accelerating, 
+	if Input.is_action_pressed("brake")\
+		or Input.is_action_pressed("accelerate"):
+			accelerating = lerp(accelerating, _accelerating, 
 			brake_control_speed * control_speed * delta)
-	if Input.is_action_pressed("accelerate"):
-		accelerating = move_toward(accelerating, _accelerating, 
-			control_speed * delta)
 								   
 	## Set acceleration state @CHANGED
 	if _accelerating > 0:
 		engine_state = States.ACCELERATING
 	## Else: Braking key
 	elif _accelerating < 0:
-		if engine_state != States.BRAKING:
-			## Decrease engine power on state changed
-			engine_state = States.BRAKING
-			engine_force = engine_force * coast_init
-	## Else: Coasting 
+		engine_state = States.BRAKING
+
+	## Else: Coasting with Engine LERP down
 	else: 
 		if engine_state != States.COASTING:
 			## Decrease engine power on state changed
 			engine_state = States.COASTING
 			engine_force = engine_force * coast_init
-
-	## Process Engine States
-	if REVERSE:
-		engine_state = States.REVERSING
-		engine_force = - engine_force
-		
-	if engine_state == States.COASTING:
-		## Engine coasting toward down USING LERP!
+		## Engine coasting lerp down
 		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
-	
+
 	## Process the curent state
 	if engine_state == States.ACCELERATING:
 		acceleration_power = MAX_POWER * accelerating
 		## Remove REVERSE
 		engine_force = abs(engine_force)
-		## Match force to scale_curve
+		## Apply accelerating
 		matching_power = engine_match_power(
-			linear_velocity.length(), scale_curve)
-		## Apply accelerating USING LERP!
+			acceleration_power, 
+			scale_curve, 
+			delta)
+		## Match force to scale_curve
 		engine_force = lerp(
 			engine_force, 
 			clamp(matching_power, 0, matching_power), 
 			control_speed * delta) 
 		## Apply REVERSE
-		
+	if REVERSE:
+		engine_state = States.REVERSING
+		engine_force = - engine_force
+	
 	if engine_state == States.BRAKING:
-		## Slow engine USING LERP!
+		## Drop engine
 		engine_force = lerp(engine_force, 0.0, control_speed * delta)
 		## Braking with Vehicle3D
 		if not use_wheel_brake:
@@ -268,35 +256,26 @@ func _physics_process(delta: float) -> void:
 		## Braking with Wheels
 		else:
 			var set_wheel_brake_force = \
-				- accelerating * vehicle_brake_force
+				-accelerating * vehicle_brake_force
 			change_wheel_brake(set_wheel_brake_force, 
-				front_brake_force, rear_brake_force)
+				front_brake_force, rear_brake_force, delta)
 	else: 
 		change_vehicle_brake(0.0, delta)
-		change_wheel_brake(0.0, 0.0, 0.0)
+		change_wheel_brake(0.0, 0.0, 0.0, delta)
 
 	## Use ZC's AeroDrag force
 	var aeroDrag_force_applied: Vector3 = (- linear_velocity.normalized()) * (
 		( bodyDrag * airDensity * bodySquare * bodySquareFill )
 		* linear_velocity.length_squared())
 	## Use AeroDynamic Force
-	var aeroDyn_force_applied: Vector3 = Vector3.DOWN * (
-		bodyAeroDyn * linear_velocity.length_squared())
+	var aeroDyn_force_applied: Vector3 = Vector3(0,-1,0) * (
+		bodyAeroDyn 
+		* linear_velocity.length_squared())
 	## Apply Aero Forces
 	apply_central_force(aeroDrag_force_applied)
 	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
-	## @NEW Apply LinearFriction Force
-	var constFricForse = 0.0
-	if linear_velocity.length() > 0.01: 
-		constFricForse = bodyLinearFricConst
-	var linearFric_force_applied:Vector3 = (
-		- linear_velocity.normalized() * 
-		( constFricForse
-		+ bodyLinearFricLin * linear_velocity.length()
-		+ bodyLinearFricSq * linear_velocity.length_squared()))
-	apply_central_force(linearFric_force_applied)
 
-	## Using HandBrake at any time
+	## @NEW Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
 		if engine_state == States.COASTING:
 			engine_state = States.CHILL
@@ -307,12 +286,16 @@ func _physics_process(delta: float) -> void:
 			## Now using handbrake rear friction multiplier
 			set_fric_slip_rear(fric_slip_rear / fric_slip_rear_hb_mult)
 			change_wheel_brake(set_brake_force, 
-				front_brake_force, rear_brake_force)
+				front_brake_force, rear_brake_force, delta)
 		else:
 			change_vehicle_brake(set_brake_force, delta)
 	else: 
 		## Now restore handbrake rear friction
 		set_fric_slip_rear(fric_slip_rear)
+		
+	## @HACK Simulate Braking Drift
+	if engine_state == States.BRAKING:
+		pass
 		
 	## Update UI
 	UI.set_speedometer_label(
@@ -322,7 +305,6 @@ func _physics_process(delta: float) -> void:
 	rotate_tacho_pt(($Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()) / 2)
 	rotate_tacho_ps(engine_force, delta)
 	
-	## @DEBUG UI logs
 	UI.logs_clr_text()
 	#UI.logs_add_text("\n steering.....: %6.2f" % steering)
 	#UI.logs_add_text("\n accelerating.: %6.2f" % accelerating)
@@ -343,29 +325,29 @@ func set_fric_slip_rear(_fric_slip_rear) -> void:
 	$Wheel3DRL.wheel_friction_slip = _fric_slip_rear
 	$Wheel3DRR.wheel_friction_slip = _fric_slip_rear
 
-## Apply Vehicle Brake toward
-func change_vehicle_brake(brake_force, delta) -> void:
-	brake = move_toward(brake, brake_force, brake_control_speed * delta)
+## Apply Vehicle Brake lerp
+func change_vehicle_brake(_vehicle_brake_force, _delta) -> void:
+	brake = lerp(brake, _vehicle_brake_force, _delta)
 
-## Apply Wheels Brake toward
+## Apply Wheels Brake lerp
 ## Using HandBrake
-func change_wheel_brake(brake_force, front_brake_power, \
-	rear_brake_power) -> void:
-	$Wheel3DFL.brake = brake_force * front_brake_power
-	$Wheel3DFR.brake = brake_force * front_brake_power
+func change_wheel_brake(_brake_force, _front_brake_power, \
+	_rear_brake_power, _delta) -> void:
+	$Wheel3DFL.brake = _brake_force * _front_brake_power
+	$Wheel3DFR.brake = _brake_force * _front_brake_power
 ## Using HandBrake at any time don't remove acceleration
 	if engine_state != States.ACCELERATING:
-		$Wheel3DRL.brake = brake_force * rear_brake_power
-		$Wheel3DRR.brake = brake_force * rear_brake_power
+		$Wheel3DRL.brake = _brake_force * _rear_brake_power
+		$Wheel3DRR.brake = _brake_force * _rear_brake_power
 
-func engine_match_power(input_speed:float, match_curve:Curve) -> float:
-		var normalized_speed = input_speed / MAX_SPEED
-		var match_power = match_curve.sample_baked(normalized_speed) \
-			* MAX_POWER
+
+func engine_match_power(_acceleration_power, _scale_curve:Curve, _delta) -> float:
+		var normalized_speed=linear_velocity.length()/MAX_SPEED
+		var match_power = _scale_curve.sample_baked(normalized_speed)*MAX_POWER
 		return match_power
 		
-func set_engine_index(speed_index) -> void:
-	engine_index = speed_index
+func set_engine_index(_speed_index) -> void:
+	engine_index = _speed_index
 
 func rotate_speed_pt(speedf: float) -> void:
 	var speedr = 0.0
@@ -397,7 +379,7 @@ func rotate_tacho_ps(tachof: float, delta) -> void:
 		(max_rad - min_rad) / max_tac
 		) * tachof
 	Analometer.rotate_tacho_ps(
-		move_toward(tach_ps, tachor, delta))
+		lerp(tach_ps, tachor, PI*delta))
 	
 func rotate_speed_ps(deltavf: float, delta) -> void:
 	var deltavr = 0.0
@@ -409,7 +391,7 @@ func rotate_speed_ps(deltavf: float, delta) -> void:
 		(max_rad - min_rad) / max_dev
 		) * deltavf
 	Analometer.rotate_speed_ps(
-		move_toward(speed_ps, deltavr, delta))
+		lerp(speed_ps, deltavr, delta))
 
 func get_delta_velocity(delta) -> float:
 	## Remember last velocity
