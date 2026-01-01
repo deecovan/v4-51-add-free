@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://edhdlt8oenrd"]
 
-[ext_resource type="Script" uid="uid://buhmatk8mfnss" path="res://Scenes/Cars/Horsa/Scripts/Horsa1000.gd" id="1_hkd7v"]
+[ext_resource type="Script" uid="uid://ce8lpbb36xm5v" path="res://Scenes/Cars/Chero/Scripts/Chero1000.gd" id="1_smxuy"]
 [ext_resource type="Curve" uid="uid://c6y7eiume2e45" path="res://Scenes/Cars/Chero/Chero_curve_1000.tres" id="2_aj31l"]
 [ext_resource type="AudioStream" uid="uid://d32nahn6656wp" path="res://Sounds/Cars/eng run start.wav" id="3_vr8cc"]
 [ext_resource type="AudioStream" uid="uid://d0a2tqcfnno11" path="res://Sounds/Cars/eng run idle.wav" id="4_v16e4"]
@@ -22,7 +22,7 @@ size = Vector3(2.36255, 1, 5.60632)
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 center_of_mass_mode = 1
 continuous_cd = true
-script = ExtResource("1_hkd7v")
+script = ExtResource("1_smxuy")
 steer_control_speed = 0.8
 scale_curve = ExtResource("2_aj31l")
 

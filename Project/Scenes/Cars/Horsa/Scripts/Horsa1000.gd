@@ -189,9 +189,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reverse"):
 		REVERSE = !REVERSE
 	
-	## @NEW To Use speed steering value
+	## To Use speed steering value
 	var m_MAX_STEER = MAX_STEER
-	if SPEED_STEER:
+	if SPEED_STEER and not Input.is_action_pressed("alt_coltrol"):
 		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
 						* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, SPEED_STEER_MAX)
@@ -203,7 +203,8 @@ func _physics_process(delta: float) -> void:
 		or Input.is_action_pressed("steer_left"):
 			steering = move_toward(steering, _steering, 
 			steer_control_speed * delta)
-	else: 
+	## @NEW Using Alt Control
+	elif not Input.is_action_pressed("alt_coltrol"): 
 		## Move linearly
 		steering = move_toward(steering, 0.0 , 
 			steer_control_speed * delta)
@@ -257,8 +258,8 @@ func _physics_process(delta: float) -> void:
 		## Apply REVERSE
 		
 	if engine_state == States.BRAKING:
-		## Slow engine
-		engine_force = move_toward(engine_force, 0.0, control_speed * delta)
+		## Slow engine USING LERP!
+		engine_force = lerp(engine_force, 0.0, control_speed * delta)
 		## Braking with Vehicle3D
 		if not use_wheel_brake:
 			var set_vehicle_brake_force = - (
