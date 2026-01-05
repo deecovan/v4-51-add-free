@@ -1,6 +1,5 @@
 extends VehicleBody3D
 
-## Copied from Horsa1000
 var speedtometer_label
 var REVERSE =  false
 
@@ -49,13 +48,13 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = PI/6
+@export var MAX_STEER  = 0.45
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Coefficient
 @export var SPEED_STEER_CO = 0.125
 ## Maximum Steering speed
-@export var steer_control_speed = 0.5
+@export var steer_control_speed = 0.45
 
 @export_category("Braking Values")
 @export var use_wheel_brake = true

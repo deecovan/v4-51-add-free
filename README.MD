@@ -1,13 +1,16 @@
 # v4-51-add-free GitHub repo 
 
+## @NEXT Add Car loader on Spa Short
+
 ## 26.1.5 Improve Spa Long and Chero 6600
 - Update physics
   - Remove squared linear friction
   - lower Steering higher Coasting
-* Try to use blocks of the track
-  * Different LODs 
+- Improve Spa Short
+  - Use chanks
+  - Apply All 6600's cars 
 
-## 26.1.1 HNY
+## 26.1.1 bad day
 - Add Alt-Control 
 - Modify controls 
 - Drop engine on braking starts

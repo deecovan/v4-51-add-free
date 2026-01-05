@@ -1,0 +1,69 @@
+[gd_scene load_steps=18 format=3 uid="uid://b8krmsxdcaghl"]
+
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_t37xt"]
+[ext_resource type="PackedScene" uid="uid://c8b57snbapmxq" path="res://Scenes/Sky/Sky.tscn" id="2_oqbtw"]
+[ext_resource type="PackedScene" uid="uid://wkqcmughs6yl" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.01.glb" id="3_446mc"]
+[ext_resource type="PackedScene" uid="uid://c0xtrvcc7pptc" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.02.glb" id="4_0owmp"]
+[ext_resource type="PackedScene" uid="uid://compddt4yl4gh" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.03.glb" id="5_jprp5"]
+[ext_resource type="PackedScene" uid="uid://co3poea6i0bqa" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.04.glb" id="6_0e1ij"]
+[ext_resource type="PackedScene" uid="uid://c2mpwsb465wud" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.05.glb" id="7_woo7i"]
+[ext_resource type="PackedScene" uid="uid://bykygnm6plcjc" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.06.glb" id="8_olyx8"]
+[ext_resource type="PackedScene" uid="uid://bdh368h1da8aj" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.07.glb" id="9_3kkuy"]
+[ext_resource type="PackedScene" uid="uid://ds6t765ach71l" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.08.glb" id="10_chg45"]
+[ext_resource type="PackedScene" uid="uid://b8ooobt4rd1cm" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.09.glb" id="11_jf8p5"]
+[ext_resource type="PackedScene" uid="uid://4c75xgmqsu4j" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.10.glb" id="12_fhcvq"]
+[ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="13_d4m5c"]
+[ext_resource type="PackedScene" uid="uid://jtk8448n7xs6" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.11.glb" id="13_oqbtw"]
+[ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="14_e483r"]
+[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="15_c7p8r"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="16_dry0k"]
+
+[node name="MainSpaShortChunks" type="Node3D"]
+script = ExtResource("1_t37xt")
+
+[node name="Sky" parent="." instance=ExtResource("2_oqbtw")]
+
+[node name="SpaShortChunks" type="Node3D" parent="."]
+
+[node name="Spa_Short_01" parent="SpaShortChunks" instance=ExtResource("3_446mc")]
+
+[node name="Spa_Short_02" parent="SpaShortChunks" instance=ExtResource("4_0owmp")]
+
+[node name="Spa_Short_03" parent="SpaShortChunks" instance=ExtResource("5_jprp5")]
+
+[node name="Spa_Short_04" parent="SpaShortChunks" instance=ExtResource("6_0e1ij")]
+
+[node name="Spa_Short_05" parent="SpaShortChunks" instance=ExtResource("7_woo7i")]
+
+[node name="Spa_Short_06" parent="SpaShortChunks" instance=ExtResource("8_olyx8")]
+
+[node name="Spa_Short_07" parent="SpaShortChunks" instance=ExtResource("9_3kkuy")]
+
+[node name="Spa_Short_08" parent="SpaShortChunks" instance=ExtResource("10_chg45")]
+
+[node name="Spa_Short_09" parent="SpaShortChunks" instance=ExtResource("11_jf8p5")]
+
+[node name="Spa_Short_10" parent="SpaShortChunks" instance=ExtResource("12_fhcvq")]
+
+[node name="Spa_Short_11" parent="SpaShortChunks" instance=ExtResource("13_oqbtw")]
+
+[node name="Sand 1km Landlow A" parent="." instance=ExtResource("13_d4m5c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -388.094, 0, -5.9899)
+
+[node name="Sand 1km Landlow A2" parent="." instance=ExtResource("13_d4m5c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 309.964, 0, -5.9899)
+
+[node name="Sand 1km Landlow A3" parent="." instance=ExtResource("13_d4m5c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1008.68, 0, -5.9899)
+
+[node name="Spa_Flat_Objects" type="Node3D" parent="."]
+transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 579.474, -0.249939, -118.889)
+
+[node name="sign-highway-wide" parent="Spa_Flat_Objects" instance=ExtResource("14_e483r")]
+transform = Transform3D(18.27, 0, 0, 0, 18.27, 0, 0, 0, 18.27, 0, 0, 0)
+
+[node name="CameraGimbal" parent="." instance=ExtResource("16_dry0k")]
+transform = Transform3D(0.340741, 0, -0.940157, 0, 1, 0, 0.940157, 0, 0.340741, 705.17, 2, -174.73)
+
+[node name="Vehicle" parent="." instance=ExtResource("15_c7p8r")]
+transform = Transform3D(0.428099, 0, -0.903732, 0, 1, 0, 0.903732, 0, 0.428099, 702, 1.3, -173)
