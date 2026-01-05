@@ -61,7 +61,7 @@ func _input(event):
 	zoom = clamp(zoom, zoom_min, zoom_max)
 	arm_spring_length = clamp(
 		arm_spring_length, arm_spring_length_min, arm_spring_length_max)
-	camera.rotation.x = ( - zoom_max + zoom_min + zoom) / 10
+	camera.rotation.x = ( - zoom_max + zoom_min + zoom) / 12
 		
 func _process(delta):
 	var tween_fov = get_tree().create_tween()
