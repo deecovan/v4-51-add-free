@@ -1,6 +1,6 @@
 # v4-51-add-free GitHub repo 
 
-## @NEXT Add Car loader on Spa Short
+## Add Car loader on Spa Short
 
 ## 26.1.5 Improve Spa Long and Chero 6600
 - Update physics
