@@ -1,5 +1,12 @@
 # v4-51-add-free GitHub repo 
 
+## 26.1.5 Improve Spa Long and Chero 6600
+- Update physics
+  - Remove squared linear friction
+  - lower Steering higher Coasting
+* Try to use blocks of the track
+  * Different LODs 
+
 ## 26.1.1 HNY
 - Add Alt-Control 
 - Modify controls 

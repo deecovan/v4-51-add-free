@@ -25,7 +25,7 @@ var car_absorb = false
 
 ## Additional Forces
 @export_category("Body Aero")
-## Reset standart values
+## Reset standart Drag and Friction values
 var car_linear_damp = 0.0
 var car_angular_damp = 0.0
 ## Setup AirDrag
@@ -35,9 +35,11 @@ var car_angular_damp = 0.0
 @export var bodyDrag = 1.2
 @export var bodyAeroDyn = 0.33
 ## Add Linear Friction
+## Constant and Linear friction
 @export var bodyLinearFricConst = 1250.0
 @export var bodyLinearFricLin = 15.0
-@export var bodyLinearFricSq = 0.05
+## Squared friction ## 0.0 Because AroDrag used
+@export var bodyLinearFricSq = 0.0 ## 0.05
 
 @export_category("Total Coltrol Speed")
 ## Control's move_toward speed
@@ -50,10 +52,10 @@ var car_angular_damp = 0.0
 @export var MAX_STEER  = PI/6
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
-## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.1
+## Speed Steer Coefficient
+@export var SPEED_STEER_CO = 0.125
 ## Maximum Steering speed
-@export var steer_control_speed = 0.6
+@export var steer_control_speed = 0.5
 
 @export_category("Braking Values")
 @export var use_wheel_brake = true
@@ -75,9 +77,9 @@ var car_angular_damp = 0.0
 
 @export_category("Coasting")
 ## Coasting starting value
-@export var coast_init = 0.25
+@export var coast_init = 0.3
 ## Coasting loward speed
-@export var engine_coast = 0.25
+@export var engine_coast = 0.15
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
@@ -122,16 +124,16 @@ var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
 
 func _ready() -> void:
-	
 	UI = $UI
 	Analometer = UI.get_analometer()
+	
 	## Setup Vehicle3D values
 	mass = vehicle_mass
 	gravity_scale = grav_scale
 	linear_damp = car_linear_damp
 	angular_damp = car_angular_damp
 	
-	## Setup Wheel2Ds Front and Rear values
+	## Setup Wheel3Ds Front and Rear values
 	## Grip
 	$Wheel3DFL.wheel_friction_slip = fric_slip_front
 	$Wheel3DFR.wheel_friction_slip = fric_slip_front
@@ -175,7 +177,6 @@ func _ready() -> void:
 	## Backward for understeer but less rear slip
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 	center_of_mass = CENTER_OF_MASS
-	
 	
 	## Init PFG screen
 	for i in 100:
@@ -334,11 +335,12 @@ func _physics_process(delta: float) -> void:
 	#UI.logs_add_text("\n engine brake.: %6.2f" % brake)
 	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
 	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
-	UI.logs_add_text("\n engine_force.: %6.2f" % engine_force)
-	UI.logs_add_text("\n Linear Veloc.: %6.2f" % linear_velocity.length())
-	UI.logs_add_text("\n Spd.Max Steer: %6.2f" % m_MAX_STEER)
-	UI.logs_add_text("\n aeroDrag_appl: %6.2f" % aeroDrag_force_applied.length())
-	UI.logs_add_text("\n aeroDyn_appl.: %6.2f" % aeroDyn_force_applied.length())
+	UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
+	UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
+	UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
+	UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
+	UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
 	
 	## Car fell off course!
 	if position.y < -50:
