@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://0gwo1xh55ecv"]
+
+[ext_resource type="Texture2D" uid="uid://b3yp2o4yvdwny" path="res://Materials/Asphalt_NormalMap.tres" id="1_vwkv8"]
+
+[resource]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.04
+metallic_specular = 0.08
+roughness = 0.5
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("1_vwkv8")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true

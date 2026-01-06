@@ -1,0 +1,8 @@
+[gd_resource type="BoxMesh" load_steps=2 format=3 uid="uid://sk8l6ghf001b"]
+
+[ext_resource type="Material" uid="uid://d2t3sfe6er58b" path="res://Materials/Beetoon_Material.tres" id="1_v30ub"]
+
+[resource]
+lightmap_size_hint = Vector2i(104, 57)
+material = ExtResource("1_v30ub")
+size = Vector3(8, 0.19, 8)
