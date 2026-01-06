@@ -6,9 +6,9 @@
 2. Test Cars 
   - Normalize but leave differences
   - All cars near 74.00 medium
-  - Test Cars beat 74.00
+  - Tested Cars beat 74.00
 - Add Car Loader
-  - Modify Tab to use sectors
+- Modify Tab to use sectors
 
 ## 26.1.5 Improve Spa Long and Chero 6600
 - Update physics

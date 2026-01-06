@@ -19,8 +19,8 @@ func _ready() -> void:
 	SetLastTime(0.0)
 	SetBestTime(0.0)
 	## Spa Short on keyboard FANTA 74.08
-	## Spa Short on keyboard HORSA  74.80
-	## Spa Short on keyboard CHERO  73.80
+	## Spa Short on keyboard HORSA 74.80
+	## Spa Short on keyboard CHERO 74.30
 	SetBeatTime(74.00)
 	
 func SetCurrTime(t: float) -> void:

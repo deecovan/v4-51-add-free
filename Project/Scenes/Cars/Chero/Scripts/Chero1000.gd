@@ -19,7 +19,7 @@ var car_absorb = false
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,-0.05,0.5)
+@export var CENTER_OF_MASS = Vector3(0.0,-0.03,0.5)
 @export var CENTER_OF_AERO = Vector3(0.0,0.3,0.4)
 
 ## Additional Forces
@@ -33,11 +33,11 @@ var car_angular_damp = 0.0
 @export var bodySquareFill = 0.7
 @export var bodyDrag = 1.1
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 0.55
+@export var bodyAeroDyn = 0.77
 
 ## Add Linear Friction
 ## Constant and Linear friction
-@export var bodyLinearFricConst = 1250.0
+@export var bodyLinearFricConst = 1150.0
 @export var bodyLinearFricLin = 10.0
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
@@ -50,11 +50,11 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.45
+@export var MAX_STEER  = 0.35
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Coefficient
-@export var SPEED_STEER_CO = 0.115
+@export var SPEED_STEER_CO = 0.15
 ## Maximum Steering speed
 @export var steer_control_speed = 0.45
 
@@ -68,9 +68,9 @@ var car_angular_damp = 0.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.6
+@export var front_brake_force = 1.65
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.6
+@export var rear_brake_force = 1.45
 ## Brake toward speed
 @export var pedal_brake_speed = 1.6
 ## hand_brake_force multiplier
@@ -78,9 +78,9 @@ var car_angular_damp = 0.0
 
 @export_category("Coasting")
 ## Coasting starting value
-@export var coast_init = 0.3
+@export var coast_init = 0.33
 ## Coasting lerp speed
-@export var engine_coast = 0.15
+@export var engine_coast = 0.11
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
@@ -89,12 +89,12 @@ var car_angular_damp = 0.0
 ## Rear wheels friction slip ratio ## 0.65
 @export var fric_slip_rear = 1.7
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.6
+@export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
 @export var damp_compr_front = 5.0
 @export var damp_relax_front = 6.0
 @export var damp_compr_rear = 3.5
-@export var damp_relax_rear = 3.4
+@export var damp_relax_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.11
 @export var rest_rear = 0.12
