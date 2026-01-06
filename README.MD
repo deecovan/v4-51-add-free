@@ -2,7 +2,8 @@
 
 ## Add Car loader on Spa Short
 1. +Add Tab and TabArea on Spa Short
-2. Test Cars
+2. Test Cars 
+  - Normalize but leave differences
 - Add Car Loader
   - Modify Tab to use sectors
 
