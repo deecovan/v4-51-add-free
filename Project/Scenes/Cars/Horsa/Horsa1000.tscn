@@ -69,22 +69,22 @@ script = ExtResource("6_orkkl")
 script = ExtResource("7_mgf7a")
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("8_p8y6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, -0.181873, 1.70831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, -0.18, 1.72)
 use_as_steering = true
 wheel_roll_influence = 0.1
 
 [node name="Wheel3DFR" parent="." instance=ExtResource("9_ws0kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, -0.181873, 1.70831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, -0.18, 1.72)
 use_as_steering = true
 wheel_roll_influence = 0.1
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("10_pe4wk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, -0.154969, -1.37025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, -0.1388, -1.37025)
 use_as_traction = true
 wheel_roll_influence = 0.1
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("11_cbk8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, -0.154969, -1.37025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, -0.1388, -1.37025)
 use_as_traction = true
 wheel_roll_influence = 0.1
 

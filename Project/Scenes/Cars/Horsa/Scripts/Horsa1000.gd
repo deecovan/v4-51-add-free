@@ -22,6 +22,32 @@ var car_absorb = false
 @export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.66)
 @export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.44)
 
+## Additional Forces
+@export_category("Body Aero")
+## Reset standart values
+var car_linear_damp = 0.0
+var car_angular_damp = 0.0
+## Setup AirDrag
+@export var airDensity = 1.1
+@export var bodySquare = 2.0
+@export var bodySquareFill = 0.8
+@export var bodyDrag = 1.35
+## Setup AirDynamic Force
+@export var bodyAeroDyn = 0.44
+
+## Add Linear Friction
+## Constant and Linear friction
+@export var bodyLinearFricConst = 1050.0
+@export var bodyLinearFricLin = 16.0
+## Squared friction ## 0.0 Because AroDrag used
+@export var bodyLinearFricSq = 0.0 ## 0.05
+
+@export_category("Control's move speed")
+## Control's move_toward speed
+# Use 0..10 for keyboard or controller
+# Use 100 for racing wheels
+@export var control_speed = 3.5
+
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
 @export var MAX_STEER  = 0.45
@@ -32,32 +58,7 @@ var car_absorb = false
 ## Maximum Steering speed
 @export var steer_control_speed = 0.66
 
-@export_category("Total Coltrol Speed")
-## Control's move_toward speed
-# Use 0..10 for keyboard or controller
-# Use 100 for racing wheels
-@export var control_speed = 3.5
-
-@export_category("Body Aero")
-## Reset standart values
-var car_linear_damp = 0.0
-var car_angular_damp = 0.0
-## Setup AirDrag
-@export var airDensity = 1.1
-@export var bodySquare = 2.0
-@export var bodySquareFill=0.77
-@export var bodyDrag = 1.2
-## Setup AirDynamic Force
-@export var bodyAeroDyn = 0.44
-
-## Add Linear Friction
-## Constant and Linear friction
-@export var bodyLinearFricConst = 950.0
-@export var bodyLinearFricLin = 13.0
-## Squared friction ## 0.0 Because AroDrag used
-@export var bodyLinearFricSq = 0.0 ## 0.05
-
-@export_category("Braking")
+@export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
 @export var brake_control_speed = 0.35
@@ -69,8 +70,8 @@ var car_angular_damp = 0.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 0.8
-## Brake lerp speed
+@export var rear_brake_force = 1.0
+## Brake toward speed
 @export var pedal_brake_speed = 1.8
 ## hand_brake_force multiplier
 @export var hand_brake_force = 2.0
@@ -89,16 +90,13 @@ var car_angular_damp = 0.0
 @export var fric_slip_rear = 1.7
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.8
-## Front wheels damper relaxation ## 0.88
+## Relax must higher than Compression 
+@export var damp_compr_front = 4.0
 @export var damp_relax_front = 5.0
-## Rear wheels damper relaxation ## 0.88
-@export var damp_relax_rear = 4.0
-## Front wheels damper compression ## 0.8
-@export var damp_compr_front = 6.0
-## Rear ## 0.7 0.77
-@export var damp_compr_rear = 5.0
+@export var damp_compr_rear = 3.0
+@export var damp_relax_rear = 3.5
 ## Rest, Travel, Stiff, MaxV
-@export var rest_front = 0.11
+@export var rest_front = 0.10
 @export var rest_rear = 0.12
 @export var travel_front = 0.12
 @export var travel_rear = 0.16

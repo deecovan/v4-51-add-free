@@ -29,20 +29,20 @@ var car_linear_damp = 0.0
 var car_angular_damp = 0.0
 ## Setup AirDrag
 @export var airDensity = 1.1
-@export var bodySquare = 2.2
-@export var bodySquareFill=0.77
-@export var bodyDrag = 1.1
+@export var bodySquare = 2.0
+@export var bodySquareFill = 0.75
+@export var bodyDrag = 1.2
 ## Setup AirDynamic Force
 @export var bodyAeroDyn = 0.55
 
 ## Add Linear Friction
 ## Constant and Linear friction
 @export var bodyLinearFricConst = 1250.0
-@export var bodyLinearFricLin = 12.5
+@export var bodyLinearFricLin = 10.0
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
 
-@export_category("Total Coltrol Speed")
+@export_category("Control's move speed")
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
@@ -61,7 +61,7 @@ var car_angular_damp = 0.0
 @export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.6
+@export var brake_control_speed = 0.4
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 100.0
@@ -79,7 +79,7 @@ var car_angular_damp = 0.0
 @export_category("Coasting")
 ## Coasting starting value
 @export var coast_init = 0.3
-## Coasting loward speed
+## Coasting lerp speed
 @export var engine_coast = 0.15
 
 @export_category("Suspension")
@@ -101,8 +101,8 @@ var car_angular_damp = 0.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.11
 @export var rest_rear = 0.12
-@export var travel_front = 0.14
-@export var travel_rear = 0.15
+@export var travel_front = 0.12
+@export var travel_rear = 0.14
 @export var stiff_front = 90
 @export var stiff_rear = 60
 @export var max_force_front = 18000
