@@ -6,6 +6,7 @@
 [resource]
 width = 1024
 height = 1024
-noise = ExtResource("2_2q8kb")
-color_ramp = ExtResource("1_ww06b")
 as_normal_map = true
+bump_strength = 7.0
+color_ramp = ExtResource("1_ww06b")
+noise = ExtResource("2_2q8kb")

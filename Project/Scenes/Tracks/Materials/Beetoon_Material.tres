@@ -4,8 +4,8 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fsuj0"]
 noise_type = 3
-frequency = 0.1275
-fractal_lacunarity = 0.915
+frequency = 0.0895
+fractal_lacunarity = 1.565
 fractal_gain = 0.41
 fractal_weighted_strength = 0.18
 
@@ -15,13 +15,12 @@ height = 1024
 noise = SubResource("FastNoiseLite_fsuj0")
 
 [resource]
-albedo_color = Color(0.5636259, 0.56362534, 0.56362563, 1)
+albedo_color = Color(0.563626, 0.563625, 0.563626, 1)
 albedo_texture = SubResource("NoiseTexture2D_7barq")
-metallic_specular = 0.0
-roughness = 0.25
-roughness_texture_channel = 4
+roughness = 0.45
 normal_enabled = true
 normal_scale = 3.0
 normal_texture = ExtResource("1_vwkvb")
-uv1_scale = Vector3(0.37, 0.37, 0.37)
+uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
+uv1_world_triplanar = true
