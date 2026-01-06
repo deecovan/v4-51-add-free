@@ -5,8 +5,8 @@
   - Use Collision Layer 2!
 2. Test Cars 
   - Normalize but leave differences
-  - All cars near 72.00 medium
-  - start Test Cars beat 72.00
+  - All cars near 74.00 medium
+  - Test Cars beat 74.00
 - Add Car Loader
   - Modify Tab to use sectors
 

@@ -62,14 +62,14 @@ var car_angular_damp = 0.0
 @export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.45
+@export var brake_control_speed = 0.55
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 100.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.2
+@export var front_brake_force = 1.4
 ## wheel_brake_force multiplier
 @export var rear_brake_force = 1.6
 ## Brake toward speed
