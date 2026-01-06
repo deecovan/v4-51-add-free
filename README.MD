@@ -1,7 +1,8 @@
 # v4-51-add-free GitHub repo 
 
 ## Add Car loader on Spa Short
-1. +Add Tab and TabArea on Spa Short
+1. Add Tab and TabArea on Spa Short
+  - Use Collision Layer 2!
 2. Test Cars 
   - Normalize but leave differences
 - Add Car Loader
