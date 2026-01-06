@@ -17,8 +17,11 @@ func _ready() -> void:
 	BeatTime = $BeatTime
 	SetCurrTime(0.0)
 	SetLastTime(0.0)
-	SetBestTime(20.55)
-	SetBeatTime(15.46)
+	SetBestTime(0.0)
+	## Spa Short on keyboard HORSA 80.26
+	## Spa Short on keyboard CHERO 79.56
+	## Spa Short on keyboard FANTA 79.56
+	SetBeatTime(79.56)
 	
 func SetCurrTime(t: float) -> void:
 	CurrTimeValue = t

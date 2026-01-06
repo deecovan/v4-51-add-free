@@ -22,58 +22,58 @@ var car_absorb = false
 @export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.66)
 @export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.44)
 
-## Merge ZC's AeroDrag force
+@export_category("Steering Values")
+## Maximum Steering angle in Radians
+@export var MAX_STEER  = 0.45
+## @NEW To Use speed steering value
+@export var SPEED_STEER = true
+## Speed Steer Koefficient
+@export var SPEED_STEER_CO = 0.15
+## Maximum Steering speed
+@export var steer_control_speed = 0.66
+
+@export_category("Total Coltrol Speed")
+## Control's move_toward speed
+# Use 0..10 for keyboard or controller
+# Use 100 for racing wheels
+@export var control_speed = 3.5
+
 @export_category("Body Aero")
 ## Reset standart values
 var car_linear_damp = 0.0
 var car_angular_damp = 0.0
 ## Setup AirDrag
 @export var airDensity = 1.1
-@export var bodySquare = 2.2
+@export var bodySquare = 2.0
 @export var bodySquareFill=0.77
 @export var bodyDrag = 1.2
-@export var bodyAeroDyn = 0.22
+## Setup AirDynamic Force
+@export var bodyAeroDyn = 0.44
 
 ## Add Linear Friction
 ## Constant and Linear friction
-@export var bodyLinearFricConst = 1250.0
-@export var bodyLinearFricLin = 15.0
+@export var bodyLinearFricConst = 950.0
+@export var bodyLinearFricLin = 13.0
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
 
-@export_category("Total Coltrol Speed")
-## Control's move_toward speed
-# Use 0..10 for keyboard or controller
-# Use 100 for racing wheels
-@export var control_speed = 3.0
-
-@export_category("Steering Values")
-## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.35
-## @NEW To Use speed steering value
-@export var SPEED_STEER = true
-## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.15
-## Maximum Steering speed
-@export var steer_control_speed = 0.6
-
-@export_category("Braking Values")
+@export_category("Braking")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.4
+@export var brake_control_speed = 0.35
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 100.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.2
+@export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.2
+@export var rear_brake_force = 0.8
 ## Brake lerp speed
-@export var pedal_brake_speed = 1.6
+@export var pedal_brake_speed = 1.8
 ## hand_brake_force multiplier
-@export var hand_brake_force = 1.8
+@export var hand_brake_force = 2.0
 
 @export_category("Coasting")
 ## Coasting starting value
@@ -86,11 +86,11 @@ var car_angular_damp = 0.0
 ## Front wheels friction slip ratio ## 0.65
 @export var fric_slip_front = 1.6
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.6
+@export var fric_slip_rear = 1.7
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.6
+@export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 3.5
+@export var damp_relax_front = 5.0
 ## Rear wheels damper relaxation ## 0.88
 @export var damp_relax_rear = 4.0
 ## Front wheels damper compression ## 0.8
@@ -100,12 +100,12 @@ var car_angular_damp = 0.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.11
 @export var rest_rear = 0.12
-@export var travel_front = 0.14
-@export var travel_rear = 0.15
-@export var stiff_front = 90
-@export var stiff_rear = 60
+@export var travel_front = 0.12
+@export var travel_rear = 0.16
+@export var stiff_front = 120
+@export var stiff_rear = 80
 @export var max_force_front = 18000
-@export var max_force_rear = 9000
+@export var max_force_rear = 12000
 
 @export var scale_curve: Curve
 var scale_array : Array

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdldvmd0vmdxy"]
+
+[ext_resource type="PackedScene" uid="uid://126yicuwavhn" path="res://Scenes/Utils/CupTab.tscn" id="1_4nvlt"]
+[ext_resource type="Script" uid="uid://bc1qofxs23th0" path="res://Scenes/Utils/Scripts/TabAreaScript.gd" id="2_kfwiy"]
+[ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="3_6iuyq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_785u6"]
+size = Vector3(1, 7, 14)
+
+[node name="Spa_Flat_Objects" type="Node3D"]
+transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 0, 0, 0)
+
+[node name="sign-highway-wide" parent="." instance=ExtResource("3_6iuyq")]
+transform = Transform3D(-18, 0, 3.33786e-06, 0, 18, 0, -3.33786e-06, 0, -18, 100, 0, 3.8147e-06)
+
+[node name="Tab" parent="." instance=ExtResource("1_4nvlt")]
+transform = Transform3D(-1.49999, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.49999, 0, 8, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 50, 0, 0)
+script = ExtResource("2_kfwiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 50, 3, 0)
+shape = SubResource("BoxShape3D_785u6")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

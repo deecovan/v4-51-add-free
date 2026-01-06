@@ -1,8 +1,10 @@
 # v4-51-add-free GitHub repo 
 
 ## Add Car loader on Spa Short
-- Add Tab and TabArea on Spa Short
-
+1. +Add Tab and TabArea on Spa Short
+2. Test Cars
+- Add Car Loader
+  - Modify Tab to use sectors
 
 ## 26.1.5 Improve Spa Long and Chero 6600
 - Update physics

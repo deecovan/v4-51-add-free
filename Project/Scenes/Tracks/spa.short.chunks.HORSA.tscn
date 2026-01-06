@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxb0nf1pvtn2r"]
+[gd_scene load_steps=18 format=3 uid="uid://dxb0nf1pvtn2r"]
 
 [ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_xq4th"]
 [ext_resource type="PackedScene" uid="uid://c8b57snbapmxq" path="res://Scenes/Sky/Sky.tscn" id="2_p0qyh"]
@@ -14,14 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://4c75xgmqsu4j" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.10.glb" id="12_l1hqi"]
 [ext_resource type="PackedScene" uid="uid://jtk8448n7xs6" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.11.glb" id="13_hvijc"]
 [ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="14_rrr1o"]
-[ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="15_24p2g"]
-[ext_resource type="PackedScene" uid="uid://126yicuwavhn" path="res://Scenes/Utils/CupTab.tscn" id="16_p0qyh"]
+[ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="15_xq4th"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="16_v1bfn"]
-[ext_resource type="Script" uid="uid://bc1qofxs23th0" path="res://Scenes/Utils/Scripts/TabAreaScript.gd" id="17_irg4a"]
 [ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="17_xt8u6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_irg4a"]
-size = Vector3(0, 4, 12)
 
 [node name="MainSpaShortChunks" type="Node3D"]
 script = ExtResource("1_xq4th")
@@ -61,26 +56,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 309.96
 [node name="Sand 1km Landlow A3" parent="." instance=ExtResource("14_rrr1o")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1008.68, 0, -5.9899)
 
-[node name="Spa_Flat_Objects" type="Node3D" parent="."]
-transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 579.474, -0.249939, -118.889)
-
-[node name="sign-highway-wide" parent="Spa_Flat_Objects" instance=ExtResource("15_24p2g")]
-transform = Transform3D(-18.27, 0, 1.90735e-06, 0, 18.27, 0, -1.90735e-06, 0, -18.27, 0, 0, 0)
-
-[node name="Tab" parent="Spa_Flat_Objects" instance=ExtResource("16_p0qyh")]
-transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, -1.5, 0.626025, 9.08359, -0.0401071)
-
-[node name="Area3D" type="Area3D" parent="Spa_Flat_Objects"]
-script = ExtResource("17_irg4a")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Spa_Flat_Objects/Area3D"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 3, 0)
-shape = SubResource("BoxShape3D_irg4a")
+[node name="Spa_Flat_Objects" parent="." instance=ExtResource("15_xq4th")]
+transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 505.281, 0, -88.5427)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("16_v1bfn")]
 transform = Transform3D(0.340741, 0, -0.940157, 0, 1, 0, 0.940157, 0, 0.340741, 705.17, 2, -174.73)
 
 [node name="Vehicle" parent="." instance=ExtResource("17_xt8u6")]
 transform = Transform3D(0.374121, 0, -0.92738, 0, 1, 0, 0.92738, 0, 0.374121, 701.697, 1.3, -173.606)
-
-[connection signal="body_entered" from="Spa_Flat_Objects/Area3D" to="Spa_Flat_Objects/Area3D" method="_on_body_entered"]

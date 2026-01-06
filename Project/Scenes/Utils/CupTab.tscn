@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://126yicuwavhn"]
 
-[ext_resource type="Script" path="res://Scenes/Utils/Scripts/TabInstanceScript.gd" id="1_4el8h"]
-[ext_resource type="Material" path="res://Scenes/Utils/Materials/Curved_Blue_Metal.tres" id="1_bun3e"]
-[ext_resource type="FontFile" path="res://Themes/Fonts/ShareTechMono.ttf" id="2_bun3e"]
+[ext_resource type="Script" uid="uid://cnneyv5j7tjh" path="res://Scenes/Utils/Scripts/TabInstanceScript.gd" id="1_4el8h"]
+[ext_resource type="Material" uid="uid://cwwrckcmefikt" path="res://Scenes/Utils/Materials/Curved_Blue_Metal.tres" id="1_bun3e"]
+[ext_resource type="FontFile" uid="uid://djfsvawybk7ho" path="res://Themes/Fonts/ShareTechMono.ttf" id="2_bun3e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7nink"]
 material = ExtResource("1_bun3e")

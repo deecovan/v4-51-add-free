@@ -31,12 +31,14 @@ var car_angular_damp = 0.0
 @export var airDensity = 1.1
 @export var bodySquare = 2.2
 @export var bodySquareFill=0.77
-@export var bodyDrag = 1.2
-@export var bodyAeroDyn = 0.33
+@export var bodyDrag = 1.1
+## Setup AirDynamic Force
+@export var bodyAeroDyn = 0.55
+
 ## Add Linear Friction
 ## Constant and Linear friction
 @export var bodyLinearFricConst = 1250.0
-@export var bodyLinearFricLin = 15.0
+@export var bodyLinearFricLin = 12.5
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
 
@@ -44,7 +46,7 @@ var car_angular_damp = 0.0
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
-@export var control_speed = 3.0
+@export var control_speed = 3.5
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
