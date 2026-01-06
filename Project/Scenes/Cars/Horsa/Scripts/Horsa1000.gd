@@ -68,9 +68,9 @@ var car_angular_damp = 0.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.0
+@export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.0
+@export var rear_brake_force = 1.1
 ## Brake toward speed
 @export var pedal_brake_speed = 1.8
 ## hand_brake_force multiplier

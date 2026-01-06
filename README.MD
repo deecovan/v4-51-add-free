@@ -7,6 +7,7 @@
   - Normalize but leave differences
   - All cars near 74.00 medium
   - Tested Cars beat 74.00
+  - Spa Long on keyboard CHERO 3.59.53
 - Add Car Loader
 - Modify Tab to use sectors
 

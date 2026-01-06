@@ -20,7 +20,7 @@ func _ready():
 	max_s = vehicle.MAX_SPEED
 	max_p = vehicle.MAX_POWER
 	snd_start = max_s / 32
-	_pow.volume_db = -32.0
+	_pow.volume_db = -24.0
 	_timer.connect("timeout", on_timer_timeout)
 	_start.play()
 	_timer.start()
