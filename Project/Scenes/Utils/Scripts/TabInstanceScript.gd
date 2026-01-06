@@ -23,7 +23,7 @@ func _ready() -> void:
 	## Spa Short on keyboard HORSA 1.14.80
 	## Spa Long  on keyboard CHERO 3.59.53
 	## Spa Long  on keyboard FANTA 4.00.03
-	## Spa Long  on keyboard HORSA 4.59.55
+	## Spa Long  on keyboard HORSA 3.59.55
 	SetBeatTime(74.00)
 	
 func SetCurrTime(t: float) -> void:
