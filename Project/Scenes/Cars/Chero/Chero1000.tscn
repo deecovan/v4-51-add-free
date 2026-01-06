@@ -20,6 +20,7 @@ size = Vector3(2.36255, 1, 5.60632)
 
 [node name="Vehicle Chero1000" type="VehicleBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 2
 center_of_mass_mode = 1
 continuous_cd = true
 script = ExtResource("1_smxuy")

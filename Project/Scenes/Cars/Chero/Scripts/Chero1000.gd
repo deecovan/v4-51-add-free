@@ -90,14 +90,11 @@ var car_angular_damp = 0.0
 @export var fric_slip_rear = 1.7
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.6
-## Front wheels damper relaxation ## 0.88
-@export var damp_relax_front = 3.5
-## Rear wheels damper relaxation ## 0.88
-@export var damp_relax_rear = 4.0
-## Front wheels damper compression ## 0.8
-@export var damp_compr_front = 6.0
-## Rear ## 0.7 0.77
-@export var damp_compr_rear = 5.0
+## Relax must higher than Compression 
+@export var damp_compr_front = 5.0
+@export var damp_relax_front = 6.0
+@export var damp_compr_rear = 3.5
+@export var damp_relax_rear = 3.4
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.11
 @export var rest_rear = 0.12
