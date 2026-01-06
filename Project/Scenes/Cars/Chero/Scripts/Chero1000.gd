@@ -30,8 +30,8 @@ var car_angular_damp = 0.0
 ## Setup AirDrag
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
-@export var bodySquareFill = 0.75
-@export var bodyDrag = 1.2
+@export var bodySquareFill = 0.7
+@export var bodyDrag = 1.1
 ## Setup AirDynamic Force
 @export var bodyAeroDyn = 0.55
 
@@ -54,7 +54,7 @@ var car_angular_damp = 0.0
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Coefficient
-@export var SPEED_STEER_CO = 0.125
+@export var SPEED_STEER_CO = 0.115
 ## Maximum Steering speed
 @export var steer_control_speed = 0.45
 

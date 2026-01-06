@@ -25,7 +25,7 @@ script = ExtResource("1_xdbfd")
 scale_curve = ExtResource("2_5begk")
 
 [node name="CenterOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31134e-07, 0.2, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.5)
 
 [node name="Start" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45305e-08, 0, 0.852529)
@@ -62,19 +62,19 @@ max_polyphony = 2
 panning_strength = 2.0
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("9_enh5c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.116, 1.508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.0647894, 1.508)
 use_as_steering = true
 
 [node name="Wheel3DFR" parent="." instance=ExtResource("10_ilbif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.116316, 1.508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.0651054, 1.508)
 use_as_steering = true
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("10_ilbif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.116316, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.0651054, -1.5)
 use_as_traction = true
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("9_enh5c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.116316, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.0651054, -1.5)
 use_as_traction = true
 
 [node name="FantaCar6600_export__CARblend" parent="." instance=ExtResource("11_hl24b")]
