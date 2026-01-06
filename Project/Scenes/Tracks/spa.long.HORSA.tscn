@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://dikabude0xa1g"]
+
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_kf2ly"]
+[ext_resource type="PackedScene" uid="uid://bp3yhcpvwb55p" path="res://Scenes/Tracks/GLBs/Spa.Full.Long.export.glb" id="2_kd34i"]
+[ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="3_rjy2t"]
+[ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="4_uwk3k"]
+[ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="5_vy68r"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="6_0kl4m"]
+[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="7_ydji6"]
+
+[node name="MainSpaLong" type="Node3D"]
+script = ExtResource("1_kf2ly")
+
+[node name="Spa_Full_Long_export" parent="." instance=ExtResource("2_kd34i")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_rjy2t")]
+
+[node name="Sand 1km Landlow A" parent="." instance=ExtResource("4_uwk3k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -541.26, 0, -5.9899)
+
+[node name="Sand 1km Landlow A2" parent="." instance=ExtResource("4_uwk3k")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 157.964, 0, -5.9899)
+
+[node name="Sand 1km Landlow A3" parent="." instance=ExtResource("4_uwk3k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 856.906, 0, -5.9899)
+
+[node name="Spa_Flat_Objects" parent="." instance=ExtResource("5_vy68r")]
+transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 505.281, 0, -88.5427)
+
+[node name="CameraGimbal" parent="." instance=ExtResource("6_0kl4m")]
+transform = Transform3D(0.340741, 0, -0.940157, 0, 1, 0, 0.940157, 0, 0.340741, 705.17, 2, -174.73)
+
+[node name="Vehicle" parent="." instance=ExtResource("7_ydji6")]
+transform = Transform3D(0.374121, 0, -0.92738, 0, 1, 0, 0.92738, 0, 0.374121, 701.697, 1.3, -173.606)
