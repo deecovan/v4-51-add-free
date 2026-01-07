@@ -1,14 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c04ue4ip50qe2"]
+[gd_scene load_steps=12 format=3 uid="uid://c04ue4ip50qe2"]
 
 [ext_resource type="Script" uid="uid://c38lgq0jf848d" path="res://Scenes/Scripts/Loader.gd" id="1_tt5f1"]
-[ext_resource type="PackedScene" uid="uid://bq5bgwklic70m" path="res://Scenes/Tracks/square.tscn" id="2_i5bnm"]
+[ext_resource type="PackedScene" uid="uid://boxepc62oxvbj" path="res://Scenes/Tracks/spa.short.c1.tscn" id="2_i5bnm"]
 [ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="2_ttvog"]
 [ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="2_xm1ns"]
-[ext_resource type="PackedScene" uid="uid://cspkf5vp2exlv" path="res://Scenes/Tracks/thor.tscn" id="3_i5bnm"]
-[ext_resource type="PackedScene" uid="uid://ba6oivsxst478" path="res://Scenes/Tracks/GLBs/cup.tscn" id="4_6o4ty"]
 [ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
-[ext_resource type="PackedScene" uid="uid://dqy35w0t0uaa0" path="res://Scenes/Tracks/spa.tscn" id="5_6o4ty"]
-[ext_resource type="PackedScene" uid="uid://soo6h56asawe" path="res://Scenes/Tracks/curve.tscn" id="6_65gdl"]
 [ext_resource type="LabelSettings" uid="uid://b7clkj0x8tukw" path="res://Themes/ui-title.tres" id="8_qcf16"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
@@ -77,11 +73,7 @@ game_menu = NodePath("Canvas/Control/GameMenu")
 drive_menu = NodePath("Canvas/Control/DriveMenu")
 circle_menu = NodePath("Canvas/Control/CircleMenu")
 car_menu = NodePath("Canvas/Control/CarMenu")
-square = ExtResource("2_i5bnm")
-thor = ExtResource("3_i5bnm")
-cup = ExtResource("4_6o4ty")
-spa = ExtResource("5_6o4ty")
-curve = ExtResource("6_65gdl")
+spa = ExtResource("2_i5bnm")
 metadata/_edit_vertical_guides_ = [30.0, 973.0]
 metadata/_edit_horizontal_guides_ = [22.0, 580.0, 123.0]
 
@@ -209,6 +201,7 @@ theme_override_colors/font_color = Color(0.4, 0, 0, 1)
 text = "QUIT"
 
 [node name="DriveMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
+visible = false
 z_index = 299
 layout_mode = 1
 offset_left = 30.0
@@ -262,7 +255,6 @@ text = "HOME
 "
 
 [node name="CircleMenu" type="Panel" parent="Canvas/Control" groups=["menus"]]
-visible = false
 z_index = 298
 layout_mode = 1
 offset_left = 30.0
@@ -296,22 +288,26 @@ horizontal_alignment = 1
 [node name="Thor Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
+disabled = true
 text = "Thor Circus"
 
-[node name="Spa Flat" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+[node name="Spa Short" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-text = "Spa Flat"
+text = "Spa Short
+"
 
 [node name="Curve Roads" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
+disabled = true
 text = "Curve Roads
 "
 
 [node name="Cup Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
+disabled = true
 text = "Cup Circus"
 
 [node name="VSeparator2" type="VSeparator" parent="Canvas/Control/CircleMenu/MenuButtons"]
@@ -508,7 +504,7 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Circle Tracks" to="." method="_on_circle_tracks_pressed"]
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Thor Circus" to="." method="_on_thor_circus_pressed"]
-[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Flat" to="." method="_on_spa_flat_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Short" to="." method="_on_spa_flat_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Curve Roads" to="." method="_on_curve_roads_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Cup Circus" to="." method="_on_cup_circus_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
