@@ -42,6 +42,20 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://cbf42h82p8i17"
 }
+},
+"nodes": {
+"PATH:Plane_001": {
+"generate/physics": true
+},
+"PATH:Plane_002": {
+"generate/physics": true
+},
+"PATH:Plane_003": {
+"generate/physics": true
+},
+"PATH:Track": {
+"generate/physics": true
+}
 }
 }
 gltf/naming_version=1
