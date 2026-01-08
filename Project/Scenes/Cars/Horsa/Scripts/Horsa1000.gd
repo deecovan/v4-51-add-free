@@ -6,7 +6,7 @@ var REVERSE =  false
 ## Next values used for reconfiguring the Vehicle3Ds values
 var car_friction = 0.0
 var car_rough = true
-var car_bounce = 0.5
+var car_bounce = 0.0
 var car_absorb = false
 
 @export_category("Vehicle Constants")
@@ -175,6 +175,8 @@ func _ready() -> void:
 	## Backward for understeer but less rear slip
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 	center_of_mass = CENTER_OF_MASS
+	## Set Continuous Collision Detection
+	continuous_cd = true
 	
 	## Init PFG screen
 	for i in 100:

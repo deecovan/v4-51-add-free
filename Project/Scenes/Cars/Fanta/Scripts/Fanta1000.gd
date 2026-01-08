@@ -6,7 +6,7 @@ var REVERSE =  false
 ## Next values used for reconfiguring the Vehicle3Ds values
 var car_friction = 0.0
 var car_rough = true
-var car_bounce = 0.5
+var car_bounce = 0.0
 var car_absorb = false
 
 @export_category("Vehicle Constants")
@@ -93,17 +93,17 @@ var car_angular_damp = 0.0
 @export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
 ## Relax must higher than Compression 
-@export var damp_compr_front = 5.5
+@export var damp_compr_front = 3.0
 @export var damp_relax_front = 4.0
-@export var damp_compr_rear = 7.5
+@export var damp_compr_rear = 4.5
 @export var damp_relax_rear = 6.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.10
 @export var rest_rear = 0.11
 @export var travel_front = 0.11
 @export var travel_rear = 0.12
-@export var stiff_front = 140
-@export var stiff_rear = 120
+@export var stiff_front = 120
+@export var stiff_rear = 100
 @export var max_force_front = 22000
 @export var max_force_rear = 18000
 
@@ -177,6 +177,8 @@ func _ready() -> void:
 	## Backward for understeer but less rear slip
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 	center_of_mass = CENTER_OF_MASS
+	## Set Continuous Collision Detection
+	continuous_cd = true
 	
 	## Init PFG screen
 	for i in 100:

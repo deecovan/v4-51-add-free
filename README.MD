@@ -1,6 +1,9 @@
 # v4-51-add-free GitHub repo 
 
-## 25/1/6 try Godot_v4.5.1
+## 25.1.7 Start Corner Cuts
+- 30 min each as minimum
+- 0.01 - 0.06 cm works good
+- 2m width works good
 
 ## Add Car loader on Spa Short
 1. Add Tab and TabArea on Spa Short
