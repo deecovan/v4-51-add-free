@@ -57,7 +57,7 @@ var car_angular_damp = 0.0
 ## Speed Steer Koefficient
 @export var SPEED_STEER_CO = 0.1
 ## Maximum Steering speed
-@export var steer_control_speed = 0.99
+@export var steer_control_speed = 1.0
 
 @export_category("Braking Values")
 @export var use_wheel_brake = true
@@ -93,10 +93,10 @@ var car_angular_damp = 0.0
 @export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
 ## Relax must higher than Compression 
-@export var damp_compr_front = 3.0
-@export var damp_relax_front = 4.0
-@export var damp_compr_rear = 4.5
-@export var damp_relax_rear = 6.0
+@export var damp_compr_front = 15.0
+@export var damp_relax_front = 12.0
+@export var damp_compr_rear = 5.0
+@export var damp_relax_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.10
 @export var rest_rear = 0.11
@@ -187,13 +187,21 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	## @NEW using Alternative Control
+	## @TODO add boolean to settings
+	var alt_control = Input.is_action_pressed("alt_control")
+	var steer_control_speed_ = steer_control_speed
+	if alt_control:
+		steer_control_speed_ = steer_control_speed / 2
+	
 	## Reverse in the simpliest way
 	if Input.is_action_just_pressed("reverse"):
 		REVERSE = !REVERSE
 	
-	## To Use speed steering value
+	## To Use speed steering value 
+	## @NEW with Alternative Control
 	var m_MAX_STEER = MAX_STEER
-	if SPEED_STEER and not Input.is_action_pressed("alt_coltrol"):
+	if SPEED_STEER and not alt_control:
 		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
 						* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, MAX_STEER)
@@ -204,12 +212,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("steer_right")\
 		or Input.is_action_pressed("steer_left"):
 			steering = move_toward(steering, _steering, 
-			steer_control_speed * delta)
+			steer_control_speed_ * delta)
 	## @NEW Using Alt Control
-	elif not Input.is_action_pressed("alt_coltrol"): 
+	elif not alt_control: 
 		## Move linearly
 		steering = move_toward(steering, 0.0 , 
-			steer_control_speed * delta)
+			steer_control_speed_ * delta)
 	## Using Brake
 	if Input.is_action_pressed("brake"):
 		if accelerating > 0: accelerating = 0
@@ -235,7 +243,7 @@ func _physics_process(delta: float) -> void:
 			engine_state = States.COASTING
 			engine_force = engine_force * coast_init
 
-	## Process Engine States				
+	## Process Engine States
 	## Accelerating first
 	if engine_state == States.ACCELERATING:
 		acceleration_power = MAX_POWER * accelerating
