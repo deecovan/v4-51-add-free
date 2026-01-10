@@ -205,6 +205,8 @@ func _physics_process(delta: float) -> void:
 		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
 						* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, MAX_STEER)
+	## @NEW add m_MAX steering speed modifier
+	var m_MAX = m_MAX_STEER / MAX_STEER
 	## Use controller's axes, joy or key input
 	var _steering = Input.get_axis("steer_right", "steer_left") * m_MAX_STEER
 	var _accelerating = Input.get_axis("brake", "accelerate")
@@ -212,12 +214,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("steer_right")\
 		or Input.is_action_pressed("steer_left"):
 			steering = move_toward(steering, _steering, 
-			steer_control_speed_ * delta)
+			steer_control_speed_ * delta * m_MAX)
 	## @NEW Using Alt Control
 	elif not alt_control: 
 		## Move linearly
 		steering = move_toward(steering, 0.0 , 
-			steer_control_speed_ * delta)
+			steer_control_speed_ * delta * m_MAX)
 	## Using Brake
 	if Input.is_action_pressed("brake"):
 		if accelerating > 0: accelerating = 0

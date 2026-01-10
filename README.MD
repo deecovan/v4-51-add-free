@@ -1,5 +1,10 @@
 # v4-51-add-free GitHub repo 
 
+## 25.1.10 Improve Gimbal 
+- Remove FOV changes
+- Fix Initial on Minimum
+@TODO change all car collisions to primitives
+
 ## 25.1.7 Start Corner Cuts
 - 30 min each as minimum
 - 0.01 - 0.06 cm works good

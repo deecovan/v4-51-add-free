@@ -3,19 +3,19 @@ extends Node3D
 @export var gimbal_offset := Vector3(0.0,1.0,0.0)
 ## Keyboard controlled Rotation and Zoom
 @export var camera_speed = 1.0
-@export var zoom = 1.0
-@export var zoom_min = 0.75
-@export var zoom_max = 3.0
+@export var zoom = 0.70
+@export var zoom_min = 0.70
+@export var zoom_max = 2.8
 @export var zoom_speed = 0.125
-@export var arm_spring_length = 7.5
-@export var arm_spring_length_min = 7.5
+@export var arm_spring_length = 7.0
+@export var arm_spring_length_min = 7.0
 @export var arm_spring_length_max = 30.0
 @export var arm_spring_length_step = 3.5
-@export var camera_FOV = 32.0
+@export var camera_FOV = 40.0
 ## @NEW Gimbal follow the car position VIA gimbal length
-@export var tween_follow_speed = 24.0
+@export var tween_follow_speed = 7.0
 ## Tween larger values to slow down
-@export var tween_speed = 8.0
+@export var tween_speed = 7.0
 ## Mouse controlled Rotation sensivity and direction
 @export var mouse_sensivity = 5000
 ## -1 normal or +1 inversed
@@ -61,7 +61,6 @@ func _input(event):
 	zoom = clamp(zoom, zoom_min, zoom_max)
 	arm_spring_length = clamp(
 		arm_spring_length, arm_spring_length_min, arm_spring_length_max)
-	camera.rotation.x = ( - zoom_max + zoom_min + zoom) / 12
 		
 func _process(delta):
 	var tween_fov = get_tree().create_tween()
