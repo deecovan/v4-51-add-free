@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="4_wmmwb"]
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="5_caryd"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="6_kfq1x"]
-[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta1000.tscn" id="7_ji1lq"]
+[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta.tscn" id="7_ji1lq"]
 
 [node name="MainSpaLong" type="Node3D"]
 script = ExtResource("1_cjw43")

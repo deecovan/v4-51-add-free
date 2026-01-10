@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c8b57snbapmxq" path="res://Scenes/Sky/Sky.tscn" id="2_iucg2"]
 [ext_resource type="PackedScene" uid="uid://37273qs1d1ub" path="res://Scenes/Tracks/GLBs/Spa.Full.short.1c.export.glb" id="2_o3ev2"]
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="5_o3ev2"]
-[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta1000.tscn" id="7_o3ev2"]
+[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta.tscn" id="7_o3ev2"]
 [ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="14_x26bs"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="16_3x27v"]
 

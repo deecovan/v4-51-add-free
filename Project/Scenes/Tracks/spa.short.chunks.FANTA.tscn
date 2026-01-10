@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://jtk8448n7xs6" path="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.11.glb" id="13_htiiq"]
 [ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="14_447vd"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="16_iw4bp"]
-[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta1000.tscn" id="17_d6t67"]
+[ext_resource type="PackedScene" uid="uid://dhu7in61tkfit" path="res://Scenes/Cars/Fanta/Fanta.tscn" id="17_d6t67"]
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="17_x1x1y"]
 
 [node name="MainSpaShortChunks" type="Node3D"]

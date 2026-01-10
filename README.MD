@@ -1,9 +1,16 @@
 # v4-51-add-free GitHub repo 
 
+@TODO change all car collisions to primitives
+
+## Fixed Fanta for stability
+- Fanta 633, 844 and 1066
+- Changed COM
+- Changed Gimbal speed
+- Changed Steer Return speed
+
 ## 25.1.10 Improve Gimbal 
 - Remove FOV changes
 - Fix Initial on Minimum
-@TODO change all car collisions to primitives
 
 ## 25.1.7 Start Corner Cuts
 - 30 min each as minimum

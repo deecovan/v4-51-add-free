@@ -11,16 +11,16 @@ var car_absorb = false
 
 @export_category("Vehicle Constants")
 ## Values for curve Fanta_Curve_1000
-## Real maximum 240
-@export var vehicle_mass = 1000.0
+## Real maximum 240 @!!!
+@export var vehicle_mass = 600.0
+@export var MAX_POWER = 3300.0
+@export var MAX_SPEED = 60.0
 @export var grav_scale = 1.0
-@export var MAX_SPEED = 100.0
-@export var MAX_POWER = 6600.0
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,0.15,0.5)
-@export var CENTER_OF_AERO = Vector3(0.0,0.5,-0.5)
+@export var CENTER_OF_MASS = Vector3(0.0,0.15,0.3)
+@export var CENTER_OF_AERO = Vector3(0.0,0.5,-0.6)
 
 ## Additional Forces
 @export_category("Body Aero")
@@ -58,22 +58,23 @@ var car_angular_damp = 0.0
 @export var SPEED_STEER_CO = 0.1
 ## Maximum Steering speed
 @export var steer_control_speed = 1.0
+@export var steer_restore_speed = 1.5
 
 @export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.55
+@export var brake_control_speed = 0.5
 ## Vehicle3D body braking force
-## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 100.0
-## Wheel3D braking force and balance
-@export var wheel_brake_force = 100.0
+## Applied with Use Wheel Brake = false @!!!
+@export var vehicle_brake_force = 90.0
+## Wheel3D braking force and balance @!!!
+@export var wheel_brake_force = 90.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.4
+@export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.6
+@export var rear_brake_force = 0.8
 ## Brake toward speed
-@export var pedal_brake_speed = 1.6
+@export var pedal_brake_speed = 0.8
 ## hand_brake_force multiplier
 @export var hand_brake_force = 1.8
 
@@ -85,10 +86,10 @@ var car_angular_damp = 0.0
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
-## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.6
-## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.7
+## Front wheels friction slip ratio ## 0.65 @!!!
+@export var fric_slip_front = 0.8
+## Rear wheels friction slip ratio ## 0.65 @!!!
+@export var fric_slip_rear = 0.8
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
@@ -219,7 +220,7 @@ func _physics_process(delta: float) -> void:
 	elif not alt_control: 
 		## Move linearly
 		steering = move_toward(steering, 0.0 , 
-			steer_control_speed_ * delta * m_MAX)
+			steer_control_speed_ * delta * m_MAX * steer_restore_speed)
 	## Using Brake
 	if Input.is_action_pressed("brake"):
 		if accelerating > 0: accelerating = 0
