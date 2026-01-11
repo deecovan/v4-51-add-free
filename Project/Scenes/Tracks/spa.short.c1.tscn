@@ -28,6 +28,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1008.6
 transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 504.444, 0, -88.5924)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("16_3x27v")]
-transform = Transform3D(0.340741, 0, -0.940157, 0, 1, 0, 0.940157, 0, 0.340741, 705.17, 2, -174.73)
+transform = Transform3D(0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, 0.34202, 705, 2, -175)
 
 [node name="Vehicle" parent="." instance=ExtResource("7_o3ev2")]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 705, 2, -175)

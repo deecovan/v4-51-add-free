@@ -51,7 +51,7 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.45
+@export var MAX_STEER  = 0.4
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
@@ -72,25 +72,26 @@ var car_angular_damp = 0.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 0.8
+@export var rear_brake_force = 0.9
 ## Brake toward speed
-@export var pedal_brake_speed = 0.8
+@export var pedal_brake_speed = 0.9
 ## hand_brake_force multiplier
-@export var hand_brake_force = 1.8
+@export var hand_brake_force = 1.9
 
 @export_category("Coasting")
 ## Coasting starting value
 @export var coast_init = 0.3
 ## Coasting lerp speed
-@export var engine_coast = 0.15
+@export var engine_coast = 0.1
+
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65 @!!!
-@export var fric_slip_front = 1.6
+@export var fric_slip_front = 1.3
 ## Rear wheels friction slip ratio ## 0.65 @!!!
-@export var fric_slip_rear = 1.6
-## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
+@export var fric_slip_rear = 1.3
+## @HACK Acceleration multiplier for rear slip. Used if NOT ACCELERATING.
 @export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
 ## Relax must higher than Compression 
@@ -111,13 +112,19 @@ var car_angular_damp = 0.0
 @export var scale_curve: Curve
 var scale_array : Array
 
-enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILL}
-var engine_state = States.COASTING
-enum engine_index_list {Rear, Neutral, First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth}
-var engine_index: int = 0
+@export_category("GearBox values")
+enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
+@export var engine_state: States = States.CHILLING
+enum Indices {Rear, Neutral, 
+	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
+@export var engine_index: Indices = Indices.Neutral
+var engine_index_up = [-1.0, 0.0, 
+	1.0, 80.0, 140.0, 180.0, 210.0, 230.0, 250.0, 270.0]
+var engine_index_down = [-1.0, 0.0, 
+	1.0, 70.0, 130.0, 160.0, 200.0, 225.0, 245.0, 270.0]
 var acceleration_power = 0.0
 var matching_power = 0.0
-var accelerating = 0.0
+var ACCELERATING = 0.0
 
 var root: Node3D
 var UI: CanvasLayer
@@ -210,7 +217,7 @@ func _physics_process(delta: float) -> void:
 	var m_MAX = m_MAX_STEER / MAX_STEER
 	## Use controller's axes, joy or key input
 	var _steering = Input.get_axis("steer_right", "steer_left") * m_MAX_STEER
-	var _accelerating = Input.get_axis("brake", "accelerate")
+	var _ACCELERATING = Input.get_axis("brake", "accelerate")
 	## Simulate axes if keys are used
 	if Input.is_action_pressed("steer_right")\
 		or Input.is_action_pressed("steer_left"):
@@ -223,18 +230,18 @@ func _physics_process(delta: float) -> void:
 			steer_control_speed_ * delta * m_MAX * steer_restore_speed)
 	## Using Brake
 	if Input.is_action_pressed("brake"):
-		if accelerating > 0: accelerating = 0
-		accelerating = move_toward(accelerating, _accelerating, 
+		if ACCELERATING > 0: ACCELERATING = 0
+		ACCELERATING = move_toward(ACCELERATING, _ACCELERATING, 
 			brake_control_speed * control_speed * delta)
 	if Input.is_action_pressed("accelerate"):
-		accelerating = move_toward(accelerating, _accelerating, 
+		ACCELERATING = move_toward(ACCELERATING, _ACCELERATING, 
 			control_speed * delta)
 								   
 	## Set acceleration state @CHANGED
-	if _accelerating > 0:
+	if _ACCELERATING > 0:
 		engine_state = States.ACCELERATING
 	## Else: Braking key
-	elif _accelerating < 0:
+	elif _ACCELERATING < 0:
 		if engine_state != States.BRAKING:
 			## Decrease engine power on state changed
 			engine_state = States.BRAKING
@@ -245,17 +252,22 @@ func _physics_process(delta: float) -> void:
 			## Decrease engine power on state changed
 			engine_state = States.COASTING
 			engine_force = engine_force * coast_init
+	
+	## Chilling state is Accelerating with Power 0 and speed near 0
+	if linear_velocity.length() < 1.0:
+		engine_state = States.CHILLING
 
 	## Process Engine States
-	## Accelerating first
-	if engine_state == States.ACCELERATING:
-		acceleration_power = MAX_POWER * accelerating
+	## ACCELERATING first
+	if (engine_state == States.ACCELERATING or 
+		engine_state == States.CHILLING):
+		acceleration_power = MAX_POWER * ACCELERATING
 		## Remove REVERSE
 		engine_force = abs(engine_force)
 		## Match force to scale_curve
 		matching_power = engine_match_power(
 			linear_velocity.length(), scale_curve)
-		## Apply accelerating USING LERP!
+		## Apply ACCELERATING USING LERP!
 		engine_force = lerp(
 			engine_force, 
 			clamp(matching_power, 0, matching_power), 
@@ -263,20 +275,23 @@ func _physics_process(delta: float) -> void:
 		## Apply REVERSE
 		
 	## Than Braking
+	var print_brake_force = 0.0
 	if engine_state == States.BRAKING:
 		## Slow engine USING LERP!
 		engine_force = lerp(engine_force, 0.0, control_speed * delta)
 		## Braking with Vehicle3D
 		if not use_wheel_brake:
 			var set_vehicle_brake_force = - (
-				accelerating * vehicle_brake_force )
+				ACCELERATING * vehicle_brake_force )
 			change_vehicle_brake(set_vehicle_brake_force, delta)
+			print_brake_force = set_vehicle_brake_force
 		## Braking with Wheels
 		else:
 			var set_wheel_brake_force = \
-				- accelerating * vehicle_brake_force
+				- ACCELERATING * vehicle_brake_force
 			change_wheel_brake(set_wheel_brake_force, 
 				front_brake_force, rear_brake_force)
+			print_brake_force = (front_brake_force + rear_brake_force) / 2
 	else: 
 		change_vehicle_brake(0.0, delta)
 		change_wheel_brake(0.0, 0.0, 0.0)
@@ -318,7 +333,7 @@ func _physics_process(delta: float) -> void:
 	## Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
 		if engine_state == States.COASTING:
-			engine_state = States.CHILL
+			engine_state = States.CHILLING
 		## Function?
 		var set_brake_force = \
 			hand_brake_force * vehicle_brake_force
@@ -333,29 +348,35 @@ func _physics_process(delta: float) -> void:
 		## Now restore handbrake rear friction
 		set_fric_slip_rear(fric_slip_rear)
 		
+	## Update Engine Index
+	engine_index = get_engine_index((linear_velocity.length()))
+		
 	## Update UI
 	UI.set_speedometer_label(
-		States.keys()[engine_state] + ' ' + engine_index_list.keys()[engine_index])
+		"%8s:%8s" % [
+			States.keys()[engine_state].substr(0,8), 
+			Indices.keys()[engine_index].substr(0,8)]
+		)
 	rotate_speed_pt(linear_velocity.length() * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
-	rotate_tacho_pt(($Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()) / 2)
+	rotate_tacho_pt((
+		$Wheel3DFL.get_rpm() + $Wheel3DFR.get_rpm() +
+		$Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()
+		) / 4)
 	rotate_tacho_ps(engine_force, delta)
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
-	#UI.logs_add_text("\n steering.....: %6.2f" % steering)
-	#UI.logs_add_text("\n accelerating.: %6.2f" % accelerating)
-	#UI.logs_add_text("\n engine brake.: %6.2f" % brake)
-	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
-	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
 	UI.logs_add_text("\n Fanta 1066")
-	UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+	UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
+	UI.logs_add_text("\n Brakung......: %6.2f" % print_brake_force)
 	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
 	UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
 	UI.logs_add_text("\n Steering.....: %8.2f" % steering)
-	#UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
-	#UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
-	#UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
+	UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+	UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
+	UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
+	UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
 	
 	## Car fell off course!
 	if position.y < -50:
@@ -385,10 +406,23 @@ func engine_match_power(input_speed:float, match_curve:Curve) -> float:
 		var match_power = match_curve.sample_baked(normalized_speed) \
 			* MAX_POWER
 		return match_power
-		
-func set_engine_index(speed_index) -> void:
-	engine_index = speed_index
 
+## Set Engine Index accordong to GearBox Values
+func get_engine_index(_speed: float) -> int:
+	var speed_index := 0
+	var i := 0
+	if engine_state == States.REVERSING:
+		speed_index = 0
+	elif engine_state == States.ACCELERATING:
+		for spd in engine_index_up:
+			if (_speed * 3.6) > spd: speed_index = i
+			i += 1
+	else:
+		for spd in engine_index_down:
+			if (_speed * 3.6) > spd: speed_index = i
+			i += 1
+	return speed_index
+	
 func rotate_speed_pt(speedf: float) -> void:
 	var speedr = 0.0
 	var min_rad = Analometer.get_min_rad() 
@@ -431,7 +465,7 @@ func rotate_speed_ps(deltavf: float, delta) -> void:
 		(max_rad - min_rad) / max_dev
 		) * deltavf
 	Analometer.rotate_speed_ps(
-		move_toward(speed_ps, deltavr, delta))
+		lerp(speed_ps, deltavr, delta * control_speed))
 
 func get_delta_velocity(delta) -> float:
 	## Remember last velocity

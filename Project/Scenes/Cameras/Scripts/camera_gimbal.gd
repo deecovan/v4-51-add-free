@@ -13,9 +13,10 @@ extends Node3D
 @export var arm_spring_length_step = 3.5
 @export var camera_FOV = 40.0
 ## @NEW Gimbal follow the car position VIA gimbal length
-@export var tween_follow_speed = 7.0
-## Tween larger values to slow down
-@export var tween_speed = 2.5
+# Add to camera move farther
+@export var tween_follow_speed = 10.0
+# Tween larger values to slow down
+@export var tween_speed = 3.0
 ## Mouse controlled Rotation sensivity and direction
 @export var mouse_sensivity = 5000
 ## -1 normal or +1 inversed

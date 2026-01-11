@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2u3c52wwav41"]
+[gd_scene load_steps=14 format=3 uid="uid://c2u3c52wwav41"]
 
 [ext_resource type="Script" uid="uid://bxgxdgj8xpxwf" path="res://Scenes/UI/Scripts/ui_canvas.gd" id="1_nf4gj"]
 [ext_resource type="Script" uid="uid://cwhmf0iu4u1ho" path="res://Scenes/UI/Scripts/draw_graph.gd" id="2_qdvrb"]
-[ext_resource type="FontFile" uid="uid://djfsvawybk7ho" path="res://Themes/Fonts/ShareTechMono.ttf" id="3_2246s"]
 [ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="3_hqwk7"]
 [ext_resource type="Theme" uid="uid://c8m6i742fxd8v" path="res://Themes/MinimalUI44/MinimalUI.tres" id="3_nf4gj"]
 [ext_resource type="LabelSettings" uid="uid://b7clkj0x8tukw" path="res://Themes/ui-title.tres" id="4_vy225"]
@@ -114,7 +113,7 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme = ExtResource("3_nf4gj")
-theme_override_fonts/font = ExtResource("3_2246s")
+theme_override_font_sizes/font_size = 15
 text = "ACCCELERATING FIRST"
 horizontal_alignment = 1
 
@@ -133,6 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/normal_font_size = 16
 text = "Oops... 
 Logs are somewhere 
 But not here o.0"

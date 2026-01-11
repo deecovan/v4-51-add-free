@@ -2,6 +2,12 @@
 
 @TODO change all car collisions to primitives
 
+## 25.1.11 GearBox values
+- Implement GearBox values
+  - Indicator first
+  - Sound second
+  * Gearbox Physics maybe later
+
 ## Fixed Fanta for stability
 - Fanta 633, 844 and 1066
 - Changed COM
