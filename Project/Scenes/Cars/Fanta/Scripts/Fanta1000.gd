@@ -12,9 +12,9 @@ var car_absorb = false
 @export_category("Vehicle Constants")
 ## Values for curve Fanta_Curve_1000
 ## Real maximum 240 @!!!
-@export var vehicle_mass = 600.0
-@export var MAX_POWER = 3300.0
-@export var MAX_SPEED = 60.0
+@export var vehicle_mass = 1000.0
+@export var MAX_POWER = 6600.0
+@export var MAX_SPEED = 100.0
 @export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
@@ -66,9 +66,9 @@ var car_angular_damp = 0.0
 @export var brake_control_speed = 0.5
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false @!!!
-@export var vehicle_brake_force = 90.0
+@export var vehicle_brake_force = 150.0
 ## Wheel3D braking force and balance @!!!
-@export var wheel_brake_force = 90.0
+@export var wheel_brake_force = 150.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
@@ -87,9 +87,9 @@ var car_angular_damp = 0.0
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65 @!!!
-@export var fric_slip_front = 0.8
+@export var fric_slip_front = 1.6
 ## Rear wheels friction slip ratio ## 0.65 @!!!
-@export var fric_slip_rear = 0.8
+@export var fric_slip_rear = 1.6
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.8
 ## Front wheels damper relaxation ## 0.88
@@ -348,12 +348,14 @@ func _physics_process(delta: float) -> void:
 	#UI.logs_add_text("\n engine brake.: %6.2f" % brake)
 	#UI.logs_add_text("\n wheel f.brake: %6.2f" % $Wheel3Dfl.brake)
 	#UI.logs_add_text("\n wheel r.brake: %6.2f" % $Wheel3Drl.brake)
+	UI.logs_add_text("\n Fanta 1066")
 	UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
 	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
 	UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
-	UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
-	UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
+	UI.logs_add_text("\n Steering.....: %8.2f" % steering)
+	#UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
+	#UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
+	#UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
 	
 	## Car fell off course!
 	if position.y < -50:
