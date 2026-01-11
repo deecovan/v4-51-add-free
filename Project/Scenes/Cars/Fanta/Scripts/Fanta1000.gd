@@ -112,7 +112,7 @@ var car_angular_damp = 0.0
 @export var scale_curve: Curve
 var scale_array : Array
 
-@export_category("GearBox values")
+@export_category("r")
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
 @export var engine_state: States = States.CHILLING
 enum Indices {Rear, Neutral, 
