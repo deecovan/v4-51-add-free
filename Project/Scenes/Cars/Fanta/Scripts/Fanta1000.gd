@@ -84,7 +84,6 @@ var car_angular_damp = 0.0
 ## Coasting lerp speed
 @export var engine_coast = 0.1
 
-
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65 @!!!
@@ -125,6 +124,8 @@ var engine_index_down = [-1.0, 0.0,
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
+var eng_ind_rpm = []
+var scale_rpm = 1.0
 
 var root: Node3D
 var UI: CanvasLayer
@@ -177,8 +178,6 @@ func _ready() -> void:
 	$Wheel3DRL.suspension_max_force = max_force_rear
 	$Wheel3DRR.suspension_max_force = max_force_rear
 
-	## Apply Max Power to tachometer
-	Analometer.set_max_tac(MAX_POWER) 
 	
 	## Set Center of Mass from CenterOfMass Node
 	## Move it Forward to oversteer
@@ -188,13 +187,23 @@ func _ready() -> void:
 	## Set Continuous Collision Detection
 	continuous_cd = true
 	
+	Analometer.set_min_tac(1.0) 
+	Analometer.set_max_tac(2.0) 
+	Analometer.set_max_rot(0.0) 
+	Analometer.set_max_rot(1800.0) 
 	## Init PFG screen
 	for i in 100:
 		scale_array.append(scale_curve.sample_baked(i/100.0))
 	UI.call_draw_curve(scale_array)
 	
-func _physics_process(delta: float) -> void:
+	## @NEW Engine Index RPM to use GearBox
+	for rpm in engine_index_up:
+		var calc_rpm = MAX_SPEED * 3.6 / rpm
+		if calc_rpm > 1 and calc_rpm < 8:
+			eng_ind_rpm.append(calc_rpm)
 	
+func _physics_process(delta: float) -> void:
+			
 	## @NEW using Alternative Control
 	## @TODO add boolean to settings
 	var alt_control = Input.is_action_pressed("alt_control")
@@ -359,11 +368,12 @@ func _physics_process(delta: float) -> void:
 		)
 	rotate_speed_pt(linear_velocity.length() * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
-	rotate_tacho_pt((
+	
+	rotate_tacho_pt(scale_rpm)
+	rotate_tacho_ps((
 		$Wheel3DFL.get_rpm() + $Wheel3DFR.get_rpm() +
 		$Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()
 		) / 4)
-	rotate_tacho_ps(engine_force, delta)
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
@@ -407,7 +417,7 @@ func engine_match_power(input_speed:float, match_curve:Curve) -> float:
 			* MAX_POWER
 		return match_power
 
-## Set Engine Index accordong to GearBox Values
+## Get Engine Index accordong to GearBox Values
 func get_engine_index(_speed: float) -> int:
 	var speed_index := 0
 	var i := 0
@@ -415,11 +425,13 @@ func get_engine_index(_speed: float) -> int:
 		speed_index = 0
 	elif engine_state == States.ACCELERATING:
 		for spd in engine_index_up:
-			if (_speed * 3.6) > spd: speed_index = i
+			if (_speed * 3.6) > spd: 
+				speed_index = i
 			i += 1
 	else:
 		for spd in engine_index_down:
-			if (_speed * 3.6) > spd: speed_index = i
+			if (_speed * 3.6) > spd: 
+				speed_index = i
 			i += 1
 	return speed_index
 	
@@ -433,27 +445,26 @@ func rotate_speed_pt(speedf: float) -> void:
 		) * speedf
 	Analometer.rotate_speed_pt(speedr)
 	
-func rotate_tacho_pt(tachof: float) -> void:
-	var tachor = 0.0
-	var min_rad = Analometer.get_min_rad() 
-	var max_rad = Analometer.get_max_rad() 
-	var max_rot = Analometer.get_max_rot() 
-	tachor = min_rad + (
-		(max_rad - min_rad) / max_rot
-		) * tachof
-	Analometer.rotate_tacho_pt(tachor)
-		
-func rotate_tacho_ps(tachof: float, delta) -> void:
+func rotate_tacho_pt(tacerpm: float) -> void:
 	var tachor = 0.0
 	var min_rad = Analometer.get_min_rad() 
 	var max_rad = Analometer.get_max_rad() 
 	var max_tac = Analometer.get_max_tac() 
-	var tach_ps = Analometer.get_tach_ps() 
 	tachor = min_rad + (
 		(max_rad - min_rad) / max_tac
-		) * tachof
-	Analometer.rotate_tacho_ps(
-		move_toward(tach_ps, tachor, delta))
+		) * tacerpm
+	Analometer.rotate_tacho_pt(tachor)
+	print(tachor)
+		
+func rotate_tacho_ps(tacwrpm: float) -> void:
+	var tachor = 0.0
+	var min_rad = Analometer.get_min_rad() 
+	var max_rad = Analometer.get_max_rad() 
+	var max_tac = Analometer.get_max_tac() 
+	tachor = min_rad + (
+		(max_rad - min_rad) / max_tac
+		) * tacwrpm
+	Analometer.rotate_tacho_ps(tachor)
 	
 func rotate_speed_ps(deltavf: float, delta) -> void:
 	var deltavr = 0.0

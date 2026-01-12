@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpck45j2g08ma"]
+[gd_scene load_steps=16 format=3 uid="uid://dpck45j2g08ma"]
 
 [ext_resource type="Script" uid="uid://de8x62k3oo3ki" path="res://Scenes/Cars/Fanta/Scripts/Fanta1000.gd" id="1_oq0fq"]
 [ext_resource type="Curve" uid="uid://dnniu5gm1ahhm" path="res://Scenes/Cars/Fanta/Fanta 1000 curve.tres" id="2_ls4b6"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://d0a2tqcfnno11" path="res://Sounds/Cars/eng run idle.wav" id="4_eayo3"]
 [ext_resource type="AudioStream" uid="uid://g2vvom06rwsx" path="res://Sounds/Cars/eng run overpower.wav" id="5_erafi"]
 [ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/Cars/scrap.wav" id="6_0ys8y"]
+[ext_resource type="AudioStream" uid="uid://dqtjormxmfsnx" path="res://Sounds/Cars/Gear.wav" id="7_711e1"]
 [ext_resource type="PackedScene" uid="uid://bnj10rk4ojq0v" path="res://Scenes/Cars/Fanta/Fanta_Wheel_L.tscn" id="7_tqtuo"]
 [ext_resource type="PackedScene" uid="uid://c4nshb085yca4" path="res://Scenes/Cars/Fanta/Fanta_Wheel_R.tscn" id="8_7x5y1"]
 [ext_resource type="PackedScene" uid="uid://d2jm6nxhrm5rc" path="res://Scenes/Cars/Fanta/GLBs/FantaCar6600.export..CARblend.glb" id="9_4b4x0"]
@@ -61,6 +62,13 @@ stream = ExtResource("6_0ys8y")
 volume_db = -6.0
 max_db = -6.0
 pitch_scale = 2.0
+max_polyphony = 2
+panning_strength = 2.0
+
+[node name="Gear" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87738e-07, 0, 0.852529)
+stream = ExtResource("7_711e1")
+volume_db = -12.0
 max_polyphony = 2
 panning_strength = 2.0
 
