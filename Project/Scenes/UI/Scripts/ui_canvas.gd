@@ -78,3 +78,7 @@ func logs_ins_text(text) -> void:
 func get_analometer() -> Control:
 	Analometer = $MarginContainer/VBoxContainer/Analometer
 	return Analometer
+	
+func rotate_wheel(rot) -> void:
+	$MarginContainer/Control/Wheel.rotation = rot
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2u3c52wwav41"]
+[gd_scene load_steps=15 format=3 uid="uid://c2u3c52wwav41"]
 
 [ext_resource type="Script" uid="uid://bxgxdgj8xpxwf" path="res://Scenes/UI/Scripts/ui_canvas.gd" id="1_nf4gj"]
 [ext_resource type="Script" uid="uid://cwhmf0iu4u1ho" path="res://Scenes/UI/Scripts/draw_graph.gd" id="2_qdvrb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c264l56f7huv0" path="res://Scenes/UI/Images/TachometerBG.png" id="6_ryf15"]
 [ext_resource type="Texture2D" uid="uid://b2cb0mc3qto1e" path="res://Scenes/UI/Images/SpeedometerPointer.png" id="7_mmixe"]
 [ext_resource type="FontFile" uid="uid://dlgkspckhvbp4" path="res://Themes/Fonts/Xolonium-Regular.ttf" id="10_nt8jn"]
+[ext_resource type="Texture2D" uid="uid://ben725ndss1tx" path="res://Images/Wheel.png" id="12_vy225"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_038pu"]
 content_margin_left = 100.0
@@ -415,3 +416,26 @@ theme_override_colors/font_color = Color(1, 0.501961, 0, 1)
 theme_override_fonts/font = ExtResource("10_nt8jn")
 theme_override_font_sizes/font_size = 20
 text = "Power"
+
+[node name="Control" type="Control" parent="MarginContainer"]
+z_index = 555
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Wheel" type="TextureRect" parent="MarginContainer/Control"]
+modulate = Color(1, 1, 1, 0.490196)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -417.0
+offset_right = 420.0
+offset_bottom = 423.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(420, 420)
+texture = ExtResource("12_vy225")

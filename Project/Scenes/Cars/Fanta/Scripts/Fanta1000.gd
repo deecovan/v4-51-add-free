@@ -59,6 +59,9 @@ var car_angular_damp = 0.0
 ## Maximum Steering speed
 @export var steer_control_speed = 1.0
 @export var steer_restore_speed = 1.5
+## Steering wheel visual rotation: 420deg / MAX_STEER
+@export var rotate_wheel_sens = 4.0
+
 
 @export_category("Braking Values")
 @export var use_wheel_brake = true
@@ -118,9 +121,9 @@ enum Indices {Rear, Neutral,
 	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 80.0, 140.0, 180.0, 210.0, 230.0, 250.0, 270.0]
+	1.0, 80.0, 140.0, 180.0, 210.0, 230.0, 250.0, 310.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 70.0, 130.0, 160.0, 200.0, 225.0, 245.0, 270.0]
+	1.0, 70.0, 130.0, 160.0, 200.0, 225.0, 245.0, 300.0]
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
@@ -135,6 +138,8 @@ var rem_linear_velocity = Vector3.ZERO
 func _ready() -> void:
 	UI = $UI
 	Analometer = UI.get_analometer()
+	rotate_wheel_sens = 90.0 / rad_to_deg(MAX_STEER)
+	print(rotate_wheel_sens)
 	
 	## Setup Vehicle3D values
 	mass = vehicle_mass
@@ -382,6 +387,8 @@ func _physics_process(delta: float) -> void:
 		#) / 4)
 	rotate_tacho_ps(abs(engine_force))
 	
+	rotate_wheel()
+	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
 	UI.logs_add_text("\n Fanta 1066")
@@ -479,6 +486,9 @@ func rotate_tacho_ps(tacwrpm: float) -> void:
 	var max_rot = Analometer.get_max_rot() 
 	tachor = min_rad + (max_rad - min_rad) * (tacwrpm / max_rot)
 	Analometer.rotate_tacho_ps(tachor)
+	
+func rotate_wheel() -> void:
+	UI.rotate_wheel(-steering * rotate_wheel_sens)
 
 func get_delta_velocity(delta) -> float:
 	## Remember last velocity
