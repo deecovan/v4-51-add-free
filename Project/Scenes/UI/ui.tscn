@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2u3c52wwav41"]
+[gd_scene load_steps=18 format=3 uid="uid://c2u3c52wwav41"]
 
 [ext_resource type="Script" uid="uid://bxgxdgj8xpxwf" path="res://Scenes/UI/Scripts/ui_canvas.gd" id="1_nf4gj"]
 [ext_resource type="Script" uid="uid://cwhmf0iu4u1ho" path="res://Scenes/UI/Scripts/draw_graph.gd" id="2_qdvrb"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://gvy0ceh2vadg" path="res://Scenes/UI/Images/SpeedometerBG.png" id="5_smcll"]
 [ext_resource type="Texture2D" uid="uid://43a0m001neks" path="res://Scenes/UI/Images/SpeedometarPointer.png" id="6_mmixe"]
 [ext_resource type="Texture2D" uid="uid://c264l56f7huv0" path="res://Scenes/UI/Images/TachometerBG.png" id="6_ryf15"]
+[ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="6_t7te2"]
+[ext_resource type="Texture2D" uid="uid://dr1lann2xlx3h" path="res://Images/Left40.png" id="7_56q1t"]
 [ext_resource type="Texture2D" uid="uid://b2cb0mc3qto1e" path="res://Scenes/UI/Images/SpeedometerPointer.png" id="7_mmixe"]
+[ext_resource type="Texture2D" uid="uid://bp5m1q3eauk7u" path="res://Images/Right40.png" id="8_fevae"]
 [ext_resource type="FontFile" uid="uid://dlgkspckhvbp4" path="res://Themes/Fonts/Xolonium-Regular.ttf" id="10_nt8jn"]
 [ext_resource type="Texture2D" uid="uid://ben725ndss1tx" path="res://Images/Wheel.png" id="12_vy225"]
 
@@ -139,76 +142,164 @@ Logs are somewhere
 But not here o.0"
 vertical_alignment = 2
 
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Rotation" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Left" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+tooltip_text = "Rotation Left
+"
+theme = ExtResource("6_t7te2")
+value = 50.0
+texture_progress = ExtResource("7_56q1t")
+
+[node name="Right" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+clip_contents = true
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+tooltip_text = "Rotation Right
+
+"
+theme = ExtResource("6_t7te2")
+step = 30.0
+fill_mode = 1
+texture_progress = ExtResource("8_fevae")
+
+[node name="Alpha" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(75, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Left" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Alpha"]
+clip_contents = true
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 22
+text = ">"
+horizontal_alignment = 2
+
+[node name="Right" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Alpha"]
+clip_contents = true
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 22
+text = "10'"
+
 [node name="WheelsFrontSleep" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(75, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
 [node name="FL" type="Control" parent="MarginContainer/VBoxContainer/WheelsFrontSleep"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(35, 30)
 layout_mode = 2
 
 [node name="SleepFL" type="ProgressBar" parent="MarginContainer/VBoxContainer/WheelsFrontSleep/FL"]
 layout_mode = 0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_right = 35.0
+offset_bottom = 35.0
 tooltip_text = "SleepFL"
 theme = ExtResource("3_nf4gj")
 fill_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/WheelsFrontSleep"]
 layout_mode = 2
+theme = ExtResource("3_nf4gj")
 
 [node name="FR" type="Control" parent="MarginContainer/VBoxContainer/WheelsFrontSleep"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(35, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="SleepFR" type="ProgressBar" parent="MarginContainer/VBoxContainer/WheelsFrontSleep/FR"]
 layout_mode = 0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_right = 35.0
+offset_bottom = 35.0
 tooltip_text = "SleepFR"
 theme = ExtResource("3_nf4gj")
 fill_mode = 3
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_nf4gj")
 
 [node name="WheelsRearSleep" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
+
+[node name="Brake" type="ProgressBar" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme = ExtResource("3_nf4gj")
+step = 1.0
+value = 20.0
+fill_mode = 3
+show_percentage = false
+
+[node name="HS1" type="HSeparator" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
+layout_mode = 2
+theme = ExtResource("3_nf4gj")
 
 [node name="RL" type="Control" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(35, 30)
 layout_mode = 2
 tooltip_text = "SleepRL"
 
 [node name="SleepRL" type="ProgressBar" parent="MarginContainer/VBoxContainer/WheelsRearSleep/RL"]
 layout_mode = 0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_right = 35.0
+offset_bottom = 35.0
 tooltip_text = "SleepRL"
 theme = ExtResource("3_nf4gj")
 fill_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
 layout_mode = 2
+theme = ExtResource("3_nf4gj")
 
 [node name="RR" type="Control" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 tooltip_text = "SleepRR"
 
 [node name="SleepRR" type="ProgressBar" parent="MarginContainer/VBoxContainer/WheelsRearSleep/RR"]
 layout_mode = 0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_right = 35.0
+offset_bottom = 35.0
 tooltip_text = "SleepRR"
 theme = ExtResource("3_nf4gj")
 fill_mode = 3
+
+[node name="HS2" type="HSeparator" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
+layout_mode = 2
+theme = ExtResource("3_nf4gj")
+
+[node name="Accelerate" type="ProgressBar" parent="MarginContainer/VBoxContainer/WheelsRearSleep"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme = ExtResource("3_nf4gj")
+step = 1.0
+value = 20.0
+fill_mode = 3
+show_percentage = false
 
 [node name="Analometer" type="Control" parent="MarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 0.6, 1)
@@ -227,9 +318,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -253.685
+offset_left = -288.9
 offset_top = -187.375
-offset_right = 826.315
+offset_right = 791.1
 offset_bottom = 892.625
 grow_horizontal = 2
 grow_vertical = 0
@@ -245,9 +336,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -686.685
+offset_left = -721.9
 offset_top = -652.375
-offset_right = 393.315
+offset_right = 358.1
 offset_bottom = 427.625
 grow_horizontal = 2
 grow_vertical = 0
@@ -265,9 +356,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -686.685
+offset_left = -721.9
 offset_top = -652.375
-offset_right = 393.315
+offset_right = 358.1
 offset_bottom = 427.625
 grow_horizontal = 2
 grow_vertical = 0
@@ -285,9 +376,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 37.31
+offset_left = 74.41
 offset_top = -187.375
-offset_right = 1117.31
+offset_right = 1154.41
 offset_bottom = 892.625
 grow_horizontal = 2
 grow_vertical = 0
@@ -303,9 +394,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -395.0
+offset_left = -357.9
 offset_top = -652.4
-offset_right = 685.0
+offset_right = 722.1
 offset_bottom = 427.6
 grow_horizontal = 2
 grow_vertical = 0
@@ -323,9 +414,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -395.0
+offset_left = -357.9
 offset_top = -652.4
-offset_right = 685.0
+offset_right = 722.1
 offset_bottom = 427.6
 grow_horizontal = 2
 grow_vertical = 0
@@ -341,9 +432,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -187.5
+offset_left = -221.06
 offset_top = -68.0
-offset_right = -106.5
+offset_right = -140.06
 offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -362,9 +453,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -186.0
+offset_left = -219.56
 offset_top = -46.0
-offset_right = -108.0
+offset_right = -141.56
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -383,9 +474,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 108.6
+offset_left = 145.6
 offset_top = -68.0
-offset_right = 189.6
+offset_right = 226.6
 offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -404,9 +495,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 112.1
+offset_left = 149.1
 offset_top = -47.0
-offset_right = 190.1
+offset_right = 227.1
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0

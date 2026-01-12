@@ -263,17 +263,18 @@ func _physics_process(delta: float) -> void:
 	elif _ACCELERATING < 0:
 		if engine_state != States.BRAKING:
 			## Decrease engine power on state changed
-			engine_state = States.BRAKING
 			engine_force = engine_force * coast_init
+		engine_state = States.BRAKING
 	## Else: Coasting 
 	else: 
 		if engine_state != States.COASTING:
 			## Decrease engine power on state changed
-			engine_state = States.COASTING
 			engine_force = engine_force * coast_init
+		engine_state = States.COASTING
 	
 	## Chilling state is Accelerating with Power 0 and speed near 0
-	if linear_velocity.length() < 1.0:
+	if (abs(linear_velocity.length()) < 1.0
+		and engine_state != States.BRAKING):
 		engine_state = States.CHILLING
 
 	## Process Engine States
@@ -306,11 +307,11 @@ func _physics_process(delta: float) -> void:
 			print_brake_force = set_vehicle_brake_force
 		## Braking with Wheels
 		else:
-			var set_wheel_brake_force = \
-				- ACCELERATING * vehicle_brake_force
+			var set_wheel_brake_force = - (
+				ACCELERATING * vehicle_brake_force )
 			change_wheel_brake(set_wheel_brake_force, 
 				front_brake_force, rear_brake_force)
-			print_brake_force = (front_brake_force + rear_brake_force) / 2
+			print_brake_force = set_wheel_brake_force
 	else: 
 		change_vehicle_brake(0.0, delta)
 		change_wheel_brake(0.0, 0.0, 0.0)
@@ -389,19 +390,16 @@ func _physics_process(delta: float) -> void:
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
 	rotate_tacho_pt(scale_rpm - 1)
-	#rotate_tacho_ps((
-		#$Wheel3DFL.get_rpm() + $Wheel3DFR.get_rpm() +
-		#$Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()
-		#) / 4)
 	rotate_tacho_ps(abs(engine_force))
-	
 	rotate_wheel()
+	set_brake_pedal(print_brake_force)
+	set_accelerate_pedal(ACCELERATING * 100)
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
 	UI.logs_add_text("\n Fanta 1066")
 	UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
-	UI.logs_add_text("\n Brakung......: %6.2f" % print_brake_force)
+	UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
 	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
 	UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
 	UI.logs_add_text("\n Steering.....: %8.2f" % steering)
@@ -510,3 +508,9 @@ func get_delta_velocity(delta) -> float:
 func randomis(v: Vector3, mult) -> Vector3:
 	return v + mult * Vector3(
 		(randf()-0.49)/10,(randf()-0.49)/10,(randf()-0.49)/10)
+
+func set_brake_pedal(val) -> void:
+	UI.set_brake_pedal(val)
+	
+func set_accelerate_pedal(val) -> void:
+	UI.set_accelerate_pedal(val)

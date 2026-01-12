@@ -82,3 +82,9 @@ func get_analometer() -> Control:
 func rotate_wheel(rot) -> void:
 	$MarginContainer/Control/Wheel.rotation = rot
 	
+func set_brake_pedal(val) -> void:
+	$MarginContainer/VBoxContainer/WheelsRearSleep/Brake.value = val
+	
+func set_accelerate_pedal(val) -> void:
+	$MarginContainer/VBoxContainer/WheelsRearSleep/Accelerate.value = val
+	

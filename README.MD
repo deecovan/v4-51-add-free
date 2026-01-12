@@ -10,7 +10,8 @@
   - Speed Map for Gears
   - Curve with ratios from gears
 - Normalized Curve, Max.Speed, Gears 
-- Add body rotation and delta velocity.z
+- Added Brake and Accelerate pedals
+- ... Add body rotation and delta velocity.z
 - @TODO 
   - Add OnTop and Glass fixed cameras
   - Add Alphas for FW and RW
