@@ -6,13 +6,15 @@
 - Engine sound ready 
 - Improved Tachometer
 - Added Racing Wheel
-- Try to use RPM as engine_force 
-  - !IT WORKS!
-- Normalize Curve, Max.Speed, Gears 
+- Added GearBox: 
+  - Speed Map for Gears
+  - Curve with ratios from gears
+- Normalized Curve, Max.Speed, Gears 
+- Add body rotation and delta velocity.z
 - @TODO 
-  - Add front Wheels rotation
-  - Add Alphas for Wheels and Body
-  - Add Gears and digital Speed
+  - Add OnTop and Glass fixed cameras
+  - Add Alphas for FW and RW
+  - Add digital Gears and Speed
   
 - Implement GearBox values
   - Indicator first
