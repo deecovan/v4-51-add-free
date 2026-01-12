@@ -35,10 +35,7 @@ func _physics_process(_delta: float) -> void:
 	power = vehicle.engine_force
 	vol = power / max_p
 	## @NEW Engine Index RPM to use GearBox
-	eng_rpm = 1.0
-	eng_rpm = eng_ind_rpm[vehicle.engine_index - 2]
-	scale_rpm = 1 + (vel * eng_rpm / eng_ind_rpm.max()) / max_s
-	vehicle.scale_rpm = scale_rpm
+	scale_rpm = vehicle.scale_rpm
 	
 	if rem_engine_index != vehicle.engine_index:
 		rem_engine_index = vehicle.engine_index

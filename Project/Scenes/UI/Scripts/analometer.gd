@@ -39,7 +39,6 @@ func get_med_rad() -> float:
 func get_max_spd() -> float:
 	return 240.0
 	
-	
 func set_min_tac(t: float) -> void:
 	min_tac = t
 	

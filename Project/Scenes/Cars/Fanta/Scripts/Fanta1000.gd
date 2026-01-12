@@ -187,20 +187,20 @@ func _ready() -> void:
 	## Set Continuous Collision Detection
 	continuous_cd = true
 	
-	Analometer.set_min_tac(1.0) 
-	Analometer.set_max_tac(2.0) 
-	Analometer.set_max_rot(0.0) 
-	Analometer.set_max_rot(1800.0) 
-	## Init PFG screen
-	for i in 100:
-		scale_array.append(scale_curve.sample_baked(i/100.0))
-	UI.call_draw_curve(scale_array)
-	
 	## @NEW Engine Index RPM to use GearBox
 	for rpm in engine_index_up:
 		var calc_rpm = MAX_SPEED * 3.6 / rpm
 		if calc_rpm > 1 and calc_rpm < 8:
 			eng_ind_rpm.append(calc_rpm)
+
+	Analometer.set_min_tac(Analometer.get_min_rad()) 
+	Analometer.set_max_tac(Analometer.get_max_rad() / eng_ind_rpm.max())
+	Analometer.set_min_rot(Analometer.get_min_rad()) 
+	Analometer.set_max_rot(MAX_POWER)
+	## Init PFG screen
+	for i in 100:
+		scale_array.append(scale_curve.sample_baked(i/100.0))
+	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
 			
@@ -315,6 +315,12 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.REVERSING
 		## Rear Gear has 30% of maximum power
 		engine_force = - clamp(engine_force, 0, MAX_POWER * 0.3)
+		
+	scale_rpm = 1 + (
+		2 *
+		(linear_velocity.length()  / MAX_SPEED)
+		* (eng_ind_rpm[engine_index - 2] / eng_ind_rpm.max())
+	)
 
 	## Calculate custom forces
 	## AeroDrag
@@ -369,11 +375,12 @@ func _physics_process(delta: float) -> void:
 	rotate_speed_pt(linear_velocity.length() * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
-	rotate_tacho_pt(scale_rpm)
-	rotate_tacho_ps((
-		$Wheel3DFL.get_rpm() + $Wheel3DFR.get_rpm() +
-		$Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()
-		) / 4)
+	rotate_tacho_pt(scale_rpm - 1)
+	#rotate_tacho_ps((
+		#$Wheel3DFL.get_rpm() + $Wheel3DFR.get_rpm() +
+		#$Wheel3DRL.get_rpm() + $Wheel3DRR.get_rpm()
+		#) / 4)
+	rotate_tacho_ps(abs(engine_force))
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
@@ -445,27 +452,6 @@ func rotate_speed_pt(speedf: float) -> void:
 		) * speedf
 	Analometer.rotate_speed_pt(speedr)
 	
-func rotate_tacho_pt(tacerpm: float) -> void:
-	var tachor = 0.0
-	var min_rad = Analometer.get_min_rad() 
-	var max_rad = Analometer.get_max_rad() 
-	var max_tac = Analometer.get_max_tac() 
-	tachor = min_rad + (
-		(max_rad - min_rad) / max_tac
-		) * tacerpm
-	Analometer.rotate_tacho_pt(tachor)
-	print(tachor)
-		
-func rotate_tacho_ps(tacwrpm: float) -> void:
-	var tachor = 0.0
-	var min_rad = Analometer.get_min_rad() 
-	var max_rad = Analometer.get_max_rad() 
-	var max_tac = Analometer.get_max_tac() 
-	tachor = min_rad + (
-		(max_rad - min_rad) / max_tac
-		) * tacwrpm
-	Analometer.rotate_tacho_ps(tachor)
-	
 func rotate_speed_ps(deltavf: float, delta) -> void:
 	var deltavr = 0.0
 	var min_rad = Analometer.get_min_rad() 
@@ -477,6 +463,22 @@ func rotate_speed_ps(deltavf: float, delta) -> void:
 		) * deltavf
 	Analometer.rotate_speed_ps(
 		lerp(speed_ps, deltavr, delta * control_speed))
+	
+func rotate_tacho_pt(tacerpm: float) -> void:
+	var tachor = 0.0
+	var min_rad = Analometer.get_min_rad() 
+	var max_rad = Analometer.get_max_rad() 
+	var max_tac = Analometer.get_max_tac() 
+	tachor = min_rad + (max_rad - min_rad) * (tacerpm / max_tac)
+	Analometer.rotate_tacho_pt(tachor)
+		
+func rotate_tacho_ps(tacwrpm: float) -> void:
+	var tachor = 0.0
+	var min_rad = Analometer.get_min_rad() 
+	var max_rad = Analometer.get_max_rad() 
+	var max_rot = Analometer.get_max_rot() 
+	tachor = min_rad + (max_rad - min_rad) * (tacwrpm / max_rot)
+	Analometer.rotate_tacho_ps(tachor)
 
 func get_delta_velocity(delta) -> float:
 	## Remember last velocity

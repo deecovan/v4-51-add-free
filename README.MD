@@ -4,7 +4,12 @@
 
 ## 25.1.11 GearBox values
 - Engine sound ready 
- - Start Tachometer fixes
+- Improved Tachometer
+- @TODO 
+  - Add Alphas for Wheels and Body
+  - Add Racing Wheel and front Wheels rotation
+  - Add Gears and digital Speed
+  
 - Implement GearBox values
   - Indicator first
   - Sound second
