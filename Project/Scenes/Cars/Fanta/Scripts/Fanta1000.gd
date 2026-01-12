@@ -31,8 +31,8 @@ var car_angular_damp = 0.0
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
 ## Must Affect AirDynamic Force
-@export var bodySquareFill = 0.85
-@export var bodyDrag = 1.275
+@export var bodySquareFill = 0.8
+@export var bodyDrag = 1.2
 ## Setup AirDynamic Force
 @export var bodyAeroDyn = 0.88
 
@@ -121,9 +121,9 @@ enum Indices {Rear, Neutral,
 	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 80.0, 140.0, 180.0, 210.0, 230.0, 250.0, 310.0]
+	1.0, 70.0, 130.0, 160.0, 190.0, 210.0, 230.0, 310.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 70.0, 130.0, 160.0, 200.0, 225.0, 245.0, 300.0]
+	1.0, 65.0, 125.0, 155.0, 185.0, 205.0, 225.0, 300.0]
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
@@ -377,8 +377,6 @@ func _physics_process(delta: float) -> void:
 	## @NeW try to use RPM as engine_force !IT WORKS!
 	engine_force = scale_curve.sample_baked((
 		scale_rpm-1)) * MAX_POWER * ACCELERATING
-	print((
-		scale_rpm-1))
 	
 	## Update UI
 	UI.set_speedometer_label(
