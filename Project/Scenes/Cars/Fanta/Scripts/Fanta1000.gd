@@ -14,7 +14,7 @@ var car_absorb = false
 ## Real maximum 240 @!!!
 @export var vehicle_mass = 1000.0
 @export var MAX_POWER = 6600.0
-@export var MAX_SPEED = 100.0
+@export var MAX_SPEED = 70.0
 @export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
@@ -29,10 +29,10 @@ var car_linear_damp = 0.0
 var car_angular_damp = 0.0
 ## Setup AirDrag
 @export var airDensity = 1.1
-@export var bodySquare = 2.0
+@export var bodySquare = 2.2
 ## Must Affect AirDynamic Force
 @export var bodySquareFill = 0.8
-@export var bodyDrag = 1.2
+@export var bodyDrag = 1.25
 ## Setup AirDynamic Force
 @export var bodyAeroDyn = 0.88
 
@@ -60,7 +60,7 @@ var car_angular_damp = 0.0
 @export var steer_control_speed = 1.0
 @export var steer_restore_speed = 1.5
 ## Steering wheel visual rotation: 420deg / MAX_STEER
-@export var rotate_wheel_sens_max = 360.0
+@export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
 
 @export_category("Braking Values")
@@ -107,7 +107,7 @@ var rotate_wheel_sens
 @export var travel_front = 0.11
 @export var travel_rear = 0.12
 @export var stiff_front = 120
-@export var stiff_rear = 100
+@export var stiff_rear = 75
 @export var max_force_front = 22000
 @export var max_force_rear = 18000
 
@@ -121,9 +121,9 @@ enum Indices {Rear, Neutral,
 	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 70.0, 130.0, 160.0, 190.0, 210.0, 230.0, 310.0]
+	1.0, 75.0, 130.0, 160.0, 190.0, 220.0, 260.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 65.0, 125.0, 155.0, 185.0, 205.0, 225.0, 300.0]
+	1.0, 70.0, 125.0, 155.0, 185.0, 215.0, 255.0]
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
@@ -370,9 +370,10 @@ func _physics_process(delta: float) -> void:
 	## Update Engine Index
 	engine_index = get_engine_index((linear_velocity.length()))
 	## Update RPM value
+	var eng_ind = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
 	scale_rpm = 1 + ( 2 * ## Why?
 		(linear_velocity.length()  / MAX_SPEED)
-		* (eng_ind_rpm[engine_index - 2] / eng_ind_rpm.max())
+		* (eng_ind_rpm[eng_ind] / eng_ind_rpm.max())
 	)
 	## @NeW try to use RPM as engine_force !IT WORKS!
 	engine_force = scale_curve.sample_baked((

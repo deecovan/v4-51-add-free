@@ -8,6 +8,7 @@
 - Added Racing Wheel
 - Try to use RPM as engine_force 
   - !IT WORKS!
+- Normalize Curve, Max.Speed, Gears 
 - @TODO 
   - Add front Wheels rotation
   - Add Alphas for Wheels and Body
