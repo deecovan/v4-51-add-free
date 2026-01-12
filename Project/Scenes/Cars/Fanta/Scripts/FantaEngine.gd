@@ -39,8 +39,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if (rem_engine_index != vehicle.engine_index
 		and not $"../Gear".playing):
-			rem_engine_index = vehicle.engine_index
-			$"../Gear".play()
+		rem_engine_index = vehicle.engine_index
+		$"../Gear".play()
 	
 	if not _start.playing and not _idle.playing:
 		_idle.play()

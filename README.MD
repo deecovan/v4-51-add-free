@@ -6,6 +6,8 @@
 - Engine sound ready 
 - Improved Tachometer
 - Added Racing Wheel
+- Try to use RPM as engine_force 
+  - !IT WORKS!
 - @TODO 
   - Add front Wheels rotation
   - Add Alphas for Wheels and Body

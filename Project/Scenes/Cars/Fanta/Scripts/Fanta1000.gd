@@ -60,8 +60,8 @@ var car_angular_damp = 0.0
 @export var steer_control_speed = 1.0
 @export var steer_restore_speed = 1.5
 ## Steering wheel visual rotation: 420deg / MAX_STEER
-@export var rotate_wheel_sens = 4.0
-
+@export var rotate_wheel_sens_max = 360.0
+var rotate_wheel_sens
 
 @export_category("Braking Values")
 @export var use_wheel_brake = true
@@ -138,8 +138,8 @@ var rem_linear_velocity = Vector3.ZERO
 func _ready() -> void:
 	UI = $UI
 	Analometer = UI.get_analometer()
-	rotate_wheel_sens = 90.0 / rad_to_deg(MAX_STEER)
-	print(rotate_wheel_sens)
+	rotate_wheel_sens = (rotate_wheel_sens_max
+		/ rad_to_deg(MAX_STEER))
 	
 	## Setup Vehicle3D values
 	mass = vehicle_mass
@@ -192,7 +192,7 @@ func _ready() -> void:
 	## Set Continuous Collision Detection
 	continuous_cd = true
 	
-	## @NEW Engine Index RPM to use GearBox
+	## @NEW Engine Index RPM to use
 	for rpm in engine_index_up:
 		var calc_rpm = MAX_SPEED * 3.6 / rpm
 		if calc_rpm > 1 and calc_rpm < 8:
@@ -247,8 +247,13 @@ func _physics_process(delta: float) -> void:
 		if ACCELERATING > 0: ACCELERATING = 0
 		ACCELERATING = move_toward(ACCELERATING, _ACCELERATING, 
 			brake_control_speed * control_speed * delta)
-	if Input.is_action_pressed("accelerate"):
+	elif Input.is_action_pressed("accelerate"):
 		ACCELERATING = move_toward(ACCELERATING, _ACCELERATING, 
+			control_speed * delta)
+	else:
+		_ACCELERATING = move_toward(_ACCELERATING, 0.0, 
+			control_speed * delta)
+		ACCELERATING = move_toward(ACCELERATING, 0.0, 
 			control_speed * delta)
 								   
 	## Set acceleration state @CHANGED
@@ -320,12 +325,6 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.REVERSING
 		## Rear Gear has 30% of maximum power
 		engine_force = - clamp(engine_force, 0, MAX_POWER * 0.3)
-		
-	scale_rpm = 1 + (
-		2 *
-		(linear_velocity.length()  / MAX_SPEED)
-		* (eng_ind_rpm[engine_index - 2] / eng_ind_rpm.max())
-	)
 
 	## Calculate custom forces
 	## AeroDrag
@@ -370,7 +369,17 @@ func _physics_process(delta: float) -> void:
 		
 	## Update Engine Index
 	engine_index = get_engine_index((linear_velocity.length()))
-		
+	## Update RPM value
+	scale_rpm = 1 + ( 2 * ## Why?
+		(linear_velocity.length()  / MAX_SPEED)
+		* (eng_ind_rpm[engine_index - 2] / eng_ind_rpm.max())
+	)
+	## @NeW try to use RPM as engine_force !IT WORKS!
+	engine_force = scale_curve.sample_baked((
+		scale_rpm-1)) * MAX_POWER * ACCELERATING
+	print((
+		scale_rpm-1))
+	
 	## Update UI
 	UI.set_speedometer_label(
 		"%8s:%8s" % [
