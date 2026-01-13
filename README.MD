@@ -11,7 +11,8 @@
   - Curve with ratios from gears
 - Normalized Curve, Max.Speed, Gears 
 - Added Brake and Accelerate pedals
-- ... Add body rotation and delta velocity.z
+- Added body rotation 
+- Added alpha angle (wrong)
 - @TODO 
   - Add OnTop and Glass fixed cameras
   - Add Alphas for FW and RW

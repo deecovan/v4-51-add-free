@@ -394,6 +394,8 @@ func _physics_process(delta: float) -> void:
 	rotate_wheel()
 	set_brake_pedal(print_brake_force)
 	set_accelerate_pedal(ACCELERATING * 100)
+	set_rotate_alpha(angular_velocity, 
+		global_position.angle_to(linear_velocity))
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
@@ -514,3 +516,7 @@ func set_brake_pedal(val) -> void:
 	
 func set_accelerate_pedal(val) -> void:
 	UI.set_accelerate_pedal(val)
+	
+func set_rotate_alpha(rot: Vector3, vel_a: float) -> void:
+	UI.set_rotate_alpha(-rot.y * 75, vel_a)
+	

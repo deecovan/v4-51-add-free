@@ -7,6 +7,10 @@ var help: Label
 var topline: Label
 var speedometer_label: Label
 var Analometer: Control
+var RotLeft
+var RotRight
+var RotLeftA
+var RotRightA
 
 func _ready() -> void:
 	logs = $MarginContainer/VBoxContainer/Info/Logs
@@ -15,7 +19,11 @@ func _ready() -> void:
 	help = $Help
 	topline = $MarginContainer/Topline
 	speedometer_label = $MarginContainer/VBoxContainer/Speedometer/Label
-
+	RotLeft = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/Left
+	RotLeftA = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/LeftA
+	RotRight = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/Right
+	RotRightA = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/RightA
+	
 func _process(_delta: float) -> void:
 	topline.text = (str(Engine.get_frames_per_second())
 		+ ' fps [F1] help [F5] reload [F6] view modes')
@@ -87,4 +95,27 @@ func set_brake_pedal(val) -> void:
 	
 func set_accelerate_pedal(val) -> void:
 	$MarginContainer/VBoxContainer/WheelsRearSleep/Accelerate.value = val
-	
+
+func set_rotate_alpha(rot,vel_a) -> void:
+	if rot < 0:
+		RotLeft.show()
+		RotLeft.value = (
+			abs(rot)
+		)
+		RotRightA.show()
+		RotRightA.text = (
+			"%2.2f" % abs(vel_a)
+		)
+		RotRight.hide()
+		RotLeftA.hide()
+	else:
+		RotRight.show()
+		RotRight.value = (
+			abs(rot)
+		)
+		RotLeftA.show()
+		RotLeftA.text = (
+			"%2.2f" % abs(vel_a)
+		)
+		RotLeft.hide()
+		RotRightA.hide()

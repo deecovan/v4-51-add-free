@@ -160,6 +160,27 @@ theme = ExtResource("6_t7te2")
 value = 50.0
 texture_progress = ExtResource("7_56q1t")
 
+[node name="LeftA" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+clip_contents = true
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 22
+text = ">"
+horizontal_alignment = 2
+
+[node name="RightA" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+clip_contents = true
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 22
+text = "10'"
+
 [node name="Right" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
 clip_contents = true
 custom_minimum_size = Vector2(35, 0)
@@ -171,33 +192,6 @@ theme = ExtResource("6_t7te2")
 step = 30.0
 fill_mode = 1
 texture_progress = ExtResource("8_fevae")
-
-[node name="Alpha" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(75, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Left" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Alpha"]
-clip_contents = true
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("3_nf4gj")
-theme_override_font_sizes/font_size = 22
-text = ">"
-horizontal_alignment = 2
-
-[node name="Right" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Alpha"]
-clip_contents = true
-custom_minimum_size = Vector2(35, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("3_nf4gj")
-theme_override_font_sizes/font_size = 22
-text = "10'"
 
 [node name="WheelsFrontSleep" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(75, 30)
