@@ -15,7 +15,6 @@
 - Added alpha angle (wrong)
 - @TODO 
   - Add OnTop and Glass fixed cameras
-  - Add Alphas for FW and RW
   - Add digital Gears and Speed
   
 - Implement GearBox values
