@@ -292,7 +292,6 @@ func _physics_process(delta: float) -> void:
 			engine_force, 
 			clamp(matching_power, 0, matching_power), 
 			control_speed * delta) 
-		## Apply REVERSE
 		
 	## Than Braking
 	var print_brake_force = 0.0
@@ -322,7 +321,7 @@ func _physics_process(delta: float) -> void:
 		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
 		
 	## Reverse last
-	if REVERSE and engine_state != States.REVERSING:
+	if REVERSE:
 		engine_state = States.REVERSING
 		## Rear Gear has 30% of maximum power
 		engine_force = - clamp(engine_force, 0, MAX_POWER * 0.3)
@@ -394,8 +393,9 @@ func _physics_process(delta: float) -> void:
 	rotate_wheel()
 	set_brake_pedal(print_brake_force)
 	set_accelerate_pedal(ACCELERATING * 100)
-	set_rotate_alpha(angular_velocity, 
-		global_position.angle_to(linear_velocity))
+	var loc_vel = get_local_velocity()
+	var deg_vel = rad_to_deg(loc_vel.angle_to(-Vector3.FORWARD))
+	set_rotate_alpha(angular_velocity.y, deg_vel, abs(loc_vel.x))
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
@@ -517,6 +517,21 @@ func set_brake_pedal(val) -> void:
 func set_accelerate_pedal(val) -> void:
 	UI.set_accelerate_pedal(val)
 	
-func set_rotate_alpha(rot: Vector3, vel_a: float) -> void:
-	UI.set_rotate_alpha(-rot.y * 75, vel_a)
+func set_rotate_alpha(rot_y: float, deg_vel: float, loc_vel: float) -> void:
+	UI.set_rotate_alpha(-rot_y * 100, "%2.1fd(%2.1f)" % [deg_vel, loc_vel])
+	
+func get_local_velocity() -> Vector3:
+	var global_velocity = linear_velocity 
+	# Or body.linear_velocity for RigidBody
+	# Using transform.basis.inverse() to transform from global to local space
+	var local_velocity = transform.basis.inverse() * global_velocity
+	# Alternatively, for 3D, you can use the transposed basis (since it's orthogonal)
+	# var local_velocity = transform.basis.transposed() * global_velocity
+	## print("Global Velocity: ", global_velocity)
+	## print("Local Velocity (Local X, Y, Z): ", local_velocity)
+	# local_velocity.z would be forward/backward relative to the object
+	# local_velocity.x would be left/right
+	# local_velocity.y would be up/down (if not relying purely on global Y)
+	return local_velocity
+
 	

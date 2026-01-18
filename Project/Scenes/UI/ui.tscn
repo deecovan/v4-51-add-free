@@ -189,7 +189,6 @@ tooltip_text = "Rotation Right
 
 "
 theme = ExtResource("6_t7te2")
-step = 30.0
 fill_mode = 1
 texture_progress = ExtResource("8_fevae")
 

@@ -12,8 +12,8 @@
 - Normalized Curve, Max.Speed, Gears 
 - Added Brake and Accelerate pedals
 - Added body rotation 
-- Added alpha angle (!wrong)
-  - Need to use linear_velocity to_local
+- Added Alpha Angle and Velocity 
+  - Used linear_velocity transform.basis
 - @TODO 
   - Add OnTop and Glass fixed cameras
   - Add digital Gears and Speed

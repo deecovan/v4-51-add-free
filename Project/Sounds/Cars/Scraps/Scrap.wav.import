@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bs18n8xr22toi"
-path="res://.godot/imported/scrap.wav-7a7a3bc507aed2a62d2d36d361ae0cff.sample"
+path="res://.godot/imported/Scrap.wav-31fa1cff1bbc1588a111c2bb0fdd6add.sample"
 
 [deps]
 
-source_file="res://Sounds/Cars/scrap.wav"
-dest_files=["res://.godot/imported/scrap.wav-7a7a3bc507aed2a62d2d36d361ae0cff.sample"]
+source_file="res://Sounds/Cars/Scraps/Scrap.wav"
+dest_files=["res://.godot/imported/Scrap.wav-31fa1cff1bbc1588a111c2bb0fdd6add.sample"]
 
 [params]
 

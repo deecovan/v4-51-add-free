@@ -104,7 +104,7 @@ func set_rotate_alpha(rot,vel_a) -> void:
 		)
 		RotRightA.show()
 		RotRightA.text = (
-			"%2.2f" % abs(vel_a)
+			"%s" % (vel_a)
 		)
 		RotRight.hide()
 		RotLeftA.hide()
@@ -115,7 +115,7 @@ func set_rotate_alpha(rot,vel_a) -> void:
 		)
 		RotLeftA.show()
 		RotLeftA.text = (
-			"%2.2f" % abs(vel_a)
+			"%s" % (vel_a)
 		)
 		RotLeft.hide()
 		RotRightA.hide()
