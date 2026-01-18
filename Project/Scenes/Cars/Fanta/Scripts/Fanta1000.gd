@@ -90,11 +90,11 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65 @!!!
-@export var fric_slip_front = 1.3
+@export var fric_slip_front = 1.25
 ## Rear wheels friction slip ratio ## 0.65 @!!!
-@export var fric_slip_rear = 1.3
+@export var fric_slip_rear = 1.35
 ## @HACK Acceleration multiplier for rear slip. Used if NOT ACCELERATING.
-@export var fric_slip_rear_hb_mult = 1.8
+@export var fric_slip_rear_hb_mult = 1.75
 ## Front wheels damper relaxation ## 0.88
 ## Relax must higher than Compression 
 @export var damp_compr_front = 15.0
@@ -518,7 +518,14 @@ func set_accelerate_pedal(val) -> void:
 	UI.set_accelerate_pedal(val)
 	
 func set_rotate_alpha(rot_y: float, deg_vel: float, loc_vel: float) -> void:
-	UI.set_rotate_alpha(-rot_y * 100, "%2.1fd(%2.1f)" % [deg_vel, loc_vel])
+	var print_ry = ""
+	var values = -rot_y * 3
+	for i in int(abs(values)+1):
+		if values < 0:
+			print_ry += "<"
+		else:
+			print_ry += ">"
+	UI.set_rotate_alpha(rot_y, print_ry, "%2.1fd(%2.1f)" % [deg_vel, loc_vel])
 	
 func get_local_velocity() -> Vector3:
 	var global_velocity = linear_velocity 

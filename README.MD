@@ -14,7 +14,10 @@
 - Added body rotation 
 - Added Alpha Angle and Velocity 
   - Used linear_velocity transform.basis
+- Finished with Alpha
+
 - @TODO 
+  - Fix Reverse and Braking errors
   - Add OnTop and Glass fixed cameras
   - Add digital Gears and Speed
   

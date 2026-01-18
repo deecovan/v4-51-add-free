@@ -96,12 +96,10 @@ func set_brake_pedal(val) -> void:
 func set_accelerate_pedal(val) -> void:
 	$MarginContainer/VBoxContainer/WheelsRearSleep/Accelerate.value = val
 
-func set_rotate_alpha(rot,vel_a) -> void:
-	if rot < 0:
+func set_rotate_alpha(rot,rot_d,vel_a) -> void:
+	if rot > 0:
 		RotLeft.show()
-		RotLeft.value = (
-			abs(rot)
-		)
+		RotLeft.text = (rot_d)
 		RotRightA.show()
 		RotRightA.text = (
 			"%s" % (vel_a)
@@ -110,9 +108,7 @@ func set_rotate_alpha(rot,vel_a) -> void:
 		RotLeftA.hide()
 	else:
 		RotRight.show()
-		RotRight.value = (
-			abs(rot)
-		)
+		RotRight.text = (rot_d)
 		RotLeftA.show()
 		RotLeftA.text = (
 			"%s" % (vel_a)

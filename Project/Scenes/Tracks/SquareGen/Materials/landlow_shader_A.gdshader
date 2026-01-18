@@ -7,7 +7,7 @@ varying vec2 tex_position;
 
 void vertex() {
 	//// Add Noise
-	tex_position = VERTEX.xz / 10.0 + 0.5;
+	tex_position = VERTEX.xz / 15.0 + 1.0;
 	//float height = texture(noise, tex_position).x;
 	// VERTEX.y += height * height_scale - 0.5;
 	//// Add Waves
@@ -21,7 +21,7 @@ void vertex() {
 
 void fragment() {
 	// Set Color
-	ALBEDO = vec3(0.45, 0.24, 0.05);
+	ALBEDO = vec3(0.45, 0.25, 0.05);
 	// Add Normals
 	NORMAL_MAP = texture(normalmap, tex_position).xyz;
 }

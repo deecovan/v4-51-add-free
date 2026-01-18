@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2u3c52wwav41"]
+[gd_scene load_steps=15 format=3 uid="uid://c2u3c52wwav41"]
 
 [ext_resource type="Script" uid="uid://bxgxdgj8xpxwf" path="res://Scenes/UI/Scripts/ui_canvas.gd" id="1_nf4gj"]
 [ext_resource type="Script" uid="uid://cwhmf0iu4u1ho" path="res://Scenes/UI/Scripts/draw_graph.gd" id="2_qdvrb"]
@@ -9,10 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://gvy0ceh2vadg" path="res://Scenes/UI/Images/SpeedometerBG.png" id="5_smcll"]
 [ext_resource type="Texture2D" uid="uid://43a0m001neks" path="res://Scenes/UI/Images/SpeedometarPointer.png" id="6_mmixe"]
 [ext_resource type="Texture2D" uid="uid://c264l56f7huv0" path="res://Scenes/UI/Images/TachometerBG.png" id="6_ryf15"]
-[ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="6_t7te2"]
-[ext_resource type="Texture2D" uid="uid://dr1lann2xlx3h" path="res://Images/Left40.png" id="7_56q1t"]
 [ext_resource type="Texture2D" uid="uid://b2cb0mc3qto1e" path="res://Scenes/UI/Images/SpeedometerPointer.png" id="7_mmixe"]
-[ext_resource type="Texture2D" uid="uid://bp5m1q3eauk7u" path="res://Images/Right40.png" id="8_fevae"]
 [ext_resource type="FontFile" uid="uid://dlgkspckhvbp4" path="res://Themes/Fonts/Xolonium-Regular.ttf" id="10_nt8jn"]
 [ext_resource type="Texture2D" uid="uid://ben725ndss1tx" path="res://Images/Wheel.png" id="12_vy225"]
 
@@ -151,14 +148,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Left" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+[node name="Left" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+clip_contents = true
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-tooltip_text = "Rotation Left
-"
-theme = ExtResource("6_t7te2")
-value = 50.0
-texture_progress = ExtResource("7_56q1t")
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 22
+text = "<<"
+horizontal_alignment = 2
 
 [node name="LeftA" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
 clip_contents = true
@@ -168,7 +167,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("3_nf4gj")
 theme_override_font_sizes/font_size = 22
-text = ">"
+text = "XXd(XX)"
 horizontal_alignment = 2
 
 [node name="RightA" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
@@ -179,18 +178,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("3_nf4gj")
 theme_override_font_sizes/font_size = 22
-text = "10'"
+text = "XXd(XX)"
 
-[node name="Right" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
+[node name="Right" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Rotation"]
 clip_contents = true
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-tooltip_text = "Rotation Right
-
-"
-theme = ExtResource("6_t7te2")
-fill_mode = 1
-texture_progress = ExtResource("8_fevae")
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_nf4gj")
+theme_override_font_sizes/font_size = 22
+text = ">>"
 
 [node name="WheelsFrontSleep" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(75, 30)

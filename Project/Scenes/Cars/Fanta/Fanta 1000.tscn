@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://d32nahn6656wp" path="res://Sounds/Cars/eng run start.wav" id="3_3d2ru"]
 [ext_resource type="AudioStream" uid="uid://d0a2tqcfnno11" path="res://Sounds/Cars/eng run idle.wav" id="4_eayo3"]
 [ext_resource type="AudioStream" uid="uid://g2vvom06rwsx" path="res://Sounds/Cars/eng run overpower.wav" id="5_erafi"]
-[ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/Cars/scrap.wav" id="6_0ys8y"]
+[ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/Cars/Scraps/Scrap.wav" id="6_0ys8y"]
 [ext_resource type="AudioStream" uid="uid://dqtjormxmfsnx" path="res://Sounds/Cars/Gear.wav" id="7_711e1"]
 [ext_resource type="PackedScene" uid="uid://bnj10rk4ojq0v" path="res://Scenes/Cars/Fanta/Fanta_Wheel_L.tscn" id="7_tqtuo"]
 [ext_resource type="PackedScene" uid="uid://c4nshb085yca4" path="res://Scenes/Cars/Fanta/Fanta_Wheel_R.tscn" id="8_7x5y1"]
