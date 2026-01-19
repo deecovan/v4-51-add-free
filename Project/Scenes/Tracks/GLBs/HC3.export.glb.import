@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bykygnm6plcjc"
-path="res://.godot/imported/Spa.Short.06.glb-1137ceb3dbb92dcc991d92ddec94f9a2.scn"
+uid="uid://ler2qiys24mb"
+path="res://.godot/imported/HC3.export.glb-f4746a646a27fb216723bdfabfd14be8.scn"
 
 [deps]
 
-source_file="res://Scenes/Tracks/GLBs/SpaChunks/Spa.Short.06.glb"
-dest_files=["res://.godot/imported/Spa.Short.06.glb-1137ceb3dbb92dcc991d92ddec94f9a2.scn"]
+source_file="res://Scenes/Tracks/GLBs/HC3.export.glb"
+dest_files=["res://.godot/imported/HC3.export.glb-f4746a646a27fb216723bdfabfd14be8.scn"]
 
 [params]
 
@@ -33,8 +33,22 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Black": {
+"use_external/enabled": true,
+"use_external/path": "uid://c1rb1j1x6st35"
+},
+"Blue Metal": {
+"use_external/enabled": true,
+"use_external/path": "uid://cjl56kasjelva"
+},
+"White": {
+"use_external/enabled": true,
+"use_external/path": "uid://d3ajard5hkhny"
+}
+},
 "nodes": {
-"PATH:Track_006": {
+"PATH:Sphere_002": {
 "generate/physics": true
 }
 }
