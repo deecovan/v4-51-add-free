@@ -5,7 +5,8 @@
 ## 25.19.1
 - New Fanta values
 - Added New SkyBoxes
-- Added Kenney Industrial, Commercial and Suburban 
+- Added Kenney Industrial, Commercial and Suburban
+- Placed Builds, Trees, Fences
 
 ## 25.19.1
 - @TODO 
