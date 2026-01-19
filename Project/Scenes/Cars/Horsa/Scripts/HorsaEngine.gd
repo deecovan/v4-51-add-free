@@ -11,9 +11,13 @@ var power
 var max_s
 var max_p
 var snd_start
+var rem_engine_index
+var vol = -0.6
+## @NEW Engine Index RPM to use GearBox
+var eng_rpm = 1.0
+var eng_ind_rpm = []
 ## Sound Scale from velocity, Volume from power
-var scale
-var vol
+var scale_rpm = 1.0
 
 func _ready():
 	vehicle = $".."
@@ -24,19 +28,29 @@ func _ready():
 	_timer.connect("timeout", on_timer_timeout)
 	_start.play()
 	_timer.start()
+	## @NEW Engine Index RPM to use GearBox
+	eng_ind_rpm = vehicle.eng_ind_rpm
 	
 func _physics_process(_delta: float) -> void:
-	vel = vehicle.linear_velocity.length()
+	vel = vehicle.linear_velocity.length() * eng_ind_rpm.min() * 2
 	power = vehicle.engine_force
-	scale = 1 + vel / max_s
+						
 	vol = power / max_p
+	## @NEW Engine Index RPM to use GearBox
+	scale_rpm = vehicle.scale_rpm
+	
+	if (rem_engine_index != vehicle.engine_index
+		and not $"../Gear".playing):
+		rem_engine_index = vehicle.engine_index
+		$"../Gear".play()
+	
 	if not _start.playing and not _idle.playing:
 		_idle.play()
 	if not _start.playing and not _pow.playing:
 		_pow.play()
 	if vel > snd_start:
-		_idle.pitch_scale = scale
-		_pow.pitch_scale = scale
+		_idle.pitch_scale = scale_rpm
+		_pow.pitch_scale = scale_rpm
 		_pow.volume_db = clamp(vol * 32 - 32, -32.0, 0.0)
 	## Randomise loops
 	if randf() > 0.9: _idle.play()
