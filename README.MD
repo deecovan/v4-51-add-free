@@ -2,6 +2,13 @@
 
 @TODO change all car collisions to primitives
 
+## 25.19.1
+- @TODO 
+  - Fix Reverse and Braking errors
+  - Add OnTop and Glass fixed cameras
+  - Add digital Gears and Speed
+  - Try FakeWheels to get wheel Alpha
+
 ## 25.1.11 GearBox values
 - Engine sound ready 
 - Improved Tachometer
@@ -16,18 +23,12 @@
   - Used linear_velocity transform.basis
 - Finished with Alpha
 
-- @TODO 
-  - Fix Reverse and Braking errors
-  - Add OnTop and Glass fixed cameras
-  - Add digital Gears and Speed
-  
-- Implement GearBox values
+- Implemented GearBox values
   - Indicator first
   - Sound second
   * Gearbox Physics maybe later
 
 ## Fixed Fanta for stability
-- Fanta 633, 844 and 1066
 - Changed COM
 - Changed Gimbal speed
 - Changed Steer Return speed
