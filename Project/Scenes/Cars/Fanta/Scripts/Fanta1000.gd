@@ -229,6 +229,7 @@ func _physics_process(delta: float) -> void:
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, MAX_STEER)
 	## @NEW add m_MAX steering speed modifier
 	var m_MAX = m_MAX_STEER / MAX_STEER
+	
 	## Use controller's axes, joy or key input
 	var _steering = Input.get_axis("steer_right", "steer_left") * m_MAX_STEER
 	var _ACCELERATING = Input.get_axis("brake", "accelerate")
@@ -273,9 +274,9 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.COASTING
 	
 	## Chilling state is Accelerating with Power 0 and speed near 0
-	if (abs(linear_velocity.length()) < 1.0
-		and engine_state != States.BRAKING):
-		engine_state = States.CHILLING
+	#if (abs(linear_velocity.length()) < 1.0
+		#and engine_state != States.BRAKING):
+		#engine_state = States.CHILLING
 
 	## Process Engine States
 	## ACCELERATING first
@@ -292,6 +293,9 @@ func _physics_process(delta: float) -> void:
 			engine_force, 
 			clamp(matching_power, 0, matching_power), 
 			control_speed * delta) 
+		## Apply REVERSE
+		if REVERSE:
+			engine_force = -abs(engine_force)
 		
 	## Than Braking
 	var print_brake_force = 0.0
