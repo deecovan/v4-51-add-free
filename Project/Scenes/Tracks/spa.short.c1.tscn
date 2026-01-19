@@ -25,14 +25,38 @@ script = ExtResource("1_l2v5a")
 
 [node name="Sky" parent="." instance=ExtResource("2_iucg2")]
 
-[node name="Sand 1km Landlow A" parent="." instance=ExtResource("14_x26bs")]
+[node name="Sand" type="Node3D" parent="."]
+
+[node name="Sand 1km Landlow A" parent="Sand" instance=ExtResource("14_x26bs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -388.094, 0, -5.9899)
 
-[node name="Sand 1km Landlow A2" parent="." instance=ExtResource("14_x26bs")]
+[node name="Sand 1km Landlow A2" parent="Sand" instance=ExtResource("14_x26bs")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 309.964, 0, -5.9899)
 
-[node name="Sand 1km Landlow A3" parent="." instance=ExtResource("14_x26bs")]
+[node name="Sand 1km Landlow A3" parent="Sand" instance=ExtResource("14_x26bs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1008.68, 0, -5.9899)
+
+[node name="Boxes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 492.012, -0.042753, -113.713)
+mesh = SubResource("CylinderMesh_tom8s")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Boxes/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_fu75w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 763.76, -0.042753, -164.719)
+mesh = SubResource("CylinderMesh_tom8s")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Boxes/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_fu75w")
 
 [node name="Spa_Flat_Objects" parent="." instance=ExtResource("5_o3ev2")]
 transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 504.444, 0, -88.5924)
@@ -42,21 +66,3 @@ transform = Transform3D(0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, 0.34202, 70
 
 [node name="Vehicle" parent="." instance=ExtResource("7_o3ev2")]
 transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 705, 2, -175)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 492.012, -0.042753, -113.713)
-mesh = SubResource("CylinderMesh_tom8s")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_fu75w")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 763.76, -0.042753, -164.719)
-mesh = SubResource("CylinderMesh_tom8s")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_fu75w")

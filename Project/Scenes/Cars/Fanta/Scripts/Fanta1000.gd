@@ -38,8 +38,8 @@ var car_angular_damp = 0.0
 
 ## Add Linear Friction
 ## Constant and Linear friction
-@export var bodyLinearFricConst = 950.0
-@export var bodyLinearFricLin = 8.50
+@export var bodyLinearFricConst = 1000.0
+@export var bodyLinearFricLin = 10.0
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
 
@@ -121,9 +121,9 @@ enum Indices {Rear, Neutral,
 	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 75.0, 130.0, 160.0, 190.0, 220.0, 260.0]
+	1.0, 70.0, 130.0, 160.0, 190.0, 220.0, 260.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 70.0, 125.0, 155.0, 185.0, 215.0, 255.0]
+	1.0, 60.0, 120.0, 150.0, 180.0, 210.0, 250.0]
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0

@@ -3,6 +3,10 @@
 @TODO change all car collisions to primitives
 
 ## 25.19.1
+- New Fanta values
+- New SkyBox
+
+## 25.19.1
 - @TODO 
   - Fix Reverse and Braking errors
   - Add OnTop and Glass fixed cameras

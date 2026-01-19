@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dddjuk3pct6cf"
-path.s3tc="res://.godot/imported/52a0a39a-3540-4aea-8293-f41bad8403e9.jpg-949d4f963ea9e9692043f688508b473e.s3tc.ctex"
+uid="uid://bclba3i8ap62r"
+path.s3tc="res://.godot/imported/thulio-philipe-r1Eef47CG0c-unsplash.jpg-8cc7a9be918fde9d8dc3d5536c74c197.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scenes/Sky/Images/52a0a39a-3540-4aea-8293-f41bad8403e9.jpg"
-dest_files=["res://.godot/imported/52a0a39a-3540-4aea-8293-f41bad8403e9.jpg-949d4f963ea9e9692043f688508b473e.s3tc.ctex"]
+source_file="res://Scenes/Sky/Images/thulio-philipe-r1Eef47CG0c-unsplash.jpg"
+dest_files=["res://.godot/imported/thulio-philipe-r1Eef47CG0c-unsplash.jpg-8cc7a9be918fde9d8dc3d5536c74c197.s3tc.ctex"]
 
 [params]
 
