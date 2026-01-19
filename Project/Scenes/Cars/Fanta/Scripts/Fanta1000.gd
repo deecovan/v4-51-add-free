@@ -114,7 +114,7 @@ var rotate_wheel_sens
 @export var scale_curve: Curve
 var scale_array : Array
 
-@export_category("r")
+@export_category("States and gears")
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
 @export var engine_state: States = States.CHILLING
 enum Indices {Rear, Neutral, 
@@ -208,7 +208,6 @@ func _ready() -> void:
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
-			
 	## @NEW using Alternative Control
 	## @TODO add boolean to settings
 	var alt_control = Input.is_action_pressed("alt_control")
@@ -266,6 +265,7 @@ func _physics_process(delta: float) -> void:
 			## Decrease engine power on state changed
 			engine_force = engine_force * coast_init
 		engine_state = States.BRAKING
+		
 	## Else: Coasting 
 	else: 
 		if engine_state != States.COASTING:
@@ -325,7 +325,7 @@ func _physics_process(delta: float) -> void:
 		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
 		
 	## Reverse last
-	if REVERSE:
+	if REVERSE and engine_state != States.REVERSING:
 		engine_state = States.REVERSING
 		## Rear Gear has 30% of maximum power
 		engine_force = - clamp(engine_force, 0, MAX_POWER * 0.3)
@@ -382,7 +382,7 @@ func _physics_process(delta: float) -> void:
 	## @NeW try to use RPM as engine_force !IT WORKS!
 	engine_force = scale_curve.sample_baked((
 		scale_rpm-1)) * MAX_POWER * ACCELERATING
-	
+
 	## Update UI
 	UI.set_speedometer_label(
 		"%8s:%8s" % [
@@ -403,7 +403,7 @@ func _physics_process(delta: float) -> void:
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
-	UI.logs_add_text("\n Fanta 1066")
+	UI.logs_add_text("\n Fanta 1000")
 	UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
 	UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
 	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
@@ -460,7 +460,7 @@ func get_engine_index(_speed: float) -> int:
 				speed_index = i
 			i += 1
 	return speed_index
-	
+
 func rotate_speed_pt(speedf: float) -> void:
 	var speedr = 0.0
 	var min_rad = Analometer.get_min_rad() 
