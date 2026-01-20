@@ -23,6 +23,10 @@ script = ExtResource("2_oop61")
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 50, 3, -9.69334)
 shape = SubResource("BoxShape3D_07yu2")
 
+[node name="collision_timer" type="Timer" parent="Area3D"]
+wait_time = 10.0
+one_shot = true
+
 [node name="construction-light2" parent="." instance=ExtResource("3_aqipb")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.619028, -0.00930351, 88.53)
 

@@ -14,7 +14,7 @@ var car_friction = 0.0
 ## Real maximum 240 @!!!
 @export var vehicle_mass = 1000.0
 @export var MAX_POWER = 6600.0
-@export var MAX_SPEED = 65.0
+@export var MAX_SPEED = 66.0
 @export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
@@ -272,9 +272,9 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.COASTING
 	
 	## Chilling state is Accelerating with Power 0 and speed near 0
-	#if (abs(linear_velocity.length()) < 1.0
-		#and engine_state != States.BRAKING):
-		#engine_state = States.CHILLING
+	if (abs(linear_velocity.length()) < 1.0
+		and engine_state != States.BRAKING):
+		engine_state = States.CHILLING
 
 	## Process Engine States
 	## ACCELERATING first

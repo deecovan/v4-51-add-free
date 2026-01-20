@@ -10,6 +10,8 @@
 - Horsa improved:
   - Collisions from boxes
   - Bounce 0.5 Rought
+- Tab area updated: 
+  - Added collision_timer to awoid doubles
 
 ## 25.19.1
 - New Fanta values

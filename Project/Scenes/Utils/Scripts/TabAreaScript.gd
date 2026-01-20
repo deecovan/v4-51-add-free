@@ -3,13 +3,16 @@ extends Area3D
 var lap_timer_started = false
 var lap_timer = 0.0
 var tab: MeshInstance3D
+var collision_timer: Timer
 
 func _ready() -> void:
 	var find = get_parent().find_children("Tab")
 	tab = find[0]
+	collision_timer = $collision_timer
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is VehicleBody3D:
+	if body is VehicleBody3D and collision_timer.is_stopped():
+		collision_timer.start()
 		if lap_timer_started:
 			var current = tab.GetCurrTime()
 			var last = tab.GetLastTime()
