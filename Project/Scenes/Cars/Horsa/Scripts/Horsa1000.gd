@@ -31,7 +31,7 @@ var car_angular_damp = 0.0
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
 @export var bodySquareFill = 0.8
-@export var bodyDrag = 1.35
+@export var bodyDrag = 1.25
 ## Setup AirDynamic Force
 @export var bodyAeroDyn = 0.44
 
@@ -89,9 +89,9 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.25
+@export var fric_slip_front = 1.15
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.35
+@export var fric_slip_rear = 1.25
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.9
 ## Relax must higher than Compression 
