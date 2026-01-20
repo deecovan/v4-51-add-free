@@ -4,10 +4,10 @@ var speedtometer_label
 var REVERSE =  false
 
 ## Next values used for reconfiguring the Vehicle3Ds values
-var car_friction = 0.0
+var car_bounce = 0.5
 var car_rough = true
-var car_bounce = 0.0
 var car_absorb = false
+var car_friction = 0.0
 
 @export_category("Vehicle Constants")
 ## Values for curve Fanta_Curve_1000

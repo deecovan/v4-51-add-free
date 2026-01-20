@@ -7,6 +7,9 @@
 - Horsa Updated Scripts and Sounds
 - Added Cup track
 - Fixed REVERSING in Fanta and Horsa
+- Horsa improved:
+  - Collisions from boxes
+  - Bounce 0.5 Rought
 
 ## 25.19.1
 - New Fanta values
