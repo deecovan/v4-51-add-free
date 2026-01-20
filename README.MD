@@ -4,6 +4,8 @@
 
 ## 25.20.1
 - New Ran sounds
+- Horsa Updated Scripts and Sounds
+- Added Cup track
 
 ## 25.19.1
 - New Fanta values

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://v5ggol28gyfa"
-path="res://.godot/imported/Cup.3.TorusTop.glb-224a3b7f450f217b1ecd4f2e29816dc1.scn"
+path="res://.godot/imported/Cup.3.TorusTop.glb-4cddd13dd8b773030dcee33cee21b9b9.scn"
 
 [deps]
 
-source_file="res://Scenes/GLBs/Cup.3.TorusTop.glb"
-dest_files=["res://.godot/imported/Cup.3.TorusTop.glb-224a3b7f450f217b1ecd4f2e29816dc1.scn"]
+source_file="res://Scenes/Tracks/GLBs/Cup.3.TorusTop.glb"
+dest_files=["res://.godot/imported/Cup.3.TorusTop.glb-4cddd13dd8b773030dcee33cee21b9b9.scn"]
 
 [params]
 

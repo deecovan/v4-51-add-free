@@ -14,7 +14,7 @@ var car_absorb = false
 ## Real maximum 240 @!!!
 @export var vehicle_mass = 1000.0
 @export var MAX_POWER = 6600.0
-@export var MAX_SPEED = 70.0
+@export var MAX_SPEED = 65.0
 @export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
@@ -50,11 +50,11 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.45
+@export var MAX_STEER  = 0.5
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.125
+@export var SPEED_STEER_CO = 0.1
 ## Maximum Steering speed
 @export var steer_control_speed = 1.0
 @export var steer_restore_speed = 1.5
@@ -119,9 +119,9 @@ enum Indices {Rear, Neutral,
 	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 70.0, 130.0, 160.0, 190.0, 220.0, 260.0]
+	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 260.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 60.0, 120.0, 150.0, 180.0, 210.0, 250.0]
+	1.0, 50.0, 110.0, 150.0, 190.0, 210.0, 250.0]
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
