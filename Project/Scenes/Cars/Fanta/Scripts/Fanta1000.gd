@@ -323,12 +323,6 @@ func _physics_process(delta: float) -> void:
 	if engine_state == States.COASTING:
 		## Engine coasting toward down USING LERP!
 		engine_force = lerp(engine_force, 0.0, engine_coast * delta)
-		
-	## Reverse last
-	if REVERSE and engine_state != States.REVERSING:
-		engine_state = States.REVERSING
-		## Rear Gear has 30% of maximum power
-		engine_force = - clamp(engine_force, 0, MAX_POWER * 0.3)
 
 	## Calculate custom forces
 	## AeroDrag
@@ -355,8 +349,6 @@ func _physics_process(delta: float) -> void:
 
 	## Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
-		if engine_state == States.COASTING:
-			engine_state = States.CHILLING
 		## Function?
 		var set_brake_force = \
 			hand_brake_force * vehicle_brake_force
@@ -382,6 +374,12 @@ func _physics_process(delta: float) -> void:
 	## @NeW try to use RPM as engine_force !IT WORKS!
 	engine_force = scale_curve.sample_baked((
 		scale_rpm-1)) * MAX_POWER * ACCELERATING
+		
+	## Reverse last
+	if REVERSE:
+		engine_state = States.REVERSING
+		## Rear Gear has 30% of maximum power
+		engine_force = - clamp(abs(engine_force), 0, MAX_POWER * 0.3)
 
 	## Update UI
 	UI.set_speedometer_label(
@@ -403,7 +401,7 @@ func _physics_process(delta: float) -> void:
 	
 	## @DEBUG UI logs
 	UI.logs_clr_text()
-	UI.logs_add_text("\n Fanta 1000")
+	UI.logs_add_text("\n Horsa 1000")
 	UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
 	UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
 	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
@@ -544,5 +542,3 @@ func get_local_velocity() -> Vector3:
 	# local_velocity.x would be left/right
 	# local_velocity.y would be up/down (if not relying purely on global Y)
 	return local_velocity
-
-	

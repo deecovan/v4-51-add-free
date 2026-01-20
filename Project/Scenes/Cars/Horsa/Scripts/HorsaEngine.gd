@@ -51,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 	if vel > snd_start:
 		_idle.pitch_scale = scale_rpm * 1.2
 		_pow.pitch_scale = scale_rpm * 0.8
-		_pow.volume_db = clamp(vol * 32 - 32, -12.0, 0.0)
+		_pow.volume_db = clamp(vol * 32 - 24, -24.0, 0.0)
 	## Randomise loops
 	if randf() > 0.9: _idle.play()
 	if randf() > 0.9: _pow.play()

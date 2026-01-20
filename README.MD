@@ -6,6 +6,7 @@
 - New Ran sounds
 - Horsa Updated Scripts and Sounds
 - Added Cup track
+- Fixed REVERSING in Fanta and Horsa
 
 ## 25.19.1
 - New Fanta values
@@ -15,7 +16,7 @@
 
 ## 25.19.1
 - @TODO 
-  - Fix Reverse and Braking errors
+  - Fix Braking errors
   - Add OnTop and Glass fixed cameras
   - Add digital Gears and Speed
   - Try FakeWheels to get wheel Alpha
