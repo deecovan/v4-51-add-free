@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="5_o3ev2"]
 [ext_resource type="PackedScene" uid="uid://cxe8kn1n5k5pn" path="res://Scenes/Builds/Suburban/building-type-a.glb" id="6_gxu2p"]
 [ext_resource type="PackedScene" uid="uid://dnmsel6mnpip6" path="res://Scenes/Builds/Suburban/fence-1x2.glb" id="7_nky3d"]
-[ext_resource type="PackedScene" uid="uid://dpck45j2g08ma" path="res://Scenes/Cars/Fanta/Fanta 1000.tscn" id="7_o3ev2"]
 [ext_resource type="PackedScene" uid="uid://cxv4sb3pnrs6m" path="res://Scenes/Builds/Suburban/fence.glb" id="8_17olb"]
 [ext_resource type="Material" uid="uid://0gwo1xh55ecb" path="res://Scenes/Tracks/Materials/Beetoon_Material.tres" id="8_fu75w"]
 [ext_resource type="PackedScene" uid="uid://bo7jqxmu0gejs" path="res://Scenes/Builds/Industrial/chimney-large.glb" id="12_17olb"]
@@ -52,6 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://bi3euxns5142x" path="res://Scenes/Builds/Suburban/building-type-k.glb" id="50_7wryj"]
 [ext_resource type="PackedScene" uid="uid://dmp151jh1jam0" path="res://Scenes/Builds/Suburban/building-type-l.glb" id="51_y56kl"]
 [ext_resource type="PackedScene" uid="uid://c61o5sm50aju5" path="res://Scenes/Builds/Suburban/building-type-m.glb" id="52_istht"]
+[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="52_kxfdn"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tom8s"]
 material = ExtResource("8_fu75w")
@@ -714,5 +714,5 @@ transform = Transform3D(0.926048, 0, 0.377405, 0, 1, 0, -0.377405, 0, 0.926048, 
 [node name="CameraGimbal" parent="." instance=ExtResource("16_3x27v")]
 transform = Transform3D(0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, 0.34202, 766.181, 2, -193.341)
 
-[node name="Vehicle" parent="." instance=ExtResource("7_o3ev2")]
-transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 766.181, 2, -193.341)
+[node name="Vehicle" parent="." instance=ExtResource("52_kxfdn")]
+transform = Transform3D(0.303684, 0, -0.952773, 0, 1, 0, 0.952773, 0, 0.303684, 766.465, 1, -194.149)

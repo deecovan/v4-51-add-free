@@ -56,8 +56,8 @@ var car_angular_damp = 0.0
 ## Speed Steer Koefficient
 @export var SPEED_STEER_CO = 0.1
 ## Maximum Steering speed
-@export var steer_control_speed = 1.0
-@export var steer_restore_speed = 1.5
+@export var steer_control_speed = 1.1
+@export var steer_restore_speed = 1.6
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
@@ -65,7 +65,7 @@ var rotate_wheel_sens
 @export_category("Braking Values")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
-@export var brake_control_speed = 0.35
+@export var brake_control_speed = 0.4
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 100.0
@@ -82,9 +82,9 @@ var rotate_wheel_sens
 
 @export_category("Coasting")
 ## Coasting starting value
-@export var coast_init = 0.3
+@export var coast_init = 0.4
 ## Coasting lerp speed
-@export var engine_coast = 0.15
+@export var engine_coast = 0.1
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
@@ -93,12 +93,12 @@ var rotate_wheel_sens
 ## Rear wheels friction slip ratio ## 0.65
 @export var fric_slip_rear = 1.35
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.8
+@export var fric_slip_rear_hb_mult = 1.9
 ## Relax must higher than Compression 
-@export var damp_compr_front = 12.0
-@export var damp_relax_front = 9.0
-@export var damp_compr_rear = 3.0
-@export var damp_relax_rear = 3.5
+@export var damp_compr_front = 10.0
+@export var damp_relax_front = 4.0
+@export var damp_compr_rear = 5.0
+@export var damp_relax_rear = 2.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.10
 @export var rest_rear = 0.12
@@ -365,13 +365,13 @@ func _physics_process(delta: float) -> void:
 	engine_index = get_engine_index((linear_velocity.length()))
 	## Update RPM value
 	var eng_ind = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
-	scale_rpm = 1 + ( 2 * ## Why?
+	scale_rpm = 1.0 + ( 2.0 * ## Why?
 		(linear_velocity.length()  / MAX_SPEED)
 		* (eng_ind_rpm[eng_ind] / eng_ind_rpm.max())
 	)
 	## @NeW try to use RPM as engine_force !IT WORKS!
 	engine_force = scale_curve.sample_baked((
-		scale_rpm-1)) * MAX_POWER * ACCELERATING
+		scale_rpm - 1.0)) * MAX_POWER * ACCELERATING
 		
 	## Reverse last
 	if REVERSE:
