@@ -6,5 +6,5 @@
 environment = ExtResource("1_k34ge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.999663, 0.0224766, -0.0129766, -0.010671, 0.811728, 0.583938, 0.0236584, -0.583603, 0.811695, 0, 0, 0)
 light_color = Color(0.772549, 0.662745, 0.415686, 1)

@@ -5,6 +5,7 @@ extends Node
 @onready var _start = $"../Start"
 @onready var _idle = $"../Idle"
 @onready var _pow = $"../Pow"
+@onready var _run = $"../Run"
 var vehicle
 var vel
 var power
@@ -25,6 +26,7 @@ func _ready():
 	max_p = vehicle.MAX_POWER
 	snd_start = max_s / 32
 	_pow.volume_db = -24.0
+	_run.volume_db = -24.0
 	_timer.connect("timeout", on_timer_timeout)
 	_start.play()
 	_timer.start()
@@ -48,10 +50,16 @@ func _physics_process(_delta: float) -> void:
 		_idle.play()
 	if not _start.playing and not _pow.playing:
 		_pow.play()
+	if not _start.playing and not _run.playing:
+		_run.play()
 	if vel > snd_start:
 		_idle.pitch_scale = scale_rpm * 1.2
 		_pow.pitch_scale = scale_rpm * 0.8
-		_pow.volume_db = clamp(vol * 32 - 24, -24.0, 0.0)
+		_pow.volume_db = clamp(vol * 24 - 24, -24.0, 0.0)
+		var vl = vehicle.linear_velocity.length()/vehicle.MAX_SPEED
+		_run.pitch_scale = (2 + vl)
+		_run.volume_db = clamp(
+			(vl * abs(vehicle.ACCELERATING)) * 24 - 24, -24.0, -12.0)
 	## Randomise loops
 	if randf() > 0.9: _idle.play()
 	if randf() > 0.9: _pow.play()

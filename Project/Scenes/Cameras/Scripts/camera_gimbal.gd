@@ -11,7 +11,7 @@ extends Node3D
 @export var arm_spring_length_min = 7.0
 @export var arm_spring_length_max = 30.0
 @export var arm_spring_length_step = 3.5
-@export var camera_FOV = 40.0
+@export var camera_FOV = 45.0
 ## @NEW Gimbal follow the car position VIA gimbal length
 # Add to camera move farther
 @export var tween_follow_speed = 10.0

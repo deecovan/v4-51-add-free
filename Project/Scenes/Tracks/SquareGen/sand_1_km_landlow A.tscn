@@ -13,5 +13,4 @@ points = PackedVector3Array(-700, 0, -350, -700, 0, 350, 699.863, 0, -350, 699.8
 mesh = ExtResource("2_6vex3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sand"]
-visible = false
 shape = SubResource("ConvexPolygonShape3D_0jglq")
