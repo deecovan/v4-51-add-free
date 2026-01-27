@@ -19,7 +19,7 @@ var car_friction = 0.0
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,-0.066,0.22)
+@export var CENTER_OF_MASS = Vector3(0.0,0.0,0.33)
 @export var CENTER_OF_AERO = Vector3(0.0,0.3333,0.33)
 
 ## Additional Forces
@@ -50,14 +50,14 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.3
+@export var MAX_STEER  = 0.35
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.125
+@export var SPEED_STEER_CO = 0.133
 ## Maximum Steering speed
 @export var steer_control_speed = 0.75
-@export var steer_restore_speed = 1.3
+@export var steer_restore_speed = 1.5
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
@@ -68,13 +68,13 @@ var rotate_wheel_sens
 @export var brake_control_speed = 0.5
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 100.0
+@export var vehicle_brake_force = 150.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 100.0
+@export var wheel_brake_force = 150.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.0
+@export var rear_brake_force = 0.9
 ## Brake toward speed
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
@@ -89,9 +89,9 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.35 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.3 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.55 ## Because its like a Soap on U track!
+@export var fric_slip_rear = 1.4 ## Because its like a Soap on U track!
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.8
 ## Relax must higher than Compression 

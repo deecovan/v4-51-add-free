@@ -2,6 +2,7 @@
 
 ## 25.27.1
 - Begin AirBag track 
+- Horsa setup 1:00 RCR lap
 - Begil Cowl constructor
 
 ## 25.25.1

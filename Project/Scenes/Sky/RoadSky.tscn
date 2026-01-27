@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://fi3hm57qj4ti"]
+
+[ext_resource type="Environment" uid="uid://huplly2htmsq" path="res://Scenes/Sky/DarkSky.tres" id="1_mstkt"]
+
+[node name="RoadSky" type="WorldEnvironment"]
+environment = ExtResource("1_mstkt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0253197, -0.734786, 0.677827, -0.00570028, 0.677927, 0.735107, -0.999663, -0.0224766, 0.0129764, 0, 0, 0)
+light_color = Color(0.482353, 0.556863, 0.776471, 1)
+shadow_enabled = true
+directional_shadow_mode = 1
