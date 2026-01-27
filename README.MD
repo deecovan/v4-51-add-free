@@ -3,8 +3,9 @@
 ## 25.27.1
 - Tested AirBag track 
 - Update Horsa setup 1:00 RCR lap 
-- Add New SkyMaps
-- Begil Cowl constructor
+- Added New SkyMaps
+- Added two Cowls (constructor) Base and Back versions
+  - Base and Back versions
 
 ## 25.25.1
 - New track U0 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cebukaj42ds27"
-path.s3tc="res://.godot/imported/armazones-road-4800.jpg-44d4170243ca7bbc5caa859ff7f77a91.s3tc.ctex"
+path.s3tc="res://.godot/imported/armazones-road-4800.jpg-505057d6b1b1b2082ede7e4e5a5453d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,7 +12,7 @@ metadata={
 [deps]
 
 source_file="res://Scenes/Sky/4kSky/armazones-road-4800.jpg"
-dest_files=["res://.godot/imported/armazones-road-4800.jpg-44d4170243ca7bbc5caa859ff7f77a91.s3tc.ctex"]
+dest_files=["res://.godot/imported/armazones-road-4800.jpg-505057d6b1b1b2082ede7e4e5a5453d1.s3tc.ctex"]
 
 [params]
 

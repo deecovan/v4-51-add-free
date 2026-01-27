@@ -34,6 +34,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"Material.002": {
+"use_external/enabled": false,
+"use_external/path": "uid://cbf42h82p8i17"
+},
 "Material.004": {
 "use_external/enabled": true,
 "use_external/path": "uid://tqq1ndxmr5jr"

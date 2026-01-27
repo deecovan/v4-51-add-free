@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="4_y0edd"]
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="5_p6cfg"]
 [ext_resource type="PackedScene" uid="uid://b67guwtayltr5" path="res://Scenes/Tracks/SquareGen/square_100m.tscn" id="6_dywun"]
-[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="7_w1277"]
+[ext_resource type="PackedScene" uid="uid://ypb7ravtq3vv" path="res://Scenes/Cars/Cowl/CowlBack1000.tscn" id="7_vatky"]
 
 [node name="Square Generated Track" type="Node3D"]
 script = ExtResource("1_1frkw")
@@ -57,8 +57,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
 skeleton = NodePath("../..")
 
-[node name="Vehicle" parent="." instance=ExtResource("7_w1277")]
-transform = Transform3D(-0.0480479, 0, 0.998845, 0, 1, 0, -0.998845, 0, -0.0480479, -250, 4, 100)
-
 [node name="CameraGimbal" parent="." instance=ExtResource("4_y0edd")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -250, 4, 100)
+
+[node name="Vehicle" parent="." instance=ExtResource("7_vatky")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250, 4, 100)

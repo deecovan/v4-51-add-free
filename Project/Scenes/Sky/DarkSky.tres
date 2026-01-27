@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://huplly2htmsq"]
 
-[ext_resource type="Texture2D" uid="uid://cebukaj42ds27" path="res://Scenes/Sky/4kSky/armazones-road-360.jpg" id="1_4nbrf"]
+[ext_resource type="Texture2D" uid="uid://cebukaj42ds27" path="res://Scenes/Sky/4kSky/armazones-road-4800.jpg" id="1_4nbrf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rju7m"]
 panorama = ExtResource("1_4nbrf")
