@@ -1,8 +1,9 @@
 # v4-51-add-free GitHub repo 
 
 ## 25.27.1
-- Begin AirBag track 
-- Horsa setup 1:00 RCR lap
+- Tested AirBag track 
+- Update Horsa setup 1:00 RCR lap 
+- Add New SkyMaps
 - Begil Cowl constructor
 
 ## 25.25.1
