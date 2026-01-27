@@ -7,6 +7,7 @@
 - Added two Cowls (constructor) Base and Back versions
   - Base and Back versions
 - Updated Cowl parts to begin Constructor
+- Updated Cowls for 0.55 RCR
 
 ## 25.25.1
 - New track U0 

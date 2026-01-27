@@ -14,13 +14,13 @@ var car_friction = 0.0
 ## Real maximum 240 @!!!
 @export var vehicle_mass = 1000.0
 @export var MAX_POWER = 6600.0
-@export var MAX_SPEED = 75.0
+@export var MAX_SPEED = 70.0
 @export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,0.33,-0.33)
-@export var CENTER_OF_AERO = Vector3(0.0,1.00, 0.00)
+@export var CENTER_OF_MASS = Vector3(0.0,0.33,-0.66)
+@export var CENTER_OF_AERO = Vector3(0.0,0.75,-0.0)
 
 ## Additional Forces
 @export_category("Body Aero")
@@ -33,7 +33,7 @@ var car_angular_damp = 0.0
 @export var bodySquareFill = 0.8
 @export var bodyDrag = 1.2
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 0.99
+@export var bodyAeroDyn = 1.33
 
 ## Add Linear Friction
 ## Constant and Linear friction
@@ -46,18 +46,18 @@ var car_angular_damp = 0.0
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
-@export var control_speed = 3.3
+@export var control_speed = 3.5
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.4
+@export var MAX_STEER  = 0.44
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.175
+@export var SPEED_STEER_CO = 0.125
 ## Maximum Steering speed
 @export var steer_control_speed = 0.5
-@export var steer_restore_speed = 1.33
+@export var steer_restore_speed = 1.5
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
@@ -72,9 +72,9 @@ var rotate_wheel_sens
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 150.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.0
+@export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.1
+@export var rear_brake_force = 1.0
 ## Brake toward speed
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
@@ -89,25 +89,25 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.3 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.5 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.45 ## Because its like a Soap on U track!
+@export var fric_slip_rear = 2.0 ## Because its like a Soap on U track!
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.8
+@export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
-@export var damp_compr_front = 3.0
+@export var damp_compr_front =8.0
 @export var damp_relax_front = 5.0
 @export var damp_compr_rear = 4.0
-@export var damp_relax_rear = 6.0
+@export var damp_relax_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.11
-@export var rest_rear = 0.11
-@export var travel_front = 0.14
-@export var travel_rear = 0.14
-@export var stiff_front = 45
-@export var stiff_rear = 55
-@export var max_force_front = 9000
-@export var max_force_rear = 12000
+@export var rest_rear = 0.10
+@export var travel_front = 0.13
+@export var travel_rear = 0.12
+@export var stiff_front = 120
+@export var stiff_rear = 210
+@export var max_force_front = 12000
+@export var max_force_rear = 21000
 
 @export var scale_curve: Curve
 var scale_array : Array
