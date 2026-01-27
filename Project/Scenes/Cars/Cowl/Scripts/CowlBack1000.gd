@@ -19,8 +19,8 @@ var car_friction = 0.0
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
-@export var CENTER_OF_MASS = Vector3(0.0,0.35,-0.33)
-@export var CENTER_OF_AERO = Vector3(0.0,0.66,0.33)
+@export var CENTER_OF_MASS = Vector3(0.0,0.33,-0.33)
+@export var CENTER_OF_AERO = Vector3(0.0,1.00, 0.00)
 
 ## Additional Forces
 @export_category("Body Aero")

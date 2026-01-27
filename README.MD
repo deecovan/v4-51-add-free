@@ -6,6 +6,7 @@
 - Added New SkyMaps
 - Added two Cowls (constructor) Base and Back versions
   - Base and Back versions
+- Updated Cowl parts to begin Constructor
 
 ## 25.25.1
 - New track U0 
