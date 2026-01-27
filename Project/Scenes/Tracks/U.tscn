@@ -16,9 +16,6 @@ script = ExtResource("1_wd8ud")
 [node name="U0_4_export" parent="." instance=ExtResource("3_12rjk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
-[node name="Vehicle" parent="." instance=ExtResource("4_n7xye")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -264.981, 4, 86.7472)
-
 [node name="CameraGimbal" parent="." instance=ExtResource("5_q2x6i")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -264.499, 4, 86.7282)
 
@@ -62,3 +59,6 @@ skeleton = NodePath("../..")
 [node name="SquareGen9" parent="Squares" instance=ExtResource("6_k8ou5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
 skeleton = NodePath("../..")
+
+[node name="Vehicle" parent="." instance=ExtResource("4_n7xye")]
+transform = Transform3D(-0.0480479, 0, 0.998845, 0, 1, 0, -0.998845, 0, -0.0480479, -253.571, 3.69761, 87.7591)

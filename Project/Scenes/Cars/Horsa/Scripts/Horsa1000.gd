@@ -14,7 +14,7 @@ var car_friction = 0.0
 ## Real maximum 240 @!!!
 @export var vehicle_mass = 1000.0
 @export var MAX_POWER = 6600.0
-@export var MAX_SPEED = 66.0
+@export var MAX_SPEED = 65.0
 @export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
@@ -54,7 +54,7 @@ var car_angular_damp = 0.0
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.7
+@export var SPEED_STEER_CO = 0.125
 ## Maximum Steering speed
 @export var steer_control_speed = 0.75
 @export var steer_restore_speed = 1.3
@@ -89,7 +89,7 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.4 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.35 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
 @export var fric_slip_rear = 1.55 ## Because its like a Soap on U track!
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
