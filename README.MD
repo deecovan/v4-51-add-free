@@ -3,6 +3,7 @@
 ## 25.28.1
 - @NEW engine's gearbox coefficients applied to curve's values
   - Change linear_velocity to local_velocity.z
+  - @NEW s_scale_rpm to use new scaled values and curves
 
 ## 25.27.1
 - Tested AirBag track 

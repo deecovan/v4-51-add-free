@@ -126,7 +126,7 @@ var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
 var eng_ind_rpm = []
-var scale_rpm = 1.0
+var s_scale_rpm = 1.0
 
 var scene: Node3D
 var UI: CanvasLayer
@@ -373,7 +373,8 @@ func _physics_process(delta: float) -> void:
 	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
 	var s_start = engine_index_up[engine_index]
 	var s_final = engine_index_up[engine_index + 1]
-	var val_s_current_in = speed_cur / (s_final - s_start) % 1 ## up to 1
+	var s_scale_rpm = (
+		speed_cur - s_start) / (s_final - s_start) ## up to 1
 	
 	if !scene.DEBUG_SHOW: ## Forced output
 		UI.logs_clr_text()
@@ -381,17 +382,12 @@ func _physics_process(delta: float) -> void:
 		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
 		UI.logs_add_text("\n s_start: %6.2f" % s_start)
 		UI.logs_add_text("\n s_final: %6.2f" % s_final)
-		UI.logs_add_text("\n val_s_current_in: %6.2f" % val_ss_current_in)
+		UI.logs_add_text("\n s_scale_rpm: %6.2f" % s_scale_rpm)
 		UI.show_info()
 		
-	## @FINAL Update RPM value
-	scale_rpm = ( 2.0 * ## Why?
-		(linear_vel  / MAX_SPEED)
-		* (speed_ind_cur / eng_ind_rpm.max())
-	)
 	## @FINAL Update engine_force using RPM
 	engine_force = scale_curve.sample_baked((
-		scale_rpm)) * MAX_POWER * ACCELERATING
+		s_scale_rpm)) * MAX_POWER * ACCELERATING
 		
 	## Reverse last
 	if REVERSE:
@@ -408,7 +404,7 @@ func _physics_process(delta: float) -> void:
 	rotate_speed_pt(linear_vel * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
-	rotate_tacho_pt(scale_rpm)
+	rotate_tacho_pt(s_scale_rpm)
 	rotate_tacho_ps(abs(engine_force))
 	rotate_wheel()
 	set_brake_pedal(print_brake_force)
