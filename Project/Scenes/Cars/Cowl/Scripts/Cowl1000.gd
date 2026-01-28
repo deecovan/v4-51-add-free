@@ -377,6 +377,7 @@ func _physics_process(delta: float) -> void:
 		+ s_start) / s_start
 	UI.logs_clr_text()
 	UI.logs_add_text("\n speed_ind_cur: %6.2f" % speed_ind_cur)
+	UI.logs_add_text("\n s_current_in: %6.2f" % s_current_in)
 	UI.logs_add_text("\n s_start: %6.2f" % s_start)
 	UI.logs_add_text("\n s_final: %6.2f" % s_final)
 	UI.logs_add_text("\n SPEED.Z: %6.2f" % speed_cur)
