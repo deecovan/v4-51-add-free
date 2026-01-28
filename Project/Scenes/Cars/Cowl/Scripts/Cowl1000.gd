@@ -373,16 +373,17 @@ func _physics_process(delta: float) -> void:
 	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
 	var s_start = engine_index_up[engine_index]
 	var s_final = engine_index_up[engine_index + 1]
-	var s_current_in = (speed_cur / (s_final - s_start) ## up to 1
-		) / s_start
-	UI.logs_clr_text()
-	UI.logs_add_text("\n speed_ind_cur: %6.2f" % speed_ind_cur)
-	UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
-	UI.logs_add_text("\n s_start: %6.2f" % s_start)
-	UI.logs_add_text("\n s_final: %6.2f" % s_final)
-	UI.logs_add_text("\n s_current_in: %6.2f" % s_current_in)
-	UI.show_info()
+	var val_s_current_in = speed_cur / (s_final - s_start) % 1 ## up to 1
 	
+	if !scene.DEBUG_SHOW: ## Forced output
+		UI.logs_clr_text()
+		UI.logs_add_text("\n speed_ind_cur: %6.2f" % speed_ind_cur)
+		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
+		UI.logs_add_text("\n s_start: %6.2f" % s_start)
+		UI.logs_add_text("\n s_final: %6.2f" % s_final)
+		UI.logs_add_text("\n val_s_current_in: %6.2f" % val_ss_current_in)
+		UI.show_info()
+		
 	## @FINAL Update RPM value
 	scale_rpm = ( 2.0 * ## Why?
 		(linear_vel  / MAX_SPEED)
