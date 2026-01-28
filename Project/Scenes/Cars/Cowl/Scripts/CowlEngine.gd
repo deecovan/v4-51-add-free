@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 						
 	vol = power / max_p
 	## Engine Index RPM to use GearBox
-	scale_rpm = abs(vehicle.s_scale_rpm) + 1
+	scale_rpm = abs(vehicle.s_scale_rpm)
 	
 	if (rem_engine_index != vehicle.engine_index
 		and not $"../Gear".playing):

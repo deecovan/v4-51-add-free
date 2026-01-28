@@ -12,10 +12,10 @@ var car_friction = 0.0
 @export_category("Vehicle Constants")
 ## Values for curve Fanta_Curve_1000
 ## Real maximum 240 @!!!
-@export var vehicle_mass = 1000.0
-@export var MAX_POWER = 6600.0
-@export var MAX_SPEED = 65.0
-@export var grav_scale = 1.0
+@export var vehicle_mass = 1000
+@export var MAX_POWER = 6000
+@export var MAX_SPEED = 60
+@export var grav_scale = 1
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
@@ -37,10 +37,8 @@ var car_angular_damp = 0.0
 
 ## Add Linear Friction
 ## Constant and Linear friction
-@export var bodyLinearFricConst = 1200.0
-@export var bodyLinearFricLin = 12.0
-## Squared friction ## 0.0 Because AroDrag used
-@export var bodyLinearFricSq = 0.0 ## 0.05
+@export var bodyLinearFricConst = 500.0 ## Maybe use as Tires Pressure Fric
+@export var bodyLinearFricLin = 50.0 ## Wheel's Linear Fric
 
 @export_category("Control's move speed")
 ## Control's move_toward speed
@@ -115,13 +113,14 @@ var scale_array : Array
 @export_category("States and gears")
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
 @export var engine_state: States = States.CHILLING
-enum Indices {Rear, Neutral, 
-	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
+enum Indices { Rear, Neutral, 
+	First, Second, Third, Fourth, Fifth, Sixth, 
+	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 260.0]
+	1.0, 80.0, 120.0, 160.0, 200.0, 220.0, 240.0, 260.0, 280.0, 300.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 50.0, 110.0, 150.0, 190.0, 210.0, 250.0]
+	1.0, 70.0, 110.0, 150.0, 190.0, 210.0, 230.0, 250.0, 270.0, 290.0]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
 var eng_min_rpm = [] ## calculated from eng_ind_rpm.max()
 var acceleration_power = 0.0
@@ -343,7 +342,8 @@ func _physics_process(delta: float) -> void:
 		- linear_velocity.normalized() * 
 		( constFricForse
 		+ bodyLinearFricLin * linear_vel
-		+ bodyLinearFricSq * linear_velocity.length_squared()))
+		))
+		#+ bodyLinearFricSq * linear_velocity.length_squared()))
 	
 	## Apply Custom Forces
 	apply_central_force(aeroDrag_force_applied)
