@@ -72,9 +72,9 @@ var rotate_wheel_sens
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 150.0
 ## wheel_brake_force multiplier
-@export var front_brake_force = 1.1
+@export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.0
+@export var rear_brake_force = 1.1
 ## Brake toward speed
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
@@ -95,8 +95,8 @@ var rotate_wheel_sens
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
-@export var damp_compr_front = 6.0
-@export var damp_relax_front = 9.0
+@export var damp_compr_front = 4.0
+@export var damp_relax_front = 6.0
 @export var damp_compr_rear = 3.0
 @export var damp_relax_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
@@ -104,10 +104,10 @@ var rotate_wheel_sens
 @export var rest_rear = 0.12
 @export var travel_front = 0.16
 @export var travel_rear = 0.16
-@export var stiff_front = 75
-@export var stiff_rear = 45
-@export var max_force_front = 15500
-@export var max_force_rear = 9500
+@export var stiff_front = 65
+@export var stiff_rear = 85
+@export var max_force_front = 12500
+@export var max_force_rear = 15500
 
 @export var scale_curve: Curve
 var scale_array : Array

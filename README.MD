@@ -1,6 +1,6 @@
 # v4-51-add-free GitHub repo 
 
-## 25.28.1
+## 25.28.1 New GearBox
 - @NEW engine's gearbox coefficients applied to curve's values
   - Change linear_velocity to local_velocity.z
   - @NEW s_scale_rpm to use new scaled values and curves
