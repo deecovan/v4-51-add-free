@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var DEBUG = true
+@export var DEBUG_SHOW = false
 
 var UI: CanvasLayer
 var vehicle: VehicleBody3D
@@ -37,10 +38,6 @@ func _unhandled_input(event):
 func use_main_controls(_event) -> void:
 	if Input.is_action_just_pressed('help'):
 		UI.show_message_again()
-	if Input.is_action_just_pressed('show_info'):
-		UI.show_info()
-	if Input.is_action_just_pressed('hide_info'):
-		UI.hide_info()
 ## Toggle between debug draw modes using a key press
 	if Input.is_action_just_pressed('viewport'):
 		var viewport = get_viewport()
@@ -57,7 +54,11 @@ func use_main_controls(_event) -> void:
 	if Input.is_action_pressed("exit"):
 		await UI.show_message("Exiting...")
 		get_tree().call_deferred("quit")
-
 ## Hide UI
 	if Input.is_action_pressed("hide_ui"):
 		UI.visible = !UI.visible
+	if (Input.is_action_just_pressed('show_info')
+		or Input.is_action_just_pressed('hide_info')):
+		DEBUG_SHOW = !DEBUG_SHOW
+		if(DEBUG_SHOW): UI.show_info()
+		else: UI.hide_info()

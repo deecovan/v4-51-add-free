@@ -38,8 +38,9 @@ func _physics_process(_delta: float) -> void:
 	power = vehicle.engine_force
 						
 	vol = power / max_p
-	## @NEW Engine Index RPM to use GearBox
-	scale_rpm = vehicle.scale_rpm
+	## Engine Index RPM to use GearBox
+	scale_rpm = vehicle.scale_rpm \
+		+ 1 ## removed -1 from parent
 	
 	if (rem_engine_index != vehicle.engine_index
 		and not $"../Gear".playing):
@@ -52,6 +53,7 @@ func _physics_process(_delta: float) -> void:
 		_pow.play()
 	if not _start.playing and not _run.playing:
 		_run.play()
+		
 	if vel > snd_start:
 		_idle.pitch_scale = scale_rpm * 1.2
 		_pow.pitch_scale = scale_rpm * 0.8
@@ -60,6 +62,7 @@ func _physics_process(_delta: float) -> void:
 		_run.pitch_scale = (2 + vl)
 		_run.volume_db = clamp(
 			(vl * abs(vehicle.ACCELERATING)) * 24 - 24, -24.0, -12.0)
+	
 	## Randomise loops
 	if randf() > 0.9: _idle.play()
 	if randf() > 0.9: _pow.play()

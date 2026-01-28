@@ -128,12 +128,14 @@ var ACCELERATING = 0.0
 var eng_ind_rpm = []
 var scale_rpm = 1.0
 
-var root: Node3D
+var scene: Node3D
 var UI: CanvasLayer
 var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
+var linear_vel = 0.0
 
 func _ready() -> void:
+	scene = get_parent()
 	UI = $UI
 	Analometer = UI.get_analometer()
 	rotate_wheel_sens = (rotate_wheel_sens_max
@@ -206,8 +208,7 @@ func _ready() -> void:
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
-	## @NEW using Alternative Control
-	## @TODO add boolean to settings
+	linear_vel = get_local_velocity().z
 	var alt_control = Input.is_action_pressed("alt_control")
 	var steer_control_speed_ = steer_control_speed
 	if alt_control:
@@ -221,7 +222,7 @@ func _physics_process(delta: float) -> void:
 	## @NEW with Alternative Control
 	var m_MAX_STEER = MAX_STEER
 	if SPEED_STEER and not alt_control:
-		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
+		m_MAX_STEER = (MAX_SPEED / linear_vel) \
 						* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, MAX_STEER)
 	## @NEW add m_MAX steering speed modifier
@@ -272,7 +273,7 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.COASTING
 	
 	## Chilling state is Accelerating with Power 0 and speed near 0
-	if (abs(linear_velocity.length()) < 1.0
+	if (abs(linear_vel) < 1.0
 		and engine_state != States.BRAKING):
 		engine_state = States.CHILLING
 
@@ -285,7 +286,7 @@ func _physics_process(delta: float) -> void:
 		engine_force = abs(engine_force)
 		## Match force to scale_curve
 		matching_power = engine_match_power(
-			linear_velocity.length(), scale_curve)
+			linear_vel, scale_curve)
 		## Apply ACCELERATING USING LERP!
 		engine_force = lerp(
 			engine_force, 
@@ -332,12 +333,12 @@ func _physics_process(delta: float) -> void:
 		bodyAeroDyn * linear_velocity.length_squared())
 	## @NEW LinearFriction Force
 	var constFricForse = 0.0
-	if linear_velocity.length() > 0.01: 
+	if linear_vel > 0.01: 
 		constFricForse = bodyLinearFricConst
 	var linearFric_force_applied:Vector3 = (
 		- linear_velocity.normalized() * 
 		( constFricForse
-		+ bodyLinearFricLin * linear_velocity.length()
+		+ bodyLinearFricLin * linear_vel
 		+ bodyLinearFricSq * linear_velocity.length_squared()))
 	
 	## Apply Custom Forces
@@ -362,19 +363,28 @@ func _physics_process(delta: float) -> void:
 		set_fric_slip_rear(fric_slip_rear)
 		
 	## Update Engine Index
-	engine_index = get_engine_index((linear_velocity.length()))
+	engine_index = get_engine_index((linear_vel))
 	## @NEW engine's gearbox coefficients applied to curve's values
 	## Prepare vars
 	var eng_ind_cur = clamp(engine_index - 2, 0, eng_ind_rpm.size()-1)
-	var eng_ind_low = eng_ind_cur - 1
+	var speed_cur = get_local_velocity().z * 3.6 ## kph
 	var speed_ind_cur = eng_ind_rpm[eng_ind_cur]
-	var speed_ind_low = eng_ind_rpm[eng_ind_low]
 	## For current index, get curve's Y value using RPM as X
 	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
+	var s_start = engine_index_up[engine_index]
+	var s_final = engine_index_up[engine_index + 1]
+	var s_current_in = (speed_cur / s_final ## up to 1
+		+ s_start) / s_start
+	UI.logs_clr_text()
+	UI.logs_add_text("\n speed_ind_cur: %6.2f" % speed_ind_cur)
+	UI.logs_add_text("\n s_start: %6.2f" % s_start)
+	UI.logs_add_text("\n s_final: %6.2f" % s_final)
+	UI.logs_add_text("\n SPEED.Z: %6.2f" % speed_cur)
+	UI.show_info()
 	
 	## @FINAL Update RPM value
 	scale_rpm = ( 2.0 * ## Why?
-		(linear_velocity.length()  / MAX_SPEED)
+		(linear_vel  / MAX_SPEED)
 		* (speed_ind_cur / eng_ind_rpm.max())
 	)
 	## @FINAL Update engine_force using RPM
@@ -393,7 +403,7 @@ func _physics_process(delta: float) -> void:
 			States.keys()[engine_state].substr(0,8), 
 			Indices.keys()[engine_index].substr(0,8)]
 		)
-	rotate_speed_pt(linear_velocity.length() * 3.6)
+	rotate_speed_pt(linear_vel * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
 	rotate_tacho_pt(scale_rpm)
@@ -406,17 +416,18 @@ func _physics_process(delta: float) -> void:
 	set_rotate_alpha(angular_velocity.y, deg_vel, abs(loc_vel.x))
 	
 	## @DEBUG UI logs
-	UI.logs_clr_text()
-	UI.logs_add_text("\n Horsa 1000")
-	UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
-	UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
-	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
-	UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
-	UI.logs_add_text("\n Steering.....: %8.2f" % steering)
-	UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
-	UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
-	UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
+	if scene.DEBUG_SHOW:
+		UI.logs_clr_text()
+		UI.logs_add_text("\n Cowl Base 1000")
+		UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
+		UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
+		UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_vel)
+		UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
+		UI.logs_add_text("\n Steering.....: %8.2f" % steering)
+		UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+		UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
+		UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
+		UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
 	
 	## Car fell off course!
 	if position.y < -50:
