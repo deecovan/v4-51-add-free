@@ -39,7 +39,11 @@ func _physics_process(_delta: float) -> void:
 						
 	vol = power / max_p
 	## Engine Index RPM to use GearBox
-	scale_rpm = abs(vehicle.s_scale_rpm)
+	scale_rpm = vehicle.s_scale_rpm
+	## Fix sound's overscale when gearing down
+	if scale_rpm > 1:
+		scale_rpm = 1
+		vol = -24
 	
 	if (rem_engine_index != vehicle.engine_index
 		and not $"../Gear".playing):
@@ -54,8 +58,8 @@ func _physics_process(_delta: float) -> void:
 		_run.play()
 		
 	if vel > snd_start:
-		_idle.pitch_scale = scale_rpm * 1.2
-		_pow.pitch_scale = scale_rpm * 0.8
+		_idle.pitch_scale = scale_rpm * 1.5
+		_pow.pitch_scale = scale_rpm * 1.0
 		_pow.volume_db = clamp(vol * 24 - 24, -24.0, 0.0)
 		var vl = vehicle.linear_velocity.length()/vehicle.MAX_SPEED
 		_run.pitch_scale = (2 + vl)

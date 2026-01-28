@@ -31,9 +31,9 @@ var car_angular_damp = 0.0
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
 @export var bodySquareFill = 0.8
-@export var bodyDrag = 1.25
+@export var bodyDrag = 1.2
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 0.66
+@export var bodyAeroDyn = 0.5
 
 ## Add Linear Friction
 ## Constant and Linear friction
@@ -118,9 +118,9 @@ enum Indices { Rear, Neutral,
 	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 80.0, 120.0, 160.0, 200.0, 220.0, 240.0, 260.0, 280.0, 300.0]
+	1.0, 80.0, 120.0, 160.0, 200.0, 215.0, 225.0, 310.0, 320.0, 330.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 70.0, 110.0, 150.0, 190.0, 210.0, 230.0, 250.0, 270.0, 290.0]
+	1.0, 70.0, 110.0, 150.0, 190.0, 210.0, 220.0, 300.0, 300.0, 300.0]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
 var eng_min_rpm = [] ## calculated from eng_ind_rpm.max()
 var acceleration_power = 0.0
@@ -211,7 +211,7 @@ func _ready() -> void:
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
-	linear_vel = get_local_velocity().z
+	linear_vel = abs(get_local_velocity().z)
 	var alt_control = Input.is_action_pressed("alt_control")
 	var steer_control_speed_ = steer_control_speed
 	if alt_control:
@@ -366,8 +366,10 @@ func _physics_process(delta: float) -> void:
 		## Now restore handbrake rear friction
 		set_fric_slip_rear(fric_slip_rear)
 		
-	## Update Engine Index
+	## GearBox switcher
+	## If not playing switching sound
 	engine_index = get_engine_index((linear_vel))
+	
 	## @NEW engine's gearbox coefficients applied to curve's values
 	## Prepare vars
 	## For current index, get curve's Y value using RPM as X
@@ -401,8 +403,8 @@ func _physics_process(delta: float) -> void:
 	## Reverse last
 	if REVERSE:
 		engine_state = States.REVERSING
-		## Rear Gear has 30% of maximum power
-		engine_force = - clamp(abs(engine_force), 0, MAX_POWER * 0.3)
+		## Rear Gear has 25% of maximum power
+		engine_force = - clamp(abs(engine_force), 0, MAX_POWER * 0.25)
 
 	## Update UI
 	UI.set_speedometer_label(
@@ -466,21 +468,25 @@ func engine_match_power(input_speed:float, match_curve:Curve) -> float:
 		return match_power
 
 ## Get Engine Index accordong to GearBox Values
-func get_engine_index(_speed: float) -> int:
+func get_engine_index(current_speed: float) -> int:
+	var current_index = engine_index
 	var speed_index := 0
 	var i := 0
 	if engine_state == States.REVERSING:
 		speed_index = 0
 	elif engine_state == States.ACCELERATING:
 		for spd in engine_index_up:
-			if (_speed * 3.6) > spd: 
+			if (current_speed * 3.6) > spd: 
 				speed_index = i
 			i += 1
 	else:
 		for spd in engine_index_down:
-			if (_speed * 3.6) > spd: 
+			if (current_speed * 3.6) > spd: 
 				speed_index = i
 			i += 1
+	## If GearBox switching sound is not playing
+	if $Gear.playing:
+		speed_index = current_index
 	return speed_index
 
 func rotate_speed_pt(speedf: float) -> void:

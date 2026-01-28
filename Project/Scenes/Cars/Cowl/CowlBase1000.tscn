@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1vetvy6c1h40"]
+[gd_scene load_steps=21 format=3 uid="uid://c1vetvy6c1h40"]
 
 [ext_resource type="Script" uid="uid://d3dpngfawclne" path="res://Scenes/Cars/Cowl/Scripts/Cowl1000.gd" id="1_7pedu"]
 [ext_resource type="Curve" uid="uid://do7r48rw0jthr" path="res://Scenes/Cars/Cowl/Scripts/Cowl_curve_1000.tres" id="2_wxipw"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b37lbkfgiyal0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1c.Export.glb" id="12_wxipw"]
 [ext_resource type="PackedScene" uid="uid://b4ise3hq1m10r" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.0c.Export.glb" id="13_nifbo"]
 [ext_resource type="PackedScene" uid="uid://boa1kwaiakyb1" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.2e.Export.glb" id="14_wxipw"]
-[ext_resource type="PackedScene" uid="uid://c2llv48ycydhm" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.3e.Export.glb" id="15_nifbo"]
 [ext_resource type="PackedScene" uid="uid://c2u3c52wwav41" path="res://Scenes/UI/ui.tscn" id="16_b7rml"]
 [ext_resource type="PackedScene" uid="uid://ddp3wf7bef1uh" path="res://Scenes/Cars/Cowl/Cowl_Wheel_FL.tscn" id="16_kpom5"]
 [ext_resource type="PackedScene" uid="uid://bojos1bq8a7dm" path="res://Scenes/Cars/Cowl/Cowl_Wheel_FR.tscn" id="17_1vrjn"]
@@ -94,9 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0.55)
 transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
 
 [node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wxipw")]
-
-[node name="C0_Cowl_3e_Export" parent="." instance=ExtResource("15_nifbo")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.67728e-09, 0.00376093, 0.0649405)
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("16_kpom5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.335932, 1.425)
