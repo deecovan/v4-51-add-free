@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var DEBUG = true
+@export var DEBUG = false
 @export var DEBUG_SHOW = false
 
 var UI: CanvasLayer

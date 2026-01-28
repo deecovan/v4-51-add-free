@@ -366,21 +366,21 @@ func _physics_process(delta: float) -> void:
 	engine_index = get_engine_index((linear_vel))
 	## @NEW engine's gearbox coefficients applied to curve's values
 	## Prepare vars
-	var eng_ind_cur = clamp(engine_index - 2, 0, eng_ind_rpm.size()-1)
-	var speed_cur = get_local_velocity().z * 3.6 ## kph
+	var eng_ind_cur = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
+	var speed_cur = linear_vel * 3.6 ## kph
 	var speed_ind_cur = eng_ind_rpm[eng_ind_cur]
 	## For current index, get curve's Y value using RPM as X
 	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
 	var s_start = engine_index_up[engine_index]
 	var s_final = engine_index_up[engine_index + 1]
-	var s_current_in = (speed_cur / s_final ## up to 1
-		+ s_start) / s_start
+	var s_current_in = (speed_cur / (s_final - s_start) ## up to 1
+		) / s_start
 	UI.logs_clr_text()
 	UI.logs_add_text("\n speed_ind_cur: %6.2f" % speed_ind_cur)
-	UI.logs_add_text("\n s_current_in: %6.2f" % s_current_in)
+	UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
 	UI.logs_add_text("\n s_start: %6.2f" % s_start)
 	UI.logs_add_text("\n s_final: %6.2f" % s_final)
-	UI.logs_add_text("\n SPEED.Z: %6.2f" % speed_cur)
+	UI.logs_add_text("\n s_current_in: %6.2f" % s_current_in)
 	UI.show_info()
 	
 	## @FINAL Update RPM value
