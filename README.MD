@@ -4,6 +4,7 @@
 - @NEW engine's gearbox coefficients applied to curve's values
   - Change linear_velocity to local_velocity.z
   - @NEW s_scale_rpm to use new scaled values and curves
+  - Calculate scale_RPM !!!@HOW it works i X3!!!
 
 ## 25.27.1
 - Tested AirBag track 

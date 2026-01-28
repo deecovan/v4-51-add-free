@@ -122,10 +122,11 @@ var engine_index_up = [-1.0, 0.0,
 	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 260.0]
 var engine_index_down = [-1.0, 0.0, 
 	1.0, 50.0, 110.0, 150.0, 190.0, 210.0, 250.0]
+var eng_ind_rpm = [] ## calculated from engine_index.max()
+var eng_min_rpm = [] ## calculated from eng_ind_rpm.max()
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
-var eng_ind_rpm = []
 var s_scale_rpm = 1.0
 
 var scene: Node3D
@@ -197,10 +198,13 @@ func _ready() -> void:
 		var calc_rpm = MAX_SPEED * 3.6 / rpm
 		if calc_rpm > 1 and calc_rpm < 10:
 			eng_ind_rpm.append(calc_rpm)
-
+			eng_min_rpm.append(eng_ind_rpm.max()/calc_rpm)
+	
+	print(var_to_str(eng_min_rpm))
+	
 	Analometer.set_min_tac(Analometer.get_min_rad()) 
-	Analometer.set_max_tac(Analometer.get_max_rad() / eng_ind_rpm.max())
 	Analometer.set_min_rot(Analometer.get_min_rad()) 
+	Analometer.set_max_tac(Analometer.get_max_rad() * 0.5) ## double max
 	Analometer.set_max_rot(MAX_POWER)
 	## Init PFG screen
 	for i in 100:
@@ -331,7 +335,7 @@ func _physics_process(delta: float) -> void:
 	## AeroDynamic 
 	var aeroDyn_force_applied: Vector3 = Vector3.DOWN * (
 		bodyAeroDyn * linear_velocity.length_squared())
-	## @NEW LinearFriction Force
+	## LinearFriction Force
 	var constFricForse = 0.0
 	if linear_vel > 0.01: 
 		constFricForse = bodyLinearFricConst
@@ -366,28 +370,33 @@ func _physics_process(delta: float) -> void:
 	engine_index = get_engine_index((linear_vel))
 	## @NEW engine's gearbox coefficients applied to curve's values
 	## Prepare vars
-	var eng_ind_cur = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
-	var speed_cur = linear_vel * 3.6 ## kph
-	var speed_ind_cur = eng_ind_rpm[eng_ind_cur]
 	## For current index, get curve's Y value using RPM as X
 	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
+	var eng_ind = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
+	var speed_cur = linear_vel * 3.6 ## kph
 	var s_start = engine_index_up[engine_index]
 	var s_final = engine_index_up[engine_index + 1]
-	var s_scale_rpm = (
-		speed_cur - s_start) / (s_final - s_start) ## up to 1
+	## @NEW s_scale_rpm to use new scaled values and curves
+	var s_scale_rpm_normal = (
+		speed_cur - s_start) / (s_final - s_start) ## up from 0 to 1
+	## Get final RPM from normalized
+	## First find min-max for the current gear
+	var s_scale_rpm_min = (eng_min_rpm.max() + eng_min_rpm[eng_ind]) / \
+		(eng_min_rpm.max() * 2)
+	## Second calculate scale_RPM !!!@HOW it works i X3
+	s_scale_rpm = s_scale_rpm_min + s_scale_rpm_normal * (
+			s_scale_rpm_normal - s_scale_rpm_min)
+	## @FINAL Update engine_force using RPM
+	engine_force = scale_curve.sample_baked(s_scale_rpm) * MAX_POWER * ACCELERATING
 	
 	if !scene.DEBUG_SHOW: ## Forced output
 		UI.logs_clr_text()
-		UI.logs_add_text("\n speed_ind_cur: %6.2f" % speed_ind_cur)
 		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
 		UI.logs_add_text("\n s_start: %6.2f" % s_start)
 		UI.logs_add_text("\n s_final: %6.2f" % s_final)
 		UI.logs_add_text("\n s_scale_rpm: %6.2f" % s_scale_rpm)
+		UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
 		UI.show_info()
-		
-	## @FINAL Update engine_force using RPM
-	engine_force = scale_curve.sample_baked((
-		s_scale_rpm)) * MAX_POWER * ACCELERATING
 		
 	## Reverse last
 	if REVERSE:
@@ -498,11 +507,11 @@ func rotate_speed_ps(deltavf: float, delta) -> void:
 	
 func rotate_tacho_pt(tacerpm: float) -> void:
 	var tachor = 0.0
-	tacerpm = tacerpm - 1.0
 	var min_rad = Analometer.get_min_rad() 
 	var max_rad = Analometer.get_max_rad() 
 	var max_tac = Analometer.get_max_tac() 
-	tachor = min_rad + (max_rad - min_rad) * (tacerpm / max_tac)
+	tachor = min_rad + (
+		max_rad - min_rad) * (tacerpm / max_tac)
 	Analometer.rotate_tacho_pt(tachor)
 		
 func rotate_tacho_ps(tacwrpm: float) -> void:
@@ -510,7 +519,8 @@ func rotate_tacho_ps(tacwrpm: float) -> void:
 	var min_rad = Analometer.get_min_rad() 
 	var max_rad = Analometer.get_max_rad() 
 	var max_rot = Analometer.get_max_rot() 
-	tachor = min_rad + (max_rad - min_rad) * (tacwrpm / max_rot)
+	tachor = min_rad + (
+		max_rad - min_rad) * (tacwrpm / max_rot)
 	Analometer.rotate_tacho_ps(tachor)
 	
 func rotate_wheel() -> void:
