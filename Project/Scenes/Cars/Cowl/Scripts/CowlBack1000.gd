@@ -33,12 +33,12 @@ var car_angular_damp = 0.0
 @export var bodySquareFill = 0.8
 @export var bodyDrag = 1.2
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 1.33
+@export var bodyAeroDyn = 0.99
 
 ## Add Linear Friction
 ## Constant and Linear friction
-@export var bodyLinearFricConst = 1100.0
-@export var bodyLinearFricLin = 11.0
+@export var bodyLinearFricConst = 500.0
+@export var bodyLinearFricLin = 50.0
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
 
@@ -116,24 +116,27 @@ var scale_array : Array
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
 @export var engine_state: States = States.CHILLING
 enum Indices {Rear, Neutral, 
-	First, Second, Third, Fourth, Fifth, Sixth, Infinity}
+	First, Second, Third, Fourth, Fifth, Sixth, Seventh, Infinity}
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 260.0]
+	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 230.0, 240.0, 300.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 50.0, 110.0, 150.0, 190.0, 210.0, 250.0]
+	1.0, 50.0, 110.0, 150.0, 190.0, 210.0, 220.0, 230.0, 290.0]
+var eng_ind_rpm = [] ## calculated from engine_index.max()
+var eng_min_rpm = [] ## calculated from eng_ind_rpm.max()
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
-var eng_ind_rpm = []
-var scale_rpm = 1.0
+var linear_vel = 0.0
+var s_scale_rpm = 1.0
 
-var root: Node3D
+var scene: Node3D
 var UI: CanvasLayer
 var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
 
 func _ready() -> void:
+	scene = get_parent()
 	UI = $UI
 	Analometer = UI.get_analometer()
 	rotate_wheel_sens = (rotate_wheel_sens_max
@@ -195,9 +198,10 @@ func _ready() -> void:
 		var calc_rpm = MAX_SPEED * 3.6 / rpm
 		if calc_rpm > 1 and calc_rpm < 10:
 			eng_ind_rpm.append(calc_rpm)
+			eng_min_rpm.append(eng_ind_rpm.max()/calc_rpm)
 
 	Analometer.set_min_tac(Analometer.get_min_rad()) 
-	Analometer.set_max_tac(Analometer.get_max_rad() / eng_ind_rpm.max())
+	Analometer.set_max_tac(Analometer.get_max_rad() * 0.5) ## double max
 	Analometer.set_min_rot(Analometer.get_min_rad()) 
 	Analometer.set_max_rot(MAX_POWER)
 	## Init PFG screen
@@ -206,8 +210,7 @@ func _ready() -> void:
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
-	## @NEW using Alternative Control
-	## @TODO add boolean to settings
+	linear_vel = abs(get_local_velocity().z)
 	var alt_control = Input.is_action_pressed("alt_control")
 	var steer_control_speed_ = steer_control_speed
 	if alt_control:
@@ -221,7 +224,7 @@ func _physics_process(delta: float) -> void:
 	## @NEW with Alternative Control
 	var m_MAX_STEER = MAX_STEER
 	if SPEED_STEER and not alt_control:
-		m_MAX_STEER = (MAX_SPEED / linear_velocity.length()) \
+		m_MAX_STEER = (MAX_SPEED / linear_vel) \
 						* SPEED_STEER_CO * MAX_STEER
 		m_MAX_STEER = clamp(m_MAX_STEER, 0.0, MAX_STEER)
 	## @NEW add m_MAX steering speed modifier
@@ -272,7 +275,7 @@ func _physics_process(delta: float) -> void:
 		engine_state = States.COASTING
 	
 	## Chilling state is Accelerating with Power 0 and speed near 0
-	if (abs(linear_velocity.length()) < 1.0
+	if (abs(linear_vel) < 1.0
 		and engine_state != States.BRAKING):
 		engine_state = States.CHILLING
 
@@ -285,7 +288,7 @@ func _physics_process(delta: float) -> void:
 		engine_force = abs(engine_force)
 		## Match force to scale_curve
 		matching_power = engine_match_power(
-			linear_velocity.length(), scale_curve)
+			linear_vel, scale_curve)
 		## Apply ACCELERATING USING LERP!
 		engine_force = lerp(
 			engine_force, 
@@ -330,15 +333,16 @@ func _physics_process(delta: float) -> void:
 	## AeroDynamic 
 	var aeroDyn_force_applied: Vector3 = Vector3.DOWN * (
 		bodyAeroDyn * linear_velocity.length_squared())
-	## @NEW LinearFriction Force
+	## LinearFriction Force
 	var constFricForse = 0.0
-	if linear_velocity.length() > 0.01: 
+	if linear_vel > 0.01: 
 		constFricForse = bodyLinearFricConst
 	var linearFric_force_applied:Vector3 = (
 		- linear_velocity.normalized() * 
 		( constFricForse
-		+ bodyLinearFricLin * linear_velocity.length()
-		+ bodyLinearFricSq * linear_velocity.length_squared()))
+		+ bodyLinearFricLin * linear_vel
+		))
+		#+ bodyLinearFricSq * linear_velocity.length_squared()))
 	
 	## Apply Custom Forces
 	apply_central_force(aeroDrag_force_applied)
@@ -361,23 +365,45 @@ func _physics_process(delta: float) -> void:
 		## Now restore handbrake rear friction
 		set_fric_slip_rear(fric_slip_rear)
 		
-	## Update Engine Index
-	engine_index = get_engine_index((linear_velocity.length()))
-	## Update RPM value
+	## GearBox switcher
+	## If not playing switching sound
+	engine_index = get_engine_index((linear_vel))
+	
+	## @NEW engine's gearbox coefficients applied to curve's values
+	## Prepare vars
+	## For current index, get curve's Y value using RPM as X
+	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
 	var eng_ind = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
-	scale_rpm = 1.0 + ( 2.0 * ## Why?
-		(linear_velocity.length()  / MAX_SPEED)
-		* (eng_ind_rpm[eng_ind] / eng_ind_rpm.max())
-	)
-	## @NeW try to use RPM as engine_force !IT WORKS!
-	engine_force = scale_curve.sample_baked((
-		scale_rpm - 1.0)) * MAX_POWER * ACCELERATING
+	var speed_cur = linear_vel * 3.6 ## kph
+	var s_start = engine_index_up[engine_index]
+	var s_final = engine_index_up[engine_index + 1]
+	## @NEW s_scale_rpm to use new scaled values and curves
+	var s_scale_rpm_normal = (
+		speed_cur - s_start) / (s_final - s_start) ## up from 0 to 1
+	## Get final RPM from normalized
+	## First find min-max for the current gear
+	var s_scale_rpm_min = (eng_min_rpm.max() + eng_min_rpm[eng_ind]) / \
+		(eng_min_rpm.max() * 2)
+	## Second calculate scale_RPM !!!@HOW it works i X3
+	s_scale_rpm = s_scale_rpm_min + s_scale_rpm_normal * (
+			s_scale_rpm_normal - s_scale_rpm_min)
+	## @FINAL Update engine_force using RPM
+	engine_force = scale_curve.sample_baked(s_scale_rpm) * MAX_POWER * ACCELERATING
+	
+	if !scene.DEBUG_SHOW: ## Forced output
+		UI.logs_clr_text()
+		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
+		UI.logs_add_text("\n s_start: %6.2f" % s_start)
+		UI.logs_add_text("\n s_final: %6.2f" % s_final)
+		UI.logs_add_text("\n s_scale_rpm: %6.2f" % s_scale_rpm)
+		UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+		UI.show_info()
 		
 	## Reverse last
 	if REVERSE:
 		engine_state = States.REVERSING
-		## Rear Gear has 30% of maximum power
-		engine_force = - clamp(abs(engine_force), 0, MAX_POWER * 0.3)
+		## Rear Gear has 25% of maximum power
+		engine_force = - clamp(abs(engine_force), 0, MAX_POWER * 0.25)
 
 	## Update UI
 	UI.set_speedometer_label(
@@ -385,10 +411,10 @@ func _physics_process(delta: float) -> void:
 			States.keys()[engine_state].substr(0,8), 
 			Indices.keys()[engine_index].substr(0,8)]
 		)
-	rotate_speed_pt(linear_velocity.length() * 3.6)
+	rotate_speed_pt(linear_vel * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
-	rotate_tacho_pt(scale_rpm - 1)
+	rotate_tacho_pt(s_scale_rpm)
 	rotate_tacho_ps(abs(engine_force))
 	rotate_wheel()
 	set_brake_pedal(print_brake_force)
@@ -398,17 +424,18 @@ func _physics_process(delta: float) -> void:
 	set_rotate_alpha(angular_velocity.y, deg_vel, abs(loc_vel.x))
 	
 	## @DEBUG UI logs
-	UI.logs_clr_text()
-	UI.logs_add_text("\n Horsa 1000")
-	UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
-	UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
-	UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_velocity.length())
-	UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
-	UI.logs_add_text("\n Steering.....: %8.2f" % steering)
-	UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
-	UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
-	UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
-	UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
+	if scene.DEBUG_SHOW:
+		UI.logs_clr_text()
+		UI.logs_add_text("\n Cowl Base 1000")
+		UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
+		UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
+		UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_vel)
+		UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
+		UI.logs_add_text("\n Steering.....: %8.2f" % steering)
+		UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+		UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
+		UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
+		UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
 	
 	## Car fell off course!
 	if position.y < -50:
@@ -440,21 +467,25 @@ func engine_match_power(input_speed:float, match_curve:Curve) -> float:
 		return match_power
 
 ## Get Engine Index accordong to GearBox Values
-func get_engine_index(_speed: float) -> int:
+func get_engine_index(current_speed: float) -> int:
+	var current_index = engine_index
 	var speed_index := 0
 	var i := 0
 	if engine_state == States.REVERSING:
 		speed_index = 0
 	elif engine_state == States.ACCELERATING:
 		for spd in engine_index_up:
-			if (_speed * 3.6) > spd: 
+			if (current_speed * 3.6) > spd: 
 				speed_index = i
 			i += 1
 	else:
 		for spd in engine_index_down:
-			if (_speed * 3.6) > spd: 
+			if (current_speed * 3.6) > spd: 
 				speed_index = i
 			i += 1
+	## If GearBox switching sound is not playing
+	if $Gear.playing:
+		speed_index = current_index
 	return speed_index
 
 func rotate_speed_pt(speedf: float) -> void:
@@ -484,7 +515,8 @@ func rotate_tacho_pt(tacerpm: float) -> void:
 	var min_rad = Analometer.get_min_rad() 
 	var max_rad = Analometer.get_max_rad() 
 	var max_tac = Analometer.get_max_tac() 
-	tachor = min_rad + (max_rad - min_rad) * (tacerpm / max_tac)
+	tachor = min_rad + (
+		max_rad - min_rad) * (tacerpm / max_tac)
 	Analometer.rotate_tacho_pt(tachor)
 		
 func rotate_tacho_ps(tacwrpm: float) -> void:
@@ -492,7 +524,8 @@ func rotate_tacho_ps(tacwrpm: float) -> void:
 	var min_rad = Analometer.get_min_rad() 
 	var max_rad = Analometer.get_max_rad() 
 	var max_rot = Analometer.get_max_rot() 
-	tachor = min_rad + (max_rad - min_rad) * (tacwrpm / max_rot)
+	tachor = min_rad + (
+		max_rad - min_rad) * (tacwrpm / max_rot)
 	Analometer.rotate_tacho_ps(tachor)
 	
 func rotate_wheel() -> void:

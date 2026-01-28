@@ -199,8 +199,6 @@ func _ready() -> void:
 			eng_ind_rpm.append(calc_rpm)
 			eng_min_rpm.append(eng_ind_rpm.max()/calc_rpm)
 	
-	print(var_to_str(eng_min_rpm))
-	
 	Analometer.set_min_tac(Analometer.get_min_rad()) 
 	Analometer.set_min_rot(Analometer.get_min_rad()) 
 	Analometer.set_max_tac(Analometer.get_max_rad() * 0.5) ## double max

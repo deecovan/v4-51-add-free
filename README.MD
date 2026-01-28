@@ -7,6 +7,7 @@
   - Calculate scale_RPM !!!@HOW it works i X3!!!
   - Fixed Sixth Gear
   - Test Cowl Base new GearBox
+  - Cowl Back modified according to new gearbox
 
 ## 25.27.1
 - Tested AirBag track 
