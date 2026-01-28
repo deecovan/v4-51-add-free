@@ -1,5 +1,8 @@
 # v4-51-add-free GitHub repo 
 
+## 25.28.1
+- @NEW engine's gearbox coefficients applied to curve's values
+
 ## 25.27.1
 - Tested AirBag track 
 - Update Horsa setup 1:00 RCR lap 

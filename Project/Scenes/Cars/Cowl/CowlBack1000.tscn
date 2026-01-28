@@ -104,25 +104,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8
 transform = Transform3D(-1, 0, -1.81195e-07, 0, 1, 0, 1.50996e-07, 0, -1.2, -1.10436e-08, 0.0462159, -0.126323)
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("15_hygh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.4, 1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.339732, 1.425)
 use_as_steering = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DFR" parent="." instance=ExtResource("16_kmd4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.4, 1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.339732, 1.425)
 use_as_steering = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("17_q6lcv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.4, -1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.339732, -1.425)
 use_as_traction = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("18_53qr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.4, -1.42481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.339732, -1.42481)
 use_as_traction = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4

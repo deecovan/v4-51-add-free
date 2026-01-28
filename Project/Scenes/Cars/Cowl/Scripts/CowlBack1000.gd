@@ -95,19 +95,19 @@ var rotate_wheel_sens
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
-@export var damp_compr_front =8.0
-@export var damp_relax_front = 5.0
-@export var damp_compr_rear = 4.0
+@export var damp_compr_front = 6.0
+@export var damp_relax_front = 9.0
+@export var damp_compr_rear = 3.0
 @export var damp_relax_rear = 4.0
 ## Rest, Travel, Stiff, MaxV
-@export var rest_front = 0.11
-@export var rest_rear = 0.10
-@export var travel_front = 0.13
-@export var travel_rear = 0.12
-@export var stiff_front = 120
-@export var stiff_rear = 210
-@export var max_force_front = 12000
-@export var max_force_rear = 21000
+@export var rest_front = 0.12
+@export var rest_rear = 0.12
+@export var travel_front = 0.16
+@export var travel_rear = 0.16
+@export var stiff_front = 75
+@export var stiff_rear = 45
+@export var max_force_front = 15500
+@export var max_force_rear = 9500
 
 @export var scale_curve: Curve
 var scale_array : Array

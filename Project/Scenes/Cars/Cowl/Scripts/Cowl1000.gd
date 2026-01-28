@@ -89,11 +89,11 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.3 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.5 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.4 ## Because its like a Soap on U track!
+@export var fric_slip_rear = 2.0 ## Because its like a Soap on U track!
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.8
+@export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
 @export var damp_compr_front = 6.0
 @export var damp_relax_front = 9.0
@@ -363,15 +363,23 @@ func _physics_process(delta: float) -> void:
 		
 	## Update Engine Index
 	engine_index = get_engine_index((linear_velocity.length()))
-	## Update RPM value
-	var eng_ind = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
-	scale_rpm = 1.0 + ( 2.0 * ## Why?
+	## @NEW engine's gearbox coefficients applied to curve's values
+	## Prepare vars
+	var eng_ind_cur = clamp(engine_index - 2, 0, eng_ind_rpm.size()-1)
+	var eng_ind_low = eng_ind_cur - 1
+	var speed_ind_cur = eng_ind_rpm[eng_ind_cur]
+	var speed_ind_low = eng_ind_rpm[eng_ind_low]
+	## For current index, get curve's Y value using RPM as X
+	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
+	
+	## @FINAL Update RPM value
+	scale_rpm = ( 2.0 * ## Why?
 		(linear_velocity.length()  / MAX_SPEED)
-		* (eng_ind_rpm[eng_ind] / eng_ind_rpm.max())
+		* (speed_ind_cur / eng_ind_rpm.max())
 	)
-	## @NeW try to use RPM as engine_force !IT WORKS!
+	## @FINAL Update engine_force using RPM
 	engine_force = scale_curve.sample_baked((
-		scale_rpm - 1.0)) * MAX_POWER * ACCELERATING
+		scale_rpm)) * MAX_POWER * ACCELERATING
 		
 	## Reverse last
 	if REVERSE:
@@ -388,7 +396,7 @@ func _physics_process(delta: float) -> void:
 	rotate_speed_pt(linear_velocity.length() * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
-	rotate_tacho_pt(scale_rpm - 1)
+	rotate_tacho_pt(scale_rpm)
 	rotate_tacho_ps(abs(engine_force))
 	rotate_wheel()
 	set_brake_pedal(print_brake_force)
@@ -481,6 +489,7 @@ func rotate_speed_ps(deltavf: float, delta) -> void:
 	
 func rotate_tacho_pt(tacerpm: float) -> void:
 	var tachor = 0.0
+	tacerpm = tacerpm - 1.0
 	var min_rad = Analometer.get_min_rad() 
 	var max_rad = Analometer.get_max_rad() 
 	var max_tac = Analometer.get_max_tac() 
