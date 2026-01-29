@@ -126,16 +126,30 @@ var eng_min_rpm = [] ## calculated from eng_ind_rpm.max()
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
+var linear_vel = 0.0
 var s_scale_rpm = 1.0
 
 var scene: Node3D
 var UI: CanvasLayer
 var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
-var linear_vel = 0.0
+var cam: Camera3D
+var cam1: Marker3D
+var cam2: Marker3D
+var cam3: Marker3D
+var gimbal = Node3D
+enum CamStates {Gimbal, Cam1, Cam2, Cam3}
+var cam_state: CamStates
 
 func _ready() -> void:
 	scene = get_parent()
+	cam = $Cam
+	cam1 = $Cam1
+	cam2 = $Cam2
+	cam3 = $Cam3
+	gimbal = scene.find_child("CameraGimbal")
+	cam_state = CamStates.Gimbal
+	
 	UI = $UI
 	Analometer = UI.get_analometer()
 	rotate_wheel_sens = (rotate_wheel_sens_max
@@ -209,6 +223,38 @@ func _ready() -> void:
 	UI.call_draw_curve(scale_array)
 	
 func _physics_process(delta: float) -> void:
+	## Change active camera onboard/gimbal State Machine
+	if Input.is_action_just_pressed("cameras"):
+		var fov = cam.fov
+		if cam_state == CamStates.Gimbal:
+			cam_state = CamStates.Cam1
+			fov = cam1.get_meta("FOV")
+			cam.fov = fov
+			cam.position = cam1.position
+			cam.rotation = cam1.rotation
+			gimbal.camera.current = false
+			cam.current = true
+		elif cam_state == CamStates.Cam1:
+			cam_state = CamStates.Cam2
+			fov = cam2.get_meta("FOV")
+			cam.fov = fov
+			cam.position = cam2.position
+			cam.rotation = cam2.rotation
+			gimbal.camera.current = false
+			cam.current = true
+		elif cam_state == CamStates.Cam2:
+			cam_state = CamStates.Cam3
+			fov = cam3.get_meta("FOV")
+			cam.fov = fov
+			cam.position = cam3.position
+			cam.rotation = cam3.rotation
+			gimbal.camera.current = false
+			cam.current = true
+		else:
+			cam_state = CamStates.Gimbal
+			cam.current = false
+			gimbal.camera.current = true
+			
 	linear_vel = abs(get_local_velocity().z)
 	var alt_control = Input.is_action_pressed("alt_control")
 	var steer_control_speed_ = steer_control_speed

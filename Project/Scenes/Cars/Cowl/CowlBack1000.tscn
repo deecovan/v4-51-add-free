@@ -96,7 +96,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
 
 [node name="C0_Cowl_1c_Export" parent="." instance=ExtResource("13_ecxyw")]
 transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
-visible = false
 
 [node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wibkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8974)
