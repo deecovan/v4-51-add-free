@@ -1,0 +1,62 @@
+[gd_resource type="StandardMaterial3D" load_steps=9 format=3 uid="uid://bow6g7100owkd"]
+
+[sub_resource type="Gradient" id="Gradient_7uocl"]
+offsets = PackedFloat32Array(0, 0.111111, 0.692308)
+colors = PackedColorArray(0, 0, 0, 1, 0.404762, 0.404762, 0.404762, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vatky"]
+noise_type = 3
+frequency = 0.0035
+fractal_type = 2
+fractal_lacunarity = 2.24
+fractal_gain = 0.785
+fractal_weighted_strength = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_16nnr"]
+width = 1024
+height = 1024
+invert = true
+seamless = true
+seamless_blend_skirt = 0.37
+color_ramp = SubResource("Gradient_7uocl")
+noise = SubResource("FastNoiseLite_vatky")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rghti"]
+noise_type = 4
+frequency = 0.025
+fractal_type = 3
+fractal_lacunarity = 1.545
+fractal_gain = 1.085
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1fb46"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_rghti")
+
+[sub_resource type="Gradient" id="Gradient_rpdth"]
+offsets = PackedFloat32Array(0, 0.128205, 0.384615)
+colors = PackedColorArray(0, 0, 0, 1, 0.666667, 0.666667, 0.666667, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o00dx"]
+frequency = 0.0055
+fractal_type = 3
+fractal_lacunarity = 1.065
+fractal_weighted_strength = 0.05
+fractal_ping_pong_strength = 3.64
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i67rd"]
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_rpdth")
+noise = SubResource("FastNoiseLite_o00dx")
+
+[resource]
+albedo_color = Color(0.142858, 0.142858, 0.142858, 1)
+albedo_texture = SubResource("NoiseTexture2D_16nnr")
+roughness_texture = SubResource("NoiseTexture2D_i67rd")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 0.75
+normal_texture = SubResource("NoiseTexture2D_1fb46")
+uv1_scale = Vector3(0.125, 0.125, 0.125)
+uv1_triplanar = true
+uv1_world_triplanar = true

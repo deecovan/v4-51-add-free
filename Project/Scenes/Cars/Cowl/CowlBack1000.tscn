@@ -101,7 +101,7 @@ transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8974)
 
 [node name="C0_Cowl_3e_Export" parent="." instance=ExtResource("15_afa38")]
-transform = Transform3D(-1, 0, -1.81195e-07, 0, 1, 0, 1.50996e-07, 0, -1.2, -1.10436e-08, 0.0462159, -0.126323)
+transform = Transform3D(-1, 0, -1.81195e-07, 0, 1, 0, 1.50996e-07, 0, -1.2, 1.15153e-09, 0.0572228, 0.013173)
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("15_hygh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.339732, 1.425)
@@ -130,3 +130,16 @@ wheel_radius = 0.4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741235, 0)
 shape = SubResource("BoxShape3D_wibkg")
+
+[node name="Cam" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 1.8, -0.275)
+fov = 35.0
+far = 1000.0
+
+[node name="Cam1" type="Marker3D" parent="."]
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 1.8, -0.275)
+metadata/FOV = 35.0
+
+[node name="Cam2" type="Marker3D" parent="."]
+transform = Transform3D(-1, 1.7184e-08, -8.57173e-08, -3.10862e-15, 0.980491, 0.196562, 8.74228e-08, 0.196562, -0.980491, 3.76048e-10, 0.838474, 2.0793)
+metadata/FOV = 40.0

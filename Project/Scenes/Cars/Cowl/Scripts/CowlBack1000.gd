@@ -134,9 +134,21 @@ var scene: Node3D
 var UI: CanvasLayer
 var Analometer: Control
 var rem_linear_velocity = Vector3.ZERO
+var cam: Camera3D
+var cam1: Marker3D
+var cam2: Marker3D
+var gimbal = Node3D
+enum CamStates {Gimbal, Cam1, Cam2}
+var cam_state: CamStates
 
 func _ready() -> void:
 	scene = get_parent()
+	cam = $Cam
+	cam1 = $Cam1
+	cam2 = $Cam2
+	gimbal = scene.find_child("CameraGimbal")
+	cam_state = CamStates.Gimbal
+	
 	UI = $UI
 	Analometer = UI.get_analometer()
 	rotate_wheel_sens = (rotate_wheel_sens_max
@@ -208,8 +220,27 @@ func _ready() -> void:
 	for i in 100:
 		scale_array.append(scale_curve.sample_baked(i/100.0))
 	UI.call_draw_curve(scale_array)
-	
+
 func _physics_process(delta: float) -> void:
+	## Change active camera onboard/gimbal State Machine
+	if Input.is_action_just_pressed("cameras"):
+		if cam_state == CamStates.Gimbal:
+			cam_state = CamStates.Cam1
+			cam.position = cam1.position
+			cam.position = cam1.position
+			gimbal.camera.current = false
+			cam.current = true
+		elif cam_state == CamStates.Cam1:
+			cam_state = CamStates.Cam2
+			cam.position = cam2.position
+			cam.position = cam2.position
+			gimbal.camera.current = false
+			cam.current = true
+		else:
+			cam_state = CamStates.Gimbal
+			cam.current = false
+			gimbal.camera.current = true
+	
 	linear_vel = abs(get_local_velocity().z)
 	var alt_control = Input.is_action_pressed("alt_control")
 	var steer_control_speed_ = steer_control_speed
@@ -390,7 +421,7 @@ func _physics_process(delta: float) -> void:
 	## @FINAL Update engine_force using RPM
 	engine_force = scale_curve.sample_baked(s_scale_rpm) * MAX_POWER * ACCELERATING
 	
-	if !scene.DEBUG_SHOW: ## Forced output
+	if false and !scene.DEBUG_SHOW: ## Forced output
 		UI.logs_clr_text()
 		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
 		UI.logs_add_text("\n s_start: %6.2f" % s_start)

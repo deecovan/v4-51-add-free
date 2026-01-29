@@ -21,7 +21,7 @@ nodes/import_as_skeleton_bones=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
-meshes/create_shadow_meshes=true
+meshes/create_shadow_meshes=false
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
@@ -33,6 +33,16 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Material.008": {
+"use_external/enabled": true,
+"use_external/path": "uid://bow6g7100owkd"
+},
+"Material.011": {
+"use_external/enabled": true,
+"use_external/path": "uid://da2uiv2thc2gp"
+}
+},
 "nodes": {
 "PATH:Grid_001": {
 "generate/physics": true
