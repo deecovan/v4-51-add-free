@@ -114,26 +114,18 @@ transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.066, -0.1, 0)
 [node name="Wheel3DFL" parent="." instance=ExtResource("16_kpom5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.335932, 1.425)
 use_as_steering = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="Wheel3DFR" parent="." instance=ExtResource("17_1vrjn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.335932, 1.425)
 use_as_steering = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("18_qlpai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33, 0.333, -1.425)
 use_as_traction = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("19_lanrp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33, 0.333, -1.425)
 use_as_traction = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741235, 0)
