@@ -1,14 +1,16 @@
 # v4-51-add-free GitHub repo 
 
+## 25.29.1 Start Cource selector with Loader
+
 ## 25.29.1 Start Implement Settings 
-- New OnBoard cameras with C key switcher
-- Update Cowl cabine to use camera
-- Update Cowl wheels to use Kamber and Toe
+- Added OnBoard cameras with C key switcher
+- Updated Cowl cabine to use cameras
+- Updated Cowl wheels to use Kamber and Toe
 - Finished polishing Cowl Back
   - Cowl Back and Base tested, seems similar in time
 - Added 4 Rams to Cowl Base
-  - Test for 1:09
-  - Synchronize settings:
+  - Tested for 1:09
+  - Synchronized settings:
     - Curves
     - Wheels and rams
 - Added Engine Mass and Inertia
@@ -17,11 +19,11 @@
 
 ## 25.28.1 New GearBox
 - @NEW engine's gearbox coefficients applied to curve's values
-  - Change linear_velocity to local_velocity.z
+  - Changed linear_velocity to local_velocity.z
   - @NEW s_scale_rpm to use new scaled values and curves
-  - Calculate scale_RPM !!!@HOW it works i X3!!!
+  - Calculated scale_RPM
   - Fixed Sixth Gear
-  - Test Cowl Base new GearBox
+  - Tested Cowl Base new GearBox
   - Cowl Back modified according to new gearbox
 
 ## 25.27.1
