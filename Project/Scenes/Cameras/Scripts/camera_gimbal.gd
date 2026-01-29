@@ -3,15 +3,15 @@ extends Node3D
 @export var gimbal_offset := Vector3(0.0,1.0,0.0)
 ## Keyboard controlled Rotation and Zoom
 @export var camera_speed = 1.0
-@export var zoom = 0.70
-@export var zoom_min = 0.70
-@export var zoom_max = 2.8
+@export var zoom = 1.0
+@export var camera_FOV = 60.0
+@export var arm_spring_length = 10.0
+@export var zoom_min = 0.5
+@export var zoom_max = 2.5
 @export var zoom_speed = 0.125
-@export var arm_spring_length = 7.0
 @export var arm_spring_length_min = 7.0
 @export var arm_spring_length_max = 30.0
 @export var arm_spring_length_step = 3.5
-@export var camera_FOV = 45.0
 ## @NEW Gimbal follow the car position VIA gimbal length
 # Add to camera move farther
 @export var tween_follow_speed = 10.0

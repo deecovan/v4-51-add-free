@@ -3,6 +3,7 @@
 ## 25.29.1 Start Implement Settings 
 - New OnBoard cameras with C key switcher
 - Update Cowl cabine to use camera
+- Update Cowl wheels to use Kamber and Toe
 
 ## 25.28.1 New GearBox
 - @NEW engine's gearbox coefficients applied to curve's values

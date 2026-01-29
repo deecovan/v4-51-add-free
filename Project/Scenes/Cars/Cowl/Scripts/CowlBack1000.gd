@@ -33,12 +33,12 @@ var car_angular_damp = 0.0
 @export var bodySquareFill = 0.8
 @export var bodyDrag = 1.2
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 0.99
+@export var bodyAeroDyn = 1.25
 
 ## Add Linear Friction
 ## Constant and Linear friction
 @export var bodyLinearFricConst = 500.0
-@export var bodyLinearFricLin = 50.0
+@export var bodyLinearFricLin = 75.0
 ## Squared friction ## 0.0 Because AroDrag used
 @export var bodyLinearFricSq = 0.0 ## 0.05
 
@@ -50,14 +50,14 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.44
+@export var MAX_STEER  = 0.33
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.125
+@export var SPEED_STEER_CO = 0.15
 ## Maximum Steering speed
-@export var steer_control_speed = 0.5
-@export var steer_restore_speed = 1.5
+@export var steer_control_speed = 0.33
+@export var steer_restore_speed = 1.25
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
@@ -70,7 +70,7 @@ var rotate_wheel_sens
 ## Applied with Use Wheel Brake = false
 @export var vehicle_brake_force = 150.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 150.0
+@export var wheel_brake_force = 125.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
@@ -89,11 +89,11 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.5 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.2 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 2.0 ## Because its like a Soap on U track!
+@export var fric_slip_rear = 1.8 ## Wide Rear Wheels
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
-@export var fric_slip_rear_hb_mult = 1.5
+@export var fric_slip_rear_hb_mult = 1.75
 ## Relax must higher than Compression 
 @export var damp_compr_front = 4.0
 @export var damp_relax_front = 6.0
@@ -137,8 +137,9 @@ var rem_linear_velocity = Vector3.ZERO
 var cam: Camera3D
 var cam1: Marker3D
 var cam2: Marker3D
+var cam3: Marker3D
 var gimbal = Node3D
-enum CamStates {Gimbal, Cam1, Cam2}
+enum CamStates {Gimbal, Cam1, Cam2, Cam3}
 var cam_state: CamStates
 
 func _ready() -> void:
@@ -146,6 +147,7 @@ func _ready() -> void:
 	cam = $Cam
 	cam1 = $Cam1
 	cam2 = $Cam2
+	cam3 = $Cam3
 	gimbal = scene.find_child("CameraGimbal")
 	cam_state = CamStates.Gimbal
 	
@@ -224,16 +226,29 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	## Change active camera onboard/gimbal State Machine
 	if Input.is_action_just_pressed("cameras"):
+		var fov = cam.fov
 		if cam_state == CamStates.Gimbal:
 			cam_state = CamStates.Cam1
+			fov = cam1.get_meta("FOV")
+			cam.fov = fov
 			cam.position = cam1.position
-			cam.position = cam1.position
+			cam.rotation = cam1.rotation
 			gimbal.camera.current = false
 			cam.current = true
 		elif cam_state == CamStates.Cam1:
 			cam_state = CamStates.Cam2
+			fov = cam2.get_meta("FOV")
+			cam.fov = fov
 			cam.position = cam2.position
-			cam.position = cam2.position
+			cam.rotation = cam2.rotation
+			gimbal.camera.current = false
+			cam.current = true
+		elif cam_state == CamStates.Cam2:
+			cam_state = CamStates.Cam3
+			fov = cam3.get_meta("FOV")
+			cam.fov = fov
+			cam.position = cam3.position
+			cam.rotation = cam3.rotation
 			gimbal.camera.current = false
 			cam.current = true
 		else:

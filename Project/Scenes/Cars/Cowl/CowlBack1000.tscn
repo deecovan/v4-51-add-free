@@ -23,7 +23,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8y6q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wibkg"]
-size = Vector3(2.635, 1.1085, 3.625)
+size = Vector3(2.5, 1.15, 3.895)
 
 [node name="Vehicle CowlBack1000" type="VehicleBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -104,42 +104,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8
 transform = Transform3D(-1, 0, -1.81195e-07, 0, 1, 0, 1.50996e-07, 0, -1.2, 1.15153e-09, 0.0572228, 0.013173)
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("15_hygh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.339732, 1.425)
+transform = Transform3D(0.999701, -0.0171452, -0.0174497, 0.0174497, 0.999695, 0.0174524, 0.0171452, -0.0177517, 0.999695, 1.25, 0.339732, 1.425)
 use_as_steering = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DFR" parent="." instance=ExtResource("16_kmd4b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.339732, 1.425)
+transform = Transform3D(0.999701, 0.0171452, 0.0174497, -0.0174497, 0.999696, 0.0174524, -0.0171452, -0.0177517, 0.999695, -1.25, 0.339732, 1.425)
 use_as_steering = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("17_q6lcv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.339732, -1.425)
+transform = Transform3D(0.999695, -0.0174497, -0.0174524, 0.0174524, 0.999848, 0, 0.0174497, -0.000304586, 0.999848, 1.25, 0.339732, -1.425)
 use_as_traction = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("18_53qr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.339732, -1.42481)
+transform = Transform3D(0.999695, -0.0174497, 0.0174524, 0.0174524, 0.999848, 0, -0.0174497, 0.000304586, 0.999848, -1.25, 0.339732, -1.42481)
 use_as_traction = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741235, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.715, 0)
 shape = SubResource("BoxShape3D_wibkg")
 
 [node name="Cam" type="Camera3D" parent="."]
-transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 1.8, -0.275)
-fov = 35.0
-far = 1000.0
+fov = 45.0
+far = 500.0
 
 [node name="Cam1" type="Marker3D" parent="."]
-transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 1.8, -0.275)
-metadata/FOV = 35.0
+transform = Transform3D(-1, 1.21669e-08, -8.6572e-08, 0, 0.990268, 0.139173, 8.74228e-08, 0.139173, -0.990268, 1.14041, 0.898169, 1.42038)
+metadata/FOV = 30.0
 
 [node name="Cam2" type="Marker3D" parent="."]
-transform = Transform3D(-1, 1.7184e-08, -8.57173e-08, -3.10862e-15, 0.980491, 0.196562, 8.74228e-08, 0.196562, -0.980491, -1.59855e-08, 0.903125, 1.89215)
+transform = Transform3D(-1, 1.81762e-08, -8.55123e-08, 0, 0.978147, 0.207912, 8.74228e-08, 0.207912, -0.978147, -9.42565e-08, 1.2093, 0.996834)
+metadata/FOV = 35.0
+
+[node name="Cam3" type="Marker3D" parent="."]
+transform = Transform3D(-1, -2.4097e-08, 8.40362e-08, 0, 0.961262, 0.275637, -8.74228e-08, 0.275637, -0.961262, 2.31128e-08, 1.78951, -0.0106207)
 metadata/FOV = 40.0
