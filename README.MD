@@ -12,7 +12,8 @@
     - Curves
     - Wheels and rams
 - Added Engine Mass and Inertia
-- Applied Custom Forces to the CENTERS! of Cowls
+- Applied Custom Forces to the CENTERS
+- Tested similar Cowls: 1:05 both
 
 ## 25.28.1 New GearBox
 - @NEW engine's gearbox coefficients applied to curve's values

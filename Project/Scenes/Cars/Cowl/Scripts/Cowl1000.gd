@@ -374,10 +374,10 @@ func _physics_process(delta: float) -> void:
 		+ bodyLinearFricLin * linear_vel
 		))
 	
-	## Apply Custom Forces to thhe CENTERS!
-	apply_force(aeroDrag_force_applied, CENTER_OF_MASS)
-	apply_force(linearFric_force_applied, CENTER_OF_MASS)
-	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
+	## Apply Custom Forces to the CENTERS!
+	apply_central_force(aeroDrag_force_applied)
+	apply_central_force(linearFric_force_applied)
+	apply_central_force(aeroDyn_force_applied)
 
 	## Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
