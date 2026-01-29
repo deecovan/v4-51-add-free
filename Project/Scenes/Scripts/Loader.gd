@@ -11,6 +11,7 @@ extends Node2D
 @export var thor: PackedScene
 @export var cup: PackedScene
 @export var spa: PackedScene
+@export var spa_back: PackedScene
 @export var curve: PackedScene
 @export var airbag: PackedScene
 @export var airbag_back: PackedScene
@@ -22,6 +23,7 @@ var square_inst
 var thor_inst
 var cup_inst
 var spa_inst
+var spa_back_inst
 var curve_inst
 var airbag_inst
 var airbag_back_inst
@@ -36,7 +38,8 @@ func _ready() -> void:
 	#if square.can_instantiate(): square_inst = square.instantiate()
 	#if thor.can_instantiate(): thor_inst = thor.instantiate()
 	#if cup.can_instantiate(): cup_inst = cup.instantiate()
-	#if spa.can_instantiate(): spa_inst = spa.instantiate()
+	if spa.can_instantiate(): spa_inst = spa.instantiate()
+	if spa_back.can_instantiate(): spa_back_inst = spa_back.instantiate()
 	#if curve.can_instantiate(): curve_inst = curve.instantiate()
 	if airbag.can_instantiate(): airbag_inst = airbag.instantiate()
 	if airbag_back.can_instantiate(): airbag_back_inst = airbag_back.instantiate()
@@ -153,6 +156,13 @@ func _on_fanta_6600_pressed() -> void:
 
 func _on_air_bag_back_pressed() -> void:
 	track_scene = open_track(airbag_back_inst)
+	hide_menus()
+	hide_panels()
+	#car_menu.show()
+
+
+func _on_spa_back_pressed() -> void:
+	track_scene = open_track(spa_back_inst)
 	hide_menus()
 	hide_panels()
 	#car_menu.show()

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://epwatr8gworp" path="res://Scenes/Sky/BlueSky.tscn" id="3_wt3fi"]
 [ext_resource type="PackedScene" uid="uid://dxg5vswamqboc" path="res://Scenes/Tracks/SquareGen/sand_1_km_landlow A.tscn" id="4_1yxng"]
 [ext_resource type="PackedScene" uid="uid://d30n15m6q65hp" path="res://Scenes/Tracks/GLBs/Objects/sign-highway-wide.glb" id="5_uvq7p"]
-[ext_resource type="PackedScene" uid="uid://edhdlt8oenrd" path="res://Scenes/Cars/Chero/Chero1000.tscn" id="6_7dhpe"]
+[ext_resource type="PackedScene" uid="uid://c1vetvy6c1h40" path="res://Scenes/Cars/Cowl/CowlBase1000.tscn" id="7_7dhpe"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="7_jfdmx"]
 
 [node name="MainSpaLong" type="Node3D"]
@@ -27,8 +27,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 856.90
 [node name="CameraGimbal" parent="." instance=ExtResource("7_jfdmx")]
 transform = Transform3D(-0.379505, 0, 0.92519, 0, 1, 0, -0.92519, 0, -0.379505, 658.427, 2, -153.543)
 
-[node name="Vehicle" parent="." instance=ExtResource("6_7dhpe")]
-transform = Transform3D(0.389975, 0, -0.920825, 0, 1, 0, 0.920825, 0, 0.389975, 700.18, 2.0321, -170.904)
-
 [node name="sign-highway-wide" parent="." instance=ExtResource("5_uvq7p")]
 transform = Transform3D(16.7925, 0, 7.19758, 0, 18.27, 0, -7.19758, 0, 16.7925, 676.03, -0.25, -158.1)
+
+[node name="Vehicle" parent="." instance=ExtResource("7_7dhpe")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 698.291, 0.643669, -178.097)

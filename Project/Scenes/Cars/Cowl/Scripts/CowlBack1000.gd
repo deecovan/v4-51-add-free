@@ -52,9 +52,9 @@ var car_angular_damp = 0.0
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.125
+@export var SPEED_STEER_CO = 0.12
 ## Maximum Steering speed
-@export var steer_control_speed = 0.4
+@export var steer_control_speed = 0.5
 @export var steer_restore_speed = 1.6
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0

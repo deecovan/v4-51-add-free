@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c04ue4ip50qe2"]
+[gd_scene load_steps=15 format=3 uid="uid://c04ue4ip50qe2"]
 
 [ext_resource type="Script" uid="uid://c38lgq0jf848d" path="res://Scenes/Scripts/Loader.gd" id="1_tt5f1"]
+[ext_resource type="PackedScene" uid="uid://boxepc62oxvbj" path="res://Scenes/Tracks/spa.short.c1.tscn" id="2_6o4ty"]
 [ext_resource type="PackedScene" uid="uid://d4uj3gb7gxc3" path="res://Scenes/Tracks/AirBagBase.tscn" id="2_8xdk6"]
 [ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="2_ttvog"]
 [ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="2_xm1ns"]
+[ext_resource type="PackedScene" uid="uid://evqr388owk7n" path="res://Scenes/Tracks/spa.short.b1.tscn" id="3_6o4ty"]
 [ext_resource type="PackedScene" uid="uid://blx1fo1bxhdl1" path="res://Scenes/Tracks/AirBagBack.tscn" id="3_toe5v"]
 [ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
 [ext_resource type="LabelSettings" uid="uid://b7clkj0x8tukw" path="res://Themes/ui-title.tres" id="8_qcf16"]
@@ -74,6 +76,8 @@ game_menu = NodePath("Canvas/Control/GameMenu")
 drive_menu = NodePath("Canvas/Control/DriveMenu")
 circle_menu = NodePath("Canvas/Control/CircleMenu")
 car_menu = NodePath("Canvas/Control/CarMenu")
+spa = ExtResource("2_6o4ty")
+spa_back = ExtResource("3_6o4ty")
 airbag = ExtResource("2_8xdk6")
 airbag_back = ExtResource("3_toe5v")
 metadata/_edit_vertical_guides_ = [30.0, 973.0]
@@ -288,10 +292,10 @@ layout_mode = 2
 text = "Select circle"
 horizontal_alignment = 1
 
-[node name="AirBag" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+[node name="AirBag Base" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-text = "AirBag
+text = "AirBag Base
 "
 
 [node name="AirBag Back" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
@@ -303,15 +307,13 @@ text = "AirBag Back
 [node name="Spa Short" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-disabled = true
 text = "Spa Short
 "
 
-[node name="Spa Long" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+[node name="Spa Back" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
-disabled = true
-text = "Spa Long
+text = "Spa Back
 "
 
 [node name="Thor Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
@@ -526,10 +528,10 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Square Land" to="." method="_on_square_land_pressed"]
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Circle Tracks" to="." method="_on_circle_tracks_pressed"]
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
-[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/AirBag" to="." method="_on_air_bag_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/AirBag Base" to="." method="_on_air_bag_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/AirBag Back" to="." method="_on_air_bag_back_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Short" to="." method="_on_spa_flat_pressed"]
-[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Long" to="." method="_on_spa_flat_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Back" to="." method="_on_spa_back_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Thor Circus" to="." method="_on_thor_circus_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Curve Roads" to="." method="_on_curve_roads_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Cup Circus" to="." method="_on_cup_circus_pressed"]

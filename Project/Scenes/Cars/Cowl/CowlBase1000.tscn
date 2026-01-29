@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b0hpvi1rdkc2d" path="res://Sounds/Cars/eng ran overpower.wav" id="5_nifbo"]
 [ext_resource type="AudioStream" uid="uid://dqiu1x6rs2gub" path="res://Sounds/Cars/eng ran run.wav" id="6_8v6bo"]
 [ext_resource type="AudioStream" uid="uid://bs18n8xr22toi" path="res://Sounds/Cars/Scraps/Scrap.wav" id="7_44qca"]
-[ext_resource type="AudioStream" uid="uid://dqtjormxmfsnx" path="res://Sounds/Cars/Gear.wav" id="8_kpom5"]
+[ext_resource type="AudioStream" uid="uid://cq28arq158j28" path="res://Sounds/Cars/GearAir.wav" id="8_8v6bo"]
 [ext_resource type="Script" uid="uid://cojt8fkxmka7t" path="res://Scenes/Cars/Cowl/Scripts/CowlEngine.gd" id="9_nifbo"]
 [ext_resource type="Script" uid="uid://dth1pyid6yfyu" path="res://Scenes/Cars/Cowl/Scripts/CowlWheels.gd" id="10_8v6bo"]
 [ext_resource type="PackedScene" uid="uid://b4ise3hq1m10r" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.0c.Export.glb" id="13_nifbo"]
@@ -68,9 +68,9 @@ panning_strength = 2.0
 
 [node name="Gear" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
-stream = ExtResource("8_kpom5")
-volume_db = -6.0
-max_db = -6.0
+stream = ExtResource("8_8v6bo")
+max_db = 6.0
+pitch_scale = 1.2
 max_polyphony = 2
 panning_strength = 2.0
 
@@ -135,7 +135,7 @@ transform = Transform3D(-1, 1.21669e-08, -8.6572e-08, 0, 0.990268, 0.139173, 8.7
 metadata/FOV = 30.0
 
 [node name="Cam2" type="Marker3D" parent="."]
-transform = Transform3D(-1, 7.48866e-09, -8.71014e-08, -4.44089e-16, 0.996324, 0.0856608, 8.74228e-08, 0.0856608, -0.996324, -2.22013e-07, 1.24625, -0.464534)
+transform = Transform3D(-1, 7.48866e-09, -8.71014e-08, -4.44089e-16, 0.996324, 0.0856608, 8.74228e-08, 0.0856608, -0.996324, -1.96577e-07, 1.11582, -0.173576)
 metadata/FOV = 35.0
 
 [node name="Cam3" type="Marker3D" parent="."]
