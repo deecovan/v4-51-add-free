@@ -50,14 +50,14 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.33
+@export var MAX_STEER  = 0.4
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
 @export var SPEED_STEER_CO = 0.15
 ## Maximum Steering speed
-@export var steer_control_speed = 0.33
-@export var steer_restore_speed = 1.25
+@export var steer_control_speed = 0.75
+@export var steer_restore_speed = 1.5
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
@@ -68,7 +68,7 @@ var rotate_wheel_sens
 @export var brake_control_speed = 0.5
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 150.0
+@export var vehicle_brake_force = 125.0
 ## Wheel3D braking force and balance
 @export var wheel_brake_force = 125.0
 ## wheel_brake_force multiplier
@@ -89,25 +89,25 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.2 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.4 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.8 ## Wide Rear Wheels
+@export var fric_slip_rear = 2.0 ## Wide Rear Wheels
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.75
 ## Relax must higher than Compression 
-@export var damp_compr_front = 4.0
-@export var damp_relax_front = 6.0
-@export var damp_compr_rear = 3.0
-@export var damp_relax_rear = 4.0
+@export var damp_compr_front = 3.0
+@export var damp_relax_front = 4.0
+@export var damp_compr_rear = 6.0
+@export var damp_relax_rear = 8.0
 ## Rest, Travel, Stiff, MaxV
 @export var rest_front = 0.12
 @export var rest_rear = 0.12
 @export var travel_front = 0.16
 @export var travel_rear = 0.16
-@export var stiff_front = 65
-@export var stiff_rear = 85
-@export var max_force_front = 12500
-@export var max_force_rear = 15500
+@export var stiff_front = 40
+@export var stiff_rear = 80
+@export var max_force_front = 10000
+@export var max_force_rear = 20000
 
 @export var scale_curve: Curve
 var scale_array : Array
