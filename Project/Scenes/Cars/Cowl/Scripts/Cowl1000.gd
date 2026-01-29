@@ -27,7 +27,6 @@ var car_friction = 0.0
 ## Reset standart values
 var car_linear_damp = 0.0
 var car_angular_damp = 0.0
-
 ## Setup AirDrag
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
@@ -35,19 +34,18 @@ var car_angular_damp = 0.0
 @export var bodyDrag = 1.2
 ## Setup AirDynamic Force
 @export var bodyAeroDyn = 0.99
-
 ## Add Linear Friction
 ## Constant and Linear friction
 @export var bodyLinearFricConst = 500.0
 @export var bodyLinearFricLin = 50.0
 
-@export_category("Control's move speed")
+@export_category("Global Controler's speed")
 ## Control's move_toward speed
 # Use 0..10 for keyboard or controller
 # Use 100 for racing wheels
 @export var control_speed = 3.3
 
-@export_category("Steering Values")
+@export_category("Steering")
 ## Maximum Steering angle in Radians
 @export var MAX_STEER  = 0.5
 ## @NEW To Use speed steering value
@@ -61,7 +59,7 @@ var car_angular_damp = 0.0
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
 
-@export_category("Braking Values")
+@export_category("Braking")
 @export var use_wheel_brake = true
 ## Maximum Braking speed
 @export var brake_control_speed = 0.5
@@ -78,12 +76,6 @@ var rotate_wheel_sens
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
 @export var hand_brake_force = 2.0
-
-@export_category("Coasting")
-## Coasting starting value
-@export var coast_init = 0.4
-## Coasting lerp speed
-@export var engine_coast = 0.1
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
@@ -108,30 +100,43 @@ var rotate_wheel_sens
 @export var max_force_front = 15500
 @export var max_force_rear = 9500
 
-@export var scale_curve: Curve
-var scale_array : Array
+@export_category("Coasting")
+## Coasting starting value
+@export var coast_init = 0.4
+## Coasting lerp speed
+@export var engine_coast = 0.1
 
-@export_category("States and gears")
+@export_category("GearBox States and values")
+@export var scale_curve: Curve
+## UI's Scale graph curve values
+var scale_array : Array
+## Engine Inertia value must be calculated from MAX_POWER etc.
+@export var engine_inertia_value = 0.15
+## GearBox states and values 
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
 @export var engine_state: States = States.CHILLING
 enum Indices { Rear, Neutral, 
 	First, Second, Third, Fourth, Fifth, Sixth, 
 	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
-var engine_index_up = [-1.0, 0.0, 
-	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 230.0, 235.0, 238.0, 240.0]
-var engine_index_down = [-1.0, 0.0, 
-	1.0, 50.0, 110.0, 150.0, 195.0, 215.0, 225.0, 230.0, 235.0, 239.0]
+## Arrays for Settings
+var engine_index_up = [-1.0, 0.0, 1.0, 
+	80.0, 120.0, 160.0, 200.0, 220.0, 230.0, 
+	235.0, 238.0, 240.0, 300.0, 300.0, 300.0]
+var engine_index_down = [-1.0, 0.0, 1.0, 
+	70.0, 110.0, 150.0, 195.0, 215.0, 225.0, 
+	230.0, 235.0, 238.0, 299.0, 299.0, 299.0]
+var eng_min_rpm = [
+	0.30, 0.40, 0.50, 0.60, 0.66, 0.72, 
+	0.74, 0.76, 0.77, 0.78, 0.79, 0.80]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
-var eng_min_rpm = [0.25, 0.40, 0.50, 0.60, 0.70, 0.75, 0.75, 0.80]
-## Engine Inertia value must be calculated from MAX_POWER etc.
-@export var engine_inertia_value = 0.1
+var s_scale_rpm = 1.0
 
+## OnReady variables
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
 var linear_vel = 0.0
-var s_scale_rpm = 1.0
 
 var scene: Node3D
 var UI: CanvasLayer

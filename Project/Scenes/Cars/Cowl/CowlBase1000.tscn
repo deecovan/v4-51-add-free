@@ -25,7 +25,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8y6q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pedu"]
-size = Vector3(2.635, 1.1085, 3.625)
+size = Vector3(2.635, 1.1085, 4.13477)
 
 [node name="Vehicle CowlBase1000" type="VehicleBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -53,7 +53,6 @@ max_polyphony = 2
 panning_strength = 2.0
 
 [node name="Run" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
 stream = ExtResource("6_8v6bo")
 max_polyphony = 2
 panning_strength = 2.0
@@ -124,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33, 0.333, -1.425)
 use_as_traction = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741235, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88178e-16, 0.741235, -0.0673828)
 shape = SubResource("BoxShape3D_7pedu")
 
 [node name="Cam" type="Camera3D" parent="."]

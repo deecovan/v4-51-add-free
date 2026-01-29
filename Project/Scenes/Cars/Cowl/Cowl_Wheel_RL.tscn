@@ -13,7 +13,6 @@ volume_db = -6.0
 pitch_scale = 0.5
 max_distance = 100.0
 max_polyphony = 4
-panning_strength = 2.0
 
 [node name="C0_Cowl_3c_Export" parent="." instance=ExtResource("2_kjnak")]
 transform = Transform3D(1.8, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -2.1, -0.445, -1.565)

@@ -1,6 +1,8 @@
 # v4-51-add-free GitHub repo 
 
 ## 25.29.1 Start Cource selector with Loader
+- Pre-test Cowls cars on AirBag track 
+  - Looks like similar timings
 
 ## 25.29.1 Start Implement Settings 
 - Added OnBoard cameras with C key switcher

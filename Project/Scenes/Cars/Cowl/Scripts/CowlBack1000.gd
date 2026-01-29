@@ -38,7 +38,7 @@ var car_angular_damp = 0.0
 ## Add Linear Friction
 ## Constant and Linear friction
 @export var bodyLinearFricConst = 500.0
-@export var bodyLinearFricLin = 75.0
+@export var bodyLinearFricLin = 66.0
 
 @export_category("Control's move speed")
 ## Control's move_toward speed
@@ -48,14 +48,14 @@ var car_angular_damp = 0.0
 
 @export_category("Steering Values")
 ## Maximum Steering angle in Radians
-@export var MAX_STEER  = 0.33
+@export var MAX_STEER  = 0.4
 ## @NEW To Use speed steering value
 @export var SPEED_STEER = true
 ## Speed Steer Koefficient
-@export var SPEED_STEER_CO = 0.1
+@export var SPEED_STEER_CO = 0.125
 ## Maximum Steering speed
-@export var steer_control_speed = 0.5
-@export var steer_restore_speed = 1.5
+@export var steer_control_speed = 0.4
+@export var steer_restore_speed = 1.6
 ## Steering wheel visual rotation: 420deg / MAX_STEER
 @export var rotate_wheel_sens_max = 320.0
 var rotate_wheel_sens
@@ -72,7 +72,7 @@ var rotate_wheel_sens
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.0
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 1.1
+@export var rear_brake_force = 1.2
 ## Brake toward speed
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
@@ -89,47 +89,55 @@ var rotate_wheel_sens
 ## Front wheels friction slip ratio ## 0.65
 @export var fric_slip_front = 1.6 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 2.4 ## Wide Rear Wheels
+@export var fric_slip_rear = 2.1 ## Wide Rear Wheels
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.75
 ## Relax must higher than Compression 
-@export var damp_compr_front = 6.0
-@export var damp_relax_front = 3.0
-@export var damp_compr_rear = 8.0
-@export var damp_relax_rear = 4.0
+@export var damp_compr_front = 5.0
+@export var damp_relax_front = 2.5
+@export var damp_compr_rear = 6.0
+@export var damp_relax_rear = 3.0
 ## Rest, Travel, Stiff, MaxV
-@export var rest_front = 0.12
+@export var rest_front = 0.11
 @export var rest_rear = 0.12
-@export var travel_front = 0.14
+@export var travel_front = 0.12
 @export var travel_rear = 0.14
-@export var stiff_front = 40
+@export var stiff_front = 50
 @export var stiff_rear = 60
-@export var max_force_front = 20000	
+@export var max_force_front = 25000	
 @export var max_force_rear = 30000
 
+@export_category("GearBox States and values")
 @export var scale_curve: Curve
+## UI's Scale graph curve values
 var scale_array : Array
-
-@export_category("States and gears")
+## Engine Inertia value must be calculated from MAX_POWER etc.
+@export var engine_inertia_value = 0.15
+## GearBox states and values 
 enum States { ACCELERATING, BRAKING, COASTING, REVERSING, CHILLING}
 @export var engine_state: States = States.CHILLING
-enum Indices {Rear, Neutral, 
+enum Indices { Rear, Neutral, 
 	First, Second, Third, Fourth, Fifth, Sixth, 
 	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
-var engine_index_up = [-1.0, 0.0, 
-	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 230.0, 235.0, 240.0, 245.0]
-var engine_index_down = [-1.0, 0.0, 
-	1.0, 50.0, 110.0, 150.0, 190.0, 210.0, 225.0, 232.0, 242.0]
+## Arrays for Settings
+var engine_index_up = [-1.0, 0.0, 1.0, 
+	75.0, 125.0, 160.0, 200.0, 215.0, 225.0, 
+	230.0, 235.0, 240.0, 300.0, 300.0, 300.0]
+var engine_index_down = [-1.0, 0.0, 1.0, 
+	70.0, 120.0, 155.0, 195.0, 210.0, 220.0, 
+	225.0, 233.0, 238.0, 299.0, 299.0, 299.0]
+var eng_min_rpm = [
+	0.25, 0.40, 0.50, 0.58, 0.62, 0.66, 
+	0.70, 0.70, 0.70, 0.70, 0.70, 0.70]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
-var eng_min_rpm = [0.25, 0.50, 0.60, 0.70, 0.76, 0.80, 0.80, 0.80, 0.80]
+var s_scale_rpm = 1.0
+
+## OnReady variables
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
 var linear_vel = 0.0
-var s_scale_rpm = 1.0
-## Engine Inertia value must be calculated from MAX_POWER etc.
-@export var engine_inertia_value = 0.1
 
 var scene: Node3D
 var UI: CanvasLayer

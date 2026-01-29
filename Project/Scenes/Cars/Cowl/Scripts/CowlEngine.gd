@@ -13,22 +13,25 @@ var max_s
 var max_p
 var snd_start
 var rem_engine_index
-var vol = -0.6
+var vol = -12
 ## @NEW Engine Index RPM to use GearBox
 var eng_rpm = 1.0
 var eng_ind_rpm = []
 ## Sound Scale from velocity, Volume from power
 var scale_rpm = 1.0
 var twenty_four = 24.0
+var eleven = 12
 var qwinta = (1.0 + 5.0/12.0)
+var _run_volume_move = 0.0
 
 func _ready():
 	vehicle = get_parent()
 	max_s = vehicle.MAX_SPEED
 	max_p = vehicle.MAX_POWER
-	snd_start = max_s / 32
-	_pow.volume_db = -24.0
-	_run.volume_db = -24.0
+	snd_start = max_s / twenty_four
+	_pow.volume_db = -twenty_four
+	_run.volume_db = -twenty_four
+	_run_volume_move = -twenty_four
 	_timer.connect("timeout", on_timer_timeout)
 	_start.play()
 	_timer.start()
@@ -36,9 +39,8 @@ func _ready():
 	eng_ind_rpm = vehicle.eng_ind_rpm
 	
 func _physics_process(_delta: float) -> void:
-	power = vehicle.engine_force
 	vel = abs(vehicle.get_local_velocity().z)
-	vol = power / max_p
+	vol = abs(vehicle.ACCELERATING) * (vehicle.engine_force / max_p) * eleven
 	
 	## Get Engine Index RPM to use GearBox
 	scale_rpm = vehicle.s_scale_rpm
@@ -64,17 +66,16 @@ func _physics_process(_delta: float) -> void:
 		vehicle.get_local_velocity().z
 		) * eng_ind_rpm.min()
 	if vel_start > snd_start:
-		_idle.pitch_scale = scale_rpm * qwinta * qwinta
+		## Pitches
+		_idle.pitch_scale = scale_rpm * 2
 		_pow.pitch_scale = scale_rpm
-		_run.pitch_scale = vel / vehicle.MAX_SPEED * qwinta * qwinta
+		_run.pitch_scale = vel / vehicle.MAX_SPEED / 2
+		## Volumes
 		_pow.volume_db = clamp(
-			vol * twenty_four - twenty_four, 
-			-twenty_four, 0.0)
-		_run.volume_db = clamp(
-			(vel * abs(vehicle.ACCELERATING)) \
-			* twenty_four - twenty_four, 
-			-twenty_four, -twenty_four/2)
-	
+			vol, -twenty_four, eleven)
+		_run_volume_move = clamp(
+			vel, -twenty_four, eleven - _pow.volume_db)
+		_run.volume_db = lerp(_run.volume_db, _run_volume_move, _delta * qwinta)
 	## Randomise loops
 	if randf() > 0.9 and _idle.playing: _idle.play()
 	if randf() > 0.9 and _pow.playing: _pow.play()
