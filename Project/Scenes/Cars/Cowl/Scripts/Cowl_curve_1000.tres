@@ -1,6 +1,6 @@
-[gd_resource type="Curve" format=3 uid="uid://do7r48rw0jthr"]
+[gd_resource type="Curve" format=3 uid="uid://bpin48v3chh7c"]
 
 [resource]
-_limits = [0.0, 1.1, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0152806, 0, 0, Vector2(0.800654, 1.00222), 1.15819, 1.15819, 0, 0, Vector2(1, 1.1), 0.0, 0.0, 0, 0]
-point_count = 3
+_limits = [0.0, 1.0, 0.0, 1.1]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.35, 0.2), 1.06837, 1.33333, 0, 1, Vector2(0.95, 1), 0.0, 0.0, 0, 0, Vector2(1.1, 0), -15.7194, 0.0, 0, 0]
+point_count = 4

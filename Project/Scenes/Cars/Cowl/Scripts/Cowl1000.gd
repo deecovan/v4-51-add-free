@@ -12,10 +12,10 @@ var car_friction = 0.0
 @export_category("Vehicle Constants")
 ## Values for curve Fanta_Curve_1000
 ## Real maximum 240 @!!!
-@export var vehicle_mass = 1000
-@export var MAX_POWER = 6000
-@export var MAX_SPEED = 60
-@export var grav_scale = 1
+@export var vehicle_mass = 1000.0
+@export var MAX_POWER = 6600.0
+@export var MAX_SPEED = 64.0
+@export var grav_scale = 1.0
 
 @export_category("Vector3 Centers")
 ## (-Z) value (meters) - Move Center Of Mass backward, (-Y): up
@@ -27,18 +27,19 @@ var car_friction = 0.0
 ## Reset standart values
 var car_linear_damp = 0.0
 var car_angular_damp = 0.0
+
 ## Setup AirDrag
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
 @export var bodySquareFill = 0.8
 @export var bodyDrag = 1.2
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 0.5
+@export var bodyAeroDyn = 0.99
 
 ## Add Linear Friction
 ## Constant and Linear friction
-@export var bodyLinearFricConst = 500.0 ## Maybe use as Tires Pressure Fric
-@export var bodyLinearFricLin = 50.0 ## Wheel's Linear Fric
+@export var bodyLinearFricConst = 500.0
+@export var bodyLinearFricLin = 50.0
 
 @export_category("Control's move speed")
 ## Control's move_toward speed
@@ -66,13 +67,13 @@ var rotate_wheel_sens
 @export var brake_control_speed = 0.5
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 150.0
+@export var vehicle_brake_force = 100.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 150.0
+@export var wheel_brake_force = 100.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
-@export var rear_brake_force = 0.9
+@export var rear_brake_force = 1.0
 ## Brake toward speed
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
@@ -89,7 +90,7 @@ var rotate_wheel_sens
 ## Front wheels friction slip ratio ## 0.65
 @export var fric_slip_front = 1.5 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 2.0 ## Because its like a Soap on U track!
+@export var fric_slip_rear = 1.75 ## Because its like a Soap on U track!
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
@@ -118,11 +119,14 @@ enum Indices { Rear, Neutral,
 	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
 var engine_index_up = [-1.0, 0.0, 
-	1.0, 80.0, 120.0, 160.0, 200.0, 215.0, 225.0, 310.0, 320.0, 330.0]
+	1.0, 60.0, 120.0, 160.0, 200.0, 220.0, 230.0, 235.0, 238.0, 240.0]
 var engine_index_down = [-1.0, 0.0, 
-	1.0, 70.0, 110.0, 150.0, 190.0, 210.0, 220.0, 300.0, 300.0, 300.0]
+	1.0, 50.0, 110.0, 150.0, 195.0, 215.0, 225.0, 230.0, 235.0, 239.0]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
-var eng_min_rpm = [] ## calculated from eng_ind_rpm.max()
+var eng_min_rpm = [0.25, 0.40, 0.50, 0.60, 0.70, 0.75, 0.75, 0.80]
+## Engine Inertia value must be calculated from MAX_POWER etc.
+@export var engine_inertia_value = 0.1
+
 var acceleration_power = 0.0
 var matching_power = 0.0
 var ACCELERATING = 0.0
@@ -211,7 +215,8 @@ func _ready() -> void:
 		var calc_rpm = MAX_SPEED * 3.6 / rpm
 		if calc_rpm > 1 and calc_rpm < 10:
 			eng_ind_rpm.append(calc_rpm)
-			eng_min_rpm.append(eng_ind_rpm.max()/calc_rpm)
+			## Calculate Min.RPM OR use predefined array
+			#eng_min_rpm.append(eng_ind_rpm.max()/calc_rpm)
 	
 	Analometer.set_min_tac(Analometer.get_min_rad()) 
 	Analometer.set_min_rot(Analometer.get_min_rad()) 
@@ -323,27 +328,8 @@ func _physics_process(delta: float) -> void:
 	if (abs(linear_vel) < 1.0
 		and engine_state != States.BRAKING):
 		engine_state = States.CHILLING
-
-	## Process Engine States
-	## ACCELERATING first
-	if (engine_state == States.ACCELERATING or 
-		engine_state == States.CHILLING):
-		acceleration_power = MAX_POWER * ACCELERATING
-		## Remove REVERSE
-		engine_force = abs(engine_force)
-		## Match force to scale_curve
-		matching_power = engine_match_power(
-			linear_vel, scale_curve)
-		## Apply ACCELERATING USING LERP!
-		engine_force = lerp(
-			engine_force, 
-			clamp(matching_power, 0, matching_power), 
-			control_speed * delta) 
-		## Apply REVERSE
-		if REVERSE:
-			engine_force = -abs(engine_force)
 		
-	## Than Braking
+	## Braking
 	var print_brake_force = 0.0
 	if engine_state == States.BRAKING:
 		## Slow engine USING LERP!
@@ -387,12 +373,11 @@ func _physics_process(delta: float) -> void:
 		( constFricForse
 		+ bodyLinearFricLin * linear_vel
 		))
-		#+ bodyLinearFricSq * linear_velocity.length_squared()))
 	
-	## Apply Custom Forces
-	apply_central_force(aeroDrag_force_applied)
+	## Apply Custom Forces to thhe CENTERS!
+	apply_force(aeroDrag_force_applied, CENTER_OF_MASS)
+	apply_force(linearFric_force_applied, CENTER_OF_MASS)
 	apply_force(aeroDyn_force_applied, CENTER_OF_AERO)
-	apply_central_force(linearFric_force_applied)
 
 	## Using HandBrake at any time
 	if Input.is_action_pressed("handbrake"):
@@ -413,12 +398,10 @@ func _physics_process(delta: float) -> void:
 	## GearBox switcher
 	## If not playing switching sound
 	engine_index = get_engine_index((linear_vel))
-	
 	## @NEW engine's gearbox coefficients applied to curve's values
 	## Prepare vars
 	## For current index, get curve's Y value using RPM as X
 	## Speed evaluates in (0 < (speed - ind_low) < (speed - ind_cur) < 1)
-	var eng_ind = clamp(engine_index-2, 0, eng_ind_rpm.size()-1)
 	var speed_cur = linear_vel * 3.6 ## kph
 	var s_start = engine_index_up[engine_index]
 	var s_final = engine_index_up[engine_index + 1]
@@ -426,22 +409,26 @@ func _physics_process(delta: float) -> void:
 	var s_scale_rpm_normal = (
 		speed_cur - s_start) / (s_final - s_start) ## up from 0 to 1
 	## Get final RPM from normalized
-	## First find min-max for the current gear
-	var s_scale_rpm_min = (eng_min_rpm.max() + eng_min_rpm[eng_ind]) / \
-		(eng_min_rpm.max() * 2)
-	## Second calculate scale_RPM !!!@HOW it works i X3
-	s_scale_rpm = s_scale_rpm_min + s_scale_rpm_normal * (
-			s_scale_rpm_normal - s_scale_rpm_min)
+	## First get minimum RPM for the current gear
+	## Calculate Min.RPM OR use predefined array
+	#var s_scale_rpm_min = (eng_min_rpm.max() + eng_min_rpm[eng_ind]) / \
+		#(eng_min_rpm.max() * 2)
+	var s_scale_rpm_min = eng_min_rpm[engine_index-2]
+	## Second calculate scale_RPM
+	## Using inertial moving
+	var s_scale_rpm_moving = s_scale_rpm_min + s_scale_rpm_normal * (1.0 - s_scale_rpm_min)
+	## Fix Inf bug
+	s_scale_rpm_moving = clamp(s_scale_rpm_moving, 0.0, 1.0)
+	s_scale_rpm = lerp(s_scale_rpm, s_scale_rpm_moving, engine_inertia_value)
 	## @FINAL Update engine_force using RPM
 	engine_force = scale_curve.sample_baked(s_scale_rpm) * MAX_POWER * ACCELERATING
-	
+
 	if !scene.DEBUG_SHOW: ## Forced output
 		UI.logs_clr_text()
 		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
-		UI.logs_add_text("\n s_start: %6.2f" % s_start)
-		UI.logs_add_text("\n s_final: %6.2f" % s_final)
-		UI.logs_add_text("\n s_scale_rpm: %6.2f" % s_scale_rpm)
-		UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
+		UI.logs_add_text("\n engine_force......: %8.2f" % engine_force)
+		UI.logs_add_text("\n rpm_moving.: %8.2f" % engine_force)
+		UI.logs_add_text("\n s_scale_rpm: %8.2f" % s_scale_rpm)
 		UI.show_info()
 		
 	## Reverse last

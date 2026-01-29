@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ypb7ravtq3vv"]
+[gd_scene load_steps=25 format=3 uid="uid://ypb7ravtq3vv"]
 
 [ext_resource type="Script" uid="uid://btbtvmwqdhcuq" path="res://Scenes/Cars/Cowl/Scripts/CowlBack1000.gd" id="1_ufxf1"]
 [ext_resource type="Curve" uid="uid://c4skrxutf3owm" path="res://Scenes/Cars/Cowl/Scripts/CowlBackCurve.tres" id="2_wibkg"]
@@ -12,10 +12,13 @@
 [ext_resource type="Script" uid="uid://dth1pyid6yfyu" path="res://Scenes/Cars/Cowl/Scripts/CowlWheels.gd" id="10_gcy26"]
 [ext_resource type="PackedScene" uid="uid://c2u3c52wwav41" path="res://Scenes/UI/ui.tscn" id="11_lbsva"]
 [ext_resource type="PackedScene" uid="uid://b4ise3hq1m10r" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.0c.Export.glb" id="12_kj3ho"]
-[ext_resource type="PackedScene" uid="uid://b37lbkfgiyal0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1c.Export.glb" id="13_ecxyw"]
+[ext_resource type="PackedScene" uid="uid://qmj56v3ygfg7" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cFL.Export.glb" id="13_co0xg"]
 [ext_resource type="PackedScene" uid="uid://boa1kwaiakyb1" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.2e.Export.glb" id="14_wibkg"]
+[ext_resource type="PackedScene" uid="uid://rt3oqjlmc3n0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cFR.Export.glb" id="14_x5q1u"]
 [ext_resource type="PackedScene" uid="uid://c2llv48ycydhm" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.3e.Export.glb" id="15_afa38"]
 [ext_resource type="PackedScene" uid="uid://ddp3wf7bef1uh" path="res://Scenes/Cars/Cowl/Cowl_Wheel_FL.tscn" id="15_hygh8"]
+[ext_resource type="PackedScene" uid="uid://ba1a4it7c8dot" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cRL.Export.glb" id="15_r5gxx"]
+[ext_resource type="PackedScene" uid="uid://08ertqwnkwh0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cRR.Export.glb" id="16_fu5aj"]
 [ext_resource type="PackedScene" uid="uid://bojos1bq8a7dm" path="res://Scenes/Cars/Cowl/Cowl_Wheel_FR.tscn" id="16_kmd4b"]
 [ext_resource type="PackedScene" uid="uid://cw8hiabt8hyr4" path="res://Scenes/Cars/Cowl/Cowl_Wheel_RL.tscn" id="17_q6lcv"]
 [ext_resource type="PackedScene" uid="uid://cg1oc8n1eqy45" path="res://Scenes/Cars/Cowl/Cowl_Wheel_RR.tscn" id="18_53qr2"]
@@ -23,7 +26,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p8y6q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wibkg"]
-size = Vector3(2.5, 1.15, 3.895)
+size = Vector3(2.5, 1.08633, 3.895)
 
 [node name="Vehicle CowlBack1000" type="VehicleBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -53,6 +56,7 @@ panning_strength = 2.0
 [node name="Run" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
 stream = ExtResource("6_x5q1u")
+unit_size = 20.0
 max_polyphony = 2
 panning_strength = 2.0
 
@@ -86,16 +90,25 @@ script = ExtResource("10_gcy26")
 [node name="UI" parent="." instance=ExtResource("11_lbsva")]
 
 [node name="CenterOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, -0.66)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, -0.14)
 
 [node name="CenterOfAero" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.9)
 
 [node name="C0_Cowl_0c_Export" parent="." instance=ExtResource("12_kj3ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
 
-[node name="C0_Cowl_1c_Export" parent="." instance=ExtResource("13_ecxyw")]
-transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
+[node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("13_co0xg")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
+
+[node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_x5q1u")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
+
+[node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("15_r5gxx")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)
+
+[node name="C0_Cowl_1cRR_Export" parent="." instance=ExtResource("16_fu5aj")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.066, -0.1, 0)
 
 [node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wibkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8974)
@@ -104,31 +117,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8
 transform = Transform3D(-1, 0, -1.81195e-07, 0, 1, 0, 1.50996e-07, 0, -1.2, 1.15153e-09, 0.0572228, 0.013173)
 
 [node name="Wheel3DFL" parent="." instance=ExtResource("15_hygh8")]
-transform = Transform3D(0.99998, -0.0034906, 0.00523596, 0.00349065, 0.999994, 0, -0.00523593, 1.82769e-05, 0.999986, 1.25, 0.339732, 1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.335932, 1.425)
 use_as_steering = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="Wheel3DFR" parent="." instance=ExtResource("16_kmd4b")]
-transform = Transform3D(0.99998, 0.00349061, -0.00523596, -0.00349065, 0.999995, 0, 0.00523593, 1.82769e-05, 0.999986, -1.25, 0.339732, 1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.335932, 1.425)
 use_as_steering = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("17_q6lcv")]
-transform = Transform3D(0.999923, -0.0087262, 0.00872654, 0.00872653, 0.999962, 0, -0.0087262, 7.61524e-05, 0.999962, 1.25, 0.339732, -1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33, 0.333, -1.425)
 use_as_traction = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("18_53qr2")]
-transform = Transform3D(0.999923, 0.0087262, -0.00872654, -0.00872653, 0.999962, 0, 0.0087262, 7.61524e-05, 0.999962, -1.25, 0.339732, -1.42481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33, 0.333, -1.425)
 use_as_traction = true
-wheel_roll_influence = 0.1
-wheel_radius = 0.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.715, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768687, 0)
 shape = SubResource("BoxShape3D_wibkg")
 
 [node name="Cam" type="Camera3D" parent="."]
@@ -140,9 +145,9 @@ transform = Transform3D(-1, 1.21669e-08, -8.6572e-08, 0, 0.990268, 0.139173, 8.7
 metadata/FOV = 30.0
 
 [node name="Cam2" type="Marker3D" parent="."]
-transform = Transform3D(-1, 1.81762e-08, -8.55123e-08, 0, 0.978147, 0.207912, 8.74228e-08, 0.207912, -0.978147, -9.42565e-08, 1.2093, 0.996834)
+transform = Transform3D(-1, 1.34589e-08, -8.63804e-08, 5.32907e-15, 0.988078, 0.153952, 8.74228e-08, 0.153952, -0.988078, -9.70496e-08, 1.23661, 0.964885)
 metadata/FOV = 35.0
 
 [node name="Cam3" type="Marker3D" parent="."]
-transform = Transform3D(-1, -2.4097e-08, 8.40362e-08, 0, 0.961262, 0.275637, -8.74228e-08, 0.275637, -0.961262, 1.26454e-08, 1.68688, -0.130353)
+transform = Transform3D(-1, -2.91665e-08, 8.27454e-08, -1.04578e-08, 0.976027, 0.217649, -8.71098e-08, 0.217649, -0.976027, 3.9929e-08, 1.6272, 0.181734)
 metadata/FOV = 40.0

@@ -4,10 +4,15 @@
 - New OnBoard cameras with C key switcher
 - Update Cowl cabine to use camera
 - Update Cowl wheels to use Kamber and Toe
-- Stop polishing Cowl Back
+- Finished polishing Cowl Back
   - Cowl Back and Base tested, seems similar in time
-- Add 4 Rams to Cowl Base
+- Added 4 Rams to Cowl Base
   - Test for 1:09
+  - Synchronize settings:
+    - Curves
+    - Wheels and rams
+- Added Engine Mass and Inertia
+- Applied Custom Forces to the CENTERS! of Cowls
 
 ## 25.28.1 New GearBox
 - @NEW engine's gearbox coefficients applied to curve's values

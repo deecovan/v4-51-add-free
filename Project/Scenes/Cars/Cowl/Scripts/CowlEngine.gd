@@ -20,6 +20,7 @@ var eng_ind_rpm = []
 ## Sound Scale from velocity, Volume from power
 var scale_rpm = 1.0
 var twenty_four = 24.0
+var qwinta = (1.0 + 5.0/12.0)
 
 func _ready():
 	vehicle = get_parent()
@@ -42,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 	## Get Engine Index RPM to use GearBox
 	scale_rpm = vehicle.s_scale_rpm
 	## Fix sound's overscale when gearing down
-	if scale_rpm > 1:
+	if scale_rpm >= 1:
 		scale_rpm = 1
 		vol = -twenty_four
 	
@@ -63,9 +64,9 @@ func _physics_process(_delta: float) -> void:
 		vehicle.get_local_velocity().z
 		) * eng_ind_rpm.min()
 	if vel_start > snd_start:
-		_idle.pitch_scale = scale_rpm
+		_idle.pitch_scale = scale_rpm * qwinta * qwinta
 		_pow.pitch_scale = scale_rpm
-		_run.pitch_scale = vel / vehicle.MAX_SPEED
+		_run.pitch_scale = vel / vehicle.MAX_SPEED * qwinta * qwinta
 		_pow.volume_db = clamp(
 			vol * twenty_four - twenty_four, 
 			-twenty_four, 0.0)
