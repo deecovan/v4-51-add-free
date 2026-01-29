@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1vetvy6c1h40"]
+[gd_scene load_steps=25 format=3 uid="uid://c1vetvy6c1h40"]
 
 [ext_resource type="Script" uid="uid://d3dpngfawclne" path="res://Scenes/Cars/Cowl/Scripts/Cowl1000.gd" id="1_7pedu"]
 [ext_resource type="Curve" uid="uid://do7r48rw0jthr" path="res://Scenes/Cars/Cowl/Scripts/Cowl_curve_1000.tres" id="2_wxipw"]
@@ -12,7 +12,11 @@
 [ext_resource type="Script" uid="uid://dth1pyid6yfyu" path="res://Scenes/Cars/Cowl/Scripts/CowlWheels.gd" id="10_8v6bo"]
 [ext_resource type="PackedScene" uid="uid://b37lbkfgiyal0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1c.Export.glb" id="12_wxipw"]
 [ext_resource type="PackedScene" uid="uid://b4ise3hq1m10r" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.0c.Export.glb" id="13_nifbo"]
+[ext_resource type="PackedScene" uid="uid://rt3oqjlmc3n0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cFR.Export.glb" id="14_8v6bo"]
+[ext_resource type="PackedScene" uid="uid://qmj56v3ygfg7" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cFL.Export.glb" id="14_44qca"]
+[ext_resource type="PackedScene" uid="uid://ba1a4it7c8dot" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cRL.Export.glb" id="14_nifbo"]
 [ext_resource type="PackedScene" uid="uid://boa1kwaiakyb1" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.2e.Export.glb" id="14_wxipw"]
+[ext_resource type="PackedScene" uid="uid://08ertqwnkwh0" path="res://Scenes/Cars/Cowl/GLBs/C0.Cowl.1cRR.Export.glb" id="15_8v6bo"]
 [ext_resource type="PackedScene" uid="uid://c2u3c52wwav41" path="res://Scenes/UI/ui.tscn" id="16_b7rml"]
 [ext_resource type="PackedScene" uid="uid://ddp3wf7bef1uh" path="res://Scenes/Cars/Cowl/Cowl_Wheel_FL.tscn" id="16_kpom5"]
 [ext_resource type="PackedScene" uid="uid://bojos1bq8a7dm" path="res://Scenes/Cars/Cowl/Cowl_Wheel_FR.tscn" id="17_1vrjn"]
@@ -91,6 +95,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0.55)
 
 [node name="C0_Cowl_1c_Export" parent="." instance=ExtResource("12_wxipw")]
 transform = Transform3D(0.9, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
+visible = false
+
+[node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("14_44qca")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
+
+[node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_8v6bo")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
+
+[node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("14_nifbo")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)
+
+[node name="C0_Cowl_1cRR_Export" parent="." instance=ExtResource("15_8v6bo")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.066, -0.1, 0)
 
 [node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wxipw")]
 
@@ -107,13 +124,13 @@ wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DRL" parent="." instance=ExtResource("18_qlpai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.335932, -1.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33, 0.333, -1.425)
 use_as_traction = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
 
 [node name="Wheel3DRR" parent="." instance=ExtResource("19_lanrp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.335932, -1.42481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33, 0.333, -1.425)
 use_as_traction = true
 wheel_roll_influence = 0.1
 wheel_radius = 0.4
@@ -131,7 +148,7 @@ transform = Transform3D(-1, 1.21669e-08, -8.6572e-08, 0, 0.990268, 0.139173, 8.7
 metadata/FOV = 30.0
 
 [node name="Cam2" type="Marker3D" parent="."]
-transform = Transform3D(-1, 1.25641e-08, -8.65151e-08, -8.88178e-16, 0.989618, 0.143718, 8.74228e-08, 0.143718, -0.989618, -2.47643e-07, 1.38553, -0.757713)
+transform = Transform3D(-1, 7.48866e-09, -8.71014e-08, -4.44089e-16, 0.996324, 0.0856608, 8.74228e-08, 0.0856608, -0.996324, -2.33844e-07, 1.19982, -0.599864)
 metadata/FOV = 35.0
 
 [node name="Cam3" type="Marker3D" parent="."]

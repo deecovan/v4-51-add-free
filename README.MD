@@ -6,6 +6,7 @@
 - Update Cowl wheels to use Kamber and Toe
 - Stop polishing Cowl Back
   - Cowl Back and Base tested, seems similar in time
+- Add 4 Rams to Cowl Base
 
 ## 25.28.1 New GearBox
 - @NEW engine's gearbox coefficients applied to curve's values
