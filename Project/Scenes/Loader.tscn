@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c04ue4ip50qe2"]
+[gd_scene load_steps=13 format=3 uid="uid://c04ue4ip50qe2"]
 
 [ext_resource type="Script" uid="uid://c38lgq0jf848d" path="res://Scenes/Scripts/Loader.gd" id="1_tt5f1"]
-[ext_resource type="PackedScene" uid="uid://boxepc62oxvbj" path="res://Scenes/Tracks/spa.short.c1.tscn" id="2_i5bnm"]
+[ext_resource type="PackedScene" uid="uid://d4uj3gb7gxc3" path="res://Scenes/Tracks/AirBagBase.tscn" id="2_8xdk6"]
 [ext_resource type="Theme" uid="uid://b70j3wnt2ujlc" path="res://Themes/Loader.tres" id="2_ttvog"]
 [ext_resource type="FontFile" uid="uid://drjfrxi8t0x3f" path="res://Themes/Fonts/Belanosima-Regular.ttf" id="2_xm1ns"]
+[ext_resource type="PackedScene" uid="uid://blx1fo1bxhdl1" path="res://Scenes/Tracks/AirBagBack.tscn" id="3_toe5v"]
 [ext_resource type="FontFile" uid="uid://dtui5cu3vg7f1" path="res://Themes/Fonts/Habbo.ttf" id="4_xm1ns"]
 [ext_resource type="LabelSettings" uid="uid://b7clkj0x8tukw" path="res://Themes/ui-title.tres" id="8_qcf16"]
 
@@ -73,7 +74,8 @@ game_menu = NodePath("Canvas/Control/GameMenu")
 drive_menu = NodePath("Canvas/Control/DriveMenu")
 circle_menu = NodePath("Canvas/Control/CircleMenu")
 car_menu = NodePath("Canvas/Control/CarMenu")
-spa = ExtResource("2_i5bnm")
+airbag = ExtResource("2_8xdk6")
+airbag_back = ExtResource("3_toe5v")
 metadata/_edit_vertical_guides_ = [30.0, 973.0]
 metadata/_edit_horizontal_guides_ = [22.0, 580.0, 123.0]
 
@@ -235,6 +237,7 @@ horizontal_alignment = 1
 [node name="Square Land" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
+disabled = true
 text = "Square Land"
 
 [node name="Circle Tracks" type="Button" parent="Canvas/Control/DriveMenu/MenuButtons"]
@@ -260,7 +263,7 @@ layout_mode = 1
 offset_left = 30.0
 offset_top = 22.0
 offset_right = 300.0
-offset_bottom = 322.0
+offset_bottom = 436.0
 pivot_offset = Vector2(133, 5)
 
 [node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/CircleMenu"]
@@ -285,17 +288,37 @@ layout_mode = 2
 text = "Select circle"
 horizontal_alignment = 1
 
+[node name="AirBag" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "AirBag
+"
+
+[node name="AirBag Back" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "AirBag Back
+"
+
+[node name="Spa Short" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+disabled = true
+text = "Spa Short
+"
+
+[node name="Spa Long" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+disabled = true
+text = "Spa Long
+"
+
 [node name="Thor Circus" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 disabled = true
 text = "Thor Circus"
-
-[node name="Spa Short" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
-layout_mode = 2
-theme = ExtResource("2_ttvog")
-text = "Spa Short
-"
 
 [node name="Curve Roads" type="Button" parent="Canvas/Control/CircleMenu/MenuButtons"]
 layout_mode = 2
@@ -329,7 +352,7 @@ layout_mode = 1
 offset_left = 30.0
 offset_top = 22.0
 offset_right = 300.0
-offset_bottom = 280.0
+offset_bottom = 309.0
 pivot_offset = Vector2(133, 5)
 
 [node name="MenuButtons" type="VBoxContainer" parent="Canvas/Control/CarMenu"]
@@ -354,20 +377,20 @@ layout_mode = 2
 text = "Select vehicle"
 horizontal_alignment = 1
 
+[node name="Cowl Base 6600" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Cowl Base 6600"
+
+[node name="Cowl Back 6600" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
+layout_mode = 2
+theme = ExtResource("2_ttvog")
+text = "Cowl Back 6600"
+
 [node name="Fanta 6600" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
 layout_mode = 2
 theme = ExtResource("2_ttvog")
 text = "Fanta 6600"
-
-[node name="Fantina 3300" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
-layout_mode = 2
-theme = ExtResource("2_ttvog")
-text = "Fantina 3300"
-
-[node name="Fantisima 800" type="Button" parent="Canvas/Control/CarMenu/MenuButtons"]
-layout_mode = 2
-theme = ExtResource("2_ttvog")
-text = "Fantisima 800"
 
 [node name="VSeparator2" type="VSeparator" parent="Canvas/Control/CarMenu/MenuButtons"]
 custom_minimum_size = Vector2(0, 10)
@@ -503,12 +526,15 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Square Land" to="." method="_on_square_land_pressed"]
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/Circle Tracks" to="." method="_on_circle_tracks_pressed"]
 [connection signal="pressed" from="Canvas/Control/DriveMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
-[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Thor Circus" to="." method="_on_thor_circus_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/AirBag" to="." method="_on_air_bag_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/AirBag Back" to="." method="_on_air_bag_back_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Short" to="." method="_on_spa_flat_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Spa Long" to="." method="_on_spa_flat_pressed"]
+[connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Thor Circus" to="." method="_on_thor_circus_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Curve Roads" to="." method="_on_curve_roads_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/Cup Circus" to="." method="_on_cup_circus_pressed"]
 [connection signal="pressed" from="Canvas/Control/CircleMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Cowl Base 6600" to="." method="_on_cowl_base_6600_pressed"]
+[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Cowl Back 6600" to="." method="_on_cowl_back_6600_pressed"]
 [connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fanta 6600" to="." method="_on_fanta_6600_pressed"]
-[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fantina 3300" to="." method="_on_fantina_3300_pressed"]
-[connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/Fantisima 800" to="." method="_on_fantisima_800_pressed"]
 [connection signal="pressed" from="Canvas/Control/CarMenu/MenuButtons/HomeBtn" to="." method="_on_home_btn_pressed"]

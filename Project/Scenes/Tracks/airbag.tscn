@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjko5ydb0say6"]
+
+[ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_2dlej"]
+[ext_resource type="PackedScene" uid="uid://fi3hm57qj4ti" path="res://Scenes/Sky/RoadSky.tscn" id="2_y0edd"]
+[ext_resource type="PackedScene" uid="uid://bfv1uo46v5y5g" path="res://Scenes/Tracks/GLBs/C1.AirBag.glb" id="3_p6cfg"]
+[ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="4_dywun"]
+[ext_resource type="PackedScene" uid="uid://b67guwtayltr5" path="res://Scenes/Tracks/SquareGen/square_100m.tscn" id="5_w1277"]
+[ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="6_kxc34"]
+[ext_resource type="Material" uid="uid://bow6g7100owkd" path="res://Scenes/Tracks/Materials/AirBagBackA40.tres" id="8_rdkau"]
+[ext_resource type="Material" uid="uid://da2uiv2thc2gp" path="res://Scenes/Tracks/Materials/AirBagBackA20.tres" id="9_jc535"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lnqs5"]
+material = ExtResource("8_rdkau")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 8.0
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3mch2"]
+material = ExtResource("9_jc535")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 8.0
+rings = 1
+
+[node name="Square Generated Track" type="Node3D"]
+script = ExtResource("1_2dlej")
+
+[node name="RoadSky" parent="." instance=ExtResource("2_y0edd")]
+
+[node name="C1_AirBag" parent="." instance=ExtResource("3_p6cfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="Spa_Flat_Objects" parent="." instance=ExtResource("4_dywun")]
+transform = Transform3D(-0.999999, 0, -0.000611501, 0, 1, 0, 0.000611501, 0, -0.999999, 0, 0, 100)
+
+[node name="Squares" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="SquareGen" parent="Squares" instance=ExtResource("5_w1277")]
+skeleton = NodePath("../..")
+
+[node name="SquareGen2" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen3" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen4" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="SquareGen5" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen6" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen7" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 100)
+skeleton = NodePath("../..")
+
+[node name="SquareGen8" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
+skeleton = NodePath("../..")
+
+[node name="SquareGen9" parent="Squares" instance=ExtResource("5_w1277")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
+skeleton = NodePath("../..")
+
+[node name="CameraGimbal" parent="." instance=ExtResource("6_kxc34")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -250, 4, 100)
+
+[node name="Stolb1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478249, 4, -264.797)
+mesh = SubResource("CylinderMesh_lnqs5")
+
+[node name="Stolb2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.478249, 4, -209.693)
+mesh = SubResource("CylinderMesh_3mch2")

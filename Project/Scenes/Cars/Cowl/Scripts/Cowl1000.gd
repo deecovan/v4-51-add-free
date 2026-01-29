@@ -428,7 +428,7 @@ func _physics_process(delta: float) -> void:
 	## @FINAL Update engine_force using RPM
 	engine_force = scale_curve.sample_baked(s_scale_rpm) * MAX_POWER * ACCELERATING
 
-	if !scene.DEBUG_SHOW: ## Forced output
+	if false and !scene.DEBUG_SHOW: ## Forced output
 		UI.logs_clr_text()
 		UI.logs_add_text("\n SPEED.Z(speed_cur): %6.2f" % speed_cur)
 		UI.logs_add_text("\n engine_force......: %8.2f" % engine_force)
@@ -448,6 +448,7 @@ func _physics_process(delta: float) -> void:
 			States.keys()[engine_state].substr(0,8), 
 			Indices.keys()[engine_index].substr(0,8)]
 		)
+	UI.set_digital_speed("%3.0f" % speed_cur)
 	rotate_speed_pt(linear_vel * 3.6)
 	rotate_speed_ps(get_delta_velocity(delta), delta)
 	
@@ -463,16 +464,16 @@ func _physics_process(delta: float) -> void:
 	## @DEBUG UI logs
 	if scene.DEBUG_SHOW:
 		UI.logs_clr_text()
-		UI.logs_add_text("\n Cowl Base 1000")
-		UI.logs_add_text("\n ACCELERATING.: %6.2f" % ACCELERATING)
-		UI.logs_add_text("\n Braking......: %6.2f" % print_brake_force)
-		UI.logs_add_text("\n Linear Veloc.: %8.2f" % linear_vel)
+		UI.logs_add_text("\n Cowl Base 6600")
+		UI.logs_add_text("\n Engine Force.: %8.2f" % engine_force)
+		UI.logs_add_text("\n Scaled RPM...: %8.2f" % s_scale_rpm)
+		UI.logs_add_text("\n ACCELERATING.: %8.2f" % ACCELERATING)
+		UI.logs_add_text("\n BRAKING......: %8.2f" % print_brake_force)
+		UI.logs_add_text("\n STEERING.....: %8.2f" % steering)
 		UI.logs_add_text("\n Spd.Max Steer: %8.2f" % m_MAX_STEER)
-		UI.logs_add_text("\n Steering.....: %8.2f" % steering)
-		UI.logs_add_text("\n engine_force.: %8.2f" % engine_force)
-		UI.logs_add_text("\n aeroDrag_appl: %8.2f" % aeroDrag_force_applied.length())
-		UI.logs_add_text("\n aeroDyn_appl.: %8.2f" % aeroDyn_force_applied.length())
-		UI.logs_add_text("\n linearFricApp: %8.2f" % linearFric_force_applied.length())
+		UI.logs_add_text("\n AeroDrag Appl: %8.2f" % aeroDrag_force_applied.length())
+		UI.logs_add_text("\n AeroDyn Appl.: %8.2f" % aeroDyn_force_applied.length())
+		UI.logs_add_text("\n Linear Fric..: %8.2f" % linearFric_force_applied.length())
 	
 	## Car fell off course!
 	if position.y < -50:

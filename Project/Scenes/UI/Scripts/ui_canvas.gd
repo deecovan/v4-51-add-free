@@ -6,6 +6,7 @@ var message: Label
 var help: Label
 var topline: Label
 var speedometer_label: Label
+var digital_speedometer_label: Label
 var Analometer: Control
 var RotLeft
 var RotRight
@@ -19,6 +20,7 @@ func _ready() -> void:
 	help = $Help
 	topline = $MarginContainer/Topline
 	speedometer_label = $MarginContainer/VBoxContainer/Speedometer/Label
+	digital_speedometer_label = $MarginContainer/VBoxContainer/VBoxContainer/Speed
 	RotLeft = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/Left
 	RotLeftA = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/LeftA
 	RotRight = $MarginContainer/VBoxContainer/VBoxContainer/Rotation/Right
@@ -60,6 +62,9 @@ func show_info() -> void:
 	
 func set_speedometer_label(text) -> void:
 	speedometer_label.text = text
+	
+func set_digital_speed(text) -> void:
+	digital_speedometer_label.text = text
 	
 func logs_hide() -> void:
 	logs = $MarginContainer/VBoxContainer/Info/Logs

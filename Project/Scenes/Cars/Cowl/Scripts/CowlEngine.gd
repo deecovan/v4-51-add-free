@@ -45,9 +45,8 @@ func _physics_process(_delta: float) -> void:
 	## Get Engine Index RPM to use GearBox
 	scale_rpm = vehicle.s_scale_rpm
 	## Fix sound's overscale when gearing down
-	if scale_rpm >= 1:
-		scale_rpm = 1
-		vol = -twenty_four
+	if scale_rpm >= 1.0:
+		scale_rpm = lerp(1.0, scale_rpm, _delta)
 	
 	if (rem_engine_index != vehicle.engine_index
 		and not $"../Gear".playing):

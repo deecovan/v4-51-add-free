@@ -12,6 +12,8 @@ extends Node2D
 @export var cup: PackedScene
 @export var spa: PackedScene
 @export var curve: PackedScene
+@export var airbag: PackedScene
+@export var airbag_back: PackedScene
 	
 var menus: Array
 var panels: Array
@@ -21,6 +23,8 @@ var thor_inst
 var cup_inst
 var spa_inst
 var curve_inst
+var airbag_inst
+var airbag_back_inst
 
 func _ready() -> void:
 	panels = get_tree().get_nodes_in_group("panels")
@@ -29,11 +33,13 @@ func _ready() -> void:
 	show_panels()
 	button.hide()
 	game_menu.show()
-	square_inst = square.instantiate()
-	thor_inst = thor.instantiate()
-	cup_inst = cup.instantiate()
-	spa_inst = spa.instantiate()
-	curve_inst = curve.instantiate()
+	#if square.can_instantiate(): square_inst = square.instantiate()
+	#if thor.can_instantiate(): thor_inst = thor.instantiate()
+	#if cup.can_instantiate(): cup_inst = cup.instantiate()
+	#if spa.can_instantiate(): spa_inst = spa.instantiate()
+	#if curve.can_instantiate(): curve_inst = curve.instantiate()
+	if airbag.can_instantiate(): airbag_inst = airbag.instantiate()
+	if airbag_back.can_instantiate(): airbag_back_inst = airbag_back.instantiate()
 
 func _process(_delta):
 	if Input.is_action_just_pressed('screen'):
@@ -77,25 +83,6 @@ func _on_circle_tracks_pressed() -> void:
 	hide_panels()
 	circle_menu.show()
 
-
-func _on_fanta_6600_pressed() -> void:
-	hide_menus()
-	hide_panels()
-	title.hide()
-	button.show()
-
-func _on_fantina_3300_pressed() -> void:
-	hide_menus()
-	hide_panels()
-	title.hide()
-	button.show()
-
-func _on_fantisima_800_pressed() -> void:
-	hide_menus()
-	hide_panels()
-	title.hide()
-	button.show()
-
 func _on_curve_roads_pressed() -> void:
 	track_scene = open_track(curve_inst)
 	hide_menus()
@@ -136,4 +123,36 @@ func open_track(instance: Node):
 	print("Node \"", name, "\" attached ", instance.name)
 	return instance
 
-	
+func _on_air_bag_pressed() -> void:
+	track_scene = open_track(airbag_inst)
+	hide_menus()
+	hide_panels()
+	#car_menu.show()
+
+
+func _on_cowl_base_6600_pressed() -> void:
+	hide_menus()
+	hide_panels()
+	title.hide()
+	button.show()
+
+
+func _on_cowl_back_6600_pressed() -> void:
+	hide_menus()
+	hide_panels()
+	title.hide()
+	button.show()
+
+
+func _on_fanta_6600_pressed() -> void:
+	hide_menus()
+	hide_panels()
+	title.hide()
+	button.show()
+
+
+func _on_air_bag_back_pressed() -> void:
+	track_scene = open_track(airbag_back_inst)
+	hide_menus()
+	hide_panels()
+	#car_menu.show()

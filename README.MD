@@ -3,6 +3,8 @@
 ## 25.29.1 Start Cource selector with Loader
 - Pre-test Cowls cars on AirBag track 
   - Looks like similar timings
+- Add AirBag and AirBack to loader
+- Continue loader branch
 
 ## 25.29.1 Start Implement Settings 
 - Added OnBoard cameras with C key switcher
