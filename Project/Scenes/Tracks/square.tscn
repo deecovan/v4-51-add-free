@@ -1,55 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq5bgwklic70m"]
+[gd_scene load_steps=10 format=3 uid="uid://bq5bgwklic70m"]
 
 [ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_c6awv"]
-[ext_resource type="PackedScene" uid="uid://b67guwtayltr5" path="res://Scenes/Tracks/SquareGen/square_100m.tscn" id="1_rwjdt"]
 [ext_resource type="PackedScene" uid="uid://dckpn4bgk660l" path="res://Scenes/Sky/DarkSky.tscn" id="2_3j7go"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="2_es48g"]
-[ext_resource type="PackedScene" uid="uid://mhe403u16b1" path="res://Scenes/Cars/Horsa/Horsa1000.tscn" id="3_3j7go"]
+[ext_resource type="PackedScene" uid="uid://c1vetvy6c1h40" path="res://Scenes/Cars/Cowl/CowlBase1000.tscn" id="3_8mu8s"]
+[ext_resource type="PackedScene" uid="uid://bxcq2p0txqvns" path="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.ground.glb" id="5_msxvp"]
+[ext_resource type="PackedScene" uid="uid://j33e4e8u1eqk" path="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1R1H0l.glb" id="6_04e7v"]
+[ext_resource type="PackedScene" uid="uid://d3w1gigskut66" path="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1R1H0r.glb" id="7_xslu6"]
+[ext_resource type="PackedScene" uid="uid://bd08k0dhn613w" path="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1R1H0cornRhard.glb" id="8_s4i22"]
+[ext_resource type="PackedScene" uid="uid://bsexs5qu4ds6n" path="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1R1H0cornRsplat.glb" id="9_afly0"]
 
 [node name="Square Generated Track" type="Node3D"]
 script = ExtResource("1_c6awv")
 
-[node name="DarkSky" parent="." instance=ExtResource("2_3j7go")]
-
-[node name="Vehicle" parent="." instance=ExtResource("3_3j7go")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2, 0)
-
 [node name="CameraGimbal" parent="." instance=ExtResource("2_es48g")]
 
-[node name="Squares" type="Node3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+[node name="Vehicle" parent="." instance=ExtResource("3_8mu8s")]
 
-[node name="SquareGen" parent="Squares" instance=ExtResource("1_rwjdt")]
-skeleton = NodePath("../..")
+[node name="DarkSky" parent="." instance=ExtResource("2_3j7go")]
 
-[node name="SquareGen2" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
-skeleton = NodePath("../..")
+[node name="S0_Ground" parent="." instance=ExtResource("5_msxvp")]
 
-[node name="SquareGen3" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -100)
-skeleton = NodePath("../..")
+[node name="S0_Ground2" parent="." instance=ExtResource("5_msxvp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="SquareGen4" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
-skeleton = NodePath("../..")
+[node name="S0_Ground3" parent="." instance=ExtResource("5_msxvp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="SquareGen5" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100)
-skeleton = NodePath("../..")
+[node name="S0_Ground4" parent="." instance=ExtResource("5_msxvp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
-[node name="SquareGen6" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
-skeleton = NodePath("../..")
+[node name="S0_Group_202_export_A1R1H0l" parent="." instance=ExtResource("6_04e7v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.167, 0, 0)
 
-[node name="SquareGen7" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 100)
-skeleton = NodePath("../..")
+[node name="S0_Group_202_export_A1R1H0r" parent="." instance=ExtResource("7_xslu6")]
 
-[node name="SquareGen8" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
-skeleton = NodePath("../..")
+[node name="S0_Group_202_export_A1R1H0cornRhard" parent="." instance=ExtResource("8_s4i22")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="SquareGen9" parent="Squares" instance=ExtResource("1_rwjdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
-skeleton = NodePath("../..")
+[node name="S0_Group_202_export_A1R1H0cornRsplat" parent="." instance=ExtResource("9_afly0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

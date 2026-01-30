@@ -1,5 +1,10 @@
 # v4-51-add-free GitHub repo 
 
+## 25.30.1 Begin Squares 
+- Exported first group 
+- Built first 2x2 base
+
+
 ## 25.29.1 Start Cource selector with Loader
 - Pre-test Cowls cars on AirBag track 
   - Looks like similar timings
