@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dckpn4bgk660l"]
+[gd_scene load_steps=3 format=3 uid="uid://dckpn4bgk660l"]
 
 [ext_resource type="Environment" uid="uid://huplly2htmsq" path="res://Scenes/Sky/DarkSky.tres" id="1_k34ge"]
+[ext_resource type="Script" uid="uid://qs1di7o6fnk" path="res://Scenes/Sky/timer.gd" id="2_5j67u"]
 
 [node name="DarkSky" type="WorldEnvironment"]
 environment = ExtResource("1_k34ge")
@@ -8,3 +9,11 @@ environment = ExtResource("1_k34ge")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999663, 0.0224766, -0.0129766, -0.010671, 0.811728, 0.583938, 0.0236584, -0.583603, 0.811695, 0, 0, 0)
 light_color = Color(0.772549, 0.662745, 0.415686, 1)
+
+[node name="LightTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.05
+autostart = true
+script = ExtResource("2_5j67u")
+
+[connection signal="timeout" from="LightTimer" to="LightTimer" method="_on_timeout"]

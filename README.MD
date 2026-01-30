@@ -1,6 +1,7 @@
 # v4-51-add-free GitHub repo 
 
 ## 25.30.1 Begin Squares 
+- Create LightTimer in DarkSky environment scene
 - 1x1x200m with 3 materials seems
 - Create proto 200m Height0 track
 - Exported first group 

@@ -49,7 +49,7 @@ func val_sleep(target: VehicleWheel3D, sleep_value) -> float:
 	if (val > 0 and val < sleep_value) or \
 		## Used HandBrake
 		handbrake_pressed: 
-			play_sleep(target, sleep_value / (val + sleep_value))
+			play_sleep(target, 1 + sleep_value / (val + sleep_value))
 			return (100 - val * (100 / sleep_value))
 	else: stop_sleep(target)
 	return 0
@@ -57,7 +57,7 @@ func val_sleep(target: VehicleWheel3D, sleep_value) -> float:
 func play_sleep(target: VehicleWheel3D, volume: float) -> void:
 	var find_target_player = target.find_children("AudioStreamPlayer3D")
 	var target_player: AudioStreamPlayer3D = find_target_player[0]
-	target_player.volume_db = volume * 32 - 32
+	target_player.volume_db = volume * 32 - 24
 	if (!target_player.playing): target_player.play()
 
 func stop_sleep(target: VehicleWheel3D) -> void:

@@ -40,7 +40,9 @@ func _ready():
 	
 func _physics_process(_delta: float) -> void:
 	vel = abs(vehicle.get_local_velocity().z)
-	vol = abs(vehicle.ACCELERATING) * (vehicle.engine_force / max_p) * eleven
+	vol = abs(vehicle.ACCELERATING) * (
+		vehicle.engine_force*vehicle.engine_force / (2 * max_p*max_p)
+		)
 	
 	## Get Engine Index RPM to use GearBox
 	scale_rpm = vehicle.s_scale_rpm

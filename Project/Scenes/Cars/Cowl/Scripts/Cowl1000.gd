@@ -65,9 +65,9 @@ var rotate_wheel_sens
 @export var brake_control_speed = 0.5
 ## Vehicle3D body braking force
 ## Applied with Use Wheel Brake = false
-@export var vehicle_brake_force = 100.0
+@export var vehicle_brake_force = 125.0
 ## Wheel3D braking force and balance
-@export var wheel_brake_force = 100.0
+@export var wheel_brake_force = 125.0
 ## wheel_brake_force multiplier
 @export var front_brake_force = 1.1
 ## wheel_brake_force multiplier
@@ -80,9 +80,9 @@ var rotate_wheel_sens
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values
 ## Front wheels friction slip ratio ## 0.65
-@export var fric_slip_front = 1.5 ## Because its like a Soap on U track!
+@export var fric_slip_front = 1.4 ## Because its like a Soap on U track!
 ## Rear wheels friction slip ratio ## 0.65
-@export var fric_slip_rear = 1.75 ## Because its like a Soap on U track!
+@export var fric_slip_rear = 1.6 ## Because its like a Soap on U track!
 ## @HACK Acceleration multiplier for rear slip. Used if NOT accelerating.
 @export var fric_slip_rear_hb_mult = 1.5
 ## Relax must higher than Compression 
@@ -120,13 +120,24 @@ enum Indices { Rear, Neutral,
 	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
 ## Arrays for Settings
+## 1. Long for 240
+#var engine_index_up = [-1.0, 0.0, 1.0, 
+	#80.0, 120.0, 160.0, 200.0, 220.0, 230.0, 
+	#235.0, 238.0, 240.0, 300.0, 300.0, 300.0]
+#var engine_index_down = [-1.0, 0.0, 1.0, 
+	#70.0, 110.0, 150.0, 195.0, 215.0, 225.0, 
+	#230.0, 235.0, 238.0, 299.0, 299.0, 299.0]
+#var eng_min_rpm = [         0.30, 0.20,
+	#0.30, 0.40, 0.50, 0.60, 0.66, 0.72, 
+	#0.74, 0.76, 0.77, 0.78, 0.79, 0.80]
+## 2. Short for 200
 var engine_index_up = [-1.0, 0.0, 1.0, 
-	80.0, 120.0, 160.0, 200.0, 220.0, 230.0, 
-	235.0, 238.0, 240.0, 300.0, 300.0, 300.0]
+	60.0, 100.0, 140.0, 170.0, 195.0, 215.0, 
+	225.0, 235.0, 240.0, 300.0, 300.0, 300.0]
 var engine_index_down = [-1.0, 0.0, 1.0, 
-	70.0, 110.0, 150.0, 195.0, 215.0, 225.0, 
-	230.0, 235.0, 238.0, 299.0, 299.0, 299.0]
-var eng_min_rpm = [
+	55.0, 95.0, 135.0, 165.0, 190.0, 210.0, 
+	220.0, 230.0, 235.0, 299.0, 299.0, 299.0]
+var eng_min_rpm = [         0.30, 0.20,
 	0.30, 0.40, 0.50, 0.60, 0.66, 0.72, 
 	0.74, 0.76, 0.77, 0.78, 0.79, 0.80]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
@@ -418,7 +429,7 @@ func _physics_process(delta: float) -> void:
 	## Calculate Min.RPM OR use predefined array
 	#var s_scale_rpm_min = (eng_min_rpm.max() + eng_min_rpm[eng_ind]) / \
 		#(eng_min_rpm.max() * 2)
-	var s_scale_rpm_min = eng_min_rpm[engine_index-2]
+	var s_scale_rpm_min = eng_min_rpm[engine_index]
 	## Second calculate scale_RPM
 	## Using inertial moving
 	var s_scale_rpm_moving = s_scale_rpm_min + s_scale_rpm_normal * (1.0 - s_scale_rpm_min)
