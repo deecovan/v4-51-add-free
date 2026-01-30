@@ -1,14 +1,15 @@
 extends Timer
 
 var energy = 1.0
-var step = 0.001
+var step = 0.0015
 var speed = 0.05
 var sky: WorldEnvironment
 var light: DirectionalLight3D
 var phase = -1
 var p = 1.0
+var q = 1.0
 var p_norm = 1.0
-var intensity = 3200
+var intensity = 6400
 
 func _ready() -> void:
 	sky = get_parent()
@@ -23,10 +24,13 @@ func _ready() -> void:
 func _on_timeout() -> void:
 	p_norm += phase * step
 	p = sin(PI*p_norm)
+	q = cos(PI*p_norm)
 	sky.environment.adjustment_brightness = p
 	sky.environment.background_energy_multiplier = p
 	sky.environment.background_intensity = p * intensity
-	light.rotation.x = -p
+	light.rotation.x = 2*-p
+	light.rotation.y = 3*q
+	light.rotation.z = 4*p-q
 	
 	if sky.environment.adjustment_brightness < step:
 		sky.environment.adjustment_brightness = step

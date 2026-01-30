@@ -8,7 +8,6 @@
 size = Vector3(1, 15, 30)
 
 [node name="Spa_Flat_Objects" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="sign-highway-wide" parent="." instance=ExtResource("3_6iuyq")]
 transform = Transform3D(-30, 0, 4.52987e-06, 0, 30, 0, -4.52987e-06, 0, -30, 100, 0, 3.8147e-06)

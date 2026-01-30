@@ -3,6 +3,7 @@
 ## 25.30.1 Begin Squares 
 - New 4m ground (decimate 50% from 1m) 
 - New Forward Lines
+- Tested 3km Forward with Sun
 
 - Create LightTimer in DarkSky environment scene
   - Test and improve Light
