@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b57s8lvxy40a1"
-path="res://.godot/imported/S0.Group.202.export.A1M1H0chicaneLR.glb-14d8e24027dedff695ed1b5b441f9613.scn"
+path="res://.godot/imported/S0.Group.202.export.A1M1H0chicaneLR.glb-dcacae32f949c8a85bead0cfc0332096.scn"
 
 [deps]
 
-source_file="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1M1H0chicaneLR.glb"
-dest_files=["res://.godot/imported/S0.Group.202.export.A1M1H0chicaneLR.glb-14d8e24027dedff695ed1b5b441f9613.scn"]
+source_file="res://Scenes/Tracks/GLBs/squares.200/S0.Group.202.export.A1M1H0chicaneLR.glb"
+dest_files=["res://.godot/imported/S0.Group.202.export.A1M1H0chicaneLR.glb-dcacae32f949c8a85bead0cfc0332096.scn"]
 
 [params]
 

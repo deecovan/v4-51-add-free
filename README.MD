@@ -1,6 +1,9 @@
 # v4-51-add-free GitHub repo 
 
 ## 25.30.1 Begin Squares 
+- New 4m ground (decimate 50% from 1m) 
+- New Forward Lines
+
 - Create LightTimer in DarkSky environment scene
   - Test and improve Light
 - 1x1x200m with 3 materials seems

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cmrqkcvyatb3m"
-path="res://.godot/imported/S0.Group.202.export.A1L1H0cornLsplat.glb-f82e20b1607d933cb2ba5870574cfa80.scn"
+path="res://.godot/imported/S0.Group.202.export.A1L1H0cornLsplat.glb-75304403de340b2968ffa7669f2c643e.scn"
 
 [deps]
 
-source_file="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1L1H0cornLsplat.glb"
-dest_files=["res://.godot/imported/S0.Group.202.export.A1L1H0cornLsplat.glb-f82e20b1607d933cb2ba5870574cfa80.scn"]
+source_file="res://Scenes/Tracks/GLBs/squares.200/S0.Group.202.export.A1L1H0cornLsplat.glb"
+dest_files=["res://.godot/imported/S0.Group.202.export.A1L1H0cornLsplat.glb-75304403de340b2968ffa7669f2c643e.scn"]
 
 [params]
 

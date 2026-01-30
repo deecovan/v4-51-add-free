@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://vvbv8qvfkr3w"
-path="res://.godot/imported/S0.Group.202.export.A1L1H0cornRhard.glb-1323c2945da3d4f92f99e3d1087db867.scn"
+uid="uid://ce5e4wltc2hmy"
+path="res://.godot/imported/S0.ground.2m.glb-51e2e5b820b71309ee04b81c00577aaa.scn"
 
 [deps]
 
-source_file="res://Scenes/Tracks/GLBs/squares.200/S0.Group.202.export.A1L1H0cornRhard.glb"
-dest_files=["res://.godot/imported/S0.Group.202.export.A1L1H0cornRhard.glb-1323c2945da3d4f92f99e3d1087db867.scn"]
+source_file="res://Scenes/Tracks/GLBs/squares.300/S0.ground.2m.glb"
+dest_files=["res://.godot/imported/S0.ground.2m.glb-51e2e5b820b71309ee04b81c00577aaa.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Grid": {
+"PATH:Square": {
 "generate/physics": true
 }
 }
