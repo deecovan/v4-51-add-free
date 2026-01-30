@@ -1,9 +1,10 @@
 # v4-51-add-free GitHub repo 
 
 ## 25.30.1 Begin Squares 
+- 1x1x200m with 3 materials seems
+- Create proto 200m Height0 track
 - Exported first group 
-- Built first 2x2 base
-
+- Built first 2m base
 
 ## 25.29.1 Start Cource selector with Loader
 - Pre-test Cowls cars on AirBag track 

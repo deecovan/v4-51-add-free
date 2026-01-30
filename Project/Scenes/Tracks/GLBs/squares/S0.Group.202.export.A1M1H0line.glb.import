@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djqa8110ggdkg"
-path="res://.godot/imported/S0.Group.202.export.A1L1H0cornRdead.glb-0e9ef05287ee1fe06d8917db4d2149b7.scn"
+uid="uid://orwh50hksux2"
+path="res://.godot/imported/S0.Group.202.export.A1M1H0line.glb-dd888d28f17940e3158ae1cc1bc45708.scn"
 
 [deps]
 
-source_file="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1L1H0cornRdead.glb"
-dest_files=["res://.godot/imported/S0.Group.202.export.A1L1H0cornRdead.glb-0e9ef05287ee1fe06d8917db4d2149b7.scn"]
+source_file="res://Scenes/Tracks/GLBs/squares/S0.Group.202.export.A1M1H0line.glb"
+dest_files=["res://.godot/imported/S0.Group.202.export.A1M1H0line.glb-dd888d28f17940e3158ae1cc1bc45708.scn"]
 
 [params]
 
@@ -32,6 +32,12 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Grid": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
