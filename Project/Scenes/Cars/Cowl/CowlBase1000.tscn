@@ -81,16 +81,6 @@ panning_strength = 2.0
 wait_time = 1.6
 one_shot = true
 
-[node name="DirectionalLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, -2.26267e-08, -1.71867e-07, 2.26267e-08, -0.965926, 0.258819, -1.71867e-07, -0.258819, -0.965926, 1.72954e-07, 0.778412, 1.97837)
-light_energy = 5.0
-light_indirect_energy = 5.0
-light_volumetric_fog_energy = 5.0
-light_size = 2.0
-light_specular = 2.0
-shadow_enabled = true
-spot_range = 100.0
-
 [node name="EngineController" type="Node" parent="."]
 script = ExtResource("9_nifbo")
 
@@ -107,13 +97,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0.55)
 [node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wxipw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2, 2.70507e-08, 0, 0.309424)
 
+[node name="DirectionalLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 0, 8.74228e-08, -7.64274e-15, -1, 1.812e-07, 0.548186, 2.07269)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_size = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_range = 100.0
+
 [node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("14_44qca")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
 visible = false
 
+[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFL_Export"]
+transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, 1, 0.852407, 1.76897)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_size = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_range = 100.0
+
 [node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_8v6bo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
 visible = false
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFR_Export"]
+transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, -1, 0.852407, 1.76897)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_size = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_range = 100.0
 
 [node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("14_nifbo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)

@@ -2,6 +2,7 @@
 
 ## 25.30.1 Begin Squares 
 - Create LightTimer in DarkSky environment scene
+  - Test and improve Light
 - 1x1x200m with 3 materials seems
 - Create proto 200m Height0 track
 - Exported first group 
