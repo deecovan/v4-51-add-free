@@ -4,7 +4,7 @@
 - New 4m ground (decimate 50% from 1m) 
 - New Forward Lines
 - Tested 3km Forward with Sun
-- Testing 10 min. Corners to add more tiles
+- Testing 7min. Corners to add more Tiles
 
 - Create LightTimer in DarkSky environment scene
   - Test and improve Light
