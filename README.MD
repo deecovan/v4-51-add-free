@@ -3,6 +3,8 @@
 ## 25.31.1 Add more Tiles
 - Add New tiles to implement
   - Start refactor
+  - Add Cental, Triways and missing elements Clean up
+  - Clean up
 - Finished Sky with Dynamic Sun
   - added Minimums
   - balanced sin/cos
