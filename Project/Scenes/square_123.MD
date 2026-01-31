@@ -3,14 +3,16 @@
 	2 meters    1.3mb "res://Scenes/Tracks/GLBs/squares.300/S0.ground.2m.glb",
 	1m decimatd 3.2mb "res://Scenes/Tracks/GLBs/squares.300/S0.ground.4m.glb"
 
-								# Central =30
-## 1c* Lines merged
+								# Central =30 plus triways
+## 1cX Lines merged
 	23-23   "res://Scenes/Tracks/GLBs/squares.300/S0.23c23-2lines.glb",
 	123-123 "res://Scenes/Tracks/GLBs/squares.300/S0.123c123-3lines.glb"
 	1-23    "res://Scenes/Tracks/GLBs/squares.300/S0.1c23-2lines.glb"
 	1-123   "res://Scenes/Tracks/GLBs/squares.300/S0.1c123-3lines.glb"
+	
+	## Triways
 
-## 1c* forward 3 pieces
+## 1cX forward 3 pieces
 	"res://Scenes/Tracks/GLBs/squares.300/S0.1c1-lineL.glb",
 	"res://Scenes/Tracks/GLBs/squares.300/S0.1c2-lineL.glb",
 	"res://Scenes/Tracks/GLBs/squares.300/S0.1c3-lineL.glb"
@@ -26,7 +28,7 @@
 	"res://Scenes/Tracks/GLBs/squares.300/S0.2c2-ass2.glb", 
 	"res://Scenes/Tracks/GLBs/squares.300/S0.2c2-ass3.glb"
 
-## *c* Plus 21 file
+## XcX Added 21 file
 	S0.1c1-Pie1.glb
 	S0.1c1-Pie2.glb
 	S0.1c1-Wee1.glb
