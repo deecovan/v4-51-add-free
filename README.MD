@@ -2,6 +2,7 @@
 
 ## 25.31.1 Add more Tiles
 - Add New tiles to implement
+  - Start refactor
 - Finished Sky with Dynamic Sun
   - added Minimums
   - balanced sin/cos

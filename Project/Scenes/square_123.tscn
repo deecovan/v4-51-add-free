@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://bprlg6tgpgx1a"]
+
+[ext_resource type="PackedScene" uid="uid://cqpk8rra64nmp" path="res://Scenes/Tracks/GLBs/squares.300/S0.ground.4m.glb" id="1_noxp5"]
+
+[sub_resource type="TextMesh" id="TextMesh_0uefe"]
+text = "1
+"
+
+[sub_resource type="TextMesh" id="TextMesh_p1vke"]
+text = "2
+"
+
+[sub_resource type="TextMesh" id="TextMesh_uq2el"]
+text = "3
+"
+
+[node name="Square 123" type="Node3D"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="S0_ground_4m" parent="Node" instance=ExtResource("1_noxp5")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 0, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, -192, 10, -1)
+mesh = SubResource("TextMesh_0uefe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 0, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, -192, 10, -90)
+mesh = SubResource("TextMesh_p1vke")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 0, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, -192, 10, 101)
+mesh = SubResource("TextMesh_uq2el")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, -1.0842e-19, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, -3.33333, 10, 194.333)
+mesh = SubResource("TextMesh_0uefe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, -1.0842e-19, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, -92.3333, 10, 194.333)
+mesh = SubResource("TextMesh_p1vke")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, -1.0842e-19, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, 98.6667, 10, 194.333)
+mesh = SubResource("TextMesh_uq2el")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, -8.74228e-05, -3.82137e-12, 0, -2.18557e-05, 500, -8.74228e-05, -500, -2.18557e-05, 194, 10, 7.66667)
+mesh = SubResource("TextMesh_0uefe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 0, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, 194, 10, 96.6667)
+mesh = SubResource("TextMesh_p1vke")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, -8.74228e-05, -3.82137e-12, 0, -2.18557e-05, 500, -8.74228e-05, -500, -2.18557e-05, 194, 10, -94.3333)
+mesh = SubResource("TextMesh_uq2el")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 1.0842e-19, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, 3, 10, -191)
+mesh = SubResource("TextMesh_0uefe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 1.0842e-19, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, 91, 10, -191)
+mesh = SubResource("TextMesh_p1vke")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(500, 0, 1.0842e-19, 0, -2.18557e-05, 500, 0, -500, -2.18557e-05, -102, 10, -191)
+mesh = SubResource("TextMesh_uq2el")
+skeleton = NodePath("../..")

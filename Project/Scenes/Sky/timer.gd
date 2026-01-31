@@ -13,12 +13,14 @@ var sky: WorldEnvironment
 var light: DirectionalLight3D
 var cam: Camera3D
 var gimbal: SpringArm3D
+var sun: Sprite3D
 
 func _ready() -> void:
 	sky = get_parent()
 	cam = get_viewport().get_camera_3d()
 	light = $"../DirectionalLight3D"
 	gimbal = $"../SpringArm3D"
+	sun = $"../SpringArm3D/Sun"
 	wait_time = speed
 	autostart = true
 	start()
@@ -50,6 +52,7 @@ func set_light(_p, _q) -> void:
 		var tween = create_tween().set_parallel(true) # Run at same time
 		tween.tween_property(gimbal, "position", cam.position, speed)
 		tween.tween_property(gimbal, "rotation", light.rotation, speed)
+		light.position = sun.position
 
 func _on_timeout() -> void:
 	p = sin( PI*p_norm )
