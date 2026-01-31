@@ -1,9 +1,9 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://huplly2htmsq"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://q60vt3nrep86"]
 
-[ext_resource type="Texture2D" uid="uid://dvlma1f123240" path="res://Scenes/Sky/4kSky/armazones-road-7200.jpg" id="1_4nbrf"]
+[ext_resource type="Texture2D" uid="uid://dvlma1f123240" path="res://Scenes/Sky/4kSky/armazones-road-7200.jpg" id="1_sljdf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rju7m"]
-panorama = ExtResource("1_4nbrf")
+panorama = ExtResource("1_sljdf")
 
 [sub_resource type="Sky" id="Sky_rhwjb"]
 sky_material = SubResource("PanoramaSkyMaterial_rju7m")

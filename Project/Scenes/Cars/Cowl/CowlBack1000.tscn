@@ -98,18 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.9)
 [node name="C0_Cowl_0c_Export" parent="." instance=ExtResource("12_kj3ho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
 
-[node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("13_co0xg")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
-
-[node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_x5q1u")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
-
-[node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("15_r5gxx")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)
-
-[node name="C0_Cowl_1cRR_Export" parent="." instance=ExtResource("16_fu5aj")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.066, -0.1, 0)
-
 [node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wibkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96925e-09, 0.00839067, 1.8974)
 
@@ -151,3 +139,49 @@ metadata/FOV = 35.0
 [node name="Cam3" type="Marker3D" parent="."]
 transform = Transform3D(-1, -2.91665e-08, 8.27454e-08, -1.04578e-08, 0.976027, 0.217649, -8.71098e-08, 0.217649, -0.976027, 3.9929e-08, 1.6272, 0.181734)
 metadata/FOV = 40.0
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -5.0822e-21, 8.74228e-08, -7.64274e-15, -1, 1.98541e-07, 0.702821, 2.27105)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_size = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_range = 100.0
+spot_attenuation = 0.25
+spot_angle = 30.0
+
+[node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("13_co0xg")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFL_Export"]
+transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, 1, 0.852407, 1.76897)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_size = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_range = 50.0
+spot_attenuation = 0.5
+
+[node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_x5q1u")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFR_Export"]
+transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, -1, 0.852407, 1.76897)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_size = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_range = 50.0
+spot_attenuation = 0.5
+
+[node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("15_r5gxx")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)
+
+[node name="C0_Cowl_1cRR_Export" parent="." instance=ExtResource("16_fu5aj")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.066, -0.1, 0)

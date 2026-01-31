@@ -31,9 +31,9 @@ var car_angular_damp = 0.0
 @export var airDensity = 1.1
 @export var bodySquare = 2.0
 @export var bodySquareFill = 0.8
-@export var bodyDrag = 1.2
+@export var bodyDrag = 1.1
 ## Setup AirDynamic Force
-@export var bodyAeroDyn = 1.25
+@export var bodyAeroDyn = 1.2
 
 ## Add Linear Friction
 ## Constant and Linear friction
@@ -102,8 +102,8 @@ var rotate_wheel_sens
 @export var rest_rear = 0.12
 @export var travel_front = 0.12
 @export var travel_rear = 0.14
-@export var stiff_front = 50
-@export var stiff_rear = 60
+@export var stiff_front = 60
+@export var stiff_rear = 80
 @export var max_force_front = 25000	
 @export var max_force_rear = 30000
 
@@ -121,15 +121,26 @@ enum Indices { Rear, Neutral,
 	Seventh, Eighth, Ninth, Tenth, Infinity }
 @export var engine_index: Indices = Indices.Neutral
 ## Arrays for Settings
+## 1. Long for 240
+#var engine_index_up = [-1.0, 0.0, 1.0, 
+	#75.0, 125.0, 160.0, 200.0, 215.0, 225.0, 
+	#230.0, 235.0, 240.0, 300.0, 300.0, 300.0]
+#var engine_index_down = [-1.0, 0.0, 1.0, 
+	#70.0, 120.0, 155.0, 195.0, 210.0, 220.0, 
+	#225.0, 233.0, 238.0, 299.0, 299.0, 299.0]
+#var eng_min_rpm = [
+	#0.25, 0.40, 0.50, 0.58, 0.62, 0.66, 
+	#0.70, 0.70, 0.70, 0.70, 0.70, 0.70]
+## 2. Short for 200
 var engine_index_up = [-1.0, 0.0, 1.0, 
-	75.0, 125.0, 160.0, 200.0, 215.0, 225.0, 
-	230.0, 235.0, 240.0, 300.0, 300.0, 300.0]
+	60.0, 100.0, 140.0, 170.0, 195.0, 215.0, 
+	225.0, 235.0, 240.0, 300.0, 300.0, 300.0]
 var engine_index_down = [-1.0, 0.0, 1.0, 
-	70.0, 120.0, 155.0, 195.0, 210.0, 220.0, 
-	225.0, 233.0, 238.0, 299.0, 299.0, 299.0]
-var eng_min_rpm = [
-	0.25, 0.40, 0.50, 0.58, 0.62, 0.66, 
-	0.70, 0.70, 0.70, 0.70, 0.70, 0.70]
+	55.0, 95.0, 135.0, 165.0, 190.0, 210.0, 
+	220.0, 230.0, 235.0, 299.0, 299.0, 299.0]
+var eng_min_rpm = [         0.40, 0.20,
+	0.40, 0.50, 0.55, 0.62, 0.68, 0.72, 
+	0.74, 0.76, 0.77, 0.78, 0.79, 0.80]
 var eng_ind_rpm = [] ## calculated from engine_index.max()
 var s_scale_rpm = 1.0
 

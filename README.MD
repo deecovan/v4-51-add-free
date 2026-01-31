@@ -1,10 +1,19 @@
 # v4-51-add-free GitHub repo 
 
+## 25.31.1 Add more Tiles
+- Begin add
+- Finished Sky with Dynamic Sun
+  - added Minimums
+  - balanced sin/cos
+  - seems like little error in light/sun rotation
+  - updated Sun and Sky textures
+
 ## 25.30.1 Begin Squares 
 - New 4m ground (decimate 50% from 1m) 
 - New Forward Lines
 - Tested 3km Forward with Sun
-- Testing 7min. Corners to add more Tiles
+- Testing 7min. Corners track to add more Tiles
+- Horsa Back 06:45
 
 - Create LightTimer in DarkSky environment scene
   - Test and improve Light
