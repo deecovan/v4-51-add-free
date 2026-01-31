@@ -1,7 +1,7 @@
 # v4-51-add-free GitHub repo 
 
 ## 25.31.1 Add more Tiles
-- Begin add
+- Add New tiles to implement
 - Finished Sky with Dynamic Sun
   - added Minimums
   - balanced sin/cos
