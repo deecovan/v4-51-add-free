@@ -1,11 +1,11 @@
 extends Timer
 
 @export var energy = 1.0
-@export var intensity = 9600
+@export var intensity = 20000
 @export var intensity_min = 1600
 @export var p_norm: float = 0.00
 @export var p_min:  float = 0.05
-@export var step = 0.001
+@export var step = 0.00025
 @export var speed = 0.05
 var p: float
 var q: float
@@ -14,10 +14,12 @@ var light: DirectionalLight3D
 var cam: Camera3D
 var gimbal: SpringArm3D
 var sun: Sprite3D
+var vehicle: VehicleBody3D
 
 func _ready() -> void:
 	sky = get_parent()
 	cam = get_viewport().get_camera_3d()
+	vehicle = get_tree().get_root().find_child("Vehicle")
 	light = $"../DirectionalLight3D"
 	gimbal = $"../SpringArm3D"
 	sun = $"../SpringArm3D/Sun"
@@ -49,9 +51,9 @@ func set_light(_p, _q) -> void:
 	light.rotation.y = 2 * q
 	light.rotation.z = p - q
 	if cam.position:
-		var tween = create_tween().set_parallel(true) # Run at same time
-		tween.tween_property(gimbal, "position", cam.position, speed)
-		tween.tween_property(gimbal, "rotation", light.rotation, speed)
+		var tween = create_tween()
+		tween.tween_property(gimbal, "global_position", cam.global_position, speed)
+		tween.tween_property(gimbal, "global_rotation", light.global_rotation, speed)
 		light.position = sun.position
 
 func _on_timeout() -> void:

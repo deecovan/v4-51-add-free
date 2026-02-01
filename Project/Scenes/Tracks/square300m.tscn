@@ -1,37 +1,70 @@
-[gd_scene load_steps=27 format=3 uid="uid://brearqjixahwk"]
+[gd_scene load_steps=60 format=3 uid="uid://brearqjixahwk"]
 
 [ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_vohcc"]
-[ext_resource type="PackedScene" uid="uid://ypb7ravtq3vv" path="res://Scenes/Cars/Cowl/CowlBack1000.tscn" id="2_6ks5l"]
+[ext_resource type="PackedScene" uid="uid://c1vetvy6c1h40" path="res://Scenes/Cars/Cowl/CowlBase1000.tscn" id="2_jkuiv"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="2_re13y"]
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="4_arwm7"]
 [ext_resource type="PackedScene" uid="uid://dckpn4bgk660l" path="res://Scenes/Sky/DarkSky.tscn" id="5_e3jhv"]
-[ext_resource type="PackedScene" uid="uid://c6dbm4xeeq50i" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c1-lineL.glb" id="6_l3yyo"]
-[ext_resource type="PackedScene" uid="uid://bhjf2oiwv54do" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c3-lineL.glb" id="7_bjroc"]
-[ext_resource type="PackedScene" uid="uid://cqpk8rra64nmp" path="res://Scenes/Tracks/GLBs/squares.300/S0.ground.4m.glb" id="7_l3yyo"]
-[ext_resource type="PackedScene" uid="uid://k5gqc3cal81m" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c2-lineL.glb" id="8_u0jm1"]
-[ext_resource type="PackedScene" uid="uid://bm82ti84gtw6i" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c23-2lines.glb" id="9_p8cuk"]
-[ext_resource type="PackedScene" uid="uid://cgbkjisfbdrdj" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c123-3lines.glb" id="10_e8v6y"]
-[ext_resource type="PackedScene" uid="uid://dveh24188504" path="res://Scenes/Tracks/GLBs/squares.300/S0.23c23-2lines.glb" id="11_7hruy"]
-[ext_resource type="PackedScene" uid="uid://dphxdx1wtvox6" path="res://Scenes/Tracks/GLBs/squares.300/S0.123c123-3lines.glb" id="12_oudlm"]
-[ext_resource type="PackedScene" uid="uid://bkwswttks15ia" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-chikA.glb" id="13_6ks5l"]
-[ext_resource type="PackedScene" uid="uid://ckc6qy4yo87b" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-line2.glb" id="14_w6kyb"]
-[ext_resource type="PackedScene" uid="uid://vm1bikxl6w4u" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l3-line.glb" id="15_va7i6"]
-[ext_resource type="PackedScene" uid="uid://dqcx3pf0enhbw" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-chikB.glb" id="16_p3rha"]
-[ext_resource type="PackedScene" uid="uid://b6md26qewipba" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l3-chikB.glb" id="17_6s5e3"]
-[ext_resource type="PackedScene" uid="uid://dp1hv433ni456" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l3-chikA.glb" id="18_s0wku"]
+[ext_resource type="PackedScene" uid="uid://caeijt7v7m7pi" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c1-lineL.glb" id="6_l3yyo"]
+[ext_resource type="PackedScene" uid="uid://851xr2wljuo2" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c3-lineL.glb" id="7_bjroc"]
+[ext_resource type="PackedScene" uid="uid://cqpk8rra64nmp" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.ground.4m.glb" id="7_l3yyo"]
+[ext_resource type="PackedScene" uid="uid://c2brdvsc80md1" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c2-lineL.glb" id="8_u0jm1"]
+[ext_resource type="PackedScene" uid="uid://b6adty6a20ly" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c23-2lines.glb" id="9_p8cuk"]
+[ext_resource type="PackedScene" uid="uid://b8v0bvudsmnbr" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-chikA.glb" id="13_6ks5l"]
+[ext_resource type="PackedScene" uid="uid://ikoyl0aa1vr4" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-line2.glb" id="14_w6kyb"]
+[ext_resource type="PackedScene" uid="uid://b2tiygfc7wyun" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l3-line.glb" id="15_va7i6"]
+[ext_resource type="PackedScene" uid="uid://cfwia7v80qecf" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-chikB.glb" id="16_p3rha"]
+[ext_resource type="PackedScene" uid="uid://cg1hw5k3opm7p" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l3-chikB.glb" id="17_6s5e3"]
+[ext_resource type="PackedScene" uid="uid://bdwiuu6rk71h7" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l3-chikA.glb" id="18_s0wku"]
 [ext_resource type="PackedScene" uid="uid://bi4ccvjoilocm" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l2-chikC.glb" id="19_sdu3q"]
-[ext_resource type="PackedScene" uid="uid://crg0v5dxj6pk0" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l3-corner.glb" id="20_pnldr"]
-[ext_resource type="PackedScene" uid="uid://dxntc8ttk1jff" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l2-chikA.glb" id="21_21gth"]
-[ext_resource type="PackedScene" uid="uid://bnchy7x33wwef" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-chikC.glb" id="22_n8bns"]
-[ext_resource type="PackedScene" uid="uid://b1iwo1sj6x1is" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l2-line2.glb" id="23_3twqh"]
+[ext_resource type="PackedScene" uid="uid://4h5teqansfxo" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l3-corner.glb" id="20_pnldr"]
+[ext_resource type="PackedScene" uid="uid://dunqx18xwy8vw" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l2-chikA.glb" id="21_21gth"]
+[ext_resource type="PackedScene" uid="uid://d0d866g2sx727" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l1-chikC.glb" id="22_n8bns"]
+[ext_resource type="PackedScene" uid="uid://fq8cpvqsxgoo" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l2-mue.glb" id="23_1rrk5"]
+[ext_resource type="PackedScene" uid="uid://kh3vq6g5ffxn" path="res://Scenes/Tracks/GLBs/squares.300/S0.1l2-line2.glb" id="23_3twqh"]
 [ext_resource type="PackedScene" uid="uid://dwffh14yhleue" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l2-line.glb" id="24_1y85i"]
-[ext_resource type="PackedScene" uid="uid://bg5poygxnn5ae" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l2-chikB.glb" id="25_1rrk5"]
+[ext_resource type="PackedScene" uid="uid://3xuj5y3wmfw8" path="res://Scenes/Tracks/GLBs/squares.300/S0.2r3-wide.glb" id="24_rcy5j"]
+[ext_resource type="PackedScene" uid="uid://df0iup7ec34a5" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l1-mue.glb" id="25_hlqrq"]
+[ext_resource type="PackedScene" uid="uid://dd6tj203a6xaj" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l1-3r1-triway.glb" id="26_seuyl"]
+[ext_resource type="PackedScene" uid="uid://m8inrmbvfviw" path="res://Scenes/Tracks/GLBs/squares.300/S0.1r3-closing.glb" id="27_gmso7"]
+[ext_resource type="PackedScene" uid="uid://c4o2502xui73f" path="res://Scenes/Tracks/GLBs/squares.300/S0.3c3-Wee2.glb" id="28_nuifn"]
+[ext_resource type="PackedScene" uid="uid://bebcqei2ypbf4" path="res://Scenes/Tracks/GLBs/squares.300/S0.3c1-2l2-triway.glb" id="29_4ydy0"]
+[ext_resource type="PackedScene" uid="uid://b1smddi2a216i" path="res://Scenes/Tracks/GLBs/squares.300/S0.2c1-Zee.glb" id="30_jkuiv"]
+[ext_resource type="PackedScene" uid="uid://gasvuw7e8xva" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c1-Wee1.glb" id="31_84cnw"]
+[ext_resource type="PackedScene" uid="uid://bkkwl10384xb2" path="res://Scenes/Tracks/GLBs/squares.300/S0.2c1-1r3-triway.glb" id="32_lu8un"]
+[ext_resource type="PackedScene" uid="uid://bqtnghkhax8tb" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c3-Zee.glb" id="33_pmigx"]
+[ext_resource type="PackedScene" uid="uid://dqckroex1widl" path="res://Scenes/Tracks/GLBs/squares.300/S0.1c2-Mue.glb" id="34_tb2qx"]
+[ext_resource type="PackedScene" uid="uid://dvhpsb6ko8a3e" path="res://Scenes/Tracks/GLBs/squares.300/S0.2l2-speed.glb" id="36_gvegc"]
+[ext_resource type="PackedScene" uid="uid://b64ocpeysqt81" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l1-ass3.glb" id="37_h5e25"]
+[ext_resource type="PackedScene" uid="uid://b3frs2qapndya" path="res://Scenes/Tracks/GLBs/squares.300/S0.2c3-3r1-triway.glb" id="38_qcbgi"]
+[ext_resource type="PackedScene" uid="uid://co5k8bl70xwvq" path="res://Scenes/Tracks/GLBs/squares.300/S0.3r2-corner.glb" id="39_seuyl"]
+[ext_resource type="PackedScene" uid="uid://knr8ge3mao" path="res://Scenes/Tracks/GLBs/squares.300/S0.3l3-mue.glb" id="40_gmso7"]
+[ext_resource type="PackedScene" uid="uid://ct2tmncahwmgk" path="res://Scenes/Tracks/GLBs/squares.300/S0.2c2-Cam.glb" id="41_nuifn"]
+[ext_resource type="PackedScene" uid="uid://cllutehxpndjp" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.3.glb" id="42_4ydy0"]
+[ext_resource type="PackedScene" uid="uid://bsv3lqbv3cwa5" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.4.glb" id="43_jkuiv"]
+[ext_resource type="PackedScene" uid="uid://cfrikxmay8bx2" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.7.glb" id="44_84cnw"]
+[ext_resource type="PackedScene" uid="uid://vrqycbxkc877" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.6.glb" id="45_t2m6s"]
+[ext_resource type="PackedScene" uid="uid://cf2m5r25nfb8v" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.8.glb" id="46_vmfau"]
+[ext_resource type="PackedScene" uid="uid://bm08lfndaw3xx" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.9.glb" id="47_ksk4y"]
+[ext_resource type="PackedScene" uid="uid://caneikeqsv5ah" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.5.glb" id="48_arwrt"]
+[ext_resource type="PackedScene" uid="uid://cyeayt4s5wilo" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.A.glb" id="49_j2s5u"]
+[ext_resource type="PackedScene" uid="uid://dq2fuval0gyrv" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.B.glb" id="50_xw04w"]
+[ext_resource type="PackedScene" uid="uid://b0i32emtd67j7" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.C.glb" id="51_ox12t"]
+[ext_resource type="PackedScene" uid="uid://cc1y65vwpcuwv" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.mountain.D.glb" id="52_fqcds"]
+[ext_resource type="PackedScene" uid="uid://kx48n4ccu0cv" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus1.glb" id="53_2ufx5"]
+[ext_resource type="PackedScene" uid="uid://rg52ug1lsuar" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus2.glb" id="54_nslkc"]
+[ext_resource type="PackedScene" uid="uid://dal3c3pbni8y5" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus3.glb" id="55_65hgp"]
+[ext_resource type="PackedScene" uid="uid://bh3e2kg8loncf" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus4.glb" id="56_akg8e"]
+[ext_resource type="PackedScene" uid="uid://dcnte5bmhlitr" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus5.glb" id="57_mjas5"]
+[ext_resource type="PackedScene" uid="uid://5cf1x2jtpr4o" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus6.glb" id="58_txmgk"]
+[ext_resource type="PackedScene" uid="uid://b8faa1twn6261" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus7.glb" id="59_aylod"]
+[ext_resource type="PackedScene" uid="uid://cmhj346lw1yna" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus8.glb" id="60_asbfn"]
 
 [node name="Square Proto 200m" type="Node3D"]
 script = ExtResource("1_vohcc")
 
-[node name="Vehicle" parent="." instance=ExtResource("2_6ks5l")]
-transform = Transform3D(-4.37114e-08, 3.61999e-06, -1, 3.61999e-06, 1, 3.61999e-06, 1, -3.61999e-06, -4.37245e-08, 60, 0, 0)
+[node name="Vehicle" parent="." instance=ExtResource("2_jkuiv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 59, 1, 0)
 
 [node name="CameraGimbal" parent="." instance=ExtResource("2_re13y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 66.6, 2, 0)
@@ -63,32 +96,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -300, 0, -300)
 [node name="S0_1f1h0-1-line5" parent="Group" instance=ExtResource("6_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, -300)
 
-[node name="S0_1f2h0-1-line2" parent="Group" instance=ExtResource("7_bjroc")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -900, 0, -300)
-
 [node name="S0_1f4h0-2-lines" parent="Group" instance=ExtResource("9_p8cuk")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1200, 0, 0)
 
 [node name="S0_1f4h0-2-lines2" parent="Group" instance=ExtResource("9_p8cuk")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1800, 0, 0)
-
-[node name="S0_1f5h0-3-lines" parent="Group" instance=ExtResource("10_e8v6y")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2100, 0, 0)
-
-[node name="S0_1f5h0-3-lines2" parent="Group" instance=ExtResource("10_e8v6y")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2700, 0, 0)
-
-[node name="S0_1f6h0-2-lines" parent="Group" instance=ExtResource("11_7hruy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, 0)
 
 [node name="S0_1f4h0-2-lines3" parent="Group" instance=ExtResource("9_p8cuk")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 300, 0, -300)
 
 [node name="S0_1f4h0-2-lines4" parent="Group" instance=ExtResource("9_p8cuk")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, -300)
-
-[node name="S0_1f7h0-3-lines" parent="Group" instance=ExtResource("12_oudlm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2400, 0, 0)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -1200, 0, -1200)
 
 [node name="S0_1c1h0-1-chikA" parent="Group" instance=ExtResource("13_6ks5l")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3000, 0, 0)
@@ -144,20 +162,68 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2100,
 [node name="S0_3c3h0-1-chikA2" parent="Group" instance=ExtResource("21_21gth")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1800, 0, -1500)
 
-[node name="S0_3c3h0-1-chikB" parent="Group" instance=ExtResource("25_1rrk5")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1500, 0, -1200)
+[node name="S0_2r3-wide" parent="Group" instance=ExtResource("24_rcy5j")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1800, 0, 300)
 
-[node name="S0_2c2h0-1-line3" parent="Group" instance=ExtResource("20_pnldr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1200, 0, -1200)
+[node name="S0_2l1-mue" parent="Group" instance=ExtResource("25_hlqrq")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1800, 0, 0)
 
-[node name="S0_1f2h0-1-line3" parent="Group" instance=ExtResource("7_bjroc")]
-transform = Transform3D(5.76205e-08, 0, 1, 0, 1, 0, -1, 0, 5.76205e-08, -1200, 0, -900)
+[node name="S0_2l1-3r1-triway" parent="Group" instance=ExtResource("26_seuyl")]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -1500, 0, 0)
 
-[node name="S0_1f3h0-1-line2" parent="Group" instance=ExtResource("8_u0jm1")]
+[node name="S0_1r3-closing" parent="Group" instance=ExtResource("27_gmso7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1500, 0, 300)
+
+[node name="S0_3c3-Wee2" parent="Group" instance=ExtResource("28_nuifn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1800, 0, -300)
+
+[node name="S0_3c1-2l2-triway" parent="Group" instance=ExtResource("29_4ydy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2400, 0, 0)
+
+[node name="S0_2c1-Zee" parent="Group" instance=ExtResource("30_jkuiv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2100, 0, -300)
+
+[node name="S0_1l3-line" parent="Group" instance=ExtResource("15_va7i6")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2400, 0, -300)
+
+[node name="S0_1c1-Wee1" parent="Group" instance=ExtResource("31_84cnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2100, 0, 0)
+
+[node name="S0_2c1-1r3-triway" parent="Group" instance=ExtResource("32_lu8un")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 0, -300)
+
+[node name="S0_1c3-Zee" parent="Group" instance=ExtResource("33_pmigx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -900, 0, -300)
+
+[node name="S0_1c2-Mue" parent="Group" instance=ExtResource("34_tb2qx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1200, 0, -600)
 
-[node name="S0_1c1h0-1-chikA2" parent="Group" instance=ExtResource("13_6ks5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6, 118)
+[node name="S0_2l2-speed" parent="Group" instance=ExtResource("36_gvegc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -900)
+
+[node name="S0_3l1-ass3" parent="Group" instance=ExtResource("37_h5e25")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -1500, 0, -1200)
+
+[node name="S0_2c3-3r1-triway" parent="Group" instance=ExtResource("38_qcbgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, -1200)
+
+[node name="S0_1r3-closing2" parent="Group" instance=ExtResource("27_gmso7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -900, 0, -900)
+
+[node name="S0_2l1-mue2" parent="Group" instance=ExtResource("25_hlqrq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1200, 0, -900)
+
+[node name="S0_3r2-corner" parent="Group" instance=ExtResource("39_seuyl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -300, 0, -900)
+
+[node name="S0_3l3-mue" parent="Group" instance=ExtResource("40_gmso7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -300, 0, -1200)
+
+[node name="S0_1l2-mue" parent="Group" instance=ExtResource("23_1rrk5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1500, 0, -300)
+
+[node name="S0_2c2-Cam" parent="Group" instance=ExtResource("41_nuifn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, -1200)
 
 [node name="Ground" type="Node" parent="."]
 
@@ -180,6 +246,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1200, 0, 0)
 
 [node name="S0_ground_4m7" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, 0)
+
+[node name="S0_ground_4m21" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, -300)
+
+[node name="S0_ground_4m22" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1800, 0, -300)
+
+[node name="S0_ground_4m27" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2100, 0, -300)
+
+[node name="S0_ground_4m38" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2400, 0, -300)
+
+[node name="S0_ground_4m19" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, 300)
+
+[node name="S0_ground_4m20" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1800, 0, 300)
 
 [node name="S0_ground_4m60" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, -300)
@@ -217,6 +301,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, -300)
 [node name="S0_ground_4m17" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, -300)
 
+[node name="S0_ground_4m41" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -597)
+
+[node name="S0_ground_4m44" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, -597)
+
+[node name="S0_ground_4m50" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -300, 0, -897)
+
+[node name="S0_ground_4m52" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, -897)
+
+[node name="S0_ground_4m53" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1200)
+
+[node name="S0_ground_4m54" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -300, 0, -1200)
+
+[node name="S0_ground_4m55" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, -1200)
+
+[node name="S0_ground_4m56" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, -1200)
+
 [node name="S0_ground_4m18" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1200, 0, -300)
 
@@ -250,9 +358,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2100, 0, -1500)
 [node name="S0_ground_4m36" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1800, 0, -1500)
 
-[node name="S0_ground_4m39" parent="Ground" instance=ExtResource("7_l3yyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1800, 0, -1200)
-
 [node name="S0_ground_4m34" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2100, 0, -1800)
 
@@ -276,3 +381,854 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1200, 0, -600)
 
 [node name="S0_ground_4m26" parent="Ground" instance=ExtResource("7_l3yyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2700, 0, -600)
+
+[node name="S0_3c3-Wee2" parent="Ground" instance=ExtResource("28_nuifn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -600)
+
+[node name="S0_ground_4m45" parent="Ground" instance=ExtResource("7_l3yyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -897)
+
+[node name="Mountains" type="Node" parent="."]
+
+[node name="S0_mountain_3" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 300)
+
+[node name="S0_mountain_4" parent="Mountains" instance=ExtResource("43_jkuiv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 900, 0, -300)
+
+[node name="S0_mountain_5" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 900, 0, 300)
+
+[node name="S0_mountain_8" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 600, 0, 300)
+
+[node name="S0_mountain_17" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 300, 0, -1500)
+
+[node name="S0_mountain_18" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -300, 0, -1500)
+
+[node name="S0_mountain_19" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1500)
+
+[node name="S0_mountain_15" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1500, 0, -600)
+
+[node name="S0_mountain_16" parent="Mountains" instance=ExtResource("42_4ydy0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1500, 0, -900)
+
+[node name="S0_mountain_6" parent="Mountains" instance=ExtResource("43_jkuiv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 900, 0, 0)
+
+[node name="S0_mountain_10" parent="Mountains" instance=ExtResource("43_jkuiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, -600)
+
+[node name="S0_mountain_11" parent="Mountains" instance=ExtResource("43_jkuiv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 300, 0, -600)
+
+[node name="S0_mountain_12" parent="Mountains" instance=ExtResource("43_jkuiv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 300, 0, -1200)
+
+[node name="S0_mountain_13" parent="Mountains" instance=ExtResource("43_jkuiv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 300, 0, -900)
+
+[node name="S0_mountain_7" parent="Mountains" instance=ExtResource("44_84cnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 300)
+
+[node name="S0_mountain_9" parent="Mountains" instance=ExtResource("44_84cnw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3300, 0, -600)
+
+[node name="S0_mountain_9" parent="Mountains/S0_mountain_9" instance=ExtResource("44_84cnw")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -600, 0, 300)
+
+[node name="S0_mountain_14" parent="Mountains" instance=ExtResource("44_84cnw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1800, 0, -1197)
+
+[node name="S0_mountain_21" parent="Mountains" instance=ExtResource("44_84cnw")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2100, 0, -2100)
+
+[node name="S0_mountain_20" parent="Mountains" instance=ExtResource("44_84cnw")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1200, 0, -1500)
+
+[node name="S0_mountain_22" parent="Mountains" instance=ExtResource("45_t2m6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -300, 0, 300)
+
+[node name="S0_mountain_23" parent="Mountains" instance=ExtResource("45_t2m6s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -600, 0, 300)
+
+[node name="S0_mountain_24" parent="Mountains" instance=ExtResource("45_t2m6s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2400, 0, -1800)
+
+[node name="S0_mountain_25" parent="Mountains" instance=ExtResource("45_t2m6s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2400, 0, -2100)
+
+[node name="S0_mountain_26" parent="Mountains" instance=ExtResource("46_vmfau")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1200, 0, 300)
+
+[node name="S0_mountain_27" parent="Mountains" instance=ExtResource("46_vmfau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900, 0, 300)
+
+[node name="S0_mountain_28" parent="Mountains" instance=ExtResource("47_ksk4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1500, 0, 600)
+
+[node name="S0_mountain_29" parent="Mountains" instance=ExtResource("48_arwrt")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1200, 0, 600)
+
+[node name="S0_mountain_30" parent="Mountains" instance=ExtResource("46_vmfau")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -600, 0, -900)
+
+[node name="S0_mountain_31" parent="Mountains" instance=ExtResource("48_arwrt")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 900, 0, -600)
+
+[node name="S0_mountain_A" parent="Mountains" instance=ExtResource("49_j2s5u")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1800, 0, 600)
+
+[node name="S0_mountain_B" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -2100, 0, 600)
+
+[node name="S0_mountain_A2" parent="Mountains" instance=ExtResource("49_j2s5u")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3000, 0, 300)
+
+[node name="S0_mountain_A3" parent="Mountains" instance=ExtResource("49_j2s5u")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3000, 0, -600)
+
+[node name="S0_mountain_B4" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -3300, 0, 300)
+
+[node name="S0_mountain_B3" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(1, 0, -1.98419e-09, 0, 1, 0, 1.98419e-09, 0, 1, -2700, 0, 300)
+
+[node name="S0_mountain_B7" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(-1, 0, -8.54386e-08, 0, 1, 0, 8.54386e-08, 0, -1, -2700, 0, -1800)
+
+[node name="S0_mountain_C" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2100, 0, 300)
+
+[node name="S0_mountain_D" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2400, 0, 300)
+
+[node name="S0_mountain_B5" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(-4.17272e-08, 0, 1, 0, 1, 0, -1, 0, -4.17272e-08, -3000, 0, -900)
+
+[node name="S0_mountain_A4" parent="Mountains" instance=ExtResource("49_j2s5u")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1500, 0, -1800)
+
+[node name="S0_mountain_B6" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(1, 0, -1.98419e-09, 0, 1, 0, 1.98419e-09, 0, 1, -1200, 0, -1800)
+
+[node name="S0_mountain_C4" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3300, 0, 0)
+
+[node name="S0_mountain_D4" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3300, 0, -300)
+
+[node name="S0_mountain_B2" parent="Mountains" instance=ExtResource("50_xw04w")]
+transform = Transform3D(2.78181e-08, 0, -1, 0, 1, 0, 1, 0, 2.78181e-08, -2102, 0, -598)
+
+[node name="S0_mountain_C3" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(2.78181e-08, 0, -1, 0, 1, 0, 1, 0, 2.78181e-08, -1802, 0, -898)
+
+[node name="S0_mountain_D3" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(2.78181e-08, 0, -1, 0, 1, 0, 1, 0, 2.78181e-08, -1802, 0, -598)
+
+[node name="S0_mountain_C7" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(1, 0, 7.15295e-08, 0, 1, 0, -7.15295e-08, 0, 1, -1800, 0, -2100)
+
+[node name="S0_mountain_D7" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(1, 0, 7.15295e-08, 0, 1, 0, -7.15295e-08, 0, 1, -1500, 0, -2100)
+
+[node name="S0_mountain_C6" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(1, 0, 7.15295e-08, 0, 1, 0, -7.15295e-08, 0, 1, -900, 0, -1500)
+
+[node name="S0_mountain_D6" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(1, 0, 7.15295e-08, 0, 1, 0, -7.15295e-08, 0, 1, -600, 0, -1500)
+
+[node name="S0_mountain_C5" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -2700, 0, -1200)
+
+[node name="S0_mountain_D5" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -2690, 0, -1495)
+
+[node name="S0_mountain_C2" parent="Mountains" instance=ExtResource("51_ox12t")]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, -300, 0, -600)
+
+[node name="S0_mountain_D2" parent="Mountains" instance=ExtResource("52_fqcds")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -600, 0, -600)
+
+[node name="Cactuses_group" type="Node" parent="."]
+
+[node name="S0_Cactus1" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -37)
+
+[node name="S0_Cactus2" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 37)
+
+[node name="S0_Cactus3" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, -21)
+
+[node name="S0_Cactus4" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, 0, 52)
+
+[node name="S0_Cactus5" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0, -60)
+
+[node name="S0_Cactus6" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0, 4)
+
+[node name="S0_Cactus7" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 3)
+
+[node name="S0_Cactus8" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -39)
+
+[node name="S0_Cactus9" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -171.25, 0, 32.5)
+
+[node name="S0_Cactus10" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -168.25, 0, -70.5)
+
+[node name="S0_Cactus11" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -152.25, 0, 48.5)
+
+[node name="S0_Cactus12" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -152.25, 0, -31.5)
+
+[node name="S0_Cactus13" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -161.25, 0, 27.5)
+
+[node name="S0_Cactus14" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -168.25, 0, -8.5)
+
+[node name="S0_Cactus15" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -188.25, 0, -7.5)
+
+[node name="S0_Cactus16" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -179.25, 0, 34.5)
+
+[node name="S0_Cactus17" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -195.875, 0, 59.375)
+
+[node name="S0_Cactus18" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -291.875, 0, -25.625)
+
+[node name="S0_Cactus19" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -295.875, 0, 59.375)
+
+[node name="S0_Cactus20" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -259.875, 0, 40.375)
+
+[node name="S0_Cactus21" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -200.875, 0, 49.375)
+
+[node name="S0_Cactus22" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -236.875, 0, 56.375)
+
+[node name="S0_Cactus23" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -235.875, 0, 76.375)
+
+[node name="S0_Cactus24" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -193.875, 0, 67.375)
+
+[node name="S0_Cactus25" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -265.375, 0, -63.875)
+
+[node name="S0_Cactus26" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -223.375, 0, -40.875)
+
+[node name="S0_Cactus27" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -249.375, 0, -41.875)
+
+[node name="S0_Cactus28" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -201.375, 0, -44.875)
+
+[node name="S0_Cactus29" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -260.375, 0, -53.875)
+
+[node name="S0_Cactus30" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -224.375, 0, -60.875)
+
+[node name="S0_Cactus31" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -225.375, 0, -80.875)
+
+[node name="S0_Cactus32" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -267.375, 0, -71.875)
+
+[node name="S0_Cactus33" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -39.5938, 0, -628.406)
+
+[node name="S0_Cactus34" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -143.594, 0, -686.406)
+
+[node name="S0_Cactus35" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -85.5939, 0, -656.406)
+
+[node name="S0_Cactus36" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -117.594, 0, -580.406)
+
+[node name="S0_Cactus37" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -18.5939, 0, -653.406)
+
+[node name="S0_Cactus38" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -91.5939, 0, -543.406)
+
+[node name="S0_Cactus39" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -109.594, 0, -617.406)
+
+[node name="S0_Cactus40" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -57.5938, 0, -604.406)
+
+[node name="S0_Cactus41" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -139.094, 0, -757.656)
+
+[node name="S0_Cactus42" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -36.0939, 0, -754.656)
+
+[node name="S0_Cactus43" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -155.094, 0, -738.656)
+
+[node name="S0_Cactus44" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -75.0939, 0, -738.656)
+
+[node name="S0_Cactus45" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -134.094, 0, -747.656)
+
+[node name="S0_Cactus46" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -130.094, 0, -849.656)
+
+[node name="S0_Cactus47" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -99.0939, 0, -774.656)
+
+[node name="S0_Cactus48" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -141.094, 0, -765.656)
+
+[node name="S0_Cactus49" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -165.969, 0, -782.281)
+
+[node name="S0_Cactus50" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -80.9689, 0, -878.281)
+
+[node name="S0_Cactus51" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -165.969, 0, -882.281)
+
+[node name="S0_Cactus52" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -146.969, 0, -846.281)
+
+[node name="S0_Cactus53" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -155.969, 0, -787.281)
+
+[node name="S0_Cactus54" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -118.969, 0, -874.281)
+
+[node name="S0_Cactus55" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -182.969, 0, -822.281)
+
+[node name="S0_Cactus56" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -173.969, 0, -780.281)
+
+[node name="S0_Cactus57" parent="Cactuses_group" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -42.7189, 0, -851.781)
+
+[node name="S0_Cactus58" parent="Cactuses_group" instance=ExtResource("54_nslkc")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -65.7189, 0, -809.781)
+
+[node name="S0_Cactus59" parent="Cactuses_group" instance=ExtResource("55_65hgp")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -90.7189, 0, -836.781)
+
+[node name="S0_Cactus60" parent="Cactuses_group" instance=ExtResource("56_akg8e")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -61.7189, 0, -787.781)
+
+[node name="S0_Cactus61" parent="Cactuses_group" instance=ExtResource("57_mjas5")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -52.7189, 0, -846.781)
+
+[node name="S0_Cactus62" parent="Cactuses_group" instance=ExtResource("58_txmgk")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -45.7189, 0, -810.781)
+
+[node name="S0_Cactus63" parent="Cactuses_group" instance=ExtResource("59_aylod")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -25.7189, 0, -811.781)
+
+[node name="S0_Cactus64" parent="Cactuses_group" instance=ExtResource("60_asbfn")]
+transform = Transform3D(1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, 1, -96.7189, 0, -889.781)
+
+[node name="Cactuses_group4" type="Node" parent="."]
+
+[node name="S0_Cactus1" parent="Cactuses_group4" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -32.6525, 0, -510.548)
+
+[node name="S0_Cactus2" parent="Cactuses_group4" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 57.4334, 0, -502.515)
+
+[node name="S0_Cactus3" parent="Cactuses_group4" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -7.79607, 0, -499.496)
+
+[node name="S0_Cactus4" parent="Cactuses_group4" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 83.4238, 0, -534.264)
+
+[node name="S0_Cactus5" parent="Cactuses_group4" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -33.5711, 0, -466.139)
+
+[node name="S0_Cactus6" parent="Cactuses_group4" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 4.35456, 0, -520.45)
+
+[node name="S0_Cactus7" parent="Cactuses_group4" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 22.4885, 0, -545.271)
+
+[node name="S0_Cactus8" parent="Cactuses_group4" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -38.3845, 0, -516.477)
+
+[node name="S0_Cactus9" parent="Cactuses_group4" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 89.1613, 0, -438.561)
+
+[node name="S0_Cactus10" parent="Cactuses_group4" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -1.53933, 0, -389.659)
+
+[node name="S0_Cactus11" parent="Cactuses_group4" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 121.518, 0, -447.015)
+
+[node name="S0_Cactus12" parent="Cactuses_group4" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 24.2357, 0, -423.015)
+
+[node name="S0_Cactus13" parent="Cactuses_group4" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 79.8312, 0, -444.721)
+
+[node name="S0_Cactus14" parent="Cactuses_group4" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 52.1542, 0, -420.659)
+
+[node name="S0_Cactus15" parent="Cactuses_group4" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 63.0203, 0, -403.838)
+
+[node name="S0_Cactus16" parent="Cactuses_group4" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 94.8933, 0, -432.633)
+
+[node name="S0_Cactus17" parent="Cactuses_group4" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 124.748, 0, -430.672)
+
+[node name="S0_Cactus18" parent="Cactuses_group4" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 119.136, 0, -338.034)
+
+[node name="S0_Cactus19" parent="Cactuses_group4" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 174.748, 0, -344.07)
+
+[node name="S0_Cactus20" parent="Cactuses_group4" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 140.294, 0, -365.747)
+
+[node name="S0_Cactus21" parent="Cactuses_group4" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 118.588, 0, -421.342)
+
+[node name="S0_Cactus22" parent="Cactuses_group4" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 142.65, 0, -393.665)
+
+[node name="S0_Cactus23" parent="Cactuses_group4" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 159.471, 0, -404.531)
+
+[node name="S0_Cactus24" parent="Cactuses_group4" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 130.676, 0, -436.405)
+
+[node name="S0_Cactus25" parent="Cactuses_group4" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 52.7606, 0, -308.859)
+
+[node name="S0_Cactus26" parent="Cactuses_group4" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -3.32082, 0, -365.732)
+
+[node name="S0_Cactus27" parent="Cactuses_group4" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 63.8132, 0, -333.715)
+
+[node name="S0_Cactus28" parent="Cactuses_group4" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 37.2151, 0, -373.784)
+
+[node name="S0_Cactus29" parent="Cactuses_group4" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 58.9208, 0, -318.189)
+
+[node name="S0_Cactus30" parent="Cactuses_group4" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 34.8587, 0, -345.866)
+
+[node name="S0_Cactus31" parent="Cactuses_group4" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -0.961834, 0, -346)
+
+[node name="S0_Cactus32" parent="Cactuses_group4" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 46.8324, 0, -303.127)
+
+[node name="Cactuses_group3" type="Node" parent="."]
+
+[node name="S0_Cactus1" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 131.813, 0, 34)
+
+[node name="S0_Cactus2" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 183.813, 0, -40)
+
+[node name="S0_Cactus3" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 153.813, 0, 18)
+
+[node name="S0_Cactus4" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 155.813, 0, -55)
+
+[node name="S0_Cactus5" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 169.813, 0, 57)
+
+[node name="S0_Cactus6" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 134.813, 0, -6.99999)
+
+[node name="S0_Cactus7" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 114.813, 0, -5.99999)
+
+[node name="S0_Cactus8" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 123.813, 0, 36)
+
+[node name="S0_Cactus9" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 255.063, 0, -35.5)
+
+[node name="S0_Cactus10" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.063, 0, 67.5)
+
+[node name="S0_Cactus11" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.063, 0, -51.5)
+
+[node name="S0_Cactus12" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.063, 0, 28.5)
+
+[node name="S0_Cactus13" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 245.063, 0, -30.5)
+
+[node name="S0_Cactus14" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.063, 0, 5.5)
+
+[node name="S0_Cactus15" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 272.063, 0, 4.5)
+
+[node name="S0_Cactus16" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.063, 0, -37.5)
+
+[node name="S0_Cactus17" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 279.688, 0, -62.375)
+
+[node name="S0_Cactus18" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 375.688, 0, 22.625)
+
+[node name="S0_Cactus19" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 379.688, 0, -62.375)
+
+[node name="S0_Cactus20" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 343.688, 0, -43.375)
+
+[node name="S0_Cactus21" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 284.688, 0, -52.375)
+
+[node name="S0_Cactus22" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 320.688, 0, -59.375)
+
+[node name="S0_Cactus23" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 319.688, 0, -79.375)
+
+[node name="S0_Cactus24" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 277.688, 0, -70.375)
+
+[node name="S0_Cactus25" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 349.188, 0, 60.875)
+
+[node name="S0_Cactus26" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 307.188, 0, 37.875)
+
+[node name="S0_Cactus27" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 333.188, 0, 38.875)
+
+[node name="S0_Cactus28" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 285.188, 0, 41.875)
+
+[node name="S0_Cactus29" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 344.188, 0, 50.875)
+
+[node name="S0_Cactus30" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 308.188, 0, 57.875)
+
+[node name="S0_Cactus31" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 309.188, 0, 77.875)
+
+[node name="S0_Cactus32" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 351.188, 0, 68.875)
+
+[node name="S0_Cactus33" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 417.813, 0, 34)
+
+[node name="S0_Cactus34" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 462.656, 0, -65.5065)
+
+[node name="S0_Cactus35" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 439.813, 0, 18)
+
+[node name="S0_Cactus36" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 432.25, 0, -56.3141)
+
+[node name="S0_Cactus37" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 521.345, 0, 12.9823)
+
+[node name="S0_Cactus38" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 420.813, 0, -6.99999)
+
+[node name="S0_Cactus39" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 400.813, 0, -5.99999)
+
+[node name="S0_Cactus40" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 409.813, 0, 36)
+
+[node name="S0_Cactus41" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 516.219, 0, -112.706)
+
+[node name="S0_Cactus42" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 586.93, 0, -37.7526)
+
+[node name="S0_Cactus43" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 491.47, 0, -110.585)
+
+[node name="S0_Cactus44" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 548.039, 0, -54.016)
+
+[node name="S0_Cactus45" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 484.683, 0, -112.099)
+
+[node name="S0_Cactus46" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 543.089, 0, -81.5932)
+
+[node name="S0_Cactus47" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 556.524, 0, -96.4424)
+
+[node name="S0_Cactus48" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 535.462, 0, -147.777)
+
+[node name="S0_Cactus49" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 514.628, 0, -149.122)
+
+[node name="S0_Cactus50" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 642.614, 0, -156.9)
+
+[node name="S0_Cactus51" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 585.339, 0, -219.833)
+
+[node name="S0_Cactus52" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 548.318, 0, -146.942)
+
+[node name="S0_Cactus53" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 525.235, 0, -145.586)
+
+[node name="S0_Cactus54" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 545.741, 0, -175.992)
+
+[node name="S0_Cactus55" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 530.891, 0, -189.427)
+
+[node name="S0_Cactus56" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 507.557, 0, -153.365)
+
+[node name="S0_Cactus57" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 650.923, 0, -111.115)
+
+[node name="S0_Cactus58" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 577.961, 0, -96.6799)
+
+[node name="S0_Cactus59" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 624.053, 0, -115.358)
+
+[node name="S0_Cactus60" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 585.233, 0, -61.2951)
+
+[node name="S0_Cactus61" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 640.316, 0, -114.65)
+
+[node name="S0_Cactus62" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 619.81, 0, -84.2448)
+
+[node name="S0_Cactus63" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 634.659, 0, -70.8098)
+
+[node name="S0_Cactus64" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 657.994, 0, -106.872)
+
+[node name="S0_Cactus65" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 685.898, 0, -359.1)
+
+[node name="S0_Cactus66" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 616.517, 0, -301.08)
+
+[node name="S0_Cactus67" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 660.506, 0, -349.339)
+
+[node name="S0_Cactus68" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 639.681, 0, -279.344)
+
+[node name="S0_Cactus69" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 655.145, 0, -391.151)
+
+[node name="S0_Cactus70" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 672.388, 0, -320.273)
+
+[node name="S0_Cactus71" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 691.966, 0, -316.063)
+
+[node name="S0_Cactus72" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 694.143, 0, -358.961)
+
+[node name="S0_Cactus73" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 548.859, 0, -323.867)
+
+[node name="S0_Cactus74" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 578.416, 0, -422.581)
+
+[node name="S0_Cactus75" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 563.071, 0, -303.495)
+
+[node name="S0_Cactus76" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 583.776, 0, -380.769)
+
+[node name="S0_Cactus77" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 559.813, 0, -326.109)
+
+[node name="S0_Cactus78" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 562.369, 0, -362.694)
+
+[node name="S0_Cactus79" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 542.792, 0, -366.904)
+
+[node name="S0_Cactus80" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 540.614, 0, -324.006)
+
+[node name="S0_Cactus81" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 518.118, 0, -304.282)
+
+[node name="S0_Cactus82" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 447.389, 0, -411.232)
+
+[node name="S0_Cactus83" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 421.525, 0, -330.164)
+
+[node name="S0_Cactus84" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 461.216, 0, -339.199)
+
+[node name="S0_Cactus85" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 515.876, 0, -315.235)
+
+[node name="S0_Cactus86" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 479.291, 0, -317.791)
+
+[node name="S0_Cactus87" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 475.081, 0, -298.214)
+
+[node name="S0_Cactus88" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 517.979, 0, -296.037)
+
+[node name="S0_Cactus89" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 482.885, 0, -441.32)
+
+[node name="S0_Cactus90" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 517.501, 0, -408.233)
+
+[node name="S0_Cactus91" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 492.646, 0, -415.928)
+
+[node name="S0_Cactus92" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 539.787, 0, -406.403)
+
+[node name="S0_Cactus93" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 485.127, 0, -430.367)
+
+[node name="S0_Cactus94" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 530.712, 0, -365.811)
+
+[node name="S0_Cactus95" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 526.922, 0, -458.388)
+
+[node name="S0_Cactus96" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 483.024, 0, -449.565)
+
+[node name="S0_Cactus97" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 409.643, 0, -433.122)
+
+[node name="S0_Cactus98" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 342.574, 0, -353.612)
+
+[node name="S0_Cactus99" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 384.251, 0, -423.361)
+
+[node name="S0_Cactus100" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 379.322, 0, -355.622)
+
+[node name="S0_Cactus101" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 304.198, 0, -439.617)
+
+[node name="S0_Cactus102" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 396.134, 0, -394.296)
+
+[node name="S0_Cactus103" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 415.711, 0, -390.085)
+
+[node name="S0_Cactus104" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 417.888, 0, -432.983)
+
+[node name="S0_Cactus105" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 276.619, 0, -316.885)
+
+[node name="S0_Cactus106" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 227.717, 0, -407.585)
+
+[node name="S0_Cactus107" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 301.074, 0, -312.528)
+
+[node name="S0_Cactus108" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 261.074, 0, -381.81)
+
+[node name="S0_Cactus109" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 363.78, 0, -282.215)
+
+[node name="S0_Cactus110" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 273.717, 0, -351.892)
+
+[node name="S0_Cactus111" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 208.897, 0, -373.026)
+
+[node name="S0_Cactus112" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 270.691, 0, -311.152)
+
+[node name="S0_Cactus113" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 268.731, 0, -281.298)
+
+[node name="S0_Cactus114" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 32.0926, 0, -320.91)
+
+[node name="S0_Cactus115" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 182.128, 0, -231.298)
+
+[node name="S0_Cactus116" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 203.805, 0, -265.752)
+
+[node name="S0_Cactus117" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 259.401, 0, -287.458)
+
+[node name="S0_Cactus118" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 231.724, 0, -263.396)
+
+[node name="S0_Cactus119" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 242.59, 0, -246.575)
+
+[node name="S0_Cactus120" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 274.463, 0, -275.369)
+
+[node name="S0_Cactus121" parent="Cactuses_group3" instance=ExtResource("53_2ufx5")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 146.917, 0, -353.285)
+
+[node name="S0_Cactus122" parent="Cactuses_group3" instance=ExtResource("54_nslkc")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 194.79, 0, -354.367)
+
+[node name="S0_Cactus123" parent="Cactuses_group3" instance=ExtResource("55_65hgp")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 171.774, 0, -342.233)
+
+[node name="S0_Cactus124" parent="Cactuses_group3" instance=ExtResource("56_akg8e")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 211.843, 0, -368.831)
+
+[node name="S0_Cactus125" parent="Cactuses_group3" instance=ExtResource("57_mjas5")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 156.247, 0, -347.125)
+
+[node name="S0_Cactus126" parent="Cactuses_group3" instance=ExtResource("58_txmgk")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 183.924, 0, -371.187)
+
+[node name="S0_Cactus127" parent="Cactuses_group3" instance=ExtResource("59_aylod")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 150.058, 0, -429.008)
+
+[node name="S0_Cactus128" parent="Cactuses_group3" instance=ExtResource("60_asbfn")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, 141.185, 0, -359.213)

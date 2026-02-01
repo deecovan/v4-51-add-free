@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bprlg6tgpgx1a"]
 
-[ext_resource type="PackedScene" uid="uid://cqpk8rra64nmp" path="res://Scenes/Tracks/GLBs/squares.300/S0.ground.4m.glb" id="1_noxp5"]
+[ext_resource type="PackedScene" uid="uid://cqpk8rra64nmp" path="res://Scenes/Tracks/GLBs/squares.300/objects/S0.ground.4m.glb" id="1_noxp5"]
 
 [sub_resource type="TextMesh" id="TextMesh_0uefe"]
 text = "1

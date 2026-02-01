@@ -1,10 +1,18 @@
 # v4-51-add-free GitHub repo 
 
+## 25.02.01 Cactuses
+- Added New Mountains
+  - Need more separate small mountains in each block
+- Added Cactuses
+  - Looks good
+
 ## 25.31.1 Add more Tiles
 - Add New tiles to implement
   - Start refactor
   - Add Cental, Triways and missing elements Clean up
-  - Clean up
+  - Clean up, delete Square 200
+  - Add new elements to Square 300
+
 - Finished Sky with Dynamic Sun
   - added Minimums
   - balanced sin/cos

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cqpk8rra64nmp"
-path="res://.godot/imported/S0.ground.4m.glb-4166ee7ea13e6b45c817ed2cfb8ebd54.scn"
+uid="uid://dcnte5bmhlitr"
+path="res://.godot/imported/S0.Cactus5.glb-69009ff8f69d51ebcf8225a5c1f3503d.scn"
 
 [deps]
 
-source_file="res://Scenes/Tracks/GLBs/squares.300/S0.ground.4m.glb"
-dest_files=["res://.godot/imported/S0.ground.4m.glb-4166ee7ea13e6b45c817ed2cfb8ebd54.scn"]
+source_file="res://Scenes/Tracks/GLBs/squares.300/objects/S0.Cactus5.glb"
+dest_files=["res://.godot/imported/S0.Cactus5.glb-69009ff8f69d51ebcf8225a5c1f3503d.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Square_002": {
+"PATH:Cube_001": {
 "generate/physics": true
 }
 }

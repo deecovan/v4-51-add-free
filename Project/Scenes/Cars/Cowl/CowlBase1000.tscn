@@ -105,8 +105,8 @@ light_volumetric_fog_energy = 5.0
 light_size = 2.0
 light_specular = 2.0
 shadow_enabled = true
-spot_range = 100.0
-spot_attenuation = 0.25
+spot_range = 200.0
+spot_attenuation = 0.5
 spot_angle = 30.0
 
 [node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("14_44qca")]
@@ -120,8 +120,7 @@ light_volumetric_fog_energy = 5.0
 light_size = 2.0
 light_specular = 2.0
 shadow_enabled = true
-spot_range = 50.0
-spot_attenuation = 0.5
+spot_range = 100.0
 
 [node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_8v6bo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
@@ -134,8 +133,7 @@ light_volumetric_fog_energy = 5.0
 light_size = 2.0
 light_specular = 2.0
 shadow_enabled = true
-spot_range = 50.0
-spot_attenuation = 0.5
+spot_range = 100.0
 
 [node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("14_nifbo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)

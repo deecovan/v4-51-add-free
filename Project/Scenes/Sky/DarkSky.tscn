@@ -21,13 +21,13 @@ script = ExtResource("2_5j67u")
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(-2.81462e-08, -0.765101, -0.64391, -3.34436e-08, 0.64391, -0.765101, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_mask = 0
-spring_length = 200.0
+spring_length = 900.0
 margin = 0.0
 
 [node name="Sun" type="Sprite3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500)
 modulate = Color(0.631373, 0.862745, 0.890196, 1)
-pixel_size = 0.1
+pixel_size = 0.25
 texture = ExtResource("3_ycuyf")
 
 [connection signal="timeout" from="LightTimer" to="LightTimer" method="_on_timeout"]
