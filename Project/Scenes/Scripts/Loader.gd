@@ -35,7 +35,7 @@ func _ready() -> void:
 	show_panels()
 	button.hide()
 	game_menu.show()
-	#if square.can_instantiate(): square_inst = square.instantiate()
+	if square.can_instantiate(): square_inst = square.instantiate()
 	#if thor.can_instantiate(): thor_inst = thor.instantiate()
 	#if cup.can_instantiate(): cup_inst = cup.instantiate()
 	if spa.can_instantiate(): spa_inst = spa.instantiate()
@@ -125,6 +125,8 @@ func open_track(instance: Node):
 	instance.set_process(true)
 	print("Node \"", name, "\" attached ", instance.name)
 	return instance
+
+
 
 func _on_air_bag_pressed() -> void:
 	track_scene = open_track(airbag_inst)

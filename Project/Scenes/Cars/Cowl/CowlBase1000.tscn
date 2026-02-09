@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c1vetvy6c1h40"]
+[gd_scene format=3 uid="uid://c1vetvy6c1h40"]
 
 [ext_resource type="Script" uid="uid://d3dpngfawclne" path="res://Scenes/Cars/Cowl/Scripts/Cowl1000.gd" id="1_7pedu"]
 [ext_resource type="Curve" uid="uid://bpin48v3chh7c" path="res://Scenes/Cars/Cowl/Scripts/Cowl_curve_1000.tres" id="2_wxipw"]
@@ -27,7 +27,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pedu"]
 size = Vector3(2.635, 1.1085, 4.13477)
 
-[node name="Vehicle CowlBase1000" type="VehicleBody3D"]
+[node name="Vehicle CowlBase1000" type="VehicleBody3D" unique_id=1341776573]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_p8y6q")
@@ -35,12 +35,12 @@ continuous_cd = true
 script = ExtResource("1_7pedu")
 scale_curve = ExtResource("2_wxipw")
 
-[node name="Start" type="AudioStreamPlayer3D" parent="."]
+[node name="Start" type="AudioStreamPlayer3D" parent="." unique_id=1737316654]
 stream = ExtResource("3_7pedu")
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Idle" type="AudioStreamPlayer3D" parent="."]
+[node name="Idle" type="AudioStreamPlayer3D" parent="." unique_id=1570202638]
 stream = ExtResource("4_wxipw")
 volume_db = 6.0
 unit_size = 100.0
@@ -48,19 +48,19 @@ max_db = 6.0
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Pow" type="AudioStreamPlayer3D" parent="."]
+[node name="Pow" type="AudioStreamPlayer3D" parent="." unique_id=480140450]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
 stream = ExtResource("5_nifbo")
 max_db = 0.0
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Run" type="AudioStreamPlayer3D" parent="."]
+[node name="Run" type="AudioStreamPlayer3D" parent="." unique_id=169863878]
 stream = ExtResource("6_8v6bo")
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Scrap" type="AudioStreamPlayer3D" parent="."]
+[node name="Scrap" type="AudioStreamPlayer3D" parent="." unique_id=1986935737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
 stream = ExtResource("7_44qca")
 volume_db = -6.0
@@ -69,7 +69,7 @@ pitch_scale = 2.0
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Gear" type="AudioStreamPlayer3D" parent="."]
+[node name="Gear" type="AudioStreamPlayer3D" parent="." unique_id=856018793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 0, 0)
 stream = ExtResource("8_8v6bo")
 max_db = -3.0
@@ -77,102 +77,100 @@ pitch_scale = 1.4
 max_polyphony = 2
 panning_strength = 2.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1680137873]
 wait_time = 1.6
 one_shot = true
 
-[node name="EngineController" type="Node" parent="."]
+[node name="EngineController" type="Node" parent="." unique_id=253571711]
 script = ExtResource("9_nifbo")
 
-[node name="WheelsController" type="Node" parent="."]
+[node name="WheelsController" type="Node" parent="." unique_id=1427495318]
 script = ExtResource("10_8v6bo")
 
-[node name="UI" parent="." instance=ExtResource("16_b7rml")]
+[node name="UI" parent="." unique_id=553073042 instance=ExtResource("16_b7rml")]
 
-[node name="CenterOfMass" type="Node3D" parent="."]
+[node name="CenterOfMass" type="Node3D" parent="." unique_id=142964487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0.55)
 
-[node name="C0_Cowl_0c_Export" parent="." instance=ExtResource("13_nifbo")]
+[node name="C0_Cowl_0c_Export" parent="." unique_id=2056534623 instance=ExtResource("13_nifbo")]
 
-[node name="C0_Cowl_2e_Export" parent="." instance=ExtResource("14_wxipw")]
+[node name="C0_Cowl_2e_Export" parent="." unique_id=1115454535 instance=ExtResource("14_wxipw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2, 2.70507e-08, 0, 0.309424)
 
-[node name="DirectionalLight3D" type="SpotLight3D" parent="."]
+[node name="DirectionalLight3D" type="SpotLight3D" parent="." unique_id=1255065925]
 transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 0, 8.74228e-08, -7.64274e-15, -1, 1.812e-07, 0.548186, 2.07269)
 light_energy = 5.0
 light_indirect_energy = 5.0
 light_volumetric_fog_energy = 5.0
-light_size = 2.0
-light_specular = 2.0
-shadow_enabled = true
+distance_fade_enabled = true
 spot_range = 200.0
 spot_attenuation = 0.5
 spot_angle = 30.0
 
-[node name="C0_Cowl_1cFL_Export" parent="." instance=ExtResource("14_44qca")]
+[node name="C0_Cowl_1cFL_Export" parent="." unique_id=263007574 instance=ExtResource("14_44qca")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
 
-[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFL_Export"]
+[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFL_Export" unique_id=274469244]
 transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, 1, 0.852407, 1.76897)
 light_energy = 5.0
 light_indirect_energy = 5.0
 light_volumetric_fog_energy = 5.0
 light_size = 2.0
 light_specular = 2.0
-shadow_enabled = true
-spot_range = 100.0
+spot_range = 20.0
+spot_attenuation = 2.0
 
-[node name="C0_Cowl_1cFR_Export" parent="." instance=ExtResource("14_8v6bo")]
+[node name="C0_Cowl_1cFR_Export" parent="." unique_id=847236251 instance=ExtResource("14_8v6bo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
 
-[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFR_Export"]
+[node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFR_Export" unique_id=717442475]
 transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, -1, 0.852407, 1.76897)
 light_energy = 5.0
 light_indirect_energy = 5.0
 light_volumetric_fog_energy = 5.0
 light_size = 2.0
 light_specular = 2.0
-shadow_enabled = true
-spot_range = 100.0
+spot_range = 20.0
+spot_attenuation = 2.0
 
-[node name="C0_Cowl_1cRL_Export" parent="." instance=ExtResource("14_nifbo")]
+[node name="C0_Cowl_1cRL_Export" parent="." unique_id=460955253 instance=ExtResource("14_nifbo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.0663725, -0.1, 4.68827e-09)
 
-[node name="C0_Cowl_1cRR_Export" parent="." instance=ExtResource("15_8v6bo")]
+[node name="C0_Cowl_1cRR_Export" parent="." unique_id=1218231976 instance=ExtResource("15_8v6bo")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.066, -0.1, 0)
 
-[node name="Wheel3DFL" parent="." instance=ExtResource("16_kpom5")]
+[node name="Wheel3DFL" parent="." unique_id=1321484563 instance=ExtResource("16_kpom5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.335932, 1.425)
 use_as_steering = true
 
-[node name="Wheel3DFR" parent="." instance=ExtResource("17_1vrjn")]
+[node name="Wheel3DFR" parent="." unique_id=32854449 instance=ExtResource("17_1vrjn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.335932, 1.425)
 use_as_steering = true
 
-[node name="Wheel3DRL" parent="." instance=ExtResource("18_qlpai")]
+[node name="Wheel3DRL" parent="." unique_id=264241031 instance=ExtResource("18_qlpai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33, 0.333, -1.425)
 use_as_traction = true
 
-[node name="Wheel3DRR" parent="." instance=ExtResource("19_lanrp")]
+[node name="Wheel3DRR" parent="." unique_id=849674339 instance=ExtResource("19_lanrp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33, 0.333, -1.425)
 use_as_traction = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1245844475]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88178e-16, 0.741235, -0.0673828)
 shape = SubResource("BoxShape3D_7pedu")
 
-[node name="Cam" type="Camera3D" parent="."]
+[node name="Cam" type="Camera3D" parent="." unique_id=1409056228]
 fov = 45.0
 far = 500.0
 
-[node name="Cam1" type="Marker3D" parent="."]
+[node name="Cam1" type="Marker3D" parent="." unique_id=1467096001]
 transform = Transform3D(-1, 1.21669e-08, -8.6572e-08, 0, 0.990268, 0.139173, 8.74228e-08, 0.139173, -0.990268, 0, 1, 1.4)
 metadata/FOV = 30.0
 
-[node name="Cam2" type="Marker3D" parent="."]
+[node name="Cam2" type="Marker3D" parent="." unique_id=1516567470]
 transform = Transform3D(-1, 7.48866e-09, -8.71014e-08, -4.44089e-16, 0.996324, 0.0856608, 8.74228e-08, 0.0856608, -0.996324, -1.96577e-07, 1.18862, -0.173576)
 metadata/FOV = 35.0
 
-[node name="Cam3" type="Marker3D" parent="."]
+[node name="Cam3" type="Marker3D" parent="." unique_id=740409543]
 transform = Transform3D(-1, -2.96254e-08, 8.26443e-08, -1.13959e-08, 0.977183, 0.212399, -8.7051e-08, 0.212399, -0.977183, -1.59479e-07, 1.83995, -2.09921)
 metadata/FOV = 40.0

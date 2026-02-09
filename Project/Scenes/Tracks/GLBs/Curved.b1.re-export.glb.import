@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/Curved.b1.re-export.glb-f370a49df90fff3477c86
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,14 +34,19 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "Panel": {
 "use_external/enabled": true,
+"use_external/fallback_path": "",
 "use_external/path": "uid://d3ajard5hkhny"
 },
 "Road": {
 "use_external/enabled": true,
+"use_external/fallback_path": "",
 "use_external/path": "uid://c1rb1j1x6st35"
 }
 },
@@ -50,6 +57,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 }
 },

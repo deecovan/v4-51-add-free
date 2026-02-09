@@ -6,6 +6,9 @@
 - Clone repo
 - Merge branch squares into initial
 - try to run 4.6
+- Started, tested, saved
+  - GPU usage 50% at 60 FPS with TAA Hull HD 1920x 
+  - Looks Great!
 
 ## 25.02.01 Cactuses
 - Added New Mountains
