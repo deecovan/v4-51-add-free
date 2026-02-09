@@ -4,6 +4,9 @@
 
 ## 25.02.09 Slim note installed to work
 - Clone repo
+- Rename project and repo to 4.6
+- Fix Shadow Blinkin: 
+  - Set DirectionalLight3D shadow mode to Stable
 - Merge branch squares into initial
 - try to run 4.6
 - Started, tested, saved
