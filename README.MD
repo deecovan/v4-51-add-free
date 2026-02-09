@@ -1,5 +1,12 @@
 # v4-51-add-free GitHub repo 
 
+# @TODO Open old SSD to get blender files!!!
+
+## 25.02.09 Slim note installed to work
+- Clone repo
+- Merge branch squares into initial
+- try to run 4.6
+
 ## 25.02.01 Cactuses
 - Added New Mountains
   - Need more separate small mountains in each block
