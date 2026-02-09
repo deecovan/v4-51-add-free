@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://brearqjixahwk"]
 
 [ext_resource type="Script" uid="uid://dv8ykfntlf1at" path="res://Scenes/Tracks/Scripts/MainSceneScript.gd" id="1_vohcc"]
-[ext_resource type="PackedScene" uid="uid://c1vetvy6c1h40" path="res://Scenes/Cars/Cowl/CowlBase1000.tscn" id="2_jkuiv"]
+[ext_resource type="PackedScene" uid="uid://ypb7ravtq3vv" path="res://Scenes/Cars/Cowl/CowlBack1000.tscn" id="2_kftgq"]
 [ext_resource type="PackedScene" uid="uid://b5hxbo26pr6uh" path="res://Scenes/Cameras/CameraGimbal.tscn" id="2_re13y"]
 [ext_resource type="PackedScene" uid="uid://cdldvmd0vmdxy" path="res://Scenes/Utils/spa_flat_objects.tscn" id="4_arwm7"]
 [ext_resource type="PackedScene" uid="uid://dckpn4bgk660l" path="res://Scenes/Sky/DarkSky.tscn" id="5_e3jhv"]
@@ -63,8 +63,7 @@
 [node name="Square Proto 200m" type="Node3D" unique_id=158211517]
 script = ExtResource("1_vohcc")
 
-[node name="Vehicle" parent="." unique_id=1617243956 instance=ExtResource("2_jkuiv")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 59, 1, 0)
+[node name="Vehicle" parent="." unique_id=971678863 instance=ExtResource("2_kftgq")]
 
 [node name="CameraGimbal" parent="." unique_id=1635448298 instance=ExtResource("2_re13y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 66.6, 2, 0)

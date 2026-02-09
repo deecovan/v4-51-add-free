@@ -75,7 +75,7 @@ var rotate_wheel_sens
 ## Brake toward speed
 @export var pedal_brake_speed = 1.5
 ## hand_brake_force multiplier
-@export var hand_brake_force = 2.0
+@export var hand_brake_force = 1.75
 
 @export_category("Suspension")
 ## Next values used for reconfiguring the Wheel3Ds values

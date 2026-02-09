@@ -97,30 +97,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0.55)
 [node name="C0_Cowl_2e_Export" parent="." unique_id=1115454535 instance=ExtResource("14_wxipw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.2, 2.70507e-08, 0, 0.309424)
 
-[node name="DirectionalLight3D" type="SpotLight3D" parent="." unique_id=1255065925]
-transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 0, 8.74228e-08, -7.64274e-15, -1, 1.812e-07, 0.548186, 2.07269)
-light_energy = 5.0
-light_indirect_energy = 5.0
-light_volumetric_fog_energy = 5.0
+[node name="DirectionalLight3D" type="SpotLight3D" parent="." unique_id=182759843]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -5.0821977e-21, 8.74228e-08, -7.64274e-15, -1, 1.9758933e-07, 0.6631828, 2.260162)
+light_energy = 2.0
+light_indirect_energy = 6.0
+light_volumetric_fog_energy = 6.0
 light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.5
+shadow_transmittance_bias = 0.5
 distance_fade_enabled = true
 spot_range = 200.0
-spot_attenuation = 0.5
+spot_attenuation = 0.1
 spot_angle = 30.0
+spot_angle_attenuation = 2.0
 
 [node name="C0_Cowl_1cFL_Export" parent="." unique_id=263007574 instance=ExtResource("14_44qca")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.15, -0.1, 0)
 
 [node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFL_Export" unique_id=274469244]
 transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, 1, 0.852407, 1.76897)
-light_energy = 5.0
-light_indirect_energy = 5.0
-light_volumetric_fog_energy = 5.0
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
 light_size = 2.0
 light_specular = 2.0
-spot_range = 20.0
+spot_range = 50.0
 spot_attenuation = 0.5
 
 [node name="C0_Cowl_1cFR_Export" parent="." unique_id=847236251 instance=ExtResource("14_8v6bo")]
@@ -128,12 +130,12 @@ transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, -0.1, 0)
 
 [node name="DirectionalLight3D" type="SpotLight3D" parent="C0_Cowl_1cFR_Export" unique_id=717442475]
 transform = Transform3D(0.909091, -7.94752e-08, 7.94753e-08, -7.94752e-08, -0.909091, 0, 7.94753e-08, -6.94795e-15, -0.909091, -1, 0.852407, 1.76897)
-light_energy = 5.0
-light_indirect_energy = 5.0
-light_volumetric_fog_energy = 5.0
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
 light_size = 2.0
 light_specular = 2.0
-spot_range = 20.0
+spot_range = 50.0
 spot_attenuation = 0.5
 
 [node name="C0_Cowl_1cRL_Export" parent="." unique_id=460955253 instance=ExtResource("14_nifbo")]

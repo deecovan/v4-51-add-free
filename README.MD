@@ -1,6 +1,10 @@
-# v4-51-add-free GitHub repo 
+# v4-6-add-free GitHub repo 
 
 # @TODO Open old SSD to get blender files!!!
+
+## 25.02.09 Normalize Lights for Cowls
+- Enabed TAA and shadows 
+- Normalized central and wheel lights
 
 ## 25.02.09 Slim note installed to work
 - Clone repo
@@ -12,6 +16,8 @@
 - Started, tested, saved
   - GPU usage 50% at 60 FPS with TAA Hull HD 1920x 
   - Looks Great!
+
+# v4-51-add-free GitHub repo 
 
 ## 25.02.01 Cactuses
 - Added New Mountains

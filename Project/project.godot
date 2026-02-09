@@ -218,5 +218,6 @@ rendering/bg_color=Color(0.85098, 0.67451, 0.337255, 1)
 
 [rendering]
 
+environment/glow/upscale_mode=0
 environment/defaults/default_clear_color=Color(0.772549, 0.662745, 0.415686, 1)
 anti_aliasing/quality/use_taa=true
