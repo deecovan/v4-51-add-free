@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dfqm8t66a5cvt"]
+
+[ext_resource type="PackedScene" uid="uid://d2nhm4hlbvafn" path="res://Scenes/Tracks/GLBs/squares.300/S0.rally.1Medges.glb" id="1_qx4u7"]
+
+[node name="S0_rally_1Medges" unique_id=370301117 instance=ExtResource("1_qx4u7")]
